@@ -12,3 +12,16 @@ Dataset Credits:
 Evaluation:
 
 https://guidebook.com/guide/31995/forms/21537/event/10594296/
+
+# Getting Set Up
+
+For this tutorial, you will need the following:
+
+1. Python 3.4
+2. matplotlib
+3. networkx
+4. pandas
+5. hiveplot
+
+## Easiest way
+1. 
