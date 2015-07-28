@@ -34,6 +34,3 @@ If you have the Anaconda distribution of Python installed, then follow this set 
 3. `conda env create -f environment.yml`
 
 If you do not have the Anaconda distribution, I would highly recommend getting it. Check out @jakevdp's talk at SciPy2015 - it's time to switch over.
-
-## Next Easiest Way: easy install.
-
