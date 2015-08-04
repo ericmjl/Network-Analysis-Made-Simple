@@ -9,10 +9,6 @@ Dataset Credits:
 
 1. Divvy Data Challenge: https://www.divvybikes.com/datachallenge
 
-Evaluation:
-
-https://guidebook.com/guide/31995/forms/21537/event/10594296/
-
 # Getting Set Up
 
 For this tutorial, you will need the following:
