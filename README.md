@@ -29,4 +29,4 @@ If you have the Anaconda distribution of Python installed, then follow this set 
 2. `cd network-analysis-made-simple`
 3. `conda env create -f environment.yml`
 
-If you do not have the Anaconda distribution, I would highly recommend getting it. Check out @jakevdp's talk at SciPy2015 - it's time to switch over.
+If you do not have the Anaconda distribution, I would highly recommend getting it. Check out @jakevdp's talk at SciPy2015 - it's time to switch over to Python 3!
