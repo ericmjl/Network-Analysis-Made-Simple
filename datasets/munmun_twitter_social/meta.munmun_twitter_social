@@ -1,0 +1,15 @@
+category: Social
+code: Ws
+name: Twitter (ICWSM)
+description: User–user following
+url: http://www.public.asu.edu/~mdechoud/datasets.html
+cite: konect:choudhury10 
+extr: munmun
+long-description: This is the directed network containing information about who follows whom on Twitter. Nodes represent users and an edge shows that the left user follows the right one.
+entity-names:  user
+relationship-names: follow
+
+n3-add-prefix-1: sioc: <http://rdfs.org/sioc/ns#> .
+n3-prefix-m: konect_munmun_twitter_social_user: <http://konect.uni-koblenz.de/networks/munmun_twitter_social/User/> .
+n3-type-m: sioc:UserAccount
+n3-edgedata-1: $m sioc:follows $n .
