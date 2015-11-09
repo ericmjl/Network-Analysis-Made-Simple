@@ -11,8 +11,4 @@ def check_import(packagename):
 packages = ['networkx', 'numpy', 'matplotlib', 'circos', 'hiveplot', 'pandas']
 
 for p in packages:
-    try:
-        assert check_import(p)
-        print('{0} present, great!'.format(p))
-    except AssertionError:
-        print('{0} not present. Please install via pip or conda.'.format(p)
+    assert check_import(p), '{0} not present. Please install via pip or conda.'.format(p)
