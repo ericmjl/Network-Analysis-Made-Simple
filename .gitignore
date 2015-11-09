@@ -4,3 +4,4 @@ twitter_higgs/**
 divvy_2013/**
 
 __pycache__/*
+.ipynb_checkpoints/*
