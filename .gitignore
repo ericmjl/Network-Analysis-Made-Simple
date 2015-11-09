@@ -2,3 +2,5 @@
 *.edgelist
 twitter_higgs/**
 divvy_2013/**
+
+__pycache__/*
