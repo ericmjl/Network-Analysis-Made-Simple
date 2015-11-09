@@ -4,13 +4,17 @@ from pkgutil import iter_modules
 
 def check_import(packagename):
     if packagename in (name for _, name, _ in iter_modules()):
-        print('{0} exists.'.format(packagename))
+        return True
     else:
-        print('Please install {0}.'.format(packagename))
-        # print('Installing {0}...'.format(packagename))
-        # os.system('conda install {0}'.format(p))
+        return False
 
 packages = ['networkx', 'numpy', 'matplotlib', 'circos', 'hiveplot', 'pandas']
 
 for p in packages:
-    check_import(p)
+    try:
+        assert check_import(p)
+        print('{0} present, great!'.format(p))
+    except AssertionError:
+        print('{0} not present. Installing...'.format(p))
+        os.system('pip install {0}'.format(p))
+        print('{0} installed, great!'.format(p))
