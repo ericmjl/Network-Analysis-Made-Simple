@@ -15,6 +15,4 @@ for p in packages:
         assert check_import(p)
         print('{0} present, great!'.format(p))
     except AssertionError:
-        print('{0} not present. Installing...'.format(p))
-        os.system('pip install {0}'.format(p))
-        print('{0} installed, great!'.format(p))
+        print('{0} not present. Please install via pip or conda.'.format(p)
