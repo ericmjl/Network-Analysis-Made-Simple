@@ -24,9 +24,13 @@ For this tutorial, you will need the following:
 
 If you have the Anaconda distribution of Python installed, then follow this set of instructions.
 
-1. `cd /path/to/your/directory`
-1. `git clone https://github.com/ericmjl/network-analysis-made-simple.git`
-2. `cd network-analysis-made-simple`
-3. `conda env create -f environment.yml`
+1. `$ cd /path/to/your/directory`
+1. `$ git clone https://github.com/ericmjl/network-analysis-made-simple.git`
+2. `$ cd network-analysis-made-simple`
+3. `$ conda env create -f environment.yml`
+
+Finally, check your environment by running the following command:
+
+1. `$ python checkenv.py`
 
 If you do not have the Anaconda distribution, I would highly recommend getting it. Check out @jakevdp's talk at SciPy2015 - it's time to switch over to Python 3!
