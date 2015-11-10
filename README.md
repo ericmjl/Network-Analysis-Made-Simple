@@ -1,19 +1,11 @@
 Network-Analysis-Made-Simple
 ============================
 
-For PyCon 2015. 
-
-For more information, please check out the tutorial page: https://us.pycon.org/2015/schedule/presentation/319/
-
-Dataset Credits:
-
-1. Divvy Data Challenge: https://www.divvybikes.com/datachallenge
-
 # Getting Set Up
 
 For this tutorial, you will need the following:
 
-1. Python 3.4
+1. Python 3
 2. matplotlib
 3. networkx
 4. pandas
@@ -34,3 +26,7 @@ Finally, check your environment by running the following command:
 1. `$ python checkenv.py`
 
 If you do not have the Anaconda distribution, I would highly recommend getting it. Check out @jakevdp's talk at SciPy2015 - it's time to switch over to Python 3!
+
+# Dataset Credits
+
+1. Divvy Data Challenge: https://www.divvybikes.com/datachallenge
