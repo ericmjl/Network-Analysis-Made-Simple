@@ -6,11 +6,11 @@ Network-Analysis-Made-Simple
 For this tutorial, you will need the following:
 
 1. Python 3
-2. matplotlib
-3. networkx
-4. pandas
-5. hiveplot
-6. numpy
+2. `matplotlib`
+3. `networkx`
+4. `pandas`
+5. `hiveplot` - do not `conda install`, follow instructions below.
+6. `numpy`
 
 ## Easiest way: Anaconda Distribution of Python
 
