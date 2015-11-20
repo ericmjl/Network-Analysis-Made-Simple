@@ -3,7 +3,7 @@ dependencies:
 - decorator=4.0.4=py35_0
 - freetype=2.5.5=0
 - libpng=1.6.17=0
-- matplotlib=1.4.3=np110py35_3
+- matplotlib
 - networkx=1.10=py35_0
 - numpy=1.10.1=py35_0
 - openssl=1.0.2d=0
@@ -26,3 +26,4 @@ dependencies:
 - zlib=1.2.8=0
 - pip:
   - hiveplot==0.1.7.4
+- jupyter
