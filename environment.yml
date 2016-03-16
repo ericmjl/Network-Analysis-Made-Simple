@@ -8,3 +8,4 @@ dependencies:
 - python=3.5.0
 - pip:
   - hiveplot==0.1.7.4
+- jupyter
