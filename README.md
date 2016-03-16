@@ -6,20 +6,24 @@ Network-Analysis-Made-Simple
 For this tutorial, you will need the following:
 
 1. Python 3
-2. matplotlib
-3. networkx
-4. pandas
-5. hiveplot
-6. numpy
+2. `matplotlib`
+3. `networkx`
+4. `pandas`
+5. `hiveplot` - do not `conda install` independently, follow instructions below.
+6. `numpy`
 
 ## Easiest way: Anaconda Distribution of Python
 
 If you have the Anaconda distribution of Python installed, then follow this set of instructions.
 
 1. `$ cd /path/to/your/directory`
-1. `$ git clone https://github.com/ericmjl/network-analysis-made-simple.git`
-2. `$ cd network-analysis-made-simple`
-3. `$ conda env create -f environment.yml`
+1. Clone the repository to disk:
+    1. If you have set up Github to use SSH:
+        1. `$ git clone git@github.com:ericmjl/Network-Analysis-Made-Simple.git`
+    1. Otherwise:
+        1. `$ git clone https://github.com/ericmjl/Network-Analysis-Made-Simple.git`
+1. `$ cd Network-Analysis-Made-Simple`
+1. `$ conda env create -f environment.yml`
 
 Finally, check your environment by running the following command:
 
