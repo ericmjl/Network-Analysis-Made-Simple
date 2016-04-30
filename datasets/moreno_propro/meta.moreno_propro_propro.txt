@@ -1,0 +1,11 @@
+category: Metabolic
+code: Mp
+name: Protein
+description: Protein–protein interactions
+entity-names: protein
+extr: moreno
+url: http://moreno.ss.uci.edu/data.html#pro-pro
+long-description: This undirected network contains protein interactions contained in yeast. Research showed that proteins with a high degree were more important for the surivial of the yeast than others. A node represents a protein and an edge represents a metabolic interaction between two proteins.  The network contains loops.
+relationship-names: interaction
+cite: konect:jeong2001lethality,konect:coulomb2005,konect:han2005,konect:stumpf2005 
+tags:  #loop
