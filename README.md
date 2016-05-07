@@ -3,18 +3,18 @@ Network-Analysis-Made-Simple
 
 # Getting Set Up
 
-For this tutorial, you will need the following:
+For this tutorial, you will need the following packages:
 
 1. Python 3
 2. `matplotlib`
 3. `networkx`
 4. `pandas`
-5. `hiveplot` - do not `conda install` independently, follow instructions below.
+5. `hiveplot` - do not do `conda install hiveplot`, but `pip install hiveplot`.
 6. `numpy`
 
 ## Easiest way: Anaconda Distribution of Python
 
-If you have the Anaconda distribution of Python installed, then follow this set of instructions.
+If you have the Anaconda distribution of **Python 3** installed, then follow this set of instructions.
 
 1. `$ cd /path/to/your/directory`
 1. Clone the repository to disk:
