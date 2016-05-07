@@ -18,10 +18,7 @@ If you have the Anaconda distribution of **Python 3** installed, then follow thi
 
 1. `$ cd /path/to/your/directory`
 1. Clone the repository to disk:
-    1. If you have set up Github to use SSH:
-        1. `$ git clone git@github.com:ericmjl/Network-Analysis-Made-Simple.git`
-    1. Otherwise:
-        1. `$ git clone https://github.com/ericmjl/Network-Analysis-Made-Simple.git`
+    1. `$ git clone https://github.com/ericmjl/Network-Analysis-Made-Simple.git`
 1. `$ cd Network-Analysis-Made-Simple`
 1. `$ conda env create -f environment.yml`
 
