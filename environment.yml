@@ -5,7 +5,7 @@ dependencies:
 - numpy
 - pandas
 - pip
-- python=3.5.0
+- python=3.5.1
 - pip:
-  - hiveplot==0.1.7.4
+  - hiveplot
 - jupyter
