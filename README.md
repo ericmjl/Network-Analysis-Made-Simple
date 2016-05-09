@@ -12,14 +12,17 @@ For this tutorial, you will need the following packages:
 5. `hiveplot` - do not do `conda install hiveplot`, but `pip install hiveplot`.
 6. `numpy`
 
-## Easiest way: Anaconda Distribution of Python
-
-If you have the Anaconda distribution of **Python 3** installed, then follow this set of instructions.
+## Clone the repository
 
 1. `$ cd /path/to/your/directory`
 1. Clone the repository to disk:
     1. `$ git clone https://github.com/ericmjl/Network-Analysis-Made-Simple.git`
 1. `$ cd Network-Analysis-Made-Simple`
+
+## Easiest way: Anaconda Distribution of Python
+
+If you have the Anaconda distribution of **Python 3** installed, then follow this set of instructions.
+
 1. `$ conda env create -f environment.yml`
 1. `$ source activate network`
 
