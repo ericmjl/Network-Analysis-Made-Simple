@@ -27,7 +27,7 @@ Finally, check your environment by running the following command:
 
 1. `$ python checkenv.py`
 
-If you do not have the Anaconda distribution, I would highly recommend getting it. It provides an isolated Python computing environment that will not interfere with your system Python installation, and comes with a very awesome package manager that makes installation of new packages really simple. 
+If you do not have the Anaconda distribution, I would highly recommend getting it for [Windows][2], [Mac][3] or [Linux][4]. It provides an isolated Python computing environment that will not interfere with your system Python installation, and comes with a very awesome package manager (`conda`) that makes installation of new packages a single `conda install pkgname` away.
 
 If you're not using Python 3, then check out @jakevdp's talk at SciPy2015 to find out why!
 
@@ -54,3 +54,6 @@ If you're facing difficulties, please report it as an [issue][1] on this reposit
 1. Divvy Data Challenge: https://www.divvybikes.com/datachallenge
 
 [1]: https://github.com/ericmjl/Network-Analysis-Made-Simple/issues
+[2]: http://repo.continuum.io/archive/Anaconda3-4.0.0-Windows-x86_64.exe
+[3]: http://repo.continuum.io/archive/Anaconda3-4.0.0-MacOSX-x86_64.pkg
+[4]: http://repo.continuum.io/archive/Anaconda3-4.0.0-Linux-x86_64.sh
