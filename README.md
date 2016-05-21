@@ -34,7 +34,7 @@ If you do not have the Anaconda distribution, I would highly recommend getting i
 
 If you're not using Python 3, then check out @jakevdp's talk at SciPy2015 to find out why!
 
-## Alternative way: `pip install`
+## Alternative to Anaconda: `pip install`
 
 For those who do not have the capability of installing the Anaconda Python 3 distribution on their computers, please follow the instructions below.
 
@@ -48,15 +48,26 @@ Finaly, check your environment:
 
 1. `$ python checkenv.py`
 
+# Feedback
+
+If you've attended this workshop, please leave [feedback][7]!.
+
 # Issues?
 
 If you're facing difficulties, please report it as an [issue][1] on this repository.
 
-# Dataset Credits
+# Credits
 
 1. Divvy Data Challenge: https://www.divvybikes.com/datachallenge
+
+# Resources
+
+1. Jon Charest's use of Circos plots to visualize networks of Metal music genres. [blog post][5] [notebook][6]
 
 [1]: https://github.com/ericmjl/Network-Analysis-Made-Simple/issues
 [2]: http://repo.continuum.io/archive/Anaconda3-4.0.0-Windows-x86_64.exe
 [3]: http://repo.continuum.io/archive/Anaconda3-4.0.0-MacOSX-x86_64.pkg
 [4]: http://repo.continuum.io/archive/Anaconda3-4.0.0-Linux-x86_64.sh
+[5]: http://jonchar.net/scraping/data%20exploration/metal/clustering/2016/05/20/exploring-metal-sub-genres-with-python.html
+[6]: http://jonchar.net/notebooks/MA-Exploratory-Analysis#Enter-the-Circos-plot
+[7]: https://ericma1.typeform.com/to/aCljQl
