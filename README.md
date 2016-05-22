@@ -62,12 +62,12 @@ If you're facing difficulties, please report it as an [issue][1] on this reposit
 
 # Resources
 
-1. Jon Charest's use of Circos plots to visualize networks of Metal music genres. [blog post][5] [notebook][6]
+1. Jon Charest's use of Circos plots to visualize networks of Metal music genres. [blog post][5] | [notebook][6]
 
 [1]: https://github.com/ericmjl/Network-Analysis-Made-Simple/issues
 [2]: http://repo.continuum.io/archive/Anaconda3-4.0.0-Windows-x86_64.exe
 [3]: http://repo.continuum.io/archive/Anaconda3-4.0.0-MacOSX-x86_64.pkg
 [4]: http://repo.continuum.io/archive/Anaconda3-4.0.0-Linux-x86_64.sh
-[5]: http://jonchar.net/scraping/data%20exploration/metal/clustering/2016/05/20/exploring-metal-sub-genres-with-python.html
+[5]: http://jonchar.net/2016/05/20/exploring-metal-subgenres-with-python.html
 [6]: http://jonchar.net/notebooks/MA-Exploratory-Analysis#Enter-the-Circos-plot
 [7]: https://ericma1.typeform.com/to/aCljQl
