@@ -42,7 +42,7 @@ For those who do not have the capability of installing the Anaconda Python 3 dis
     2. `$ pip install virtualenv`
     3. `$ virtualenv network`
     4. `$ source network/bin/activate`
-5. `$ pip install matplotlib networkx pandas hiveplot numpy`
+5. `$ pip install matplotlib networkx pandas hiveplot numpy jupyter`
 
 Finaly, check your environment:
 
