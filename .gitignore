@@ -2,6 +2,6 @@
 *.edgelist
 twitter_higgs/*
 datasets/divvy_2013/*
-
+network
 __pycache__/*
 .ipynb_checkpoints/*

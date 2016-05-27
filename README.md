@@ -44,6 +44,8 @@ For those who do not have the capability of installing the Anaconda Python 3 dis
     4. `$ source network/bin/activate`
 5. `$ pip install matplotlib networkx pandas hiveplot numpy jupyter`
 
+OR run `setup.sh` in the root directory, which wraps up these commands.
+
 Finaly, check your environment:
 
 1. `$ python checkenv.py`
