@@ -38,13 +38,13 @@ If you're not using Python 3, then check out @jakevdp's talk at SciPy2015 to fin
 
 For those who do not have the capability of installing the Anaconda Python 3 distribution on their computers, please follow the instructions below.
 
+Run `venv-setup.sh` in the root directory, which wraps up the commands below. Special thanks to @matt-land for putting this script together.
+
 1. Create a virtual environment for this tutorial, so that the installed packages do not mess with your regular Python environment.
     2. `$ pip install virtualenv`
     3. `$ virtualenv network`
     4. `$ source network/bin/activate`
 5. `$ pip install matplotlib networkx pandas hiveplot numpy jupyter`
-
-OR run `venv-setup.sh` in the root directory, which wraps up these commands.
 
 Finaly, check your environment:
 
@@ -65,6 +65,17 @@ If you're facing difficulties, please report it as an [issue][1] on this reposit
 # Resources
 
 1. Jon Charest's use of Circos plots to visualize networks of Metal music genres. [blog post][5] | [notebook][6]
+
+# People
+
+1. @jzab
+2. @muthazhagu
+3. @ghirlekar
+4. @jamesbev
+5. @romanchyla
+1. @jonchar
+2. @remik
+2. @matt-land
 
 [1]: https://github.com/ericmjl/Network-Analysis-Made-Simple/issues
 [2]: http://repo.continuum.io/archive/Anaconda3-4.0.0-Windows-x86_64.exe
