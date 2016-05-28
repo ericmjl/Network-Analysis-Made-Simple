@@ -11,6 +11,7 @@ For this tutorial, you will need the following packages:
 4. `pandas`
 5. `hiveplot` - do not do `conda install hiveplot`, but `pip install hiveplot`.
 6. `numpy`
+7. `scipy`
 
 ## Clone the repository
 
