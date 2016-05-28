@@ -89,6 +89,9 @@ If you're facing difficulties, please report it as an [issue][1] on this reposit
 1. @jonchar
 2. @remik
 2. @matt-land
+3. @smacleod
+4. @RyPeck
+5. @zmilicc
 
 [1]: https://github.com/ericmjl/Network-Analysis-Made-Simple/issues
 [2]: http://repo.continuum.io/archive/Anaconda3-4.0.0-Windows-x86_64.exe
