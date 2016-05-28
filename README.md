@@ -27,7 +27,7 @@ If you have the Anaconda distribution of **Python 3** installed, then run `bash 
 1. `$ conda env create -f environment.yml`
 1. `$ source activate network`
 
-Finally, check your environment by running the following command:
+Check your environment by running the following command:
 
 1. `$ python checkenv.py`
 
@@ -47,9 +47,15 @@ Run `venv-setup.sh` in the root directory, which wraps up the commands below. Sp
     4. `$ source network/bin/activate`
 5. `$ pip install matplotlib networkx pandas hiveplot numpy jupyter`
 
-Finaly, check your environment:
+Check your environment:
 
 1. `$ python checkenv.py`
+
+## Run the Jupyter Notebook
+
+    $ jupyter notebook
+
+Your browser will open to an index page where you can click on a notebook to run it.
 
 # Feedback
 
