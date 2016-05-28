@@ -61,7 +61,13 @@ Your browser will open to an index page where you can click on a notebook to run
 
 If you've attended this workshop, please leave [feedback][7]!.
 
-# Issues?
+# Issues
+
+## Known Issues
+
+If you get a "Python is not installed as a framework" error with matplotlib, please check out [this issue][8] for instructions to resolve it.
+
+## New Issues
 
 If you're facing difficulties, please report it as an [issue][1] on this repository.
 
@@ -91,3 +97,4 @@ If you're facing difficulties, please report it as an [issue][1] on this reposit
 [5]: http://jonchar.net/2016/05/20/exploring-metal-subgenres-with-python.html
 [6]: http://jonchar.net/notebooks/MA-Exploratory-Analysis#Enter-the-Circos-plot
 [7]: https://ericma1.typeform.com/to/aCljQl
+[8]: https://github.com/ericmjl/Network-Analysis-Made-Simple/issues/8
