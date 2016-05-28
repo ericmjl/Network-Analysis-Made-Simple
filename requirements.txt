@@ -4,3 +4,4 @@ pandas
 hiveplot
 numpy
 jupyter
+scipy
