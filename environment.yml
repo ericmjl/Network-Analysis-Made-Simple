@@ -1,5 +1,6 @@
 name: network
 dependencies:
+- scipy
 - matplotlib
 - networkx
 - numpy
