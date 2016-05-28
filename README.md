@@ -81,6 +81,8 @@ If you're facing difficulties, please report it as an [issue][1] on this reposit
 
 # People
 
+Many thanks to the following users who have contributed to improving the content and finding bugs.
+
 1. @jzab
 2. @muthazhagu
 3. @ghirlekar
