@@ -26,7 +26,7 @@ def load_seventh_grader_network():
     return G
 
 
-def load_twitter_network():
+def load_facebook_network():
     # Read the edge list
 
     df = pd.read_csv('datasets/ego-facebook/out.ego-facebook',
