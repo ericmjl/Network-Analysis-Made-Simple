@@ -24,3 +24,18 @@ def load_seventh_grader_network():
     for n in G.nodes():
         G.node[n]['gender'] = meta.ix[n]['gender']
     return G
+
+
+def load_twitter_network():
+    # Read the edge list
+
+    df = pd.read_csv('datasets/ego-facebook/out.ego-facebook',
+                     sep=' ', skiprows=2, header=None)
+    df = df[[0, 1]]
+    df.columns = ['user1', 'user2']
+
+    G = nx.DiGraph()
+    for row in df.iterrows():
+        G.add_edge(row[1]['user1'], row[1]['user2'])
+
+    return G
