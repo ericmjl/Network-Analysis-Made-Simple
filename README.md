@@ -12,6 +12,7 @@ For this tutorial, you will need the following packages:
 3. `networkx`
 4. `pandas`
 5. `hiveplot` - do not do `conda install hiveplot`, but `pip install hiveplot`.
+6. `circos` - install using `pip install circos`
 6. `numpy`
 7. `scipy`
 
@@ -41,7 +42,7 @@ If you're not using Python 3, then check out @jakevdp's talk at SciPy2015 to fin
 
 For those who do not have the capability of installing the Anaconda Python 3 distribution on their computers, please follow the instructions below.
 
-Run `venv-setup.sh` in the root directory, which wraps up the commands below. Special thanks to @matt-land for putting this script together.
+Run `bash venv-setup.sh`, which wraps up the commands below. Special thanks to @matt-land for putting this script together.
 
 1. Create a virtual environment for this tutorial, so that the installed packages do not mess with your regular Python environment.
     2. `$ pip install virtualenv`
