@@ -1,0 +1,64 @@
+Infectious network, part of the Koblenz Network Collection
+===========================================================================
+
+This directory contains the TSV and related files of the sociopatterns-infectious network:
+
+This network describes the face-to-face behavior of people during the exhibition INFECTIOUS: STAY AWAY in 2009 at the Science Gallery in Dublin. Nodes represent exhibition visitors; edges represent face-to-face contacts that were active for at least 20 seconds. Multiple edges between two nodes are possible and denote multiple contacts. The network contains the data from the day with the most interactions.
+
+
+More information about the network is provided here: 
+http://konect.uni-koblenz.de/networks/sociopatterns-infectious
+
+Files: 
+    meta.sociopatterns-infectious -- Metadata about the network 
+    out.sociopatterns-infectious -- The adjacency matrix of the network in space separated values format, with one edge per line
+      The meaning of the columns in out.sociopatterns-infectious are: 
+        First column: ID of from node 
+        Second column: ID of to node
+        Third column: edge weight
+        Fourth column: timestamp of the edge
+
+
+Complete documentation about the file format can be found in the KONECT
+handbook, in the section File Formats, available at:
+
+http://konect.uni-koblenz.de/publications
+
+All files are licensed under a Creative Commons Attribution-ShareAlike 2.0 Germany License.
+For more information concerning license visit http://konect.uni-koblenz.de/license.
+
+
+
+Use the following References for citation:
+
+@MISC{konect:2016:sociopatterns-infectious,
+    title = {Infectious network dataset -- {KONECT}},
+    month = jan,
+    year = {2016},
+    url = {http://konect.uni-koblenz.de/networks/sociopatterns-infectious}
+}
+
+@article{konect:sociopatterns,
+	author = {Lorenzo Isella and Juliette Stehlé and Alain Barrat and Ciro
+                  Cattuto and Jean-François Pinton and Wouter Van den
+                  Broeck}, 
+	title = {What's in a Crowd? Analysis of Face-to-Face Behavioral Networks},
+	journal = {J. of Theoretical Biology},
+	volume = {271},
+	number = {1},
+	pages = {166--180},
+	year = {2011},
+}
+
+
+@inproceedings{konect,
+	title = {{KONECT} -- {The} {Koblenz} {Network} {Collection}},
+	author = {Jérôme Kunegis},
+	year = {2013},
+	booktitle = {Proc. Int. Conf. on World Wide Web Companion},
+	pages = {1343--1350},
+	url = {http://userpages.uni-koblenz.de/~kunegis/paper/kunegis-koblenz-network-collection.pdf}, 
+	url_presentation = {http://userpages.uni-koblenz.de/~kunegis/paper/kunegis-koblenz-network-collection.presentation.pdf},
+}
+
+
