@@ -1,0 +1,10 @@
+category: HumanSocial
+code: MI
+name: Physicians
+description: Physician–physician trust
+entity-names: physician
+extr: moreno
+url: http://moreno.ss.uci.edu/data.html#ckm
+long-description: This directed network captures innovation spread among 246 physicians in for towns in Illinois, Peoria, Bloomington, Quincy and Galesburg. The data was collected in 1966. A node represents a physician and an edge between two physicians shows that the left physician told that the righ physician is his friend or that he turns to the right physician if he needs advice or is interested in a discussion. There always only exists one edge between two nodes even if more than one of the listed conditions are true.
+relationship-names: trust
+cite: konect:coleman1957

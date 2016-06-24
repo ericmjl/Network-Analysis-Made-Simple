@@ -1,6 +1,8 @@
 Network-Analysis-Made-Simple
 ============================
 
+![Circos Diagrams](images/network-circos.png)
+
 # Getting Set Up
 
 For this tutorial, you will need the following packages:
