@@ -1,7 +1,7 @@
 Network-Analysis-Made-Simple
 ============================
 
-![](./images/seventh.png =100x100) ![](./images/physicians.png =100x100) ![](./images/crime-crime.png =100x100) ![](./images/crime-person.png =100x100) ![](./images/sociopatterns.png =100x100) ![](./images/diffy.png =100x100)
+![](images/custom-logo.png)
 
 # Getting Set Up
 
