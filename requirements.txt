@@ -5,3 +5,4 @@ hiveplot
 numpy
 jupyter
 scipy
+circos
