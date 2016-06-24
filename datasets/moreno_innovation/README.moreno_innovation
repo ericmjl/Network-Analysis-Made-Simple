@@ -1,0 +1,59 @@
+Physicians network, part of the Koblenz Network Collection
+===========================================================================
+
+This directory contains the TSV and related files of the moreno_innovation network:
+
+This directed network captures innovation spread among 246 physicians in for towns in Illinois, Peoria, Bloomington, Quincy and Galesburg. The data was collected in 1966. A node represents a physician and an edge between two physicians shows that the left physician told that the righ physician is his friend or that he turns to the right physician if he needs advice or is interested in a discussion. There always only exists one edge between two nodes even if more than one of the listed conditions are true.
+
+
+More information about the network is provided here: 
+http://konect.uni-koblenz.de/networks/moreno_innovation
+
+Files: 
+    meta.moreno_innovation -- Metadata about the network 
+    out.moreno_innovation -- The adjacency matrix of the network in space separated values format, with one edge per line
+      The meaning of the columns in out.moreno_innovation are: 
+        First column: ID of from node 
+        Second column: ID of to node
+
+
+Complete documentation about the file format can be found in the KONECT
+handbook, in the section File Formats, available at:
+
+http://konect.uni-koblenz.de/publications
+
+All files are licensed under a Creative Commons Attribution-ShareAlike 2.0 Germany License.
+For more information concerning license visit http://konect.uni-koblenz.de/license.
+
+
+
+Use the following References for citation:
+
+@MISC{konect:2016:moreno_innovation,
+    title = {Physicians network dataset -- {KONECT}},
+    month = jan,
+    year = {2016},
+    url = {http://konect.uni-koblenz.de/networks/moreno_innovation}
+}
+
+@article{konect:coleman1957,
+  title={The Diffusion of an Innovation Among Physicians},
+  author={Coleman, James and Katz, Elihu and Menzel, Herbert},
+  journal={Sociometry},
+  pages={253--270},
+  year={1957},
+  _publisher={JSTOR}
+}
+
+
+@inproceedings{konect,
+	title = {{KONECT} -- {The} {Koblenz} {Network} {Collection}},
+	author = {Jérôme Kunegis},
+	year = {2013},
+	booktitle = {Proc. Int. Conf. on World Wide Web Companion},
+	pages = {1343--1350},
+	url = {http://userpages.uni-koblenz.de/~kunegis/paper/kunegis-koblenz-network-collection.pdf}, 
+	url_presentation = {http://userpages.uni-koblenz.de/~kunegis/paper/kunegis-koblenz-network-collection.presentation.pdf},
+}
+
+
