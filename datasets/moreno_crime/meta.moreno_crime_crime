@@ -1,0 +1,9 @@
+category: Interaction
+code: MC
+name: Crime
+description: Person–crime involvments
+entity-names: person,crime
+extr: moreno
+url: http://moreno.ss.uci.edu/data.html#crime
+long-description: This bipartite network contains persons who appeared in at least one crime case as either a suspect, a victim, a witness or both a suspect and victim at the same time. A left node represents a person and a right node represents a crime. An edge between two nodes shows that the left node was involved in the crime represented by the right node. 
+relationship-names: involvment
