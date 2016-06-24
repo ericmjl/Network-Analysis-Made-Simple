@@ -9,4 +9,5 @@ dependencies:
 - python=3.5.1
 - pip:
   - hiveplot
+  - circos
 - jupyter
