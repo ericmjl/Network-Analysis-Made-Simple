@@ -1,7 +1,7 @@
 Network-Analysis-Made-Simple
 ============================
 
-![Circos Diagrams](images/network-circos.svg)
+![Circos Diagrams](images/network-circos.png)
 
 # Getting Set Up
 
