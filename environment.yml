@@ -8,9 +8,8 @@ dependencies:
 - networkx
 - numpy
 - pandas
-- pip
-- python=3.5.1
-- pip:
-  - hiveplot
-  - circos
+- python=3.5
+- hiveplot
+- circos
 - jupyter
+- pip
