@@ -1,6 +1,7 @@
 name: network
 channels:
 - ericmjl
+- conda-forge
 - defaults
 dependencies:
 - scipy
