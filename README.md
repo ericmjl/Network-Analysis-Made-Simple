@@ -81,6 +81,7 @@ If you're facing difficulties, please report it as an [issue][1] on this reposit
 # Resources
 
 1. Jon Charest's use of Circos plots to visualize networks of Metal music genres. [blog post][5] | [notebook][6]
+1. Gain further practice by taking this course online at [DataCamp](http://www.datacamp.com/)!
 
 # People
 
