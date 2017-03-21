@@ -82,6 +82,7 @@ If you're facing difficulties, please report it as an [issue][1] on this reposit
 
 1. Jon Charest's use of Circos plots to visualize networks of Metal music genres. [blog post][5] | [notebook][6]
 1. Gain further practice by taking this course online at [DataCamp](http://www.datacamp.com/)!
+1. A gentle introduction to graph theory on [Vaidehi Joshi's website](https://dev.to/vaidehijoshi/a-gentle-introduction-to-graph-theory)
 
 # People
 
