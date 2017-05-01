@@ -1,6 +1,5 @@
 name: network
 channels:
-- ericmjl
 - conda-forge
 - defaults
 dependencies:
@@ -9,8 +8,8 @@ dependencies:
 - networkx
 - numpy
 - pandas
-- python=3.5
+- python=3.6
 - hiveplot
-- circos
+- nxviz
 - jupyter
 - pip
