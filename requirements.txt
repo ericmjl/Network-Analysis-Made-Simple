@@ -2,7 +2,7 @@ matplotlib
 networkx
 pandas
 hiveplot
+nxviz
 numpy
 jupyter
 scipy
-circos
