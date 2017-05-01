@@ -11,8 +11,8 @@ For this tutorial, you will need the following packages:
 2. `matplotlib`
 3. `networkx`
 4. `pandas`
-5. `hiveplot` - `conda install -c ericmjl hiveplot` or `pip install hiveplot`.
-6. `circos` - `conda install -c ericmjl circos` or `pip install circos`
+5. `hiveplot` - `conda install -c conda-forge hiveplot` or `pip install hiveplot`.
+1. `nxviz` - `conda install -c conda-forge nxviz`.  (This implements Circos plots; HivePlots are being migrated over.)
 6. `numpy`
 7. `scipy`
 
