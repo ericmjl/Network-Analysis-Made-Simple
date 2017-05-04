@@ -1,3 +1,3 @@
 conda env create -f environment.yml
-source activate network
+source activate nams
 python checkenv.py
