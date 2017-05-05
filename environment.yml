@@ -13,3 +13,5 @@ dependencies:
 - hiveplot
 - jupyter
 - pandas
+- pip:
+    - environment_kernels
