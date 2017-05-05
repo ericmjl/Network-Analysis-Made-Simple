@@ -58,6 +58,9 @@ def load_sociopatterns_network():
             G.edge[p1][p2]['weight'] += 1
         else:
             G.add_edge(p1, p2, weight=1)
+    
+    for n in sorted(G.nodes()):
+        G.node[n]['order'] = float(n)
 
     return G
 
