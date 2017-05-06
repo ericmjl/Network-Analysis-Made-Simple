@@ -3,6 +3,7 @@
 twitter_higgs/*
 datasets/divvy_2013/*
 network
-*__pycache__/*
+__pycache__/*
 .ipynb_checkpoints/*
 *.pyc
+custom/__pycache__/*
