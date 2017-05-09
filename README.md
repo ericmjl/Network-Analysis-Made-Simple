@@ -58,11 +58,11 @@ Check your environment:
 
     $ jupyter notebook
 
-Your browser will open to an index page where you can click on a notebook to run it.
+Your browser will open to an index page where you can click on a notebook to run it. Test that everything runs fine by executing all of the cells in the Instructor versions of the notebooks.
 
 # Feedback
 
-If you've attended this workshop, please leave [feedback][7]!.
+If you've attended this workshop, please leave [feedback][7]! It's important to help me improve the tutorial for future iterations.
 
 # Issues
 
