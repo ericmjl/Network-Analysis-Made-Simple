@@ -76,7 +76,8 @@ If you're facing difficulties, please report it as an [issue][1] on this reposit
 
 # Credits
 
-1. Divvy Data Challenge: https://www.divvybikes.com/datachallenge
+1. [Divvy Data Challenge](https://www.divvybikes.com/datachallenge)
+1. [Konect Network Analysis Datasets](http://konect.uni-koblenz.de/networks/)
 
 # Resources
 
