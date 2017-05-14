@@ -1,7 +1,7 @@
 NBS = $(wildcard *.ipynb)
 NBHTML = $(wildcard *.html)
 
-all: nbhtml readme
+docs: nbhtml readme
 
 nbhtml:
 	jupyter nbconvert --to html $(NBS)
