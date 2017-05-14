@@ -85,22 +85,6 @@ If you're facing difficulties, please report it as an [issue][1] on this reposit
 1. Gain further practice by taking this course online at [DataCamp](http://www.datacamp.com/)!
 1. A gentle introduction to graph theory on [Vaidehi Joshi's website](https://dev.to/vaidehijoshi/a-gentle-introduction-to-graph-theory)
 
-# People
-
-Many thanks to the following users who have contributed to improving the content and finding bugs.
-
-1. @jzab
-2. @muthazhagu
-3. @ghirlekar
-4. @jamesbev
-5. @romanchyla
-1. @jonchar
-2. @remik
-2. @matt-land
-3. @smacleod
-4. @RyPeck
-5. @zmilicc
-
 [1]: https://github.com/ericmjl/Network-Analysis-Made-Simple/issues
 [2]: http://repo.continuum.io/archive/Anaconda3-4.0.0-Windows-x86_64.exe
 [3]: http://repo.continuum.io/archive/Anaconda3-4.0.0-MacOSX-x86_64.pkg
