@@ -1,7 +1,7 @@
 Network-Analysis-Made-Simple
 ============================
 
-![](images/custom-logo.png)
+![](./images/custom-logo.png)
 
 # Getting Set Up
 

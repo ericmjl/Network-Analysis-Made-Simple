@@ -1,7 +1,7 @@
 NBS = $(wildcard *.ipynb)
 NBHTML = $(wildcard *.html)
 
-docs: nbhtml readme
+all: nbhtml readme
 
 nbhtml:
 	jupyter nbconvert --to html $(NBS)
@@ -9,4 +9,4 @@ nbhtml:
 
 readme: README.md
 	pandoc README.md -o docs/index.html -c gh.css
-	cp custom-logo.png docs/images/custom-logo.png
+	cp ./images/custom-logo.png ./docs/images/custom-logo.png
