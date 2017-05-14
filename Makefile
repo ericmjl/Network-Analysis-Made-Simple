@@ -9,3 +9,4 @@ nbhtml:
 
 readme: README.md
 	pandoc README.md -o docs/index.html -c gh.css
+	ln -s images/custom-logo-small.png docs/.
