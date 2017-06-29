@@ -28,7 +28,7 @@ For this tutorial, you will need the following packages:
 If you have the Anaconda distribution of **Python 3** installed, then run `bash conda-setup.sh`, which wraps the commands below.
 
 1. `$ conda env create -f environment.yml`
-1. `$ source activate network`
+1. `$ source activate nams`
 
 Check your environment by running the following command:
 
