@@ -3,6 +3,17 @@ Network Analysis Made Simple
 
 ![](./images/custom-logo.png)
 
+# Notebook HTML Versions
+
+- [NB0: Pre-Tutorial Exercises](http://ericmjl.github.io/Network-Analysis-Made-Simple/0-pre-tutorial-exercises.html)
+- [NB1: Introduction](http://ericmjl.github.io/Network-Analysis-Made-Simple/1-introduction.html)
+- [NB2: Network Basics](http://ericmjl.github.io/Network-Analysis-Made-Simple/2-networkx-basics-instructor.html)
+- [NB3: Hubs and Paths](http://ericmjl.github.io/Network-Analysis-Made-Simple/3-hubs-and-paths-instructor.html)
+- [NB4: Cliques, Triangles and Structures](http://ericmjl.github.io/Network-Analysis-Made-Simple/4-cliques-triangles-structures-instructor.html)
+- [NB5: Graph I/O](http://ericmjl.github.io/Network-Analysis-Made-Simple/5-graph-input-output-instructor.html)
+- [NB6: Bipartite Graphs](http://ericmjl.github.io/Network-Analysis-Made-Simple/6-bipartite-graphs-instructor.html)
+- [Bonus Notebook: Network Statistical Inference](http://ericmjl.github.io/Network-Analysis-Made-Simple/bonus-1-network-statistical-inference-instructor.html)
+
 # Getting Set Up
 
 For this tutorial, you will need the following packages:
