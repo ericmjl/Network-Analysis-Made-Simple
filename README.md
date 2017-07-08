@@ -1,4 +1,4 @@
-Network-Analysis-Made-Simple
+Network Analysis Made Simple
 ============================
 
 ![](./images/custom-logo.png)
