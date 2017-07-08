@@ -5,6 +5,8 @@ Network Analysis Made Simple
 
 # Notebook HTML Versions
 
+For tutorial participants who may run into technical issues, full HTML versions of the notebooks are available to follow along during the tutorial.
+
 - [NB0: Pre-Tutorial Exercises](http://ericmjl.github.io/Network-Analysis-Made-Simple/0-pre-tutorial-exercises.html)
 - [NB1: Introduction](http://ericmjl.github.io/Network-Analysis-Made-Simple/1-introduction.html)
 - [NB2: Network Basics](http://ericmjl.github.io/Network-Analysis-Made-Simple/2-networkx-basics-instructor.html)
