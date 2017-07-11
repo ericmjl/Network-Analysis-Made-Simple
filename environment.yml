@@ -1,17 +1,20 @@
 name: nams  # Network Analysis Made Simple
-channels: !!python/tuple
+channels:
 - defaults
 - conda-forge
 - ericmjl
 dependencies:
+- python=3.6
 - matplotlib
 - networkx
 - scipy
 - numpy
-- python=3.6
 - nxviz
 - hiveplot
 - jupyter
+- jupyterlab
+- ipykernel
 - pandas
+- rise
 - pip:
     - environment_kernels
