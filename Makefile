@@ -4,7 +4,8 @@ NBHTML = $(wildcard *.html)
 all: clean nbhtml readme
 
 nbhtml:
-	jupyter nbconvert --to html $(NBS) 0-pre-tutorial-exercises.ipynb 1-introduction.ipynb bonus-2-one-more-thing.ipynb
+	jupyter nbconvert --to html --ExecutePreprocessor.timeout=600 --execute $(NBS) 1-introduction.ipynb bonus-2-one-more-thing.ipynb
+	jupyter nbconvert --to html 0-pre-tutorial-exercises.ipynb
 	mv *.html docs/.
 
 readme: README.md
@@ -19,6 +20,9 @@ conda:
 	conda env create -f environment.yml
 	source activate nams
 	python checkenv.py
+
+updateconda:
+	conda env update -f environment.yml
 
 venv:
 	set -x
