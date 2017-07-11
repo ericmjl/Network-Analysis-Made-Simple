@@ -38,13 +38,10 @@ For this tutorial, you will need the following packages:
 
 ## Easiest way: Anaconda Distribution of Python
 
-If you have the Anaconda distribution of **Python 3** installed, then run `bash conda-setup.sh`, which wraps the commands below.
+If you have the Anaconda distribution of **Python 3** installed, then run `make conda`, which wraps the commands below.
 
 1. `$ conda env create -f environment.yml`
 1. `$ source activate nams`
-
-Check your environment by running the following command:
-
 1. `$ python checkenv.py`
 
 If you do not have the Anaconda distribution, I would highly recommend getting it for [Windows][2], [Mac][3] or [Linux][4]. It provides an isolated Python computing environment that will not interfere with your system Python installation, and comes with a very awesome package manager (`conda`) that makes installation of new packages a single `conda install pkgname` away.
@@ -55,7 +52,7 @@ If you're not using Python 3, then check out @jakevdp's talk at SciPy2015 to fin
 
 For those who do not have the capability of installing the Anaconda Python 3 distribution on their computers, please follow the instructions below.
 
-Run `bash venv-setup.sh`, which wraps up the commands below. Special thanks to @matt-land for putting this script together.
+Run `make venv`, which wraps up the commands below. Special thanks to @matt-land for putting this script together.
 
 1. Create a virtual environment for this tutorial, so that the installed packages do not mess with your regular Python environment.
     2. `$ pip install virtualenv`
