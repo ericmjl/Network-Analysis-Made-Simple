@@ -55,10 +55,10 @@ def load_sociopatterns_network():
         p1 = row[1]['person1']
         p2 = row[1]['person2']
         if G.has_edge(p1, p2):
-            G.edge[p1][p2]['weight'] += 1
+            G.edges[p1, p2]['weight'] += 1
         else:
             G.add_edge(p1, p2, weight=1)
-    
+
     for n in sorted(G.nodes()):
         G.node[n]['order'] = float(n)
 
