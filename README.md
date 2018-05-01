@@ -1,5 +1,3 @@
-[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/ericmjl/Network-Analysis-Made-Simple/master)
-
 Network Analysis Made Simple
 ============================
 
@@ -17,6 +15,14 @@ For tutorial participants who may run into technical issues, full HTML versions 
 - [NB5: Graph I/O](http://ericmjl.github.io/Network-Analysis-Made-Simple/5-graph-input-output-instructor.html)
 - [NB6: Bipartite Graphs](http://ericmjl.github.io/Network-Analysis-Made-Simple/6-bipartite-graphs-instructor.html)
 - [Bonus Notebook: Network Statistical Inference](http://ericmjl.github.io/Network-Analysis-Made-Simple/bonus-1-network-statistical-inference-instructor.html)
+
+# Binder
+
+(Consider this option only if your WiFi is stable)
+
+If you don't want the hassle of getting setup, you can use the Binder service to participate in the live tutorial. Just click on the button below: 
+
+[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/ericmjl/Network-Analysis-Made-Simple/master)
 
 # Getting Set Up
 
