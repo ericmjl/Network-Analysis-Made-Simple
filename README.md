@@ -30,6 +30,8 @@ For tutorial participants who may run into technical issues, full HTML versions 
 
 ### Local Setup
 
+For those of you who would like to get setup beforehand and keep a local copy of the repository on your machine, follow along here.
+
 #### Easiest way: Anaconda Distribution of Python
 
 If you have the Anaconda distribution of **Python 3** installed on a Unix-like machine (Linux, macOS, etc.), then run `make conda`, which wraps the commands below.
