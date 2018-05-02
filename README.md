@@ -1,9 +1,21 @@
-Network Analysis Made Simple
-============================
+# Network Analysis Made Simple
 
 ![](./images/custom-logo.png)
 
-# Notebook HTML Versions
+Welcome to the GitHub repository for Network Analysis Made Simple! This is a tutorial designed to teach you the basic and practical aspects of graph theory. It has been presented at multiple conferences (PyCon, SciPy, PyData, and ODSC) in a variety of formats (ranging from 1.5 hr to 4 hour long workshops). The material is designed for a live tutorial presentation, with the code available for you to reference afterwards.
+
+## Getting Started
+
+### Binder
+
+(Consider this option only if your WiFi is stable)
+
+If you don't want the hassle of getting setup, you can use the Binder service to participate in the live tutorial. Just click on the button below:
+
+[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/ericmjl/Network-Analysis-Made-Simple/master)
+
+
+### Notebook HTML Versions
 
 For tutorial participants who may run into technical issues, full HTML versions of the notebooks are available to follow along during the tutorial.
 
@@ -16,37 +28,13 @@ For tutorial participants who may run into technical issues, full HTML versions 
 - [NB6: Bipartite Graphs](http://ericmjl.github.io/Network-Analysis-Made-Simple/6-bipartite-graphs-instructor.html)
 - [Bonus Notebook: Network Statistical Inference](http://ericmjl.github.io/Network-Analysis-Made-Simple/bonus-1-network-statistical-inference-instructor.html)
 
-# Binder
+### Local Setup
 
-(Consider this option only if your WiFi is stable)
+For those of you who would like to get setup beforehand and keep a local copy of the repository on your machine, follow along here.
 
-If you don't want the hassle of getting setup, you can use the Binder service to participate in the live tutorial. Just click on the button below: 
+#### Easiest way: Anaconda Distribution of Python
 
-[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/ericmjl/Network-Analysis-Made-Simple/master)
-
-# Getting Set Up
-
-For this tutorial, you will need the following packages:
-
-1. Python 3
-2. `matplotlib`
-3. `networkx`
-4. `pandas`
-5. `hiveplot` - `conda install -c conda-forge hiveplot` or `pip install hiveplot`.
-1. `nxviz` - `conda install -c conda-forge nxviz`.  (This implements Circos plots; HivePlots are being migrated over.)
-6. `numpy`
-7. `scipy`
-
-## Clone the repository
-
-1. `$ cd /path/to/your/directory`
-1. Clone the repository to disk:
-    1. `$ git clone https://github.com/ericmjl/Network-Analysis-Made-Simple.git`
-1. `$ cd Network-Analysis-Made-Simple`
-
-## Easiest way: Anaconda Distribution of Python
-
-If you have the Anaconda distribution of **Python 3** installed, then run `make conda`, which wraps the commands below.
+If you have the Anaconda distribution of **Python 3** installed on a Unix-like machine (Linux, macOS, etc.), then run `make conda`, which wraps the commands below.
 
 1. `$ conda env create -f environment.yml`
 1. `$ source activate nams`
@@ -56,7 +44,7 @@ If you do not have the Anaconda distribution, I would highly recommend getting i
 
 If you're not using Python 3, then check out @jakevdp's talk at SciPy2015 to find out why!
 
-## Alternative to Anaconda: `pip install`
+#### Alternative to Anaconda: `pip install`
 
 For those who do not have the capability of installing the Anaconda Python 3 distribution on their computers, please follow the instructions below.
 
@@ -72,7 +60,28 @@ Check your environment:
 
 1. `$ python checkenv.py`
 
-## Run the Jupyter Notebook
+#### Manual Build
+
+For this tutorial, you will need the following packages:
+
+1. Python 3
+2. `matplotlib`
+3. `networkx`
+4. `pandas`
+5. `hiveplot` - `conda install -c conda-forge hiveplot` or `pip install hiveplot`.
+1. `nxviz` - `conda install -c conda-forge nxviz`.  (This implements Circos plots; HivePlots are being migrated over.)
+6. `numpy`
+7. `scipy`
+
+Then, clone the repository locally.
+
+1. `$ cd /path/to/your/directory`
+1. Clone the repository to disk:
+    1. `$ git clone https://github.com/ericmjl/Network-Analysis-Made-Simple.git`
+1. `$ cd Network-Analysis-Made-Simple`
+
+
+### Run the Jupyter Notebook
 
     $ jupyter notebook
 
