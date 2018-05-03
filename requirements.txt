@@ -6,3 +6,4 @@ nxviz
 numpy
 jupyter
 scipy
+python-louvain
