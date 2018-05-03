@@ -10,7 +10,7 @@ def check_import(packagename):
         return False
 
 packages = ['networkx', 'numpy', 'matplotlib', 'hiveplot', 'pandas',
-            'jupyter', 'nxviz']
+            'jupyter', 'nxviz', 'python-louvain']
 
 all_passed = True
 
