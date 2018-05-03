@@ -7,3 +7,5 @@ __pycache__/*
 .ipynb_checkpoints/*
 *.pyc
 custom/__pycache__/*
+.DS_Store
+
