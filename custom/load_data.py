@@ -122,3 +122,25 @@ def load_crime_network():
         G.node[nodeid]['gender'] = gender_code[0]
 
     return G
+
+
+def load_university_social_network():
+    G = nx.read_edgelist('datasets/moreno_oz/out.moreno_oz_oz', 
+                         comments='%', 
+                         delimiter=' ', 
+                         data=[('rating', int)], 
+                         create_using=nx.DiGraph(),
+                         nodetype=int)
+    return G
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
