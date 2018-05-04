@@ -1,0 +1,11 @@
+category: HumanSocial 
+code: MO
+name: Residence hall
+description: Person–person friendships
+entity-names: person
+extr: moreno
+url: http://moreno.ss.uci.edu/data.html#oz
+long-description: This directed network contains friendship ratings between 217 residents living at a residence hall located on the Australian National University campus. A node represents a person and 
+an edge represents a friendship tie.  The friendships are weighted as follows from strongest to weakest tie:  5 (best friend), 4 (close friend), 3 (friend), 2, 1. 
+relationship-names: friendship
+cite: konect:freeman1998
