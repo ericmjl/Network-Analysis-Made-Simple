@@ -16,5 +16,4 @@ dependencies:
 - ipykernel
 - pandas
 - rise
-- pip:
-    - python-louvain
+- python-louvain
