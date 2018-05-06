@@ -14,7 +14,13 @@
 <img src="./images/custom-logo.png" />
 
 </div>
-<h1 id="notebook-html-versions">Notebook HTML Versions</h1>
+<p>Welcome to the GitHub repository for Network Analysis Made Simple! This is a tutorial designed to teach you the basic and practical aspects of graph theory. It has been presented at multiple conferences (PyCon, SciPy, PyData, and ODSC) in a variety of formats (ranging from 1.5 hr to 4 hour long workshops). The material is designed for a live tutorial presentation, with the code available for you to reference afterwards.</p>
+<h2 id="getting-started">Getting Started</h2>
+<h3 id="binder">Binder</h3>
+<p>(Consider this option only if your WiFi is stable)</p>
+<p>If you don't want the hassle of getting setup, you can use the Binder service to participate in the live tutorial. Just click on the button below:</p>
+<p><a href="https://mybinder.org/v2/gh/ericmjl/Network-Analysis-Made-Simple/master"><img src="https://mybinder.org/badge.svg" alt="Binder" /></a></p>
+<h3 id="notebook-html-versions">Notebook HTML Versions</h3>
 <p>For tutorial participants who may run into technical issues, full HTML versions of the notebooks are available to follow along during the tutorial.</p>
 <ul>
 <li><a href="http://ericmjl.github.io/Network-Analysis-Made-Simple/0-pre-tutorial-exercises.html">NB0: Pre-Tutorial Exercises</a></li>
@@ -26,42 +32,20 @@
 <li><a href="http://ericmjl.github.io/Network-Analysis-Made-Simple/6-bipartite-graphs-instructor.html">NB6: Bipartite Graphs</a></li>
 <li><a href="http://ericmjl.github.io/Network-Analysis-Made-Simple/bonus-1-network-statistical-inference-instructor.html">Bonus Notebook: Network Statistical Inference</a></li>
 </ul>
-<h1 id="getting-set-up">Getting Set Up</h1>
-<p>For this tutorial, you will need the following packages:</p>
-<ol style="list-style-type: decimal">
-<li>Python 3</li>
-<li><code>matplotlib</code></li>
-<li><code>networkx</code></li>
-<li><code>pandas</code></li>
-<li><code>hiveplot</code> - <code>conda install -c conda-forge hiveplot</code> or <code>pip install hiveplot</code>.</li>
-<li><code>nxviz</code> - <code>conda install -c conda-forge nxviz</code>. (This implements Circos plots; HivePlots are being migrated over.)</li>
-<li><code>numpy</code></li>
-<li><code>scipy</code></li>
-</ol>
-<h2 id="clone-the-repository">Clone the repository</h2>
-<ol style="list-style-type: decimal">
-<li><code>$ cd /path/to/your/directory</code></li>
-<li>Clone the repository to disk:
-<ol style="list-style-type: decimal">
-<li><code>$ git clone https://github.com/ericmjl/Network-Analysis-Made-Simple.git</code></li>
-</ol></li>
-<li><code>$ cd Network-Analysis-Made-Simple</code></li>
-</ol>
-<h2 id="easiest-way-anaconda-distribution-of-python">Easiest way: Anaconda Distribution of Python</h2>
-<p>If you have the Anaconda distribution of <strong>Python 3</strong> installed, then run <code>bash conda-setup.sh</code>, which wraps the commands below.</p>
+<h3 id="local-setup">Local Setup</h3>
+<p>For those of you who would like to get setup beforehand and keep a local copy of the repository on your machine, follow along here.</p>
+<h4 id="easiest-way-anaconda-distribution-of-python">Easiest way: Anaconda Distribution of Python</h4>
+<p>If you have the Anaconda distribution of <strong>Python 3</strong> installed on a Unix-like machine (Linux, macOS, etc.), then run <code>make conda</code>, which wraps the commands below.</p>
 <ol style="list-style-type: decimal">
 <li><code>$ conda env create -f environment.yml</code></li>
 <li><code>$ source activate nams</code></li>
-</ol>
-<p>Check your environment by running the following command:</p>
-<ol style="list-style-type: decimal">
 <li><code>$ python checkenv.py</code></li>
 </ol>
 <p>If you do not have the Anaconda distribution, I would highly recommend getting it for <a href="http://repo.continuum.io/archive/Anaconda3-4.0.0-Windows-x86_64.exe">Windows</a>, <a href="http://repo.continuum.io/archive/Anaconda3-4.0.0-MacOSX-x86_64.pkg">Mac</a> or <a href="http://repo.continuum.io/archive/Anaconda3-4.0.0-Linux-x86_64.sh">Linux</a>. It provides an isolated Python computing environment that will not interfere with your system Python installation, and comes with a very awesome package manager (<code>conda</code>) that makes installation of new packages a single <code>conda install pkgname</code> away.</p>
 <p>If you're not using Python 3, then check out <span class="citation">@jakevdp</span>'s talk at SciPy2015 to find out why!</p>
-<h2 id="alternative-to-anaconda-pip-install">Alternative to Anaconda: <code>pip install</code></h2>
+<h4 id="alternative-to-anaconda-pip-install">Alternative to Anaconda: <code>pip install</code></h4>
 <p>For those who do not have the capability of installing the Anaconda Python 3 distribution on their computers, please follow the instructions below.</p>
-<p>Run <code>bash venv-setup.sh</code>, which wraps up the commands below. Special thanks to <span class="citation">@matt-land</span> for putting this script together.</p>
+<p>Run <code>make venv</code>, which wraps up the commands below. Special thanks to <span class="citation">@matt-land</span> for putting this script together.</p>
 <ol style="list-style-type: decimal">
 <li>Create a virtual environment for this tutorial, so that the installed packages do not mess with your regular Python environment.
 <ol start="2" style="list-style-type: decimal">
@@ -75,7 +59,28 @@
 <ol style="list-style-type: decimal">
 <li><code>$ python checkenv.py</code></li>
 </ol>
-<h2 id="run-the-jupyter-notebook">Run the Jupyter Notebook</h2>
+<h4 id="manual-build">Manual Build</h4>
+<p>For this tutorial, you will need the following packages:</p>
+<ol style="list-style-type: decimal">
+<li>Python 3</li>
+<li><code>matplotlib</code></li>
+<li><code>networkx</code></li>
+<li><code>pandas</code></li>
+<li><code>hiveplot</code> - <code>conda install -c conda-forge hiveplot</code> or <code>pip install hiveplot</code>.</li>
+<li><code>nxviz</code> - <code>conda install -c conda-forge nxviz</code>. (This implements Circos plots; HivePlots are being migrated over.)</li>
+<li><code>numpy</code></li>
+<li><code>scipy</code></li>
+</ol>
+<p>Then, clone the repository locally.</p>
+<ol style="list-style-type: decimal">
+<li><code>$ cd /path/to/your/directory</code></li>
+<li>Clone the repository to disk:
+<ol style="list-style-type: decimal">
+<li><code>$ git clone https://github.com/ericmjl/Network-Analysis-Made-Simple.git</code></li>
+</ol></li>
+<li><code>$ cd Network-Analysis-Made-Simple</code></li>
+</ol>
+<h3 id="run-the-jupyter-notebook">Run the Jupyter Notebook</h3>
 <pre><code>$ jupyter notebook</code></pre>
 <p>Your browser will open to an index page where you can click on a notebook to run it. Test that everything runs fine by executing all of the cells in the Instructor versions of the notebooks.</p>
 <h1 id="feedback">Feedback</h1>
