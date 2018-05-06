@@ -1,7 +1,7 @@
 matplotlib==2.2.2
 networkx==2.1
 pandas==0.22.0
-hiveplot
+hiveplot==2017.10.17.21.7
 nxviz
 numpy
 jupyter
