@@ -5,5 +5,5 @@ hiveplot==2017.10.17.21.7
 nxviz==0.3.6
 numpy==1.14.3
 jupyter==1.0.0
-scipy
+scipy==1.1.0
 python-louvain
