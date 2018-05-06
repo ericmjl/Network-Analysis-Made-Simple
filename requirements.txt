@@ -1,6 +1,6 @@
 matplotlib==2.2.2
 networkx==2.1
-pandas
+pandas==0.22.0
 hiveplot
 nxviz
 numpy
