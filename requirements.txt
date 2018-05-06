@@ -4,6 +4,6 @@ pandas==0.22.0
 hiveplot==2017.10.17.21.7
 nxviz==0.3.6
 numpy==1.14.3
-jupyter
+jupyter==1.0.0
 scipy
 python-louvain
