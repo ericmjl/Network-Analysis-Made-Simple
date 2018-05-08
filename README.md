@@ -27,6 +27,7 @@ For tutorial participants who may run into technical issues, full HTML versions 
 - [NB5: Graph I/O](http://ericmjl.github.io/Network-Analysis-Made-Simple/5-graph-input-output-instructor.html)
 - [NB6: Bipartite Graphs](http://ericmjl.github.io/Network-Analysis-Made-Simple/6-bipartite-graphs-instructor.html)
 - [Bonus Notebook: Network Statistical Inference](http://ericmjl.github.io/Network-Analysis-Made-Simple/bonus-1-network-statistical-inference-instructor.html)
+- [Bonus Notebook: Graph Matrix Representations](http://ericmjl.github.io/Network-Analysis-Made-Simple/bonus-3-matrices-instructor.html)
 
 ### Local Setup
 

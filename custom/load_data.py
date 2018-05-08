@@ -1,6 +1,7 @@
 import networkx as nx
 import pandas as pd
-
+import json
+from tqdm import tqdm
 
 def load_seventh_grader_network():
     # Read the edge list
@@ -125,22 +126,34 @@ def load_crime_network():
 
 
 def load_university_social_network():
-    G = nx.read_edgelist('datasets/moreno_oz/out.moreno_oz_oz', 
-                         comments='%', 
-                         delimiter=' ', 
-                         data=[('rating', int)], 
+    G = nx.read_edgelist('datasets/moreno_oz/out.moreno_oz_oz',
+                         comments='%',
+                         delimiter=' ',
+                         data=[('rating', int)],
                          create_using=nx.DiGraph(),
                          nodetype=int)
     return G
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+def load_amazon_reviews():
+    # Read raw data.
+    data = []
+    with open('datasets/amazon_reviews/reviews_Digital_Music_5.json', 'r+') as f:
+        for l in tqdm(f.readlines()):
+            # Clean data
+            l = l.strip('\n')
+
+            # Parse with JSON
+            j = json.loads(l)
+            data.append(j)
+    # Add nodes
+    G = nx.Graph()
+    for d in tqdm(data):
+        G.add_node(d['asin'], bipartite='product')
+        G.add_node(d['reviewerID'], bipartite='customer')
+
+    # Add edges
+    for d in tqdm(data):
+        G.add_edge(d['reviewerID'], d['asin'])
+        
+    return G
