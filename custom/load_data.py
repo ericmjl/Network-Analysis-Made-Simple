@@ -1,7 +1,10 @@
+import gzip
+import json
+
 import networkx as nx
 import pandas as pd
-import json
 from tqdm import tqdm
+
 
 def load_seventh_grader_network():
     # Read the edge list
@@ -138,16 +141,16 @@ def load_university_social_network():
 def load_amazon_reviews():
     # Read raw data.
     data = []
-    with open('datasets/amazon_reviews/reviews_Digital_Music_5.json', 'r+') as f:
-        for l in tqdm(f.readlines()):
+    with gzip.open('datasets/amazon_reviews/reviews_Digital_Music_5.json.gz', 'rt') as f:
+        for line in tqdm(f.readlines()):
             # Clean data
-            l = l.strip('\n')
-
+            line = line.strip('\n')
             # Parse with JSON
-            j = json.loads(l)
+            j = json.loads(line)
             data.append(j)
+
     # Add nodes
-    G = nx.Graph()
+    G = nx.Graph()  # noqa: N806
     for d in tqdm(data):
         G.add_node(d['asin'], bipartite='product')
         G.add_node(d['reviewerID'], bipartite='customer')
@@ -155,5 +158,5 @@ def load_amazon_reviews():
     # Add edges
     for d in tqdm(data):
         G.add_edge(d['reviewerID'], d['asin'])
-        
+
     return G

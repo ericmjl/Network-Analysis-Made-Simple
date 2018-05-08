@@ -26,6 +26,7 @@ For tutorial participants who may run into technical issues, full HTML versions 
 - [NB4: Cliques, Triangles and Structures](http://ericmjl.github.io/Network-Analysis-Made-Simple/4-cliques-triangles-structures-instructor.html)
 - [NB5: Graph I/O](http://ericmjl.github.io/Network-Analysis-Made-Simple/5-graph-input-output-instructor.html)
 - [NB6: Bipartite Graphs](http://ericmjl.github.io/Network-Analysis-Made-Simple/6-bipartite-graphs-instructor.html)
+- [NB7: Case Study on Game Of Thrones](http://ericmjl.github.io/Network-Analysis-Made-Simple/7-game-of-thrones-case-study-instructor.html)
 - [Bonus Notebook: Network Statistical Inference](http://ericmjl.github.io/Network-Analysis-Made-Simple/bonus-1-network-statistical-inference-instructor.html)
 - [Bonus Notebook: Graph Matrix Representations](http://ericmjl.github.io/Network-Analysis-Made-Simple/bonus-3-matrices-instructor.html)
 
