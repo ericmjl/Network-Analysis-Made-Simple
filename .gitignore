@@ -2,6 +2,7 @@
 *.edgelist
 twitter_higgs/*
 datasets/divvy_2013/*
+datasets/amazon_reviews/*.json
 network
 __pycache__/*
 .ipynb_checkpoints/*
