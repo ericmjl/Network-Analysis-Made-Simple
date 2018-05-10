@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="gh.css" type="text/css" />
+</head>
+<body>
+<h1 id="network-analysis-made-simple">Network Analysis Made Simple</h1>
+<div class="figure">
+<img src="./images/custom-logo.png" />
+
+</div>
+<p>Welcome to the GitHub repository for Network Analysis Made Simple! This is a tutorial designed to teach you the basic and practical aspects of graph theory. It has been presented at multiple conferences (PyCon, SciPy, PyData, and ODSC) in a variety of formats (ranging from 1.5 hr to 4 hour long workshops). The material is designed for a live tutorial presentation, with the code available for you to reference afterwards.</p>
+<h2 id="getting-started">Getting Started</h2>
+<h3 id="binder">Binder</h3>
+<p>(Consider this option only if your WiFi is stable)</p>
+<p>If you don't want the hassle of getting setup, you can use the Binder service to participate in the live tutorial. Just click on the button below:</p>
+<p><a href="https://mybinder.org/v2/gh/ericmjl/Network-Analysis-Made-Simple/master"><img src="https://mybinder.org/badge.svg" alt="Binder" /></a></p>
+<h3 id="notebook-html-versions">Notebook HTML Versions</h3>
+<p>For tutorial participants who may run into technical issues, full HTML versions of the notebooks are available to follow along during the tutorial.</p>
+<ul>
+<li><a href="http://ericmjl.github.io/Network-Analysis-Made-Simple/0-pre-tutorial-exercises.html">NB0: Pre-Tutorial Exercises</a></li>
+<li><a href="http://ericmjl.github.io/Network-Analysis-Made-Simple/1-introduction.html">NB1: Introduction</a></li>
+<li><a href="http://ericmjl.github.io/Network-Analysis-Made-Simple/2-networkx-basics-instructor.html">NB2: Network Basics</a></li>
+<li><a href="http://ericmjl.github.io/Network-Analysis-Made-Simple/3-hubs-and-paths-instructor.html">NB3: Hubs and Paths</a></li>
+<li><a href="http://ericmjl.github.io/Network-Analysis-Made-Simple/4-cliques-triangles-structures-instructor.html">NB4: Cliques, Triangles and Structures</a></li>
+<li><a href="http://ericmjl.github.io/Network-Analysis-Made-Simple/5-graph-input-output-instructor.html">NB5: Graph I/O</a></li>
+<li><a href="http://ericmjl.github.io/Network-Analysis-Made-Simple/6-bipartite-graphs-instructor.html">NB6: Bipartite Graphs</a></li>
+<li><a href="http://ericmjl.github.io/Network-Analysis-Made-Simple/7-game-of-thrones-case-study-instructor.html">NB7: Case Study on Game Of Thrones</a></li>
+<li><a href="http://ericmjl.github.io/Network-Analysis-Made-Simple/8-US-airports-case-study-instructor.html">NB8: Case Study on US Airports</a></li>
+<li><a href="http://ericmjl.github.io/Network-Analysis-Made-Simple/bonus-1-network-statistical-inference-instructor.html">Bonus Notebook: Network Statistical Inference</a></li>
+<li><a href="http://ericmjl.github.io/Network-Analysis-Made-Simple/bonus-3-matrices-instructor.html">Bonus Notebook: Graph Matrix Representations</a></li>
+</ul>
+<h3 id="local-setup">Local Setup</h3>
+<p>For those of you who would like to get setup beforehand and keep a local copy of the repository on your machine, follow along here.</p>
+<h4 id="easiest-way-anaconda-distribution-of-python">Easiest way: Anaconda Distribution of Python</h4>
+<p>If you have the Anaconda distribution of <strong>Python 3</strong> installed on a Unix-like machine (Linux, macOS, etc.), then run <code>make conda</code>, which wraps the commands below.</p>
+<ol style="list-style-type: decimal">
+<li><code>$ conda env create -f environment.yml</code></li>
+<li><code>$ source activate nams</code></li>
+<li><code>$ python checkenv.py</code></li>
+</ol>
+<p>If you do not have the Anaconda distribution, I would highly recommend getting it for <a href="http://repo.continuum.io/archive/Anaconda3-4.0.0-Windows-x86_64.exe">Windows</a>, <a href="http://repo.continuum.io/archive/Anaconda3-4.0.0-MacOSX-x86_64.pkg">Mac</a> or <a href="http://repo.continuum.io/archive/Anaconda3-4.0.0-Linux-x86_64.sh">Linux</a>. It provides an isolated Python computing environment that will not interfere with your system Python installation, and comes with a very awesome package manager (<code>conda</code>) that makes installation of new packages a single <code>conda install pkgname</code> away.</p>
+<p>If you're not using Python 3, then check out <span class="citation">@jakevdp</span>'s talk at SciPy2015 to find out why!</p>
+<h4 id="alternative-to-anaconda-pip-install">Alternative to Anaconda: <code>pip install</code></h4>
+<p>For those who do not have the capability of installing the Anaconda Python 3 distribution on their computers, please follow the instructions below.</p>
+<p>Run <code>make venv</code>, which wraps up the commands below. Special thanks to <span class="citation">@matt-land</span> for putting this script together.</p>
+<ol style="list-style-type: decimal">
+<li>Create a virtual environment for this tutorial, so that the installed packages do not mess with your regular Python environment.
+<ol start="2" style="list-style-type: decimal">
+<li><code>$ pip install virtualenv</code></li>
+<li><code>$ virtualenv network</code></li>
+<li><code>$ source network/bin/activate</code></li>
+</ol></li>
+<li><code>$ pip install matplotlib networkx pandas hiveplot numpy jupyter</code></li>
+</ol>
+<p>Check your environment:</p>
+<ol style="list-style-type: decimal">
+<li><code>$ python checkenv.py</code></li>
+</ol>
+<h4 id="manual-build">Manual Build</h4>
+<p>For this tutorial, you will need the following packages:</p>
+<ol style="list-style-type: decimal">
+<li>Python 3</li>
+<li><code>matplotlib</code></li>
+<li><code>networkx</code></li>
+<li><code>pandas</code></li>
+<li><code>hiveplot</code> - <code>conda install -c conda-forge hiveplot</code> or <code>pip install hiveplot</code>.</li>
+<li><code>nxviz</code> - <code>conda install -c conda-forge nxviz</code>. (This implements Circos plots; HivePlots are being migrated over.)</li>
+<li><code>numpy</code></li>
+<li><code>scipy</code></li>
+</ol>
+<p>Then, clone the repository locally.</p>
+<ol style="list-style-type: decimal">
+<li><code>$ cd /path/to/your/directory</code></li>
+<li>Clone the repository to disk:
+<ol style="list-style-type: decimal">
+<li><code>$ git clone https://github.com/ericmjl/Network-Analysis-Made-Simple.git</code></li>
+</ol></li>
+<li><code>$ cd Network-Analysis-Made-Simple</code></li>
+</ol>
+<h3 id="run-the-jupyter-notebook">Run the Jupyter Notebook</h3>
+<pre><code>$ jupyter notebook</code></pre>
+<p>Your browser will open to an index page where you can click on a notebook to run it. Test that everything runs fine by executing all of the cells in the Instructor versions of the notebooks.</p>
+<h1 id="feedback">Feedback</h1>
+<p>If you've attended this workshop, please leave <a href="https://ericma1.typeform.com/to/aCljQl">feedback</a>! It's important to help me improve the tutorial for future iterations.</p>
+<h1 id="issues">Issues</h1>
+<h2 id="known-issues">Known Issues</h2>
+<p>If you get a &quot;Python is not installed as a framework&quot; error with matplotlib, please check out <a href="https://github.com/ericmjl/Network-Analysis-Made-Simple/issues/8">this issue</a> for instructions to resolve it.</p>
+<h2 id="new-issues">New Issues</h2>
+<p>If you're facing difficulties, please report it as an <a href="https://github.com/ericmjl/Network-Analysis-Made-Simple/issues">issue</a> on this repository.</p>
+<h1 id="credits">Credits</h1>
+<ol style="list-style-type: decimal">
+<li><a href="https://www.divvybikes.com/datachallenge">Divvy Data Challenge</a></li>
+<li><a href="http://konect.uni-koblenz.de/networks/">Konect Network Analysis Datasets</a></li>
+</ol>
+<h1 id="resources">Resources</h1>
+<ol style="list-style-type: decimal">
+<li>Jon Charest's use of Circos plots to visualize networks of Metal music genres. <a href="http://jonchar.net/2016/05/20/exploring-metal-subgenres-with-python.html">blog post</a> | <a href="http://jonchar.net/notebooks/MA-Exploratory-Analysis#Enter-the-Circos-plot">notebook</a></li>
+<li>Gain further practice by taking this course online at <a href="http://www.datacamp.com/">DataCamp</a>!</li>
+<li>A gentle introduction to graph theory on <a href="https://dev.to/vaidehijoshi/a-gentle-introduction-to-graph-theory">Vaidehi Joshi's website</a></li>
+</ol>
+</body>
+</html>
