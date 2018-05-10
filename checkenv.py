@@ -21,7 +21,7 @@ packages['community'] = 'python-louvain'
 
 def print_error(p, i):
     """
-    Returns the error message. 
+    Returns the error message for package installation issues.
 
     :param str p: The name of the package to install.
     :param str i: The name of the package when imported.
