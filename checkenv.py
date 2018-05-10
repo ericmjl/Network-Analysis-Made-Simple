@@ -10,12 +10,33 @@ def check_import(packagename):
         return False
 
 
-packages = ['networkx', 'numpy', 'matplotlib', 'hiveplot', 'pandas',
-            'jupyter', 'nxviz', 'community']
+# If there are new packages that you can import, add them to the list.
+package_names = ['networkx', 'numpy', 'matplotlib', 'hiveplot', 'pandas',
+                'jupyter', 'nxviz', 'tqdm']
+packages = {n:n for n in package_names}
+# Only add the packages whose import names are different from the 
+# package name (what we `pip install` or `conda install`).
+packages['community'] = 'python-louvain'
 
-for p in packages:
-    assert check_import(p),\
-        '{0} not present. Please install via pip or conda.'.format(p)
+
+def print_error(p, i):
+    """
+    Returns the error message. 
+
+    :param str p: The name of the package to install.
+    :param str i: The name of the package when imported.
+    """
+    error_message = f"""
+    {i} not present. Please do the installation using either:
+
+    - pip install {p}
+    - conda install -c conda-forge {p}
+    """
+    return error_message
+
+
+for p, i in packages.items():
+    assert check_import(p), print_error(i, p)
 
 assert sys.version_info.major >= 3, 'Please install Python 3!'
 
