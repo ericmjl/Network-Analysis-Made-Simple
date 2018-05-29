@@ -6,4 +6,4 @@ nxviz==0.3.7
 numpy==1.14.3
 jupyter==1.0.0
 scipy==1.1.0
-python-louvain==0.10
+python-louvain==0.11
