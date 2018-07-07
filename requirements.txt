@@ -1,9 +1,9 @@
 matplotlib==2.2.2
 networkx==2.1
-pandas==0.22.0
+pandas==0.23.1
 hiveplot==2017.10.17.21.7
-nxviz==0.3.6
-numpy==1.14.3
+nxviz==0.4.0
+numpy==1.14.5
 jupyter==1.0.0
 scipy==1.1.0
-python-louvain==0.10
+python-louvain==0.11
