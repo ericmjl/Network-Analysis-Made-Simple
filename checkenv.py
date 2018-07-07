@@ -19,6 +19,9 @@ packages = {n:n for n in package_names}
 packages['community'] = 'python-louvain'
 
 
+assert (sys.version_info.major >= 3 and sys.version_info.minor >= 6), 'Please install Python 3.6!'
+
+
 def print_error(p, i):
     """
     Returns the error message for package installation issues.
@@ -34,11 +37,8 @@ def print_error(p, i):
     """
     return error_message
 
-
 for p, i in packages.items():
     assert check_import(p), print_error(i, p)
 
-assert sys.version_info.major >= 3, 'Please install Python 3!'
-
-# Credit: @zmilicc for requesting this.
+    # Credit: @zmilicc for requesting this.
 print('All checks passed. Your environment is good to go!')
