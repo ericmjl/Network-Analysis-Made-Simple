@@ -75,6 +75,7 @@ For this tutorial, you will need the following packages:
 1. `nxviz` - `conda install -c conda-forge nxviz`.  (This implements Circos plots; HivePlots are being migrated over.)
 6. `numpy`
 7. `scipy`
+8. `jupyter`
 
 Then, clone the repository locally.
 
