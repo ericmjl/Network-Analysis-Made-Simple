@@ -32,11 +32,14 @@ install:
 
   # Install Python, py.test, and required packages.
   - conda env create -f environment.yml
+  - source activate nams
   # This guarantees that Python version is matrixed.
   - conda install python=$PYTHON_VERSION
 
+
 script:
   # Your test script goes here
+  - command -v jupyter
   - |
     for nb in $(ls *-instructor.ipynb); do
         jupyter nbconvert --to html --ExecutePreprocessor.timeout=600 --ExecutePreprocessor.kernel_name="nams" --execute $i
