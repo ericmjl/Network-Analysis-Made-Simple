@@ -42,7 +42,7 @@ script:
   - command -v jupyter
   - |
     for nb in $(ls *-instructor.ipynb); do
-        jupyter nbconvert --to html --ExecutePreprocessor.timeout=600 --ExecutePreprocessor.kernel_name="nams" --execute $i
+        jupyter nbconvert --config nbconvert_config.py --execute $i
     done
 
 after_success:
