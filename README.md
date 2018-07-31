@@ -2,6 +2,8 @@
 
 ![](./images/custom-logo.png)
 
+[![Build Status](https://travis-ci.org/ericmjl/Network-Analysis-Made-Simple.svg?branch=master)](https://travis-ci.org/ericmjl/Network-Analysis-Made-Simple)
+
 Welcome to the GitHub repository for Network Analysis Made Simple! This is a tutorial designed to teach you the basic and practical aspects of graph theory. It has been presented at multiple conferences (PyCon, SciPy, PyData, and ODSC) in a variety of formats (ranging from 1.5 hr to 4 hour long workshops). The material is designed for a live tutorial presentation, with the code available for you to reference afterwards.
 
 ## Getting Started
