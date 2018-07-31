@@ -37,7 +37,10 @@ install:
 
 script:
   # Your test script goes here
-  - make nbhtml
+  - |
+    for nb in $(ls *-instructor.ipynb); do
+        jupyter nbconvert --to html --ExecutePreprocessor.timeout=600 --ExecutePreprocessor.kernel_name="nams" --execute $i
+    done
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
