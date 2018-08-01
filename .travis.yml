@@ -43,6 +43,7 @@ script:
   - |
     for nb in $(ls *-instructor.ipynb); do
         jupyter nbconvert --config nbconvert_config.py --execute $nb
+
     done
   # - jupyter nbconvert --config nbconvert_config.py --execute 2-networkx-basics-instructor.ipynb
 
