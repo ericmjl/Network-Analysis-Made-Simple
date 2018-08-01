@@ -39,11 +39,12 @@ install:
 
 script:
   # Your test script goes here
-  - command -v jupyter
+  # - command -v jupyter
   - |
     for nb in $(ls *-instructor.ipynb); do
-        jupyter nbconvert --config nbconvert_config.py --execute $i
+        jupyter nbconvert --config nbconvert_config.py --execute $nb
     done
+  # - jupyter nbconvert --config nbconvert_config.py --execute 2-networkx-basics-instructor.ipynb
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
