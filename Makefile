@@ -39,3 +39,6 @@ venv:
 	echo "Run 'source network/bin/activate' to begin"
 
 	python checkenv.py
+
+check:
+	python checkenv.py
