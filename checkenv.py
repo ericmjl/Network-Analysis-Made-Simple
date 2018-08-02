@@ -1,6 +1,7 @@
 # Check that the packages are installed.
 from pkgutil import iter_modules
 import sys
+import os
 
 
 def check_import(packagename):
@@ -12,9 +13,9 @@ def check_import(packagename):
 
 # If there are new packages that you can import, add them to the list.
 package_names = ['networkx', 'numpy', 'matplotlib', 'hiveplot', 'pandas',
-                'jupyter', 'nxviz', 'tqdm']
-packages = {n:n for n in package_names}
-# Only add the packages whose import names are different from the 
+                 'jupyter', 'nxviz', 'tqdm']
+packages = {n: n for n in package_names}
+# Only add the packages whose import names are different from the
 # package name (what we `pip install` or `conda install`).
 packages['community'] = 'python-louvain'
 
@@ -37,8 +38,14 @@ def print_error(p, i):
     """
     return error_message
 
+
 for p, i in packages.items():
     assert check_import(p), print_error(i, p)
 
-    # Credit: @zmilicc for requesting this.
+
+# os.system returns 0 if command passed
+assert not os.system('command -v ffmpeg'), "please install ffmpeg"
+
+
+# Credit: @zmilicc for requesting this.
 print('All checks passed. Your environment is good to go!')
