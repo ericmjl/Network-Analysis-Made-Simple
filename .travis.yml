@@ -30,6 +30,7 @@ install:
   # This guarantees that Python version is matrixed.
   - conda install python=$PYTHON_VERSION
   - python -m ipykernel install --user --name nams
+  - sudo apt-get install ffmpeg
 
 script:
   # Your test script goes here
