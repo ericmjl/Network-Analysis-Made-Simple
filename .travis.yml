@@ -12,8 +12,9 @@ matrix:
 
 before_install:
   # Ensure that ffmpeg is installed
-  # From here: https://gist.github.com/kevinGodell/bd52cd74c8c2d66fb69f108ef223c356
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo add-apt-repository -y ppa:mc3man/trusty-media; fi
+  # Inspired from here: https://gist.github.com/kevinGodell/bd52cd74c8c2d66fb69f108ef223c356
+  # However, I also changed the PPA based on this URL: https://tecadmin.net/install-ffmpeg-on-linux/
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo add-apt-repository -y ppa:jonathonf/ffmpeg-3; fi
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get update; fi
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install -y ffmpeg; fi
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew update; fi
