@@ -16,9 +16,9 @@ before_install:
   # However, I also changed the PPA based on this URL: https://tecadmin.net/install-ffmpeg-on-linux/
   - |
     if [ "$TRAVIS_OS_NAME" == "linux" ]; then
-      sudo add-apt-repository -y ppa:jonathonf/ffmpeg-3
-      sudo apt-get update
-      sudo apt-get install -y ffmpeg
+      sudo add-apt-repository -y ppa:jonathonf/ffmpeg-3;
+      sudo apt-get update;
+      sudo apt-get install -y ffmpeg;
     fi
   - |
     if [ "$TRAVIS_OS_NAME" == "osx" ]; then
