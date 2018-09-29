@@ -93,6 +93,19 @@ Then, clone the repository locally.
 
 Your browser will open to an index page where you can click on a notebook to run it. Test that everything runs fine by executing all of the cells in the Instructor versions of the notebooks.
 
+# Teaching with this repository material
+
+If you would like to teach with this repository material, we request only the following:
+
+1. As far as possible, make a fork, not a new repository, but no hard restriction here.
+2. Ping us in the Issues tracker [here][1].
+3. Please provide proper attribution back to the original in the primary landing page of derivative work (this would usually imply the `README`) , with the following text:
+
+> This material has been adapted from the tutorial Network Analysis Made Simple created by Eric J. Ma and Mridul Seth. The original material can be found at: https://github.com/ericmjl/Network-Analysis-Made-Simple/.
+
+4. Please provide a lightweight overview of modifications to the original material documented in forked repository. (An example would be a plain text `HISTORY` file, or as a section in the forked README.)
+5. Loop back to us if there are recordings - so that we can link to them in the original repository! We would like to feature on here your efforts teaching with the material.
+
 # Feedback
 
 If you've attended this workshop, please leave [feedback][7]! It's important to help me improve the tutorial for future iterations.
