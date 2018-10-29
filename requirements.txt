@@ -3,7 +3,7 @@ networkx==2.2
 pandas==0.23.4
 hiveplot==2017.10.17.21.7
 nxviz==0.5.0
-numpy==1.15.2
+numpy==1.15.3
 jupyter==1.0.0
 scipy==1.1.0
 python-louvain==0.11
