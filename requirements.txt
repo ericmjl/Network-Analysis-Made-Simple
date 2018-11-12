@@ -1,4 +1,4 @@
-matplotlib==3.0.1
+matplotlib==3.0.2
 networkx==2.2
 pandas==0.23.4
 hiveplot==2017.10.17.21.7
