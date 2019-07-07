@@ -18,3 +18,4 @@ dependencies:
 - rise
 - python-louvain
 - tqdm
+- ffmpeg
