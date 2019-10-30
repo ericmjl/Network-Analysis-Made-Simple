@@ -6,14 +6,14 @@ This directory contains the TSV and related files of the moreno_propro network:
 This undirected network contains protein interactions contained in yeast. Research showed that proteins with a high degree were more important for the surivial of the yeast than others. A node represents a protein and an edge represents a metabolic interaction between two proteins.  The network contains loops.
 
 
-More information about the network is provided here: 
+More information about the network is provided here:
 http://konect.uni-koblenz.de/networks/moreno_propro
 
-Files: 
-    meta.moreno_propro -- Metadata about the network 
+Files:
+    meta.moreno_propro -- Metadata about the network
     out.moreno_propro -- The adjacency matrix of the network in space separated values format, with one edge per line
-      The meaning of the columns in out.moreno_propro are: 
-        First column: ID of from node 
+      The meaning of the columns in out.moreno_propro are:
+        First column: ID of from node
         Second column: ID of to node
 
 
@@ -76,8 +76,6 @@ Use the following References for citation:
 	year = {2013},
 	booktitle = {Proc. Int. Conf. on World Wide Web Companion},
 	pages = {1343--1350},
-	url = {http://userpages.uni-koblenz.de/~kunegis/paper/kunegis-koblenz-network-collection.pdf}, 
+	url = {http://userpages.uni-koblenz.de/~kunegis/paper/kunegis-koblenz-network-collection.pdf},
 	url_presentation = {http://userpages.uni-koblenz.de/~kunegis/paper/kunegis-koblenz-network-collection.presentation.pdf},
 }
-
-

@@ -6,14 +6,14 @@ This directory contains the TSV and related files of the sociopatterns-infectiou
 This network describes the face-to-face behavior of people during the exhibition INFECTIOUS: STAY AWAY in 2009 at the Science Gallery in Dublin. Nodes represent exhibition visitors; edges represent face-to-face contacts that were active for at least 20 seconds. Multiple edges between two nodes are possible and denote multiple contacts. The network contains the data from the day with the most interactions.
 
 
-More information about the network is provided here: 
+More information about the network is provided here:
 http://konect.uni-koblenz.de/networks/sociopatterns-infectious
 
-Files: 
-    meta.sociopatterns-infectious -- Metadata about the network 
+Files:
+    meta.sociopatterns-infectious -- Metadata about the network
     out.sociopatterns-infectious -- The adjacency matrix of the network in space separated values format, with one edge per line
-      The meaning of the columns in out.sociopatterns-infectious are: 
-        First column: ID of from node 
+      The meaning of the columns in out.sociopatterns-infectious are:
+        First column: ID of from node
         Second column: ID of to node
         Third column: edge weight
         Fourth column: timestamp of the edge
@@ -41,7 +41,7 @@ Use the following References for citation:
 @article{konect:sociopatterns,
 	author = {Lorenzo Isella and Juliette Stehlé and Alain Barrat and Ciro
                   Cattuto and Jean-François Pinton and Wouter Van den
-                  Broeck}, 
+                  Broeck},
 	title = {What's in a Crowd? Analysis of Face-to-Face Behavioral Networks},
 	journal = {J. of Theoretical Biology},
 	volume = {271},
@@ -57,8 +57,6 @@ Use the following References for citation:
 	year = {2013},
 	booktitle = {Proc. Int. Conf. on World Wide Web Companion},
 	pages = {1343--1350},
-	url = {http://userpages.uni-koblenz.de/~kunegis/paper/kunegis-koblenz-network-collection.pdf}, 
+	url = {http://userpages.uni-koblenz.de/~kunegis/paper/kunegis-koblenz-network-collection.pdf},
 	url_presentation = {http://userpages.uni-koblenz.de/~kunegis/paper/kunegis-koblenz-network-collection.presentation.pdf},
 }
-
-

@@ -6,14 +6,14 @@ This directory contains the TSV and related files of the munmun_twitter_social n
 This is the directed network containing information about who follows whom on Twitter. Nodes represent users and an edge shows that the left user follows the right one.
 
 
-More information about the network is provided here: 
+More information about the network is provided here:
 http://konect.uni-koblenz.de/networks/munmun_twitter_social
 
-Files: 
-    meta.munmun_twitter_social -- Metadata about the network 
+Files:
+    meta.munmun_twitter_social -- Metadata about the network
     out.munmun_twitter_social -- The adjacency matrix of the network in space separated values format, with one edge per line
-      The meaning of the columns in out.munmun_twitter_social are: 
-        First column: ID of from node 
+      The meaning of the columns in out.munmun_twitter_social are:
+        First column: ID of from node
         Second column: ID of to node
 
 
@@ -41,10 +41,10 @@ Use the following References for citation:
                   Discovery of Information Diffusion in Social Media?},
         author = {Choudhury, Munmun De and Yu-Ru Lin and Hari Sundaram and
                   Candan, K. Selçuk and Lexing Xie and Aisling
-                  Kelliher}, 
-        booktitle = {ICWSM}, 
-        year = {2010}, 
-        pages = {34--41}, 
+                  Kelliher},
+        booktitle = {ICWSM},
+        year = {2010},
+        pages = {34--41},
 }
 
 
@@ -54,8 +54,6 @@ Use the following References for citation:
 	year = {2013},
 	booktitle = {Proc. Int. Conf. on World Wide Web Companion},
 	pages = {1343--1350},
-	url = {http://userpages.uni-koblenz.de/~kunegis/paper/kunegis-koblenz-network-collection.pdf}, 
+	url = {http://userpages.uni-koblenz.de/~kunegis/paper/kunegis-koblenz-network-collection.pdf},
 	url_presentation = {http://userpages.uni-koblenz.de/~kunegis/paper/kunegis-koblenz-network-collection.presentation.pdf},
 }
-
-

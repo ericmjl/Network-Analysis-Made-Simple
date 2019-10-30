@@ -19,3 +19,4 @@ dependencies:
 - python-louvain
 - tqdm
 - ffmpeg
+- pre-commit

@@ -3,17 +3,17 @@ Crime network, part of the Koblenz Network Collection
 
 This directory contains the TSV and related files of the moreno_crime network:
 
-This bipartite network contains persons who appeared in at least one crime case as either a suspect, a victim, a witness or both a suspect and victim at the same time. A left node represents a person and a right node represents a crime. An edge between two nodes shows that the left node was involved in the crime represented by the right node. 
+This bipartite network contains persons who appeared in at least one crime case as either a suspect, a victim, a witness or both a suspect and victim at the same time. A left node represents a person and a right node represents a crime. An edge between two nodes shows that the left node was involved in the crime represented by the right node.
 
 
-More information about the network is provided here: 
+More information about the network is provided here:
 http://konect.uni-koblenz.de/networks/moreno_crime
 
-Files: 
-    meta.moreno_crime -- Metadata about the network 
+Files:
+    meta.moreno_crime -- Metadata about the network
     out.moreno_crime -- The adjacency matrix of the network in space separated values format, with one edge per line
-      The meaning of the columns in out.moreno_crime are: 
-        First column: ID of from node 
+      The meaning of the columns in out.moreno_crime are:
+        First column: ID of from node
         Second column: ID of to node
     ent.moreno_crime.person.name -- Contains the attribute `name` of entity `person` of the network
     ent.moreno_crime.person.sex -- Contains the attribute `sex` of entity `person` of the network
@@ -45,8 +45,6 @@ Use the following References for citation:
 	year = {2013},
 	booktitle = {Proc. Int. Conf. on World Wide Web Companion},
 	pages = {1343--1350},
-	url = {http://userpages.uni-koblenz.de/~kunegis/paper/kunegis-koblenz-network-collection.pdf}, 
+	url = {http://userpages.uni-koblenz.de/~kunegis/paper/kunegis-koblenz-network-collection.pdf},
 	url_presentation = {http://userpages.uni-koblenz.de/~kunegis/paper/kunegis-koblenz-network-collection.presentation.pdf},
 }
-
-

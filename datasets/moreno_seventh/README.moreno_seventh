@@ -3,17 +3,17 @@ Seventh graders network, part of the Koblenz Network Collection
 
 This directory contains the TSV and related files of the moreno_seventh network:
 
-This directed network contains proximity ratings between studetns from 29 seventh grade students from a school in Victoria. Among other questions the students were asked to nominate their preferred classmates for three different activities. A node represents a student. An edge between two nodes shows that the left student picked the right student as his answer. The edge weights are between 1 and 3 and show how often the left student chose the right student as his favourite.  
+This directed network contains proximity ratings between studetns from 29 seventh grade students from a school in Victoria. Among other questions the students were asked to nominate their preferred classmates for three different activities. A node represents a student. An edge between two nodes shows that the left student picked the right student as his answer. The edge weights are between 1 and 3 and show how often the left student chose the right student as his favourite.
 
 
-More information about the network is provided here: 
+More information about the network is provided here:
 http://konect.uni-koblenz.de/networks/moreno_seventh
 
-Files: 
-    meta.moreno_seventh -- Metadata about the network 
+Files:
+    meta.moreno_seventh -- Metadata about the network
     out.moreno_seventh -- The adjacency matrix of the network in space separated values format, with one edge per line
-      The meaning of the columns in out.moreno_seventh are: 
-        First column: ID of from node 
+      The meaning of the columns in out.moreno_seventh are:
+        First column: ID of from node
         Second column: ID of to node
         Third column: edge weight
     ent.moreno_seventh.student.gender -- Contains the attribute `gender` of entity `student` of the network
@@ -55,8 +55,6 @@ Use the following References for citation:
 	year = {2013},
 	booktitle = {Proc. Int. Conf. on World Wide Web Companion},
 	pages = {1343--1350},
-	url = {http://userpages.uni-koblenz.de/~kunegis/paper/kunegis-koblenz-network-collection.pdf}, 
+	url = {http://userpages.uni-koblenz.de/~kunegis/paper/kunegis-koblenz-network-collection.pdf},
 	url_presentation = {http://userpages.uni-koblenz.de/~kunegis/paper/kunegis-koblenz-network-collection.presentation.pdf},
 }
-
-
