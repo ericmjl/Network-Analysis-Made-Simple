@@ -7,4 +7,4 @@ numpy==1.18.2
 jupyter==1.0.0
 scipy==1.4.1
 python-louvain==0.14
-tqdm==4.35.0
+tqdm==4.45.0
