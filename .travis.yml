@@ -7,7 +7,7 @@ language: python
 matrix:
   include:
     - python: 3.5  # we don't actually use this
-      env: PYTHON_VERSION=3.8
+      env: PYTHON_VERSION=3.7
 
 before_install:
   # Ensure that ffmpeg is installed
