@@ -43,12 +43,19 @@ install:
 script:
   # Your test script goes here
   # - command -v jupyter
-  - |
-    for nb in $(ls *-instructor.ipynb); do
-        jupyter nbconvert --config nbconvert_config.py --execute $nb
+  # - |
+  #   for nb in $(ls *-instructor.ipynb); do
+  #       jupyter nbconvert --config nbconvert_config.py --execute $nb
 
-    done
-  # - jupyter nbconvert --config nbconvert_config.py --execute 2-networkx-basics-instructor.ipynb
+  #   done
+  - jupyter nbconvert --config nbconvert_config.py --execute 2-networkx-basics-instructor.ipynb
+  - jupyter nbconvert --config nbconvert_config.py --execute 3-hubs-and-paths-instructor.ipynb
+  - jupyter nbconvert --config nbconvert_config.py --execute 4-cliques-triangles-structures-instructor.ipynb
+  - jupyter nbconvert --config nbconvert_config.py --execute 5-graph-input-output-instructor.ipynb
+  - jupyter nbconvert --config nbconvert_config.py --execute 6-bipartite-graphs-instructor.ipynb
+  - jupyter nbconvert --config nbconvert_config.py --execute 7-game-of-thrones-case-study-instructor.ipynb
+  - jupyter nbconvert --config nbconvert_config.py --execute bonus-1-network-statistical-inference-instructor.ipynb
+  - jupyter nbconvert --config nbconvert_config.py --execute bonus-3-matrices-instructor.ipynb
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
