@@ -1,0 +1,43 @@
+site_name: Network Analysis Made Simple
+
+theme:
+  name: 'material'
+  palette:
+    primary: 'indigo'
+    accent: 'indigo'
+  icon:
+    logo: 'fontawesome/solid/book'
+  features:
+    - instant
+    - tabs
+  language: en
+
+plugins:
+  - search
+  - mknotebooks:
+      execute: false
+      write_markdown: true
+      timeout: 1200
+
+# Taken from here: https://squidfunk.github.io/mkdocs-material/extensions/codehilite/
+markdown_extensions:
+  - codehilite
+  - pymdownx.arithmatex
+  - pymdownx.details
+  - pymdownx.superfences
+  - markdown.extensions.attr_list
+
+extra_javascript:
+    - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+
+repo_name: 'ericmjl/bayesian-analysis-recipes'
+repo_url: 'https://github.com/ericmjl/bayesian-analysis-recipes'
+
+extra:
+  social:
+    - icon: 'fontawesome/brands/github'
+      link: 'https://github.com/ericmjl'
+    - icon: 'fontawesome/brands/twitter'
+      link: 'https://twitter.com/ericmjl'
+    - icon: 'fontawesome/brands/linkedin'
+      link: 'https://linkedin.com/in/ericmjl'
