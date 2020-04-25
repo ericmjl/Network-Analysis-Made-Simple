@@ -26,7 +26,7 @@ def load_seventh_grader_network():
                    count=row[1]['count'])
     # Add node metadata
     for n in G.nodes():
-        G.node[n]['gender'] = meta.ix[n]['gender']
+        G.nodes[n]['gender'] = meta.loc[n]['gender']
     return G
 
 
@@ -64,7 +64,7 @@ def load_sociopatterns_network():
             G.add_edge(p1, p2, weight=1)
 
     for n in sorted(G.nodes()):
-        G.node[n]['order'] = float(n)
+        G.nodes[n]['order'] = float(n)
 
     return G
 
@@ -123,7 +123,7 @@ def load_crime_network():
     gender.index += 1
     for n, gender_code in gender.iterrows():
         nodeid = 'p{0}'.format(n)
-        G.node[nodeid]['gender'] = gender_code[0]
+        G.nodes[nodeid]['gender'] = gender_code[0]
 
     return G
 
