@@ -4,7 +4,7 @@ channels:
 - conda-forge
 - ericmjl
 dependencies:
-- python=3.6
+- python=3.7
 - matplotlib
 - networkx
 - scipy
@@ -20,3 +20,6 @@ dependencies:
 - tqdm
 - ffmpeg
 - nbstripout
+- pip
+- pip:
+  - jupyter-book
