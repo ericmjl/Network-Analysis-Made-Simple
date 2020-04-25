@@ -20,6 +20,10 @@ dependencies:
 - tqdm
 - ffmpeg
 - nbstripout
+- pygments
 - pip
 - pip:
-  - jupyter-book
+  - mkdocs
+  - mkdocs-material
+  - pymdown-extensions
+  - mknotebooks
