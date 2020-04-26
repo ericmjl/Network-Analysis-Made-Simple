@@ -8,8 +8,9 @@ WORKDIR /opt/webapp
 
 # Install packages
 RUN conda env create -f environment.yml
-RUN conda init bash
-RUN . ~/.bashrc
+# RUN conda init bash
+RUN which conda
+RUN conda activate ~/.bashrc
 RUN . activate nams
 
 RUN which python
