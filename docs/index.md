@@ -12,10 +12,14 @@ and their connection to linear algebra.
 
 We hope you enjoy learning from it.
 
+## Feedback
+
 If you have feedback for the eBook,
 please head over to our [GitHub repository][repo] and raise an issue there.
 
 [repo]: https://github.com/ericmjl/Network-Analysis-Made-Simple
+
+## Support us!
 
 If you find the book useful,
 you can support the creators in the following ways:
