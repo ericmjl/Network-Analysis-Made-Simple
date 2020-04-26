@@ -10,8 +10,7 @@ WORKDIR /opt/webapp
 RUN conda env create -f environment.yml
 # RUN conda init bash
 RUN which conda
-RUN conda activate nams
-
+ENV PATH="/opt/conda/envs/nams/bin:${PATH}"
 RUN which python
 RUN python -m ipykernel install --nams
 
