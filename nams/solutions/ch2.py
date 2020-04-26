@@ -1,5 +1,5 @@
 """
-Solutions to Chapter 1.
+Solutions to Chapter 2.
 """
 
 def node_metadata(G):
