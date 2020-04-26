@@ -4,33 +4,29 @@ FROM continuumio/miniconda3
 
 # Add code to setup
 ADD environment.yml /tmp/setup/
-ADD nams /tmp/setup/nams
-ADD setup.py tmp/setup/setup.py
-WORKDIR /tmp/setup
 
 # Install packages
 RUN conda env create -f environment.yml
-# RUN conda init bash
-RUN which conda
-ADD . /opt/webapp
-WORKDIR /opt/webapp
+
+# We put the custom source here
+# and not install it in `environment.yml`
+# to prevent Docker from rebuilding the environment
+# each time the source changes.
+# This is extremely time consuming and expensive during the build.
+ADD nams /tmp/setup/nams
+ADD setup.py tmp/setup/setup.py
+WORKDIR /tmp/setup
+RUN python setup.py install
+
+# Now we add the repository to the Docker container
+ADD . /nams
+WORKDIR /nams
 ENV PATH="/opt/conda/envs/nams/bin:${PATH}"
-RUN which python
 RUN python -m ipykernel install --name nams
 
-# Diagnostic
-RUN which mkdocs
+# Build docs in the container in this step
 RUN mkdocs build
 
-RUN which python
-
+# Run Python web server to serve up static files
 EXPOSE 80
 ENTRYPOINT python -m http.server 80 -d site/
-
-
-# Grab requirements.txt.
-# ADD ./webapp/requirements.txt /tmp/requirements.txt
-# Install dependencies
-# RUN pip install -qr /tmp/requirements.txt
-# RUN conda install scikit-learn
-# CMD gunicorn --bind 0.0.0.0:$PORT wsgi

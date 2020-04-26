@@ -28,4 +28,3 @@ dependencies:
   - mkdocs-material
   - pymdown-extensions
   - mknotebooks
-  - -e .
