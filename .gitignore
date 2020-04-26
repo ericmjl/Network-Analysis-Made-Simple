@@ -1,5 +1,6 @@
 # Custom
 
+docs/introduction/.ipynb_checkpoints/*
 *.csv
 *.edgelist
 twitter_higgs/*
