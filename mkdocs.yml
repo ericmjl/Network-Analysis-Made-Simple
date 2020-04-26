@@ -25,6 +25,8 @@ nav:
     - "Chapter 1: Introduction to Graphs": introduction/graphs.md
     - "Chapter 2: The NetworkX API": introduction/networkx-intro.ipynb
     - "Chapter 3: Graph Visualization": introduction/viz.ipynb
+  - "Section 2: Algorithms":
+    - "Chapter 4: Hubs": algorithms/hubs.ipynb
 
 plugins:
   - search
