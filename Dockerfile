@@ -2,21 +2,22 @@
 FROM continuumio/miniconda3
 
 
-# Add code to setup
-ADD environment.yml /tmp/setup/
+# We isolate the conda environment setup step
+# because it is time consuming and a bit of a RAM hog.
+ADD environment.yml /environment.yml
+RUN conda env create -f /environment.yml
+RUN rm /environment.yml
 
-# Install packages
-RUN conda env create -f environment.yml
-
-# We put the custom source here
-# and not install it in `environment.yml`
+# We put the custom source installation steps here
+# and not in the `environment.yml` file
 # to prevent Docker from rebuilding the environment
-# each time the source changes.
+# each time the source and notebooks change (which they will).
 # This is extremely time consuming and expensive during the build.
 ADD nams /tmp/setup/nams
 ADD setup.py tmp/setup/setup.py
 WORKDIR /tmp/setup
 RUN python setup.py install
+RUN rm -rf /tmp/setup
 
 # Now we add the repository to the Docker container
 ADD . /nams
