@@ -12,6 +12,19 @@ theme:
     - tabs
   language: en
 
+# We customize the navigation by hand to control the order
+# in which pages show up.
+nav:
+  - Welcome:
+    - Welcome: index.md
+  - Preface:
+    - Get Setup: preface/setup.md
+    - Prerequisites: preface/prereqs.ipynb
+    - Learning Goals: preface/goals.md
+  - "Chapter 1: Introduction":
+    - Introduction to Graphs: introduction/graphs.md
+    - The NetworkX API: introduction/networkx-intro.ipynb
+
 plugins:
   - search
   - mknotebooks:
@@ -30,8 +43,8 @@ markdown_extensions:
 extra_javascript:
     - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML
 
-repo_name: 'ericmjl/bayesian-analysis-recipes'
-repo_url: 'https://github.com/ericmjl/bayesian-analysis-recipes'
+repo_name: 'ericmjl/Network-Analysis-Made-Simple'
+repo_url: 'https://github.com/ericmjl/Network-Analysis-Made-Simple'
 
 extra:
   social:

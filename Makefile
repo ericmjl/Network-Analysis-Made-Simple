@@ -18,7 +18,7 @@ clean:
 conda:
 	set -ex
 	conda env create -f environment.yml
-	source activate nams
+	conda activate nams
 	python checkenv.py
 
 updateconda:
