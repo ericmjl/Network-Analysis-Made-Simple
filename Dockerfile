@@ -12,7 +12,7 @@ RUN conda env create -f environment.yml
 RUN which conda
 ENV PATH="/opt/conda/envs/nams/bin:${PATH}"
 RUN which python
-RUN python -m ipykernel install --nams
+RUN python -m ipykernel install --name nams
 
 # Diagnostic
 RUN which mkdocs
