@@ -21,15 +21,17 @@ nav:
     - Get Setup: preface/setup.md
     - Prerequisites: preface/prereqs.ipynb
     - Learning Goals: preface/goals.md
-  - "Chapter 1: Introduction":
-    - Introduction to Graphs: introduction/graphs.md
-    - The NetworkX API: introduction/networkx-intro.ipynb
+  - "Section 1: Introduction":
+    - "Chapter 1: Introduction to Graphs": introduction/graphs.md
+    - "Chapter 2: The NetworkX API": introduction/networkx-intro.ipynb
+    - "Chapter 3: Graph Visualization": introduction/viz.ipynb
 
 plugins:
   - search
   - mknotebooks:
-      execute: false
+      execute: true
       write_markdown: true
+      allow_errors: true
       timeout: 1200
 
 # Taken from here: https://squidfunk.github.io/mkdocs-material/extensions/codehilite/
@@ -41,7 +43,10 @@ markdown_extensions:
   - markdown.extensions.attr_list
 
 extra_javascript:
-    - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+
+extra_css:
+  - css/nb_mods.css
 
 repo_name: 'ericmjl/Network-Analysis-Made-Simple'
 repo_url: 'https://github.com/ericmjl/Network-Analysis-Made-Simple'

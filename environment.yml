@@ -22,6 +22,7 @@ dependencies:
 - nbstripout
 - pygments
 - pip
+- pyprojroot
 - pip:
   - mkdocs
   - mkdocs-material
