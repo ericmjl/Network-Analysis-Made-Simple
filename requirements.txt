@@ -12,3 +12,4 @@ mkdocs
 mkdocs-material
 pymdown-extensions
 mknotebooks
+ipykernel
