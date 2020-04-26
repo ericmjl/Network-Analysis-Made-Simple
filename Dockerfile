@@ -2,14 +2,18 @@
 FROM continuumio/miniconda3
 
 
-# Add our code
-ADD . /opt/webapp/
-WORKDIR /opt/webapp
+# Add code to setup
+ADD environment.yml /tmp/setup/
+ADD nams /tmp/setup/nams
+ADD setup.py tmp/setup/setup.py
+WORKDIR /tmp/setup
 
 # Install packages
 RUN conda env create -f environment.yml
 # RUN conda init bash
 RUN which conda
+ADD . /opt/webapp
+WORKDIR /opt/webapp
 ENV PATH="/opt/conda/envs/nams/bin:${PATH}"
 RUN which python
 RUN python -m ipykernel install --name nams
