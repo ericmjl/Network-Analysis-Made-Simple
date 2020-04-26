@@ -23,6 +23,8 @@ dependencies:
 - pygments
 - pip
 - pyprojroot
+- isort
+- black
 - pip:
   - mkdocs
   - mkdocs-material

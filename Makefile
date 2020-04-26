@@ -41,3 +41,10 @@ docs:
 serve:
 	mkdocs build
 	python -m http.server 8020 -d site/
+
+format:
+	isort -rc -y .
+	black -l 79 .
+	nbstripout docs/algorithms/*.ipynb
+	nbstripout docs/introduction/*.ipynb
+	nbstripout docs/preface/*.ipynb

@@ -2,23 +2,27 @@
 Solutions to Intro Chapter.
 """
 
+
 def node_metadata(G):
     from collections import Counter
-    mf_counts = Counter([d['gender'] for n, d in G.nodes(data=True)])
+
+    mf_counts = Counter([d["gender"] for n, d in G.nodes(data=True)])
     return mf_counts
 
+
 def edge_metadata(G):
-    counts = [d['count'] for n1, n2, d in G.edges(data=True)]
+    counts = [d["count"] for n1, n2, d in G.edges(data=True)]
     maxcount = max(counts)
     return maxcount
 
+
 def adding_students(G):
     G = G.copy()
-    G.add_node(30, gender='male')
-    G.add_node(31, gender='female')
+    G.add_node(30, gender="male")
+    G.add_node(31, gender="female")
     G.add_edge(30, 31, count=3)
     G.add_edge(31, 30, count=3)  # reverse is optional in undirected network
-    G.add_edge(30, 7, count=3)   # but this network is directed
+    G.add_edge(30, 7, count=3)  # but this network is directed
     G.add_edge(7, 30, count=3)
     G.add_edge(31, 7, count=3)
     G.add_edge(7, 31, count=3)
@@ -36,6 +40,7 @@ def unrequitted_friendships_v1(G):
 def unrequitted_friendships_v2(G):
     """Answer to unrequitted friendships problem. By @schwanne."""
     return len([(n1, n2) for n1, n2 in G.edges() if not G.has_edge(n2, n1)])
+
 
 def unrequitted_friendships_v3(G):
     """Asnswer to unrequitted friendships problem. By @end0."""
