@@ -20,6 +20,9 @@ RUN mkdocs build
 
 RUN which python
 
+EXPOSE 80
+ENTRYPOINT python -m http.server 80 -d site/
+
 
 # Grab requirements.txt.
 # ADD ./webapp/requirements.txt /tmp/requirements.txt
