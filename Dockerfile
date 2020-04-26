@@ -3,9 +3,8 @@ FROM continuumio/miniconda3
 
 
 # Add our code
-ADD ./webapp /opt/webapp/
+ADD . /opt/webapp/
 WORKDIR /opt/webapp
-
 
 # Install packages
 RUN conda env create -f environment.yml
