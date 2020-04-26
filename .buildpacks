@@ -1,3 +1,2 @@
-# .buildpacks
 https://github.com/heroku/heroku-buildpack-python.git
 https://github.com/dokku/buildpack-nginx.git
