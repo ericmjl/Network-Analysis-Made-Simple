@@ -54,6 +54,7 @@ script:
   - jupyter nbconvert --config nbconvert_config.py --execute 5-graph-input-output-instructor.ipynb
   - jupyter nbconvert --config nbconvert_config.py --execute 6-bipartite-graphs-instructor.ipynb
   - jupyter nbconvert --config nbconvert_config.py --execute 7-game-of-thrones-case-study-instructor.ipynb
+  - jupyter nbconvert --config nbconvert_config.py --execute 8-US-airports-case-study-instructor.ipynb
   - jupyter nbconvert --config nbconvert_config.py --execute bonus-1-network-statistical-inference-instructor.ipynb
   - jupyter nbconvert --config nbconvert_config.py --execute bonus-3-matrices-instructor.ipynb
 
