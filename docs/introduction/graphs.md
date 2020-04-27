@@ -1,4 +1,4 @@
-# Introduction to Networks
+## Introduction
 
 In our world, networks are an immensely useful _data modelling tool_ 
 to model complex _relational_ problems.

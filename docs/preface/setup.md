@@ -1,4 +1,4 @@
-# Getting Setup
+## Introduction
 
 In order to get the most of this book,
 you will want to be able to execute the examples in the notebooks,
