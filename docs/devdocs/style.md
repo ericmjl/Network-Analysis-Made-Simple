@@ -29,9 +29,6 @@ at the top of the compiled Markdown document.
 
 Exercises should be at the 3rd level of headers.
 
-Exercise solutions should be placed in the corresponding `nams.solutions.<notebook_name_without_extension>`
-Python submodule.
-
 For exercises that yield a plot, allow the exercise cell to be executed.
 
 For exercises that modify an object that is used later, allow the exercise cell to be executed.
@@ -40,6 +37,9 @@ For exercises that are implementation-oriented, and do not affect notebook state
 it is recommended that the execution be commented out to save on execution time.
 
 ### Solutions
+
+Exercise solutions should be placed in the corresponding `nams.solutions.<notebook_name_without_extension>`
+Python submodule.
 
 Code solutions should always be present at the bottom of the notebook.
 
