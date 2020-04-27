@@ -27,6 +27,8 @@ nav:
     - "Chapter 3: Graph Visualization": introduction/viz.ipynb
   - "Section 2: Algorithms":
     - "Chapter 4: Hubs": algorithms/hubs.ipynb
+  - "Development":
+    - "Style Guide": devdocs/style.md
 
 plugins:
   - search
