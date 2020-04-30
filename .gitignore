@@ -15,6 +15,7 @@ custom/__pycache__/*
 .DS_Store
 *.md.tmp
 */.ipynb_checkpoints/*
+.vscode/*
 
 # Created by https://www.gitignore.io/api/python
 # Edit at https://www.gitignore.io/?templates=python
