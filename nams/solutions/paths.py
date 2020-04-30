@@ -1,4 +1,6 @@
 import networkx as nx
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 
 def bfs_algorithm():
@@ -112,3 +114,15 @@ def plot_path_with_neighbors(G, n1, n2):
             colors.append("red")
 
     nx.draw(G.subgraph(nodes), with_labels=False, node_color=colors)
+
+    
+    def plot_degree_betweenness(G):
+    bc = pd.Series(nx.betweenness_centrality(G))
+    dc = pd.Series(nx.degree_centrality(G))
+    
+    df = pd.DataFrame(dict(bc=bc, dc=dc))
+    ax = df.plot(x="dc", y="bc", kind="scatter")
+    ax.set_ylabel("Betweenness\nCentrality")
+    ax.set_xlabel("Degree Centrality")
+    sns.despine()
+    
