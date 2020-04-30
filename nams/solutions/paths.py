@@ -1,10 +1,10 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 import seaborn as sns
+import pandas as pd
 
 
 def bfs_algorithm():
-
     text = """
 How does the breadth-first search work?
 It essentially is as follows:
@@ -115,14 +115,13 @@ def plot_path_with_neighbors(G, n1, n2):
 
     nx.draw(G.subgraph(nodes), with_labels=False, node_color=colors)
 
-    
-    def plot_degree_betweenness(G):
+
+def plot_degree_betweenness(G):
     bc = pd.Series(nx.betweenness_centrality(G))
     dc = pd.Series(nx.degree_centrality(G))
-    
+
     df = pd.DataFrame(dict(bc=bc, dc=dc))
     ax = df.plot(x="dc", y="bc", kind="scatter")
     ax.set_ylabel("Betweenness\nCentrality")
     ax.set_xlabel("Degree Centrality")
     sns.despine()
-    
