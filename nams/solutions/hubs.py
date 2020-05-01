@@ -17,11 +17,14 @@ def rank_ordered_neighbors(G):
 
 
 def rank_ordered_neighbors_original(G):
+    """Original implementation of rank-ordered number of neighbors."""
     return sorted(G.nodes(), key=lambda x: len(list(G.neighbors(x))), reverse=True)
 
 
 def rank_ordered_neighbors_generator(G):
     """
+    Rank-ordered generator of neighbors.
+
     Contributed by @dgerlanc.
 
     Ref: https://github.com/ericmjl/Network-Analysis-Made-Simple/issues/75
@@ -31,6 +34,7 @@ def rank_ordered_neighbors_generator(G):
 
 
 def ecdf_degree_centrality(G):
+    """ECDF of degree centrality."""
     x, y = ecdf(list(nx.degree_centrality(G).values()))
     plt.scatter(x, y)
     plt.xlabel("degree centrality")
@@ -38,6 +42,7 @@ def ecdf_degree_centrality(G):
 
 
 def ecdf_degree(G):
+    """ECDF of degree."""
     num_neighbors = [len(list(G.neighbors(n))) for n in G.nodes()]
     x, y = ecdf(num_neighbors)
     plt.scatter(x, y)
@@ -46,6 +51,7 @@ def ecdf_degree(G):
 
 
 def num_possible_neighbors():
+    """Answer to the number of possible neighbors for a node."""
     return r"""
 The number of possible neighbors can either be defined as:
 
@@ -59,11 +65,13 @@ If defined as (2), $N$ is equal to $K$.
 
 
 def circos_plot(G):
+    """Draw a Circos Plot of the graph."""
     c = CircosPlot(G, node_order="order", node_color="order")
     c.draw()
 
 
 def visual_insights():
+    """Visual insights from the Circos Plot."""
     return """
 We see that most edges are "local" with nodes
 that are proximal in order.
@@ -78,6 +86,7 @@ are also the ones that have edges that cross the circos plot.
 
 
 def dc_node_order(G):
+    """Comparison of degree centrality by maximum difference in node order."""
     import matplotlib.pyplot as plt
     import pandas as pd
     import networkx as nx
