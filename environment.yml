@@ -25,6 +25,7 @@ dependencies:
 - pyprojroot
 - isort
 - black
+- pyjanitor
 - pip:
   - mkdocs
   - mkdocs-material
