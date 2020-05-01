@@ -5,6 +5,9 @@ import seaborn as sns
 
 
 def bfs_algorithm():
+    """
+    How to design a BFS algorithm.
+    """
     text = """
 How does the breadth-first search work?
 It essentially is as follows:
@@ -99,6 +102,7 @@ def path_exists_deque(node1, node2, G):
 
 
 def plot_path_with_neighbors(G, n1, n2):
+    """Plot path while also including neighbors of nodes along path."""
     path = nx.shortest_path(G, n1, n2)
 
     nodes = [*path]
@@ -117,6 +121,7 @@ def plot_path_with_neighbors(G, n1, n2):
 
 
 def plot_degree_betweenness(G):
+    """Plot scatterplot between degree and betweenness centrality."""
     bc = pd.Series(nx.betweenness_centrality(G))
     dc = pd.Series(nx.degree_centrality(G))
 
