@@ -1,3 +1,9 @@
+from itertools import combinations
+import networkx as nx
+from itertools import combinations
+from nxviz import CircosPlot
+
+
 def triangle_finding_strategies():
     ans = """
 One way would be to take one node, and look at its neighbors.
@@ -12,9 +18,6 @@ then the path we traced traces out the nodes in a triangle.
     print(ans)
 
 
-from itertools import combinations
-
-
 def in_triangle(G, node):
     """
     Return whether a given node is present in a triangle relationship.
@@ -23,9 +26,6 @@ def in_triangle(G, node):
         if G.has_edge(nbr1, nbr2):
             return True
     return False
-
-
-import networkx as nx
 
 
 def get_triangle_neighbors(G, node) -> set:
@@ -92,9 +92,6 @@ def size_k_maximal_cliques(G, k):
             yield clique
 
 
-from itertools import combinations
-
-
 def find_k_cliques(G, k):
     for clique in nx.find_cliques(G):
         if len(clique) >= k:
@@ -118,9 +115,6 @@ def label_connected_component_subgraphs(G):
         for n in nodeset:
             G.nodes[n]["subgraph"] = i
     return G
-
-
-from nxviz import CircosPlot
 
 
 def plot_cc_subgraph(G):
