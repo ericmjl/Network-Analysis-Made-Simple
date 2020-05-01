@@ -1,7 +1,7 @@
-import networkx as nx
 import matplotlib.pyplot as plt
-import seaborn as sns
+import networkx as nx
 import pandas as pd
+import seaborn as sns
 
 
 def bfs_algorithm():

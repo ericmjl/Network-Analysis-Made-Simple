@@ -1,10 +1,13 @@
 from itertools import combinations
+
 import networkx as nx
-from itertools import combinations
 from nxviz import CircosPlot
 
 
 def triangle_finding_strategies():
+    """
+    How to find triangles.
+    """
     ans = """
 One way would be to take one node, and look at its neighbors.
 If its neighbors are also connected to one another,
@@ -29,6 +32,9 @@ def in_triangle(G, node):
 
 
 def get_triangle_neighbors(G, node) -> set:
+    """
+    Return neighbors involved in triangle relationship with node.
+    """
     neighbors1 = set(G.neighbors(node))
     triangle_nodes = set()
     for nbr1, nbr2 in combinations(neighbors1, 2):
@@ -39,12 +45,18 @@ def get_triangle_neighbors(G, node) -> set:
 
 
 def plot_triangle_relations(G, node):
+    """
+    Plot all triangle relationships for a given node.
+    """
     triangle_nbrs = get_triangle_neighbors(G, node)
     triangle_nbrs.add(node)
     nx.draw(G.subgraph(triangle_nbrs), with_labels=True)
 
 
 def triadic_closure_algorithm():
+    """
+    How to do triadic closure.
+    """
     ans = """
 I would suggest the following strategy:
 
@@ -65,6 +77,9 @@ If not, then we have another triadic closure to make.
 
 
 def get_open_triangles_neighbors(G, node) -> set:
+    """
+    Return neighbors involved in open triangle relationships with a node.
+    """
     open_triangle_nodes = set()
     neighbors = list(G.neighbors(node))
 
@@ -77,22 +92,34 @@ def get_open_triangles_neighbors(G, node) -> set:
 
 
 def plot_open_triangle_relations(G, node):
+    """
+    Plot open triangle relationships for a given node.
+    """
     open_triangle_nbrs = get_open_triangles_neighbors(G, node)
     open_triangle_nbrs.add(node)
     nx.draw(G.subgraph(open_triangle_nbrs), with_labels=True)
 
 
 def simplest_clique():
+    """
+    Answer to "what is the simplest clique".
+    """
     print("The simplest clique is an edge.")
 
 
 def size_k_maximal_cliques(G, k):
+    """
+    Return all size-k maximal cliques.
+    """
     for clique in nx.find_cliques(G):
         if len(clique) == k:
             yield clique
 
 
 def find_k_cliques(G, k):
+    """
+    Find all cliques of size k.
+    """
     for clique in nx.find_cliques(G):
         if len(clique) >= k:
             for nodeset in combinations(clique, k):
@@ -100,6 +127,9 @@ def find_k_cliques(G, k):
 
 
 def visual_insights():
+    """
+    Answer to visual insights exercise.
+    """
     ans = """
 We might hypothesize that there are 3,
 maybe 4 different "communities" of nodes
@@ -110,6 +140,7 @@ i.e. there is no path between them.
 
 
 def label_connected_component_subgraphs(G):
+    """Label all connected component subgraphs."""
     G = G.copy()
     for i, nodeset in enumerate(nx.connected_components(G)):
         for n in nodeset:
@@ -118,5 +149,6 @@ def label_connected_component_subgraphs(G):
 
 
 def plot_cc_subgraph(G):
+    """Plot all connected component subgraphs."""
     c = CircosPlot(G, node_color="subgraph", node_order="subgraph")
     c.draw()
