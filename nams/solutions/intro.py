@@ -4,6 +4,7 @@ Solutions to Intro Chapter.
 
 
 def node_metadata(G):
+    """Counts of students of each gender."""
     from collections import Counter
 
     mf_counts = Counter([d["gender"] for n, d in G.nodes(data=True)])
@@ -11,12 +12,14 @@ def node_metadata(G):
 
 
 def edge_metadata(G):
+    """Maximum number of times that a student rated another student."""
     counts = [d["count"] for n1, n2, d in G.edges(data=True)]
     maxcount = max(counts)
     return maxcount
 
 
 def adding_students(G):
+    """How to nodes and edges to a graph."""
     G = G.copy()
     G.add_node(30, gender="male")
     G.add_node(31, gender="female")
@@ -30,6 +33,7 @@ def adding_students(G):
 
 
 def unrequitted_friendships_v1(G):
+    """Answer to unrequitted friendships problem."""
     unrequitted_friendships = []
     for n1, n2 in G.edges():
         if not G.has_edge(n2, n1):
@@ -38,12 +42,12 @@ def unrequitted_friendships_v1(G):
 
 
 def unrequitted_friendships_v2(G):
-    """Answer to unrequitted friendships problem. By @schwanne."""
+    """Alternative answer to unrequitted friendships problem. By @schwanne."""
     return len([(n1, n2) for n1, n2 in G.edges() if not G.has_edge(n2, n1)])
 
 
 def unrequitted_friendships_v3(G):
-    """Asnswer to unrequitted friendships problem. By @end0."""
+    """Alternative answer to unrequitted friendships problem. By @end0."""
     links = ((n1, n2) for n1, n2, d in G.edges(data=True))
     reverse_links = ((n2, n1) for n1, n2, d in G.edges(data=True))
 

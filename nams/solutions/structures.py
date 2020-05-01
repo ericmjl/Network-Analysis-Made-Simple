@@ -1,3 +1,5 @@
+"""Solutions to Structures chapter."""
+
 from itertools import combinations
 
 import networkx as nx

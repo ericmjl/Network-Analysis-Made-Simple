@@ -1,3 +1,5 @@
+"""Solutions to Hubs chapter."""
+
 import matplotlib.pyplot as plt
 import networkx as nx
 import pandas as pd
@@ -15,9 +17,7 @@ def rank_ordered_neighbors(G):
 
 
 def rank_ordered_neighbors_original(G):
-    return sorted(
-        G.nodes(), key=lambda x: len(list(G.neighbors(x))), reverse=True
-    )
+    return sorted(G.nodes(), key=lambda x: len(list(G.neighbors(x))), reverse=True)
 
 
 def rank_ordered_neighbors_generator(G):
