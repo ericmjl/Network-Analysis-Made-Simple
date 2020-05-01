@@ -28,6 +28,7 @@ nav:
   - "Section 2: Algorithms":
     - "Chapter 4: Hubs": algorithms/hubs.ipynb
     - "Chapter 5: Paths": algorithms/paths.ipynb
+    - "Chapter 6: Structures": algorithms/structures.ipynb
   - "Development":
     - "Style Guide": devdocs/style.md
 
