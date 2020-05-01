@@ -1,4 +1,5 @@
 site_name: Network Analysis Made Simple
+site_url: http://nams.ericmjl.com/
 
 theme:
   name: 'material'
@@ -31,6 +32,11 @@ nav:
     - "Chapter 6: Structures": algorithms/structures.ipynb
   - "Development":
     - "Style Guide": devdocs/style.md
+  - Solutions:
+    - NetworkX API: solutions/intro.md
+    - Hubs: solutions/hubs.md
+    - Paths: solutions/paths.md
+    - Structures: solutions/structures.md
 
 plugins:
   - search
@@ -39,6 +45,14 @@ plugins:
       write_markdown: true
       allow_errors: true
       timeout: 1200
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          rendering:
+            show_source: true
+      watch:
+        - nams/
 
 # Taken from here: https://squidfunk.github.io/mkdocs-material/extensions/codehilite/
 markdown_extensions:
@@ -53,6 +67,7 @@ extra_javascript:
 
 extra_css:
   - css/nb_mods.css
+  - css/apidocs.css
 
 repo_name: 'ericmjl/Network-Analysis-Made-Simple'
 repo_url: 'https://github.com/ericmjl/Network-Analysis-Made-Simple'
