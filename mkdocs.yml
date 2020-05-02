@@ -31,7 +31,8 @@ nav:
       - "Chapter 5: Paths": algorithms/paths.ipynb
       - "Chapter 6: Structures": algorithms/structures.ipynb
   - "Section 3: Practical Matters":
-      - "Chapter 7: Graph IO": practical/io.ipynb
+      - "Chapter 7: Graph I/O": practical/io.ipynb
+      - "Chapter 8: Testing": practical/testing.md
   - "Development":
       - "Style Guide": devdocs/style.md
 
