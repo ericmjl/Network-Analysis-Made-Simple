@@ -2,12 +2,12 @@ site_name: Network Analysis Made Simple
 site_url: http://nams.ericmjl.com/
 
 theme:
-  name: 'material'
+  name: "material"
   palette:
-    primary: 'indigo'
-    accent: 'indigo'
+    primary: "indigo"
+    accent: "indigo"
   icon:
-    logo: 'fontawesome/solid/book'
+    logo: "fontawesome/solid/book"
   features:
     - instant
     - tabs
@@ -17,21 +17,23 @@ theme:
 # in which pages show up.
 nav:
   - Welcome:
-    - Welcome: index.md
+      - Welcome: index.md
   - Preface:
-    - Get Setup: preface/setup.md
-    - Prerequisites: preface/prereqs.ipynb
-    - Learning Goals: preface/goals.md
+      - Get Setup: preface/setup.md
+      - Prerequisites: preface/prereqs.ipynb
+      - Learning Goals: preface/goals.md
   - "Section 1: Introduction":
-    - "Chapter 1: Introduction to Graphs": introduction/graphs.md
-    - "Chapter 2: The NetworkX API": introduction/networkx-intro.ipynb
-    - "Chapter 3: Graph Visualization": introduction/viz.ipynb
+      - "Chapter 1: Introduction to Graphs": introduction/graphs.md
+      - "Chapter 2: The NetworkX API": introduction/networkx-intro.ipynb
+      - "Chapter 3: Graph Visualization": introduction/viz.ipynb
   - "Section 2: Algorithms":
-    - "Chapter 4: Hubs": algorithms/hubs.ipynb
-    - "Chapter 5: Paths": algorithms/paths.ipynb
-    - "Chapter 6: Structures": algorithms/structures.ipynb
+      - "Chapter 4: Hubs": algorithms/hubs.ipynb
+      - "Chapter 5: Paths": algorithms/paths.ipynb
+      - "Chapter 6: Structures": algorithms/structures.ipynb
+  - "Section 3: Practical Matters":
+      - "Chapter 7: Graph IO": practical/io.ipynb
   - "Development":
-    - "Style Guide": devdocs/style.md
+      - "Style Guide": devdocs/style.md
 
 plugins:
   - search
@@ -44,6 +46,7 @@ plugins:
 # Taken from here: https://squidfunk.github.io/mkdocs-material/extensions/codehilite/
 markdown_extensions:
   - codehilite
+  - admonition
   - pymdownx.arithmatex
   - pymdownx.details
   - pymdownx.superfences
@@ -56,14 +59,14 @@ extra_css:
   - css/nb_mods.css
   - css/apidocs.css
 
-repo_name: 'ericmjl/Network-Analysis-Made-Simple'
-repo_url: 'https://github.com/ericmjl/Network-Analysis-Made-Simple'
+repo_name: "ericmjl/Network-Analysis-Made-Simple"
+repo_url: "https://github.com/ericmjl/Network-Analysis-Made-Simple"
 
 extra:
   social:
-    - icon: 'fontawesome/brands/github'
-      link: 'https://github.com/ericmjl'
-    - icon: 'fontawesome/brands/twitter'
-      link: 'https://twitter.com/ericmjl'
-    - icon: 'fontawesome/brands/linkedin'
-      link: 'https://linkedin.com/in/ericmjl'
+    - icon: "fontawesome/brands/github"
+      link: "https://github.com/ericmjl"
+    - icon: "fontawesome/brands/twitter"
+      link: "https://twitter.com/ericmjl"
+    - icon: "fontawesome/brands/linkedin"
+      link: "https://linkedin.com/in/ericmjl"
