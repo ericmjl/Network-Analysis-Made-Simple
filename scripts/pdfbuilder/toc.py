@@ -1,3 +1,8 @@
+"""
+Attempt 1 (2 May 2020) at building an automatic
+PDF builder for NAMS hybrid Markdown and Jupyter files
+"""
+
 import yaml
 from pyprojroot import here
 
@@ -37,5 +42,9 @@ def convert_file(fname):
     except KeyError:
         raise KeyError(f"{fname} has unsupported suffix `{suffix}`!")
 
-
-convert_file("hello.world")
+# TODO:
+# - execute Jupyter nbconvert to convert notebooks to Markdown with outputs
+# - inject titles into individual Markdown files
+# - concatenate Markdown files into a master file
+# - generate "custom" Markdown based on inputted "name", and add signature
+# - compile Markdown files into a single PDF.
