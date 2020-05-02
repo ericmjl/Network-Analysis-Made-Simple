@@ -28,7 +28,7 @@ you can support the creators in the following ways:
 and helps raise the profile of the book.
 1. Share it with your colleagues! It also costs you nothing,
 and helps share _the good stuff_ with those you think might benefit from it.
-1. Take the official companion course on DataCamp!
+1. Take the official companion courses and projects on DataCamp!
 It does cost some money, so we totally understand if you'd prefer not to.
 1. Support [Eric Ma on Patreon][patreon] with a monthly coffee pledge
 to keep him caffeinated,
