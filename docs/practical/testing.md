@@ -3,6 +3,12 @@
 By this point in the book, you should have observed
 that we have written a number of _tests_ for our data.
 
+## Why test?
+
+### If you like it, put a ring on it...
+
+...and if you rely on it, test it.
+
 I am personally a proponent of writing tests for our data
 because as data scientists,
 the fields of our data, and their correct values,
