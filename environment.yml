@@ -1,34 +1,34 @@
-name: nams  # Network Analysis Made Simple
+name: nams # Network Analysis Made Simple
 channels:
-- defaults
-- conda-forge
-- ericmjl
+  - defaults
+  - conda-forge
+  - ericmjl
 dependencies:
-- python=3.7
-- matplotlib
-- networkx
-- scipy
-- numpy
-- nxviz
-- hiveplot
-- jupyter
-- jupyterlab
-- ipykernel
-- pandas
-- rise
-- python-louvain
-- tqdm
-- ffmpeg
-- nbstripout
-- pygments
-- pip
-- pyprojroot
-- isort
-- black
-- pyjanitor
-- pip:
-  - mkdocs
-  - mkdocs-material
-  - pymdown-extensions
-  - mknotebooks
-  - mkdocstrings
+  - python=3.7
+  - matplotlib
+  - networkx
+  - scipy
+  - numpy
+  - nxviz
+  - hiveplot
+  - jupyter
+  - jupyterlab
+  - ipykernel
+  - pandas
+  - rise
+  - python-louvain
+  - tqdm
+  - ffmpeg
+  - nbstripout
+  - pygments
+  - pip
+  - pyprojroot
+  - isort
+  - black
+  - pyjanitor
+  - pip:
+      - mkdocs
+      - mkdocs-material
+      - pymdown-extensions
+      - mknotebooks
+      - mkdocstrings
