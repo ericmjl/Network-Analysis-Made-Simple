@@ -23,9 +23,11 @@ for navitems in nav:
         else:
             print(items)
 
+import nbformat
 
-def _convert_notebook():
-    pass
+
+def _convert_notebook(filepath):
+    """Convert notebook into a Markdown file in memory."""
 
 
 def _convert_markdown():
@@ -41,6 +43,7 @@ def convert_file(fname):
         converter_func = suffix_converter[suffix]
     except KeyError:
         raise KeyError(f"{fname} has unsupported suffix `{suffix}`!")
+
 
 # TODO:
 # - execute Jupyter nbconvert to convert notebooks to Markdown with outputs

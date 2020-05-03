@@ -20,16 +20,16 @@ nav:
       - Welcome: index.md
   - Preface:
       - Get Setup: preface/setup.md
-      # - Prerequisites: preface/prereqs.ipynb
+      - Prerequisites: preface/prereqs.ipynb
       - Learning Goals: preface/goals.md
   - "Section 1: Introduction":
       - "Chapter 1: Introduction to Graphs": introduction/graphs.md
-      # - "Chapter 2: The NetworkX API": introduction/networkx-intro.ipynb
-      # - "Chapter 3: Graph Visualization": introduction/viz.ipynb
-  # - "Section 2: Algorithms":
-  #     - "Chapter 4: Hubs": algorithms/hubs.ipynb
-  #     - "Chapter 5: Paths": algorithms/paths.ipynb
-  #     - "Chapter 6: Structures": algorithms/structures.ipynb
+      - "Chapter 2: The NetworkX API": introduction/networkx-intro.ipynb
+      - "Chapter 3: Graph Visualization": introduction/viz.ipynb
+  - "Section 2: Algorithms":
+      - "Chapter 4: Hubs": algorithms/hubs.ipynb
+      - "Chapter 5: Paths": algorithms/paths.ipynb
+      - "Chapter 6: Structures": algorithms/structures.ipynb
   - "Section 3: Practical Matters":
       - "Chapter 7: Graph I/O": practical/io.ipynb
       - "Chapter 8: Testing": practical/testing.md

@@ -1,5 +1,3 @@
-# Learning Goals
-
 My learning goals for you with this book
 can be split into the technical and the intellectual.
 

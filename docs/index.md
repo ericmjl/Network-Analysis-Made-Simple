@@ -1,5 +1,3 @@
-# Network Analysis Made Simple
-
 Hey, thanks for picking up this book!
 
 Network Analysis Made Simple is a collection of Jupyter notebooks

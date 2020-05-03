@@ -1,5 +1,3 @@
-# Style Guide
-
 This is the style guide for writing notebooks and markdown files for the book.
 
 Intended as a guide when there is ambiguity in how to format something.

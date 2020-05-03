@@ -26,6 +26,7 @@ dependencies:
   - isort
   - black
   - pyjanitor
+  - pre-commit
   - pip:
       - mkdocs
       - mkdocs-material
