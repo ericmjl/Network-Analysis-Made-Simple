@@ -33,10 +33,10 @@ nav:
   - "Section 3: Practical Matters":
       - "Chapter 7: Graph I/O": practical/io.ipynb
       - "Chapter 8: Testing": practical/testing.md
-  # - "Section 4: Advanced Topics":
-  #     - "Bipartite Graphs": advanced/bipartite.ipynb
-  #     - "Linear Algebra": advanced/linear-algebra.ipynb
-  #     - "Statistical Inference": advanced/statistical-inference.ipynb
+  - "Section 4: Advanced Topics":
+      - "Chapter 9: Bipartite Graphs": advanced/bipartite.ipynb
+      - "Chapter 10: Linear Algebra": advanced/linear-algebra.ipynb
+      - "Chapter 11: Statistical Inference": advanced/statistical-inference.ipynb
   - Further Learning: learn-more.md
   - "Development":
       - "Style Guide": devdocs/style.md

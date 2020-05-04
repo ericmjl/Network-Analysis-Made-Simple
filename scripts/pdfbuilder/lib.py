@@ -127,3 +127,24 @@ def to_pdf(nb: NotebookNode, kernel: str, fpath: Path) -> Tuple[Any, Dict]:
 
     with open(fpath, "wb") as f:
         f.write(body)
+
+
+from typing import Optional, List
+
+
+def exclude(title_files: List, titles: List = [], files: List = []):
+    """
+    Exclude both titles and files from the title_files list.
+
+    Assumes that titles are index 0,
+    and files are index 1,
+    in each of the tuples in title_files.
+
+    Only exact matches are used.
+    """
+    filtered = []
+    for title, fname in title_files:
+        if title in titles or fname in files:
+            continue
+        filtered.append((title, fname))
+    return filtered

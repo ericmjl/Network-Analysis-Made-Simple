@@ -11,7 +11,7 @@ Signing up also supports me financially
 (that's my disclaimer),
 though the financial support also helps me make more
 programmer-oriented data science content for you!
-You can sign up at [DataCamp.com](https://www.datacamp.com/)
+You can sign up at [DataCamp.com](https://www.datacamp.com/?tap_a=5644-dce66f&tap_s=883155-2f8036&utm_medium=affiliate&utm_source=ericma1)
 
 Here's an overview of what's available
 

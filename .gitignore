@@ -9,7 +9,7 @@ datasets/divvy_2013/*
 datasets/amazon_reviews/*.json
 network
 __pycache__/*
-*.ipynb_checkpoints/*
+scripts/pdfbuilder/.ipynb_checkpoints/*
 *.pyc
 custom/__pycache__/*
 .DS_Store
@@ -126,3 +126,6 @@ dmypy.json
 .pyre/
 
 # End of https://www.gitignore.io/api/python
+
+*.ipynb_checkpoints/*
+*.pdf
