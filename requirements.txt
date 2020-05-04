@@ -5,6 +5,6 @@ hiveplot==2017.10.17.21.7
 nxviz==0.6.1
 numpy==1.18.4
 jupyter==1.0.0
-scipy==1.3.1
+scipy==1.4.1
 python-louvain==0.13
 tqdm==4.35.0
