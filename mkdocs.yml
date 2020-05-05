@@ -37,6 +37,9 @@ nav:
       - "Chapter 9: Bipartite Graphs": advanced/bipartite.ipynb
       - "Chapter 10: Linear Algebra": advanced/linear-algebra.ipynb
       - "Chapter 11: Statistical Inference": advanced/statistical-inference.ipynb
+  - "Section 5: Case Studies":
+      - "Chapter 12: Game of Thrones": casestudies/gameofthrones.ipynb
+      - "Chapter 13: Airport Network": casestudies/airport.ipynb
   - Further Learning: learn-more.md
   - "Development":
       - "Style Guide": devdocs/style.md
