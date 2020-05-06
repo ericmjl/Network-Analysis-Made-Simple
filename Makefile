@@ -40,7 +40,7 @@ docs:
 
 serve:
 	mkdocs build
-	python -m http.server 8020 -d site/
+	python -m http.server 8149 -d site/
 
 format:
 	isort -rc -y .
