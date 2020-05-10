@@ -39,18 +39,18 @@ wrap the answer in a triple quote string,
 use the `markdown` package to parse it into HTML,
 and then use IPython's HTML display facility to show the answer
 in beautiful HTML.
+A convenience function called `render_html` is provided.
 Here's an example:
 
 ```python
+from nams.functions import render_html
+
 def bipartite_degree_centrality_denominator():
     ans = """
-The total number of neighbors that a node can _possibly_ have
-is the number of nodes in the other partition.
-This comes naturally from the definition of a bipartite graph,
-where nodes can _only_ be connected to nodes in the other partition.
+Some answer goes here!
+Written in **Markdown**.
 """
-    md = Markdown()
-    return md.convert(ans)
+    return render_html(ans)
 ```
 
 !!! warning "Indentation is super important!"
