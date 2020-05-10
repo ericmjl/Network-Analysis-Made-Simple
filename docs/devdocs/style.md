@@ -34,6 +34,29 @@ For exercises that modify an object that is used later, allow the exercise cell 
 For exercises that are implementation-oriented, and do not affect notebook state,
 it is recommended that the execution be commented out to save on execution time.
 
+For exercises that require answering a question,
+wrap the answer in a triple quote string,
+use the `markdown` package to parse it into HTML,
+and then use IPython's HTML display facility to show the answer
+in beautiful HTML.
+Here's an example:
+
+```python
+def bipartite_degree_centrality_denominator():
+    ans = """
+The total number of neighbors that a node can _possibly_ have
+is the number of nodes in the other partition.
+This comes naturally from the definition of a bipartite graph,
+where nodes can _only_ be connected to nodes in the other partition.
+"""
+    md = Markdown()
+    return md.convert(ans)
+```
+
+!!! warning "Indentation is super important!"
+    Left indentation on the answer string cannot be present,
+    otherwise the answer will not render correctly in HTML form!
+
 ### Solutions
 
 Exercise solutions should be placed in the corresponding `nams.solutions.<notebook_name_without_extension>`
