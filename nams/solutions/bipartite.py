@@ -1,7 +1,6 @@
 import networkx as nx
 import pandas as pd
-from IPython.display import HTML
-from markdown import Markdown
+from nams.functions import render_html
 
 
 def extract_partition_nodes(G: nx.Graph, partition: str):
@@ -63,8 +62,7 @@ is the number of nodes in the other partition.
 This comes naturally from the definition of a bipartite graph,
 where nodes can _only_ be connected to nodes in the other partition.
 """
-    md = Markdown()
-    return HTML(md.convert(ans))
+    return render_html(ans)
 
 
 def find_most_crime_person(G, person_nodes):
