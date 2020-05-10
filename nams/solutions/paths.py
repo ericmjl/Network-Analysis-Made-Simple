@@ -4,13 +4,14 @@ import matplotlib.pyplot as plt
 import networkx as nx
 import pandas as pd
 import seaborn as sns
+from nams.functions import render_html
 
 
 def bfs_algorithm():
     """
     How to design a BFS algorithm.
     """
-    text = """
+    ans = """
 How does the breadth-first search work?
 It essentially is as follows:
 
@@ -24,7 +25,7 @@ It essentially is as follows:
     3. If destination node is present, end. <!--Credit: @cavaunpeu for finding bug in pseudocode.-->
     4. If destination node is not present, continue.
 """
-    return print(text)
+    return render_html(ans)
 
 
 def path_exists(node1, node2, G):
