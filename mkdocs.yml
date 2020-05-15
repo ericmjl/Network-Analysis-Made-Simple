@@ -35,8 +35,8 @@ nav:
       - "Chapter 8: Testing": practical/testing.md
   - "Section 4: Advanced Topics":
       - "Chapter 9: Bipartite Graphs": advanced/bipartite.ipynb
-      - "Chapter 10: Linear Algebra": advanced/linear-algebra.ipynb
-      - "Chapter 11: Statistical Inference": advanced/statistical-inference.ipynb
+      - "Chapter 10: Linear Algebra": advanced/linalg.ipynb
+      - "Chapter 11: Statistical Inference": advanced/stats.ipynb
   - "Section 5: Case Studies":
       - "Chapter 12: Game of Thrones": casestudies/gameofthrones.ipynb
       - "Chapter 13: Airport Network": casestudies/airport.ipynb
