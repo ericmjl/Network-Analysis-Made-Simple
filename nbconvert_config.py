@@ -100,9 +100,7 @@
 
 # List of preprocessors available by default, by name, namespace,  instance,
 # or type.
-c.Exporter.default_preprocessors = [
-    "nbconvert.preprocessors.ExecutePreprocessor"
-]
+c.Exporter.default_preprocessors = ["nbconvert.preprocessors.ExecutePreprocessor"]
 # 'nbconvert.preprocessors.coalesce_streams', 'nbconvert.preprocessors.SVG2PDFPreprocessor', 'nbconvert.preprocessors.CSSHTMLHeaderPreprocessor',
 # 'nbconvert.preprocessors.LatexPreprocessor', 'nbconvert.preprocessors.HighlightMagicsPreprocessor',
 # 'nbconvert.preprocessors.ExtractOutputPreprocessor'
