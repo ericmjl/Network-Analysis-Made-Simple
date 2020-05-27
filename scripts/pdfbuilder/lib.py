@@ -8,6 +8,7 @@ import yaml
 from pyprojroot import here
 from typing import Dict, List
 from pathlib import Path
+from pyprojroot import here
 
 
 def read_mkdocs() -> Dict:
@@ -36,7 +37,7 @@ def parse_navigation(nav: Dict, accumulator: List) -> List:
                 if isinstance(v, list):
                     parse_navigation(v, accumulator)
                 if isinstance(v, str):
-                    accumulator.append((k, v))
+                    accumulator.append((k.split(": ")[-1], v))
     return accumulator
 
 
@@ -54,6 +55,8 @@ def read_notebook(fpath: Path) -> NotebookNode:
     """Read notbook as a nbformat.notebooknode.NotebookNode."""
     with open(fpath, "r+") as f:
         nb = nbformat.reads(f.read(), as_version=4)
+    for cell in nb.cells:
+        sanitize_image_paths(cell, fpath)
     return nb
 
 
@@ -70,7 +73,7 @@ def compile_code_cells(title_fpaths: List, docroot: Path, insert_titles=True) ->
 
     :param title_fpaths: A list of 2-tuples returned from
     """
-    cells = []
+    cells = [md2nbcell("\pagebreak")]
     for title, file in title_fpaths:
         fpath = docroot / file
         if insert_titles:
@@ -83,8 +86,23 @@ def compile_code_cells(title_fpaths: List, docroot: Path, insert_titles=True) ->
             cells.append(cell)
         elif file.endswith(".ipynb"):
             nb = read_notebook(fpath)
-            cells.extend(nb.cells)
+            cells.extend([c for c in nb.cells if len(c["source"]) > 0])
+        cells.append(md2nbcell("\pagebreak"))
     return cells
+
+
+def sanitize_image_paths(cell, fpath: Path):
+    """
+    Sanitize the image path by replacing it with an absolute path.
+
+    `fpath` is a Pathlib object that contains a relative path of a notebook,
+    e.g. `/path/to/nams/.../docs/advanced/bipartite.ipynb`.
+    The parent/enclosing directory of fpath,
+    i.e. `/path/to/nams/.../docs/advanced/` is now used as the root directory
+    to replace all `./figures` with `/path/to/nams/.../docs/advanced/figures`.
+    """
+    nbdir = fpath.parent
+    cell["source"] = cell["source"].replace("./figures", str(nbdir / "figures"))
 
 
 def make_compiled_notebook(cells: List, title: str = None) -> NotebookNode:
@@ -112,6 +130,12 @@ def make_compiled_notebook(cells: List, title: str = None) -> NotebookNode:
 from typing import Tuple, Any
 
 
+def strip_execution_count(nb):
+    for cell in nb.cells:
+        if "execution_count" in cell:
+            cell["execution_count"] = None
+
+
 def to_pdf(nb: NotebookNode, kernel: str, fpath: Path) -> Tuple[Any, Dict]:
     """
     Compile final notebook into a single PDF while executing it.
@@ -122,6 +146,8 @@ def to_pdf(nb: NotebookNode, kernel: str, fpath: Path) -> Tuple[Any, Dict]:
     """
     ep = ExecutePreprocessor(timeout=600, kernel_name=kernel)
     ep.preprocess(nb)
+
+    strip_execution_count(nb)
     pdf_exporter = PDFExporter()
     body, resources = pdf_exporter.from_notebook_node(nb)
 
