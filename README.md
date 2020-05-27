@@ -83,7 +83,7 @@ Then, clone the repository locally.
 
 1. `$ cd /path/to/your/directory`
 1. Clone the repository to disk:
-    1. `$ git clone https://github.com/ericmjl/Network-Analysis-Made-Simple.git`
+    1. `$ git clone --depth 1 https://github.com/ericmjl/Network-Analysis-Made-Simple.git`
 1. `$ cd Network-Analysis-Made-Simple`
 
 
