@@ -28,13 +28,12 @@ def evol_betweenness(graphs):
 
     evol_df[list(set_of_char)].plot(figsize=(19,10))
 
-def most_important_node_in_partition(graph):
+def most_important_node_in_partition(graph, partition_dict):
     max_d = {}
     deg = nx.degree_centrality(graph)
-
-    for group in d:
+    for group in partition_dict:
         temp = 0
-        for character in d[group]:
+        for character in partition_dict[group]:
             if deg[character] > temp:
                 max_d[group] = character
                 temp = deg[character]
