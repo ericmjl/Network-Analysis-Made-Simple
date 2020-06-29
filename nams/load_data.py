@@ -196,3 +196,7 @@ def load_amazon_reviews():
         G.add_edge(d["reviewerID"], d["asin"])
 
     return G
+
+def load_game_of_thrones_data():
+    books = pd.read_csv(datasets / 'game_of_thrones_network/asoiaf.csv', index_col='id')
+    return books
