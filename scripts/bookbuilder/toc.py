@@ -3,6 +3,7 @@ Attempt 1 (2 May 2020) at building an automatic
 PDF builder for NAMS hybrid Markdown and Jupyter files
 """
 
+import nbformat
 import yaml
 from pyprojroot import here
 
@@ -22,8 +23,6 @@ for navitems in nav:
                 print(item)
         else:
             print(items)
-
-import nbformat
 
 
 def _convert_notebook(filepath):
