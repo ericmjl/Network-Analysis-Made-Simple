@@ -27,6 +27,7 @@ dependencies:
   - black
   - pyjanitor
   - pre-commit
+  - tabulate  # used for exporting dataframe as Markdown tables
   - pip:
       - mkdocs
       - mkdocs-material
