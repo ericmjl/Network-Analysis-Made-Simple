@@ -1,5 +1,3 @@
-# Preface
-
 Hey, thanks for picking up this e-Book.
 We had a ton of fun making the material,
 and we hope you have a ton of fun learning new things from it too.
