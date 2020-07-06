@@ -57,6 +57,17 @@ script:
   - jupyter nbconvert --config nbconvert_config.py --execute bonus-1-network-statistical-inference-instructor.ipynb
   - jupyter nbconvert --config nbconvert_config.py --execute bonus-3-matrices-instructor.ipynb
 
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  keep_history: false
+  on:
+    branch: jupyterbook
+  target_branch: leanpub
+
+
 after_success:
   - bash <(curl -s https://codecov.io/bash)
 
