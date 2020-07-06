@@ -46,17 +46,17 @@ script:
   # - |
   #   for nb in $(ls *-instructor.ipynb); do
   #       jupyter nbconvert --config nbconvert_config.py --execute $nb
-
   #   done
-  - jupyter nbconvert --config nbconvert_config.py --execute 2-networkx-basics-instructor.ipynb
-  - jupyter nbconvert --config nbconvert_config.py --execute 3-hubs-and-paths-instructor.ipynb
-  - jupyter nbconvert --config nbconvert_config.py --execute 4-cliques-triangles-structures-instructor.ipynb
-  - jupyter nbconvert --config nbconvert_config.py --execute 5-graph-input-output-instructor.ipynb
-  - jupyter nbconvert --config nbconvert_config.py --execute 6-bipartite-graphs-instructor.ipynb
-  - jupyter nbconvert --config nbconvert_config.py --execute 7-game-of-thrones-case-study-instructor.ipynb
-  - jupyter nbconvert --config nbconvert_config.py --execute bonus-1-network-statistical-inference-instructor.ipynb
-  - jupyter nbconvert --config nbconvert_config.py --execute bonus-3-matrices-instructor.ipynb
-
+  # - jupyter nbconvert --config nbconvert_config.py --execute 2-networkx-basics-instructor.ipynb
+  # - jupyter nbconvert --config nbconvert_config.py --execute 3-hubs-and-paths-instructor.ipynb
+  # - jupyter nbconvert --config nbconvert_config.py --execute 4-cliques-triangles-structures-instructor.ipynb
+  # - jupyter nbconvert --config nbconvert_config.py --execute 5-graph-input-output-instructor.ipynb
+  # - jupyter nbconvert --config nbconvert_config.py --execute 6-bipartite-graphs-instructor.ipynb
+  # - jupyter nbconvert --config nbconvert_config.py --execute 7-game-of-thrones-case-study-instructor.ipynb
+  # - jupyter nbconvert --config nbconvert_config.py --execute bonus-1-network-statistical-inference-instructor.ipynb
+  # - jupyter nbconvert --config nbconvert_config.py --execute bonus-3-matrices-instructor.ipynb
+  - jupyter nbconvert --to python scripts/bookbuilder/markua.ipynb
+  - python scripts/bookbuilder/markua.py
 
 deploy:
   provider: pages
@@ -65,6 +65,7 @@ deploy:
   keep_history: false
   on:
     branch: jupyterbook
+  local_dir: manuscript
   target_branch: leanpub
 
 
