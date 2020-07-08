@@ -32,7 +32,7 @@ nav:
       - "Chapter 6: Structures": algorithms/structures.ipynb
   - "Section 3: Practical Matters":
       - "Chapter 7: Graph I/O": practical/io.ipynb
-      - "Chapter 8: Testing": practical/testing.md
+      - "Chapter 8: Testing": practical/testing.ipynb
   - "Section 4: Advanced Topics":
       - "Chapter 9: Bipartite Graphs": advanced/bipartite.ipynb
       - "Chapter 10: Linear Algebra": advanced/linalg.ipynb

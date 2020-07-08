@@ -100,7 +100,7 @@ is the number of nodes in the other partition.
 This comes naturally from the definition of a bipartite graph,
 where nodes can _only_ be connected to nodes in the other partition.
 """
-    return render_html(ans)
+    return ans
 
 
 def find_most_crime_person(G, person_nodes):
