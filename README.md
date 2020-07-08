@@ -1,7 +1,5 @@
 # Network Analysis Made Simple
 
-![](./images/custom-logo.png)
-
 [![Build Status](https://travis-ci.org/ericmjl/Network-Analysis-Made-Simple.svg?branch=master)](https://travis-ci.org/ericmjl/Network-Analysis-Made-Simple)
 
 Welcome to the GitHub repository for Network Analysis Made Simple!
