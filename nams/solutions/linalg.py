@@ -1,6 +1,3 @@
-from nams.functions import render_html
-
-
 def adjacency_matrix_power():
     ans = """
 1. The diagonals equal to the degree of each node.
@@ -15,4 +12,4 @@ from itself back to itself,
 while for the middle nodes, there are 2 paths
 from itself back to itself!
 """
-    return render_html(ans)
+    return ans
