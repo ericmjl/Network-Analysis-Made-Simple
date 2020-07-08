@@ -45,6 +45,3 @@ serve:
 format:
 	isort -rc -y .
 	black -l 79 .
-	nbstripout docs/algorithms/*.ipynb
-	nbstripout docs/introduction/*.ipynb
-	nbstripout docs/preface/*.ipynb
