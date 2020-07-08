@@ -1,0 +1,83 @@
+site_name: Network Analysis Made Simple
+site_url: http://nams.ericmjl.com/
+
+theme:
+  name: "material"
+  palette:
+    primary: "indigo"
+    accent: "indigo"
+  icon:
+    logo: "fontawesome/solid/book"
+  features:
+    - instant
+    # - tabs
+  language: en
+
+# We customize the navigation by hand to control the order
+# in which pages show up.
+nav:
+  - Network Analysis Made Simple:
+      - Welcome: index.md
+  - Preface:
+      - Get Setup: preface/setup.md
+      - Prerequisites: preface/prereqs.ipynb
+      - Learning Goals: preface/goals.md
+  - "Section 1: Introduction":
+      - "Chapter 1: Introduction to Graphs": introduction/graphs.md
+      - "Chapter 2: The NetworkX API": introduction/networkx-intro.ipynb
+      - "Chapter 3: Graph Visualization": introduction/viz.ipynb
+  - "Section 2: Algorithms":
+      - "Chapter 4: Hubs": algorithms/hubs.ipynb
+      - "Chapter 5: Paths": algorithms/paths.ipynb
+      - "Chapter 6: Structures": algorithms/structures.ipynb
+  - "Section 3: Practical Matters":
+      - "Chapter 7: Graph I/O": practical/io.ipynb
+      - "Chapter 8: Testing": practical/testing.ipynb
+  - "Section 4: Advanced Topics":
+      - "Chapter 9: Bipartite Graphs": advanced/bipartite.ipynb
+      - "Chapter 10: Linear Algebra": advanced/linalg.ipynb
+      - "Chapter 11: Statistical Inference": advanced/stats.ipynb
+  - "Section 5: Case Studies":
+      - "Chapter 12: Game of Thrones": casestudies/gameofthrones.ipynb
+      - "Chapter 13: Airport Network": casestudies/airport.ipynb
+  - Further Learning: learn-more.md
+  - "Development":
+      - "Style Guide": devdocs/style.md
+
+plugins:
+  - search
+  - mknotebooks:
+      execute: true
+      write_markdown: true
+      allow_errors: true
+      timeout: 1200
+
+# Taken from here: https://squidfunk.github.io/mkdocs-material/extensions/codehilite/
+markdown_extensions:
+  - codehilite
+  - admonition
+  - pymdownx.tabbed
+  - pymdownx.arithmatex
+  - pymdownx.details
+  - pymdownx.superfences
+  - markdown.extensions.attr_list
+
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+  - https://hypothes.is/embed.js
+
+extra_css:
+  - css/nb_mods.css
+  - css/apidocs.css
+
+repo_name: "ericmjl/Network-Analysis-Made-Simple"
+repo_url: "https://github.com/ericmjl/Network-Analysis-Made-Simple"
+
+extra:
+  social:
+    - icon: "fontawesome/brands/github"
+      link: "https://github.com/ericmjl"
+    - icon: "fontawesome/brands/twitter"
+      link: "https://twitter.com/ericmjl"
+    - icon: "fontawesome/brands/linkedin"
+      link: "https://linkedin.com/in/ericmjl"
