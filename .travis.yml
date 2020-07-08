@@ -41,31 +41,32 @@ install:
   - python -m ipykernel install --user --name nams
 
 script:
-  # Your test script goes here
-  # - command -v jupyter
-  # - |
-  #   for nb in $(ls *-instructor.ipynb); do
-  #       jupyter nbconvert --config nbconvert_config.py --execute $nb
-  #   done
-  # - jupyter nbconvert --config nbconvert_config.py --execute 2-networkx-basics-instructor.ipynb
-  # - jupyter nbconvert --config nbconvert_config.py --execute 3-hubs-and-paths-instructor.ipynb
-  # - jupyter nbconvert --config nbconvert_config.py --execute 4-cliques-triangles-structures-instructor.ipynb
-  # - jupyter nbconvert --config nbconvert_config.py --execute 5-graph-input-output-instructor.ipynb
-  # - jupyter nbconvert --config nbconvert_config.py --execute 6-bipartite-graphs-instructor.ipynb
-  # - jupyter nbconvert --config nbconvert_config.py --execute 7-game-of-thrones-case-study-instructor.ipynb
-  # - jupyter nbconvert --config nbconvert_config.py --execute bonus-1-network-statistical-inference-instructor.ipynb
-  # - jupyter nbconvert --config nbconvert_config.py --execute bonus-3-matrices-instructor.ipynb
+  # Build LeanPub files
   - jupyter nbconvert --to python scripts/bookbuilder/markua.ipynb
   - python scripts/bookbuilder/markua.py
 
+  # Build official website
+  - mkdocs build
+
 deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
-  keep_history: false
-  on:
-    branch: jupyterbook
-  target_branch: leanpub
+  # Publish the LeanPub files
+  - provider: pages
+    skip_cleanup: true
+    github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+    keep_history: false
+    on:
+      branch: master
+    target_branch: leanpub
+
+  # Publish the official website
+  - provider: pages
+    skip_cleanup: true
+    github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+    keep_history: false
+    on:
+      branch: master
+    local_dir: site/
+    target_branch: gh-pages
 
 
 after_success:
