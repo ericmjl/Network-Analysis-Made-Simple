@@ -55,7 +55,7 @@ deploy:
     github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
     keep_history: false
     on:
-      branch: jupyterbook
+      branch: master
     target_branch: leanpub
 
   # Publish the official website
@@ -64,7 +64,7 @@ deploy:
     github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
     keep_history: false
     on:
-      branch: jupyterbook
+      branch: master
     local_dir: site/
     target_branch: gh-pages
 
