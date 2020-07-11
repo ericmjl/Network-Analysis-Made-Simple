@@ -1,7 +1,7 @@
 # Custom
 
 docs/introduction/.ipynb_checkpoints/*
-docs/*/.ipynb_checkpoints/**.csv
+docs/*/.ipynb_checkpoints/*
 *.edgelist
 twitter_higgs/*
 datasets/divvy_2013/*
