@@ -14,6 +14,7 @@ conda:
 	set -ex
 	conda env create -f environment.yml
 	conda activate nams
+    python setup.py develop
 	python checkenv.py
 
 venv:
@@ -29,7 +30,7 @@ venv:
 	virtualenv network
 	source network/bin/activate && pip install -r requirements.txt
 	echo "Run 'source network/bin/activate' to begin"
-
+    python setup.py develop
 	python checkenv.py
 
 check:

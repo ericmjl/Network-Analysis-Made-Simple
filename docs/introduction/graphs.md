@@ -1,6 +1,6 @@
 ## Introduction
 
-In our world, networks are an immensely useful _data modelling tool_ 
+In our world, networks are an immensely useful _data modelling tool_
 to model complex _relational_ problems.
 Building on top of a network-oriented data model,
 they have been put to great use in a wide variety of settings.
@@ -8,7 +8,7 @@ they have been put to great use in a wide variety of settings.
 ## A _formal_ definition of networks
 
 Before we explore examples of networks,
-I wanted to first give you a more formal definition
+we want to first give you a more formal definition
 of what networks are.
 The reason is that knowing a _formal_ definition
 helps us refine our application of networks.
@@ -42,7 +42,7 @@ while the "edges" are the lines between the shapes.
 Now that we have a proper definition of a graph,
 let's move on to explore examples of graphs.
 
-One example I am fond of, based on my background as a biologist,
+One example I (Eric Ma) am fond of, based on my background as a biologist,
 is a protein-protein interaction network.
 Here, the graph can be defined in the following way:
 
@@ -62,7 +62,7 @@ With Twitter, the graph can be defined in the following way:
 - edges/relationships are defined as "one user has decided to follow another".
 
 Now that you've seen the framework for defining a graph,
-I'd like to invite you to answer the following question:
+we'd like to invite you to answer the following question:
 **What examples of networks have _you_ seen before in your profession?**
 
 Go ahead and list it out.
@@ -100,7 +100,7 @@ In that way, the relationship is automatically bi-directional.
 
 ## Edges define the interesting part of a graph
 
-While in graduate school, I once sat in a seminar
+While in graduate school, I (Eric Ma) once sat in a seminar
 organized by one of the professors on my thesis committee.
 The speaker that day was John Quackenbush,
 a faculty member of the Harvard School of Public Health.

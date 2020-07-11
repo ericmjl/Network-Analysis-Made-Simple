@@ -1,19 +1,19 @@
-My learning goals for you with this book
+Our learning goals for you with this book
 can be split into the technical and the intellectual.
 
 ## Technical Takeaways
 
-Firstly, I would like to equip you to be familiar
+Firstly, we would like to equip you to be familiar
 with the NetworkX application programming interface (API).
 The reason for choosing NetworkX is because
 it is extremely beginner-friendly,
 and has an API that matches graph theory concepts very closely.
 
-Secondly, I would like to show you how you can visualize graph data
+Secondly, we would like to show you how you can visualize graph data
 in a fashion that doesn't involve showing mere hairballs.
 Throughout the book, you will see examples of what we call
 _rational graph visualizations_.
-I have developed a companion package, `nxviz`,
+One of our authors, Eric Ma, has developed a companion package, `nxviz`,
 that provides a declarative and convenient API
 (in other words an attempt at a "grammar")
 for graph visualization.
@@ -32,16 +32,16 @@ such as statistical inference and linear algebra.
 ## Intellectual Goals
 
 Beyond the technical takeaways,
-I hope to broaden how you think about data.
+we hope to broaden how you think about data.
 
-The first idea I hope to give you
+The first idea we hope to give you
 the ability to think about your data
 in terms of "relationships".
 As you will learn,
 relationships are what give rise to the interestingness of graphs.
 That's where _relational insights_ can come to fore.
 
-The second idea I hope to give you
+The second idea we hope to give you
 is the ability to "think on graphs".
 This comes with practice.
 Once you master it, though,

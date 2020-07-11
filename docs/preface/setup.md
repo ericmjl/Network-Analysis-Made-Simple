@@ -19,6 +19,16 @@ To go there, click on the following button:
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/ericmjl/Network-Analysis-Made-Simple/master)
 
+Once you're in there, do a final setup step,
+by opening up a terminal in the Jupyter session,
+and installing the custom package `nams` that we wrote,
+which contains data loaders and solutions.
+
+```bash
+# In the root directory of the repository
+python setup.py develop
+```
+
 ## `conda` environments
 
 We also recommend the use of `conda` environments!
@@ -53,6 +63,14 @@ Next, it activates the environment:
 
 ```bash
 conda activate nams
+```
+
+We have a custom module for the project, which is called `nams`,
+that you will have to install.
+
+```bash
+# In the root directory of the cloned repository
+python setup.py develop
 ```
 
 Finally, it runs a check on the environment
