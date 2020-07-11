@@ -200,3 +200,10 @@ def load_amazon_reviews():
 def load_game_of_thrones_data():
     books = pd.read_csv(datasets / 'game_of_thrones_network/asoiaf.csv', index_col='id')
     return books
+
+def load_airports_data():
+    pass_air_data = pd.read_csv(datasets / 'passengers.csv', index_col='id')
+    return pass_air_data
+
+def load_airports_GPS_data():
+    return pd.read_csv(datasets / 'GlobalAirportDatabase.txt', delimiter=':', header=None)
