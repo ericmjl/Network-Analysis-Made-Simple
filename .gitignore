@@ -2,7 +2,6 @@
 
 docs/introduction/.ipynb_checkpoints/*
 docs/*/.ipynb_checkpoints/*
-*.csv
 *.edgelist
 twitter_higgs/*
 datasets/divvy_2013/*
