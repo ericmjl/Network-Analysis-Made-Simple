@@ -206,4 +206,4 @@ def load_airports_data():
     return pass_air_data
 
 def load_airports_GPS_data():
-    return pd.read_csv('../../datasets/GlobalAirportDatabase.txt', delimiter=':', header=None)
+    return pd.read_csv(datasets / 'GlobalAirportDatabase.txt', delimiter=':', header=None)
