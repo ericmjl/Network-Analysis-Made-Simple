@@ -34,3 +34,4 @@ dependencies:
       - pymdown-extensions
       - mknotebooks
       - mkdocstrings
+      - git+http://github.com/ericmjl/Network-Analysis-Made-Simple@master
