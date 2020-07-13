@@ -11,7 +11,7 @@ tqdm==4.47.0
 mkdocs==1.1.2
 mkdocs-material==5.4.0
 pymdown-extensions==7.1
-mknotebooks
+mknotebooks==0.3.6
 ipykernel
 matplotlib==3.2.2
 networkx==2.4
