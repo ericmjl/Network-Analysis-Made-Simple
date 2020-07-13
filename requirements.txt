@@ -8,7 +8,7 @@ jupyter==1.0.0
 scipy==1.5.1
 python-louvain==0.14
 tqdm==4.47.0
-mkdocs
+mkdocs==1.1.2
 mkdocs-material
 pymdown-extensions
 mknotebooks
