@@ -10,7 +10,7 @@ python-louvain==0.14
 tqdm==4.47.0
 mkdocs==1.1.2
 mkdocs-material==5.4.0
-pymdown-extensions
+pymdown-extensions==7.1
 mknotebooks
 ipykernel
 matplotlib==3.2.2
