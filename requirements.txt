@@ -1,4 +1,4 @@
-matplotlib==3.2.2
+matplotlib==3.3.0
 networkx==2.4
 pandas==1.0.5
 hiveplot==2017.10.17.21.7
@@ -13,7 +13,7 @@ mkdocs-material==5.4.0
 pymdown-extensions==7.1
 mknotebooks==0.3.6
 ipykernel==5.3.2
-matplotlib==3.2.2
+matplotlib==3.3.0
 networkx==2.4
 pandas==1.0.5
 hiveplot==2017.10.17.21.7
