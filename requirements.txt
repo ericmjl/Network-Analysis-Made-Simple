@@ -7,7 +7,7 @@ numpy==1.19.1
 jupyter==1.0.0
 scipy==1.5.2
 python-louvain==0.14
-tqdm==4.48.0
+tqdm==4.48.1
 mkdocs==1.1.2
 mkdocs-material==5.5.0
 pymdown-extensions==7.1
@@ -22,4 +22,4 @@ numpy==1.19.1
 jupyter==1.0.0
 scipy==1.5.2
 python-louvain==0.14
-tqdm==4.48.0
+tqdm==4.48.1
