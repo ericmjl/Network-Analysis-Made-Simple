@@ -19,27 +19,27 @@ nav:
   - Network Analysis Made Simple:
       - Welcome: index.md
   - Preface:
-      - Get Setup: preface/setup.md
-      - Prerequisites: preface/prereqs.ipynb
-      - Learning Goals: preface/goals.md
+      - Get Setup: 00-preface/01-setup.md
+      - Prerequisites: 00-preface/02-prereqs.ipynb
+      - Learning Goals: 00-preface/03-goals.md
   - "Section 1: Introduction":
-      - "Chapter 1: Introduction to Graphs": introduction/graphs.md
-      - "Chapter 2: The NetworkX API": introduction/networkx-intro.ipynb
-      - "Chapter 3: Graph Visualization": introduction/viz.ipynb
+      - "Chapter 1: Introduction to Graphs": 01-introduction/01-graphs.md
+      - "Chapter 2: The NetworkX API": 01-introduction/02-networkx-intro.ipynb
+      - "Chapter 3: Graph Visualization": 01-introduction/03-viz.ipynb
   - "Section 2: Algorithms":
-      - "Chapter 4: Hubs": algorithms/hubs.ipynb
-      - "Chapter 5: Paths": algorithms/paths.ipynb
-      - "Chapter 6: Structures": algorithms/structures.ipynb
+      - "Chapter 4: Hubs": 02-algorithms/01-hubs.ipynb
+      - "Chapter 5: Paths": 02-algorithms/02-paths.ipynb
+      - "Chapter 6: Structures": 02-algorithms/03-structures.ipynb
   - "Section 3: Practical Matters":
-      - "Chapter 7: Graph I/O": practical/io.ipynb
-      - "Chapter 8: Testing": practical/testing.ipynb
+      - "Chapter 7: Graph I/O": 03-practical/01-io.ipynb
+      - "Chapter 8: Testing": 03-practical/02-testing.ipynb
   - "Section 4: Advanced Topics":
-      - "Chapter 9: Bipartite Graphs": advanced/bipartite.ipynb
-      - "Chapter 10: Linear Algebra": advanced/linalg.ipynb
-      - "Chapter 11: Statistical Inference": advanced/stats.ipynb
+      - "Chapter 9: Bipartite Graphs": 04-advanced/01-bipartite.ipynb
+      - "Chapter 10: Linear Algebra": 04-advanced/02-linalg.ipynb
+      - "Chapter 11: Statistical Inference": 04-advanced/03-stats.ipynb
   - "Section 5: Case Studies":
-      - "Chapter 12: Game of Thrones": casestudies/gameofthrones.ipynb
-      - "Chapter 13: Airport Network": casestudies/airport.ipynb
+      - "Chapter 12: Game of Thrones": 05-casestudies/01-gameofthrones.ipynb
+      - "Chapter 13: Airport Network": 05-casestudies/02-airport.ipynb
   - Further Learning: learn-more.md
   - "Development":
       - "Style Guide": devdocs/style.md
