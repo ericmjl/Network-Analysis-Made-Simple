@@ -9,7 +9,7 @@ scipy==1.5.2
 python-louvain==0.14
 tqdm==4.48.2
 mkdocs==1.1.2
-mkdocs-material==5.5.11
+mkdocs-material==5.5.12
 pymdown-extensions==8.0
 mknotebooks==0.4.1
 ipykernel==5.3.4
