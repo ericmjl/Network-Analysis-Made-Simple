@@ -68,17 +68,17 @@ deploy:
     local_dir: site/
     target_branch: gh-pages
 
-# Auto-publish to JupyterCon's created repo
-# Take this down once JupyterCon is over.
-- provider: pages
-  skip_cleanup: false
-  github_token: $GITHUB_TOKEN
-  keep_history: false
-  repo: jupytercon/2020-ericmjl
-  on:
-    branch: master
-  target_branch: master
-  committer_from_gh: true
+  # Auto-publish to JupyterCon's created repo
+  # Take this down once JupyterCon is over.
+  - provider: pages
+    skip_cleanup: false
+    github_token: $GITHUB_TOKEN
+    keep_history: false
+    repo: jupytercon/2020-ericmjl
+    on:
+      branch: master
+    target_branch: master
+    committer_from_gh: true
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
