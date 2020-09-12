@@ -39,6 +39,8 @@ install:
   # This guarantees that Python version is matrixed.
   - conda install python=$PYTHON_VERSION
   - python -m ipykernel install --user --name nams
+  # Finally, ensure that the custom package is installed.
+  - pip install -e .
 
 script:
   # Build LeanPub files
@@ -46,7 +48,9 @@ script:
   - python scripts/bookbuilder/markua.py
 
   # Build official website
+  - python scripts/binderbuilder/insert_binder_link.py
   - mkdocs build
+  - python scripts/binderbuilder/remove_binder_link.py
 
 deploy:
   # Publish the LeanPub files
