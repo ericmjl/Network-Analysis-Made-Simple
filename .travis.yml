@@ -46,7 +46,9 @@ script:
   - python scripts/bookbuilder/markua.py
 
   # Build official website
+  - python scripts/binderbuilder/insert_binder_link.py
   - mkdocs build
+  - python scripts/binderbuilder/remove_binder_link.py
 
 deploy:
   # Publish the LeanPub files
