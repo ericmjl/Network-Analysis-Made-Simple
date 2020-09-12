@@ -39,6 +39,8 @@ install:
   # This guarantees that Python version is matrixed.
   - conda install python=$PYTHON_VERSION
   - python -m ipykernel install --user --name nams
+  # Finally, ensure that the custom package is installed.
+  - pip install -e .
 
 script:
   # Build LeanPub files
