@@ -9,7 +9,7 @@ mknotebooks==0.4.1
 nbconvert<6.0
 networkx==2.5
 numpy==1.19.2
-nxviz==0.6.1
+nxviz==0.6.2
 pandas==1.1.2
 pyjanitor
 pymdown-extensions==8.0
