@@ -23,3 +23,4 @@ jupyter==1.0.0
 scipy==1.5.2
 python-louvain==0.14
 tqdm==4.48.2
+git+https://github.com/ericmjl/Network-Analysis-Made-Simple.git
