@@ -6,7 +6,7 @@ matplotlib==3.3.2
 mkdocs-material==5.5.13
 mkdocs==1.1.2
 mknotebooks==0.6.0
-nbconvert<6.0
+nbconvert==6.0.4
 networkx==2.5
 numpy==1.19.2
 nxviz==0.6.2
