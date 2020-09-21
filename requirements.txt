@@ -5,7 +5,7 @@ jupyter==1.0.0
 matplotlib==3.3.2
 mkdocs-material==5.5.13
 mkdocs==1.1.2
-mknotebooks==0.4.1
+mknotebooks==0.6.0
 nbconvert<6.0
 networkx==2.5
 numpy==1.19.2
