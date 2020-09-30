@@ -54,6 +54,9 @@ script:
   - mkdocs build
   - python scripts/binderbuilder/remove_binder_link.py
 
+  # Build directory for JupyterCon
+  - bash scripts/jupytercon/compile_notebooks.sh
+
 deploy:
   # Publish the LeanPub files
   - provider: pages
@@ -80,6 +83,7 @@ deploy:
     skip_cleanup: false
     github_token: $GITHUB_TOKEN
     keep_history: false
+    local_dir: /tmp/jupytercon
     repo: jupytercon/2020-ericmjl
     on:
       branch: master
