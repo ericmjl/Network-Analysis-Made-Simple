@@ -31,7 +31,7 @@ install:
   - conda config --add channels conda-forge
 
   # Useful for debugging any issues with conda
-  - conda info -a
+  - conda info -a  # show information about environment
 
   # Install Python, py.test, and required packages.
   - conda env create -f environment.yml
@@ -41,6 +41,8 @@ install:
   - python -m ipykernel install --user --name nams
   # Finally, ensure that the custom package is installed.
   - pip install -e .
+  # Show packages in environment, for debugging purposes
+  - conda list
 
 script:
   # Build LeanPub files

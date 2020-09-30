@@ -29,9 +29,9 @@ dependencies:
   - pre-commit
   - tabulate  # used for exporting dataframe as Markdown tables
   - pip:
-      - mkdocs
-      - mkdocs-material
-      - pymdown-extensions
-      - mknotebooks
+      - mkdocs==5.5.12
+      - mkdocs-material==1.1.2
+      - pymdown-extensions==8.0
+      - mknotebooks==0.4.1
       - mkdocstrings
       - git+http://github.com/ericmjl/Network-Analysis-Made-Simple@master
