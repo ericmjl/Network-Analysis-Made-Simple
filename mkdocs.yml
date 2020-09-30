@@ -23,7 +23,7 @@ nav:
       - Prerequisites: 00-preface/02-prereqs.ipynb
       - Learning Goals: 00-preface/03-goals.md
   - "Section 1: Introduction":
-      - "Chapter 1: Introduction to Graphs": 01-introduction/01-graphs.md
+      - "Chapter 1: Introduction to Graphs": 01-introduction/01-graphs.ipynb
       - "Chapter 2: The NetworkX API": 01-introduction/02-networkx-intro.ipynb
       - "Chapter 3: Graph Visualization": 01-introduction/03-viz.ipynb
   - "Section 2: Algorithms":
