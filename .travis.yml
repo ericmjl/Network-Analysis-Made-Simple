@@ -29,15 +29,16 @@ install:
   - conda config --set always_yes yes --set changeps1 no
   - conda update -q conda
   - conda config --add channels conda-forge
+  - conda install -c conda-forge mamba
 
   # Useful for debugging any issues with conda
   - conda info -a  # show information about environment
 
   # Install Python, py.test, and required packages.
-  - conda env create -f environment.yml
+  - mamba env create -f environment.yml
   - source activate nams
   # This guarantees that Python version is matrixed.
-  - conda install python=$PYTHON_VERSION
+  - mamba install python=$PYTHON_VERSION
   - python -m ipykernel install --user --name nams
   # Finally, ensure that the custom package is installed.
   - pip install -e .

@@ -32,6 +32,6 @@ dependencies:
       - mkdocs==1.1.2
       - mkdocs-material==5.5.12
       - pymdown-extensions==8.0
-      - mknotebooks==0.4.1
+      - mknotebooks==0.5.0
       - mkdocstrings
       - git+http://github.com/ericmjl/Network-Analysis-Made-Simple@master
