@@ -12,6 +12,21 @@ for whom example narratives help a ton!
 
 We hope you enjoy learning from it.
 
+## Introduction Videos
+
+At the beginning of each "chapter",
+there's an introduction video just like the one you'll see embedded below.
+Those videos will give you an overview of the chapter,
+particularly what to look out for and what the learning goals are,
+and are designed to orient you on the right path.
+If you're not the audio/visual kind,
+feel free to skip past them :).
+Because they're hosted on YouTube,
+if you need captions,
+hit the captions button to get access to them.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/JdcFLuZLJ3Y" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## Using the book
 
 There are three ways to use this website/web book.

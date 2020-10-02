@@ -29,16 +29,21 @@ install:
   - conda config --set always_yes yes --set changeps1 no
   - conda update -q conda
   - conda config --add channels conda-forge
+  - conda install -c conda-forge mamba
 
   # Useful for debugging any issues with conda
-  - conda info -a
+  - conda info -a  # show information about environment
 
   # Install Python, py.test, and required packages.
-  - conda env create -f environment.yml
+  - mamba env create -f environment.yml
   - source activate nams
   # This guarantees that Python version is matrixed.
-  - conda install python=$PYTHON_VERSION
+  - mamba install python=$PYTHON_VERSION
   - python -m ipykernel install --user --name nams
+  # Finally, ensure that the custom package is installed.
+  - pip install -e .
+  # Show packages in environment, for debugging purposes
+  - conda list
 
 script:
   # Build LeanPub files
@@ -46,7 +51,12 @@ script:
   - python scripts/bookbuilder/markua.py
 
   # Build official website
+  - python scripts/binderbuilder/insert_binder_link.py
   - mkdocs build
+  - python scripts/binderbuilder/remove_binder_link.py
+
+  # Build directory for JupyterCon
+  - bash scripts/jupytercon/compile_notebooks.sh
 
 deploy:
   # Publish the LeanPub files
@@ -68,6 +78,18 @@ deploy:
     local_dir: site/
     target_branch: gh-pages
 
+  # Auto-publish to JupyterCon's created repo
+  # Take this down once JupyterCon is over.
+  - provider: pages
+    skip_cleanup: false
+    github_token: $GITHUB_TOKEN
+    keep_history: false
+    local_dir: /tmp/jupytercon
+    repo: jupytercon/2020-ericmjl
+    on:
+      branch: master
+    target_branch: master
+    committer_from_gh: true
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)

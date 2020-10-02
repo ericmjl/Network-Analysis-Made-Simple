@@ -11,15 +11,15 @@ dependencies:
   - numpy
   - nxviz
   - hiveplot
-  - jupyter
-  - jupyterlab
-  - ipykernel
-  - pandas
+  - jupyter=1.0.0
+  - jupyterlab=2.2.6
+  - ipykernel=5.3.4
+  - pandas=1.1.1
   - rise
   - python-louvain
   - tqdm
   - ffmpeg
-  - nbstripout
+  - nbstripout=0.3.9
   - pygments
   - pip
   - pyprojroot
@@ -29,9 +29,9 @@ dependencies:
   - pre-commit
   - tabulate  # used for exporting dataframe as Markdown tables
   - pip:
-      - mkdocs
-      - mkdocs-material
-      - pymdown-extensions
-      - mknotebooks
-      - mkdocstrings
+      - mkdocs==1.1.2
+      - mkdocs-material==5.5.12
+      - pymdown-extensions==8.0
+      - mknotebooks==0.5.0
+      - mkdocstrings==0.13.2
       - git+http://github.com/ericmjl/Network-Analysis-Made-Simple@master
