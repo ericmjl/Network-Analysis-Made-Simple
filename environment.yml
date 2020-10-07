@@ -30,6 +30,7 @@ dependencies:
   - tabulate  # used for exporting dataframe as Markdown tables
   - pip:
       - mkdocs==1.1.2
+      - markdown==3.2.2
       - mkdocs-material==5.5.12
       - pymdown-extensions==8.0
       - mknotebooks==0.5.0
