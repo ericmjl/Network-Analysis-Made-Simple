@@ -21,3 +21,4 @@ cp -r nams $WORKDIR/.
 cp setup.py $WORKDIR/.
 cp requirements.txt $WORKDIR/.
 cp README.md $WORKDIR/.
+cp -r datasets $WORKDIR/.
