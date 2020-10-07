@@ -7,7 +7,7 @@ from pyprojroot import here
 from tqdm import tqdm
 
 root = here()
-datasets = root / "datasets"
+datasets = root / "data"
 
 
 def load_seventh_grader_network():
@@ -31,9 +31,7 @@ def load_seventh_grader_network():
     # Construct graph from edge list.
     G = nx.DiGraph()
     for row in df.iterrows():
-        G.add_edge(
-            row[1]["student1"], row[1]["student2"], count=row[1]["count"]
-        )
+        G.add_edge(row[1]["student1"], row[1]["student2"], count=row[1]["count"])
     # Add node metadata
     for n in G.nodes():
         G.nodes[n]["gender"] = meta.loc[n]["gender"]
@@ -44,10 +42,7 @@ def load_facebook_network():
     # Read the edge list
 
     df = pd.read_csv(
-        datasets / "ego-facebook/out.ego-facebook",
-        sep=" ",
-        skiprows=2,
-        header=None,
+        datasets / "ego-facebook/out.ego-facebook", sep=" ", skiprows=2, header=None
     )
     df = df[[0, 1]]
     df.columns = ["user1", "user2"]
@@ -132,8 +127,7 @@ def load_crime_network():
 
     # Read in the role metadata
     roles = pd.read_csv(
-        datasets / "moreno_crime/rel.moreno_crime_crime.person.role",
-        header=None,
+        datasets / "moreno_crime/rel.moreno_crime_crime.person.role", header=None
     )
     roles.columns = ["roles"]
     roles.index += 1
@@ -149,8 +143,7 @@ def load_crime_network():
 
     # Read in the gender metadata
     gender = pd.read_csv(
-        datasets / "moreno_crime/ent.moreno_crime_crime.person.sex",
-        header=None,
+        datasets / "moreno_crime/ent.moreno_crime_crime.person.sex", header=None
     )
     gender.index += 1
     for n, gender_code in gender.iterrows():
@@ -197,13 +190,18 @@ def load_amazon_reviews():
 
     return G
 
+
 def load_game_of_thrones_data():
-    books = pd.read_csv(datasets / 'game_of_thrones_network/asoiaf.csv', index_col='id')
+    books = pd.read_csv(datasets / "game_of_thrones_network/asoiaf.csv", index_col="id")
     return books
 
+
 def load_airports_data():
-    pass_air_data = pd.read_csv(datasets / 'passengers.csv', index_col='id')
+    pass_air_data = pd.read_csv(datasets / "passengers.csv", index_col="id")
     return pass_air_data
 
+
 def load_airports_GPS_data():
-    return pd.read_csv(datasets / 'GlobalAirportDatabase.txt', delimiter=':', header=None)
+    return pd.read_csv(
+        datasets / "GlobalAirportDatabase.txt", delimiter=":", header=None
+    )
