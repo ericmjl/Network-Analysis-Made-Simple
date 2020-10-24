@@ -51,9 +51,7 @@ script:
   - python scripts/bookbuilder/markua.py
 
   # Build official website
-  - python scripts/binderbuilder/insert_binder_link.py
   - mkdocs build
-  - python scripts/binderbuilder/remove_binder_link.py
 
   # Build directory for JupyterCon
   - bash scripts/jupytercon/compile_notebooks.sh

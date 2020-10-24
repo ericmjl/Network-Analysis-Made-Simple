@@ -1,6 +1,8 @@
 site_name: Network Analysis Made Simple
 site_url: https://ericmjl.github.io/Network-Analysis-Made-Simple
 
+docs_dir: notebooks/
+
 theme:
   name: "material"
   palette:
@@ -51,6 +53,9 @@ plugins:
       write_markdown: true
       allow_errors: true
       timeout: 1200
+      binder: true
+      binder_service_name: "gh"
+      binder_branch: "master"
 
 # Taken from here: https://squidfunk.github.io/mkdocs-material/extensions/codehilite/
 markdown_extensions:
