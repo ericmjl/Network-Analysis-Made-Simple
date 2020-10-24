@@ -1,6 +1,8 @@
 site_name: Network Analysis Made Simple
 site_url: https://ericmjl.github.io/Network-Analysis-Made-Simple
 
+docs_dir: notebooks/
+
 theme:
   name: "material"
   palette:
