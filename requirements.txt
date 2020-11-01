@@ -3,9 +3,9 @@ hiveplot==2017.10.17.21.7
 ipykernel==5.3.4
 jupyter==1.0.0
 matplotlib==3.3.2
-mkdocs-material==6.0.2
+mkdocs-material==6.1.0
 mkdocs==1.1.2
-mknotebooks==0.6.1
+mknotebooks==0.6.2
 nbconvert==6.0.7
 networkx==2.5
 numpy==1.19.2
@@ -15,5 +15,5 @@ pyjanitor==0.20.10
 pymdown-extensions==8.0.1
 pyprojroot==0.2.0
 python-louvain==0.14
-scipy==1.5.2
-tqdm==4.50.2
+scipy==1.5.3
+tqdm==4.51.0
