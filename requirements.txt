@@ -8,7 +8,7 @@ mkdocs==1.1.2
 mknotebooks==0.6.2
 nbconvert==6.0.7
 networkx==2.5
-numpy==1.19.3
+numpy==1.19.4
 nxviz==0.6.2
 pandas==1.1.4
 pyjanitor==0.20.10
