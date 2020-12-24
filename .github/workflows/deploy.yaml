@@ -36,7 +36,7 @@ jobs:
         with:
           # https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-set-personal-access-token-personal_token
           personal_token: ${{ secrets.GHPAGES_TOKEN }}
-          publish_dir: ./leanpub
+          publish_dir: ./manuscript
           publish_branch: leanpub
           destination_dir: manuscript
           allow_empty_commit: false
