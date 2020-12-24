@@ -31,7 +31,6 @@ jobs:
         with:
           name: nams-tarball
           path: nams.tar.gz
-          retention-days: 1
 
   build-deploy-website:
     runs-on: ubuntu-18.04
