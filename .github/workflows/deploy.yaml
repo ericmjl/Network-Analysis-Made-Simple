@@ -35,7 +35,7 @@ jobs:
 
   build-deploy-website:
     runs-on: ubuntu-18.04
-    needs: build_environment
+    needs: build-environment
     steps:
       - uses: actions/checkout@v2
 
@@ -66,7 +66,7 @@ jobs:
 
   build-deploy-leanpub:
     runs-on: ubuntu-18.04
-    needs: build_environment
+    needs: build-environment
     steps:
       - uses: actions/checkout@v2
 
