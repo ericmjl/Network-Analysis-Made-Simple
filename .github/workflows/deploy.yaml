@@ -48,7 +48,9 @@ jobs:
         run: bash scripts/ci/unpack_environment.sh
 
       - name: Build website
-        run: bash scripts/ci/build_website.sh
+        run: |
+          source nams/bin/activate
+          bash scripts/ci/build_website.sh
 
       - name: Deploy Website
         uses: peaceiris/actions-gh-pages@v3
@@ -78,7 +80,9 @@ jobs:
         run: bash scripts/ci/unpack_environment.sh
 
       - name: Build leanpub manuscript files
-        run: bash scripts/ci/build_leanpub.sh
+        run: |
+          source nams/bin/activate
+          bash scripts/ci/build_leanpub.sh
 
       - name: Deploy Leanpub
         uses: peaceiris/actions-gh-pages@v3
