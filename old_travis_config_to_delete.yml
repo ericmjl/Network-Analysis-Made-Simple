@@ -22,28 +22,28 @@ before_install:
 install:
   # We do this conditionally because it saves us some downloading if the
   # version is the same.
-  - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
-  - bash miniconda.sh -b -p $HOME/miniconda
-  - export PATH="$HOME/miniconda/bin:$PATH"
-  - hash -r
-  - conda config --set always_yes yes --set changeps1 no
-  - conda update -q conda
-  - conda config --add channels conda-forge
-  - conda install -c conda-forge mamba
+  # - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
+  # - bash miniconda.sh -b -p $HOME/miniconda
+  # - export PATH="$HOME/miniconda/bin:$PATH"
+  # - hash -r
+  # - conda config --set always_yes yes --set changeps1 no
+  # - conda update -q conda
+  # - conda config --add channels conda-forge
+  # - conda install -c conda-forge mamba
 
-  # Useful for debugging any issues with conda
-  - conda info -a  # show information about environment
+  # # Useful for debugging any issues with conda
+  # - conda info -a  # show information about environment
 
-  # Install Python, py.test, and required packages.
-  - mamba env create -f environment.yml
-  - source activate nams
-  # This guarantees that Python version is matrixed.
-  - mamba install python=$PYTHON_VERSION
-  - python -m ipykernel install --user --name nams
-  # Finally, ensure that the custom package is installed.
-  - pip install -e .
-  # Show packages in environment, for debugging purposes
-  - conda list
+  # # Install Python, py.test, and required packages.
+  # - mamba env create -f environment.yml
+  # - source activate nams
+  # # This guarantees that Python version is matrixed.
+  # - mamba install python=$PYTHON_VERSION
+  # - python -m ipykernel install --user --name nams
+  # # Finally, ensure that the custom package is installed.
+  # - pip install -e .
+  # # Show packages in environment, for debugging purposes
+  # - conda list
 
 script:
   # Build LeanPub files
@@ -89,8 +89,8 @@ deploy:
     target_branch: master
     committer_from_gh: true
 
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
+# after_success:
+#   - bash <(curl -s https://codecov.io/bash)
 
 notifications:
   email: true
