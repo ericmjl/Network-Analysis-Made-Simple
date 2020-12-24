@@ -15,4 +15,4 @@ python -m ipykernel install --user --name nams
 pip install .
 
 # Pack up environment
-conda pack -n nams -o /tmp/nams.tar.gz
+# conda pack -n nams -o /tmp/nams.tar.gz
