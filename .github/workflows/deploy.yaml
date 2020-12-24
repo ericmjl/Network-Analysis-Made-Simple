@@ -46,7 +46,7 @@ jobs:
           name: nams-tarball
 
       - name: Unpack environment and activate it
-        run: bash unpack_environment.sh
+        run: bash scripts/ci/unpack_environment.sh
 
       - name: Build website
         run: bash scripts/ci/build_website.sh
@@ -76,7 +76,7 @@ jobs:
           name: nams-tarball
 
       - name: Unpack environment and activate it
-        run: bash unpack_environment.sh
+        run: bash scripts/ci/unpack_environment.sh
 
       - name: Build leanpub manuscript files
         run: bash scripts/ci/build_leanpub.sh

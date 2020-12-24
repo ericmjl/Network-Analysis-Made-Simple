@@ -35,6 +35,7 @@ dependencies:
       - markdown==3.2.2
       - mkdocs-material==5.5.12
       - pymdown-extensions==8.0
+      # https://github.com/conda/conda/issues/6805#issuecomment-361782555
       - mknotebooks==0.5.0 --install-option="--no-deps"
       - mkdocstrings==0.13.2
       - git+http://github.com/ericmjl/Network-Analysis-Made-Simple@master
