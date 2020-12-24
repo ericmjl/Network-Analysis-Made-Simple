@@ -12,13 +12,20 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-
-
 steps:
-- script: bash scripts/ci/build_environment.sh
-  displayName: Build conda environment and pack it up
+- bash: echo "##vso[task.prependpath]$CONDA/bin"
+  displayName: Add conda to PATH
 
-- script: bash scripts/ci/build_leanpub.sh
+  - script: |
+      conda install -c conda-forge mamba conda-pack
+      mamba env create -f environment.yml
+      source activate nams
+      python -m ipykernel install --user --name nams
+      pip install .
+  displayName: Build conda environment
+
+- script: |
+    bash scripts/ci/build_leanpub.sh
   displayName: Build LeanPub book contents
 
 - script: bash scripts/ci/build_website.sh
