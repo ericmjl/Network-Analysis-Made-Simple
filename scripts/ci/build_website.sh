@@ -1,3 +1,3 @@
 # Build MkDocs website
-source activate nams
+conda activate nams || source activate nams
 mkdocs build
