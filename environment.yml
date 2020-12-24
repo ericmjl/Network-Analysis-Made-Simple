@@ -29,11 +29,12 @@ dependencies:
   - pre-commit
   - tabulate  # used for exporting dataframe as Markdown tables
   - nbconvert=6.0.7
+  - nbconvert-utils=0.6
   - pip:
       - mkdocs==1.1.2
       - markdown==3.2.2
       - mkdocs-material==5.5.12
       - pymdown-extensions==8.0
-      - mknotebooks==0.5.0
+      - mknotebooks==0.5.0 --install-option="--no-deps"
       - mkdocstrings==0.13.2
       - git+http://github.com/ericmjl/Network-Analysis-Made-Simple@master
