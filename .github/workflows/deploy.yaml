@@ -25,8 +25,9 @@ jobs:
       - name: Build environment
         run: bash scripts/ci/build_environment.sh
 
+      # https://github.com/actions/upload-artifact
       - name: Upload environment
-        run: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v2
         with:
           name: nams-tarball
           path: nams.tar.gz
@@ -38,6 +39,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      # https://github.com/actions/download-artifact
       - name: Download environment tarball
         uses: actions/download-artifact@v2
         with:
