@@ -37,4 +37,4 @@ dependencies:
   - pip:
       # https://github.com/conda/conda/issues/6805#issuecomment-361782555
       - mknotebooks --install-option="--no-deps"
-      - git+http://github.com/ericmjl/Network-Analysis-Made-Simple@master
+      - git+http://github.com/ericmjl/Network-Analysis-Made-Simple@master --install-option="--no-deps"
