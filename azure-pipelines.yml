@@ -13,20 +13,13 @@ pool:
   vmImage: 'ubuntu-latest'
 
 
-jobs:
-- job: build_conda
+
+steps:
+- script: bash scripts/ci/build_environment.sh
   displayName: Build conda environment and pack it up
-  steps:
-  - script: bash scripts/ci/build_environment.sh
 
-- job: build_leanpub
+- script: bash scripts/ci/build_leanpub.sh
   displayName: Build LeanPub book contents
-  dependsOn: build_conda
-  steps:
-  - script: bash scripts/ci/build_leanpub.sh
 
-- job: build_website
+- script: bash scripts/ci/build_website.sh
   displayName: Build website
-  dependsOn: build_conda
-  steps:
-  - script: bash scripts/ci/build_website.sh
