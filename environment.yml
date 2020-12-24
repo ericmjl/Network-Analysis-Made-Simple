@@ -35,3 +35,4 @@ dependencies:
   - mkdocs
   - markdown
   - gitpython  # used by mkdocs
+  - mkdocs-material-extensions  # used by mkdocs-material
