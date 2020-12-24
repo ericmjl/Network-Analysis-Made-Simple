@@ -1,7 +1,5 @@
-mkdir -p nams
-tar -xzf nams.tar.gz -C nams
-source nams/bin/activate
+mkdir -p nams_env
+tar -xzf nams.tar.gz -C nams_env
+source nams_env/bin/activate
 conda-unpack
-source nams/bin/deactivate
-# A check -- just to make sure nams is installed
-conda env list | grep nams
+source nams_env/bin/deactivate
