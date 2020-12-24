@@ -4,7 +4,7 @@
 # The full pipeline is also leveraged here,
 # as we don't want a broken website to be deployed anyways.
 
-name: build_environment
+name: build-and-deploy
 
 on:
   push:
@@ -44,10 +44,10 @@ jobs:
         with:
           name: nams-tarball
 
-      - name: Ensure conda is on PATH
-        uses: s-weigand/setup-conda@v1
-        with:
-          conda-channels: "conda-forge"
+      # - name: Ensure conda is on PATH
+      #   uses: s-weigand/setup-conda@v1
+      #   with:
+      #     conda-channels: "conda-forge"
 
       - name: Unpack environment and activate it
         run: bash scripts/ci/unpack_environment.sh
@@ -80,10 +80,10 @@ jobs:
         with:
           name: nams-tarball
 
-      - name: Ensure conda is on PATH
-        uses: s-weigand/setup-conda@v1
-        with:
-          conda-channels: "conda-forge"
+      # - name: Ensure conda is on PATH
+      #   uses: s-weigand/setup-conda@v1
+      #   with:
+      #     conda-channels: "conda-forge"
 
       - name: Unpack environment and activate it
         run: bash scripts/ci/unpack_environment.sh
