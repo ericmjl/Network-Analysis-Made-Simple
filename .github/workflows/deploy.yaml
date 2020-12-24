@@ -12,29 +12,29 @@ on:
       - master
 
 jobs:
-  # build-environment:
-  #   runs-on: ubuntu-18.04
-  #   steps:
-  #     - uses: actions/checkout@v2
+  build-environment:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
 
-  #     # https://github.com/marketplace/actions/setup-conda
-  #     - uses: s-weigand/setup-conda@v1
-  #       with:
-  #         conda-channels: "conda-forge"
+      # https://github.com/marketplace/actions/setup-conda
+      - uses: s-weigand/setup-conda@v1
+        with:
+          conda-channels: "conda-forge"
 
-  #     - name: Build environment
-  #       run: bash scripts/ci/build_environment.sh
+      - name: Build environment
+        run: bash scripts/ci/build_environment.sh
 
-  #     # https://github.com/actions/upload-artifact
-  #     - name: Upload environment
-  #       uses: actions/upload-artifact@v2
-  #       with:
-  #         name: nams-tarball
-  #         path: nams.tar.gz
+      # https://github.com/actions/upload-artifact
+      - name: Upload environment
+        uses: actions/upload-artifact@v2
+        with:
+          name: nams-tarball
+          path: nams.tar.gz
 
   build-deploy-website:
     runs-on: ubuntu-18.04
-    # needs: build-environment
+    needs: build-environment
     steps:
       - uses: actions/checkout@v2
 
@@ -75,7 +75,7 @@ jobs:
 
   build-deploy-leanpub:
     runs-on: ubuntu-18.04
-    # needs: build-environment
+    needs: build-environment
     steps:
       - uses: actions/checkout@v2
 
