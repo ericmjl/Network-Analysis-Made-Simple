@@ -16,12 +16,12 @@ steps:
 - bash: echo "##vso[task.prependpath]$CONDA/bin"
   displayName: Add conda to PATH
 
-  - script: |
-      conda install -c conda-forge mamba conda-pack
-      mamba env create -f environment.yml
-      source activate nams
-      python -m ipykernel install --user --name nams
-      pip install .
+- script: |
+    conda install -c conda-forge mamba conda-pack
+    mamba env create -f environment.yml
+    source activate nams
+    python -m ipykernel install --user --name nams
+    pip install .
   displayName: Build conda environment
 
 - script: |
