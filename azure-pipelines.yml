@@ -13,21 +13,11 @@ steps:
 - bash: echo "##vso[task.prependpath]$CONDA/bin"
   displayName: Add conda to PATH
 
-- script: |
-    conda install -c conda-forge mamba
-    conda env create -f environment.yml
-    source activate nams
-    python -m ipykernel install --user --name nams
-    pip install .
+- script: bash scripts/ci/build_environment.sh
   displayName: Build conda environment
 
-- script: |
-    source activate nams
-    jupyter nbconvert --to python scripts/bookbuilder/markua.ipynb
-    python scripts/bookbuilder/markua.py
+- script: bash scripts/ci/build_leanpub.sh
   displayName: Build LeanPub book contents
 
-- script: |
-    source activate nams
-    mkdocs build
+- script: bash scripts/ci/build_website.sh
   displayName: Build website
