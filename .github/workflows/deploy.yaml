@@ -4,7 +4,7 @@
 # The full pipeline is also leveraged here,
 # as we don't want a broken website to be deployed anyways.
 
-name: github pages
+name: build_environment
 
 on:
   push:
@@ -12,7 +12,7 @@ on:
       - master
 
 jobs:
-  deploy:
+  build-environment:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
@@ -25,11 +25,59 @@ jobs:
       - name: Build environment
         run: bash scripts/ci/build_environment.sh
 
-      - name: Build leanpub book
-        run: bash scripts/ci/build_leanpub.sh
+      - name: Upload environment
+        run: actions/upload-artifact@v2
+        with:
+          name: nams-tarball
+          path: nams.tar.gz
+          retention-days: 1
+
+  build-deploy-website:
+    runs-on: ubuntu-18.04
+    needs: build_environment
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Download environment tarball
+        uses: actions/download-artifact@v2
+        with:
+          name: nams-tarball
+
+      - name: Unpack environment and activate it
+        run: bash unpack_environment.sh
 
       - name: Build website
         run: bash scripts/ci/build_website.sh
+
+      - name: Deploy Website
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          # https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-set-personal-access-token-personal_token
+          personal_token: ${{ secrets.GHPAGES_TOKEN }}
+          publish_dir: ./site
+          publish_branch: gh-pages
+          allow_empty_commit: false
+          keep_files: false
+          force_orphan: true
+          enable_jekyll: false
+          disable_nojekyll: false
+
+  build-deploy-leanpub:
+    runs-on: ubuntu-18.04
+    needs: build_environment
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Download environment tarball
+        uses: actions/download-artifact@v2
+        with:
+          name: nams-tarball
+
+      - name: Unpack environment and activate it
+        run: bash unpack_environment.sh
+
+      - name: Build leanpub manuscript files
+        run: bash scripts/ci/build_leanpub.sh
 
       - name: Deploy Leanpub
         uses: peaceiris/actions-gh-pages@v3
@@ -45,18 +93,5 @@ jobs:
           enable_jekyll: false
           disable_nojekyll: false
 
-      - name: Deploy Website
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          # https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-set-personal-access-token-personal_token
-          personal_token: ${{ secrets.GHPAGES_TOKEN }}
-          publish_dir: ./site
-          publish_branch: gh-pages
-          allow_empty_commit: false
-          keep_files: false
-          force_orphan: true
-          enable_jekyll: false
-          disable_nojekyll: false
-
       - name: Trigger publish on LeanPub
-        run: curl -d "api_key=${{ secrets.LEANPUB_API_KEY }}" https://leanpub.com/dsbootstrap/publish.json
+        run: curl -d "api_key=${{ secrets.LEANPUB_API_KEY }}" https://leanpub.com/nams/publish.json
