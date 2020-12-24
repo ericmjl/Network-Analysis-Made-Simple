@@ -1,13 +1,10 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
-
+# We use Azure Pipelines to continuously test code.
+# Azure is preferred because they have unlimited minutes for projects.
+# Thus, we can use Azure for continuous integration testing of the content.
+# For deploy, we will use GitHub actions, which runs only on push to master.
 
 trigger:
-- master
-- azure-pipelines
+- pr
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -25,8 +22,12 @@ steps:
   displayName: Build conda environment
 
 - script: |
-    bash scripts/ci/build_leanpub.sh
+    source activate nams
+    jupyter nbconvert --to python scripts/bookbuilder/markua.ipynb
+    python scripts/bookbuilder/markua.py
   displayName: Build LeanPub book contents
 
-- script: bash scripts/ci/build_website.sh
+- script: |
+    source activate nams
+    mkdocs build
   displayName: Build website
