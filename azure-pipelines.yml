@@ -3,6 +3,8 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
+
+
 trigger:
 - master
 - azure-pipelines
@@ -11,6 +13,20 @@ pool:
   vmImage: 'ubuntu-latest'
 
 
-steps:
-- script: bash scripts/ci/build_environment.sh
-  displayName: 'Build conda environment and pack it up'
+jobs:
+- job: build_conda
+  displayName: Build conda environment and pack it up
+  steps:
+  - script: bash scripts/ci/build_environment.sh
+
+- job: build_leanpub
+  displayName: Build LeanPub book contents
+  displayName: build_conda
+  steps:
+  - script: bash scripts/ci/build_leanpub.sh
+
+- job: build_website
+  displayName: Build website
+  displayName: build_conda
+  steps:
+  - script: bash scripts/ci/build_website.sh
