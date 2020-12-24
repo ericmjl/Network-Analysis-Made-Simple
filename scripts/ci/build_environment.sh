@@ -12,7 +12,7 @@ conda install -c conda-forge mamba conda-pack
 mamba env create -f environment.yml
 source activate nams
 python -m ipykernel install --user --name nams
-pip install -e .
+pip install .
 
 # Pack up environment
 conda pack -n nams -o /tmp/nams.tar.gz
