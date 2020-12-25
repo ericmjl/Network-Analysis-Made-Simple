@@ -63,15 +63,16 @@ jobs:
       - name: Cache website
         id: cache-website
         uses: actions/cache@v2
-        # Website build step depends on three files,
+        # Website build step depends on the following files:
         # - mkdocs.yml
         # - scripts/ci/build_website.sh
         # - docs/
+        # - environment.yml
         # so we ensure that the hash key contains all of their hashes.
         with:
           path: |
             site
-          key: ${{ runner.os }}-mkdocs.${{ hashFiles('mkdocs.yml') }}-scripts.${{ hashFiles('scripts/ci/build_website.sh') }}-source.${{ hashFiles('docs') }}
+          key: ${{ runner.os }}-mkdocs.${{ hashFiles('mkdocs.yml') }}-scripts.${{ hashFiles('scripts/ci/build_website.sh') }}-source.${{ hashFiles('docs') }}-env.${{ hashFiles('environment.yml') }}
 
       - name: Build website
         if: steps.cache-website.outputs.cache-hit != 'true'
@@ -114,15 +115,16 @@ jobs:
       - name: Cache LeanPub
         id: cache-leanpub
         uses: actions/cache@v2
-        # Leanpub build step depends on three files,
+        # Leanpub build step depends on the following files:
         # - scripts/bookbuilder
         # - scripts/ci/build_website.sh
         # - docs
+        # - environment.yml
         # so we ensure that the hash key contains all of their hashes.
         with:
           path: |
             site
-          key: ${{ runner.os }}-bookbuilder.${{ hashFiles('scripts/bookbuilder') }}-scripts.${{ hashFiles('scripts/ci/build_website.sh') }}-source.${{ hashFiles('docs') }}
+          key: ${{ runner.os }}-bookbuilder.${{ hashFiles('scripts/bookbuilder') }}-scripts.${{ hashFiles('scripts/ci/build_website.sh') }}-source.${{ hashFiles('docs') }}-env.${{ hashFiles('environment.yml') }}
 
       - name: Build leanpub manuscript files
         if: steps.cache-leanpub.outputs.cache-hit != 'true'
