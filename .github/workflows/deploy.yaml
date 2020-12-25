@@ -22,6 +22,16 @@ jobs:
         with:
           conda-channels: "conda-forge"
 
+      # A series of debugging calls
+      - run: echo $PATH
+      - run: which conda
+
+      # Build cache
+      - name: Cache conda environment
+        uses: actions/cache@v2
+        with:
+
+
       - name: Build environment
         run: bash scripts/ci/build_environment.sh
 
