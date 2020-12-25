@@ -59,6 +59,20 @@ jobs:
       - name: Unpack environment and activate it
         run: bash scripts/ci/unpack_environment.sh
 
+      # Build cache of website
+      - name: Cache website
+        id: cache-website
+        uses: actions/cache@v2
+        # Website build step depends on three files,
+        # - mkdocs.yml
+        # - scripts/ci/build_website.sh
+        # - docs/
+        # so we ensure that the hash key contains all of their hashes.
+        with:
+          path: |
+            site
+          key: ${{ runner.os }}-mkdocs.${{ hashFiles('mkdocs.yml') }}-scripts.${{ hashFiles('scripts/ci/build_website.sh') }}-source.${{ hashFiles('docs') }}
+
       - name: Build website
         run: |
           bash scripts/ci/build_website.sh
