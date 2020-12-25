@@ -39,18 +39,9 @@ jobs:
         if: steps.cache-environment.outputs.cache-hit != 'true'
         run: bash scripts/ci/build_environment.sh
 
-      # Build cache of nams tarball
-      - name: Cache conda tarball
-        id: cache-env-tarball
-        uses: actions/cache@v2
-        with:
-          path: ./nams.tar.gz
-          key: ${{ runner.os }}-${{ hashFiles('environment.yml') }}-env-tarball
-
       # See: https://github.com/actions/upload-artifact
       - name: Upload environment
         uses: actions/upload-artifact@v2
-        if: steps.cache-env-tarball.outputs.cache-hit != 'true'
         with:
           name: nams-tarball
           path: nams.tar.gz
