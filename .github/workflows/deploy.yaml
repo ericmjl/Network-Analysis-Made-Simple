@@ -32,7 +32,9 @@ jobs:
         id: cache-environment
         uses: actions/cache@v2
         with:
-          path: /usr/share/miniconda/envs/nams
+          path: |
+            /usr/share/miniconda/envs/nams
+            nams.tar.gz
           key: ${{ runner.os }}-${{ hashFiles('environment.yml') }}-env
 
       - name: Build environment
