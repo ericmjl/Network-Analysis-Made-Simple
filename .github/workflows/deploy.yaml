@@ -74,6 +74,7 @@ jobs:
           key: ${{ runner.os }}-mkdocs.${{ hashFiles('mkdocs.yml') }}-scripts.${{ hashFiles('scripts/ci/build_website.sh') }}-source.${{ hashFiles('docs') }}
 
       - name: Build website
+        if: steps.cache-website.outputs.cache-hit != 'true'
         run: |
           bash scripts/ci/build_website.sh
 
@@ -109,7 +110,22 @@ jobs:
       - name: Unpack environment and activate it
         run: bash scripts/ci/unpack_environment.sh
 
+      # Build cache of leanpub source
+      - name: Cache LeanPub
+        id: cache-leanpub
+        uses: actions/cache@v2
+        # Leanpub build step depends on three files,
+        # - scripts/bookbuilder
+        # - scripts/ci/build_website.sh
+        # - docs
+        # so we ensure that the hash key contains all of their hashes.
+        with:
+          path: |
+            site
+          key: ${{ runner.os }}-bookbuilder.${{ hashFiles('scripts/bookbuilder') }}-scripts.${{ hashFiles('scripts/ci/build_website.sh') }}-source.${{ hashFiles('docs') }}
+
       - name: Build leanpub manuscript files
+        if: steps.cache-leanpub.outputs.cache-hit != 'true'
         run: |
           bash scripts/ci/build_leanpub.sh
 
