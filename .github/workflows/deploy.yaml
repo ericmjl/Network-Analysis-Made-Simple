@@ -26,10 +26,10 @@ jobs:
       - run: echo $PATH
       - run: which conda
 
-      # Build cache
-      - name: Cache conda environment
-        uses: actions/cache@v2
-        with:
+      # # Build cache
+      # - name: Cache conda environment
+      #   uses: actions/cache@v2
+      #   with:
 
 
       - name: Build environment
