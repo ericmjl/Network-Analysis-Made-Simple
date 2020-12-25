@@ -22,18 +22,12 @@ jobs:
         with:
           conda-channels: "conda-forge"
 
-      # # A series of debugging calls
-      # - run: echo $PATH
-      # - run: which conda
-      # - run: ls /usr/share/miniconda
-
       # Build cache of environment
       - name: Cache conda environment
         id: cache-environment
         uses: actions/cache@v2
         with:
           path: |
-            /usr/share/miniconda/envs/nams
             nams.tar.gz
           key: ${{ runner.os }}-${{ hashFiles('environment.yml') }}-env
 
