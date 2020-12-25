@@ -17,15 +17,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      # https://github.com/marketplace/actions/setup-conda
+      # See: https://github.com/marketplace/actions/setup-conda
       - uses: s-weigand/setup-conda@v1
         with:
           conda-channels: "conda-forge"
 
-      # A series of debugging calls
-      - run: echo $PATH
-      - run: which conda
-      - run: ls /usr/share/miniconda
+      # # A series of debugging calls
+      # - run: echo $PATH
+      # - run: which conda
+      # - run: ls /usr/share/miniconda
 
       # Build cache of environment
       - name: Cache conda environment
@@ -33,7 +33,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: /usr/share/miniconda/envs/nams
-          key: ${{ runner.os }}-${{ hashFiles('environment.yml') }}
+          key: ${{ runner.os }}-${{ hashFiles('environment.yml') }}-env
 
       - name: Build environment
         if: steps.cache-environment.outputs.cache-hit != 'true'
@@ -45,9 +45,9 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ./nams.tar.gz
-          key: ${{ runner.os }}-${{ hashFiles('nams.tar.gz') }}
+          key: ${{ runner.os }}-${{ hashFiles('environment.yml') }}-env-tarball
 
-      # https://github.com/actions/upload-artifact
+      # See: https://github.com/actions/upload-artifact
       - name: Upload environment
         uses: actions/upload-artifact@v2
         if: steps.cache-env-tarball.outputs.cache-hit != 'true'
