@@ -1,0 +1,30 @@
+# This GitHub workflow runs on every commit.
+# It runs the following checks:
+# -
+
+name: pull-request-checks
+
+on:
+  pull_request:
+
+jobs:
+  nbstripout:  # Check that notebooks have not outputs
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+        name: Checkout repository
+
+      - uses: actions/setup-python@v2
+        name: Setup Python
+        with:
+          python-version: 3.9
+
+      - name: Install nbstripout
+        run: |
+          python -m pip install --upgrade pip
+          pip install nbstripout
+          nbstripout --install
+
+      - name: Run nbstripout
+        run: |
+          nbstripout --dry-run notebooks/**/*.ipynb
