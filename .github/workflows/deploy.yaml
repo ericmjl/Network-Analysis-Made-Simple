@@ -59,23 +59,7 @@ jobs:
       - name: Unpack environment and activate it
         run: bash scripts/ci/unpack_environment.sh
 
-      # Build cache of website
-      - name: Cache website
-        id: cache-website
-        uses: actions/cache@v2
-        # Website build step depends on the following files:
-        # - mkdocs.yml
-        # - scripts/ci/build_website.sh
-        # - docs/
-        # - environment.yml
-        # so we ensure that the hash key contains all of their hashes.
-        with:
-          path: |
-            site
-          key: ${{ runner.os }}-mkdocs.${{ hashFiles('mkdocs.yml') }}-scripts.${{ hashFiles('scripts/ci/build_website.sh') }}-source.${{ hashFiles('docs') }}-env.${{ hashFiles('environment.yml') }}
-
       - name: Build website
-        if: steps.cache-website.outputs.cache-hit != 'true'
         run: |
           bash scripts/ci/build_website.sh
 
@@ -103,31 +87,10 @@ jobs:
         with:
           name: nams-tarball
 
-      # - name: Ensure conda is on PATH
-      #   uses: s-weigand/setup-conda@v1
-      #   with:
-      #     conda-channels: "conda-forge"
-
       - name: Unpack environment and activate it
         run: bash scripts/ci/unpack_environment.sh
 
-      # Build cache of leanpub source
-      - name: Cache LeanPub
-        id: cache-leanpub
-        uses: actions/cache@v2
-        # Leanpub build step depends on the following files:
-        # - scripts/bookbuilder
-        # - scripts/ci/build_website.sh
-        # - docs
-        # - environment.yml
-        # so we ensure that the hash key contains all of their hashes.
-        with:
-          path: |
-            site
-          key: ${{ runner.os }}-bookbuilder.${{ hashFiles('scripts/bookbuilder') }}-scripts.${{ hashFiles('scripts/ci/build_website.sh') }}-source.${{ hashFiles('docs') }}-env.${{ hashFiles('environment.yml') }}
-
       - name: Build leanpub manuscript files
-        if: steps.cache-leanpub.outputs.cache-hit != 'true'
         run: |
           bash scripts/ci/build_leanpub.sh
 
