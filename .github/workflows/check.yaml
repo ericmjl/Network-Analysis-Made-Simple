@@ -1,0 +1,130 @@
+# This GitHub workflow runs on every commit.
+name: pull-request-checks
+
+on:
+  pull_request:
+
+jobs:
+  black:  # Check that source code is black-ified
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+        name: Checkout repository
+
+      - uses: actions/setup-python@v2
+        name: Setup Python
+        with:
+          python-version: 3.9
+
+      - name: Install black
+        run: |
+          python -m pip install --upgrade pip
+          pip install black
+
+      - name: Run black
+        run: |
+          black --check .
+
+  # This job is copied over from `deploy.yaml`
+  build-environment:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+
+      # See: https://github.com/marketplace/actions/setup-conda
+      - uses: s-weigand/setup-conda@v1
+        with:
+          conda-channels: "conda-forge"
+
+      # Build cache of environment
+      - name: Cache conda environment
+        id: cache-environment
+        uses: actions/cache@v2
+        # Conda environment build step depends on two files,
+        # so we ensure that the hash key contains both their hashes.
+        with:
+          path: |
+            nams.tar.gz
+          key: ${{ runner.os }}-${{ hashFiles('environment.yml') }}-${{ hashFiles('scripts/ci/build_environment.sh') }}-env
+
+      - name: Build environment
+        if: steps.cache-environment.outputs.cache-hit != 'true'
+        run: bash scripts/ci/build_environment.sh
+
+      # See: https://github.com/actions/upload-artifact
+      - name: Upload environment
+        uses: actions/upload-artifact@v2
+        with:
+          name: nams-tarball
+          path: nams.tar.gz
+
+  # This job is copied over from `deploy.yaml`
+  build-deploy-website:
+    runs-on: ubuntu-18.04
+    needs: build-environment
+    steps:
+      - uses: actions/checkout@v2
+
+      # https://github.com/actions/download-artifact
+      - name: Download environment tarball
+        uses: actions/download-artifact@v2
+        with:
+          name: nams-tarball
+
+      - name: Unpack environment and activate it
+        run: bash scripts/ci/unpack_environment.sh
+
+      # Build cache of website
+      - name: Cache website
+        id: cache-website
+        uses: actions/cache@v2
+        # Website build step depends on the following files:
+        # - mkdocs.yml
+        # - scripts/ci/build_website.sh
+        # - docs/
+        # - environment.yml
+        # so we ensure that the hash key contains all of their hashes.
+        with:
+          path: |
+            site
+          key: ${{ runner.os }}-mkdocs.${{ hashFiles('mkdocs.yml') }}-scripts.${{ hashFiles('scripts/ci/build_website.sh') }}-source.${{ hashFiles('docs') }}-env.${{ hashFiles('environment.yml') }}
+
+      - name: Build website
+        if: steps.cache-website.outputs.cache-hit != 'true'
+        run: |
+          bash scripts/ci/build_website.sh
+
+  # This job is copied over from `deploy.yaml`
+  build-deploy-leanpub:
+    runs-on: ubuntu-18.04
+    needs: build-environment
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Download environment tarball
+        uses: actions/download-artifact@v2
+        with:
+          name: nams-tarball
+
+      - name: Unpack environment and activate it
+        run: bash scripts/ci/unpack_environment.sh
+
+      # Build cache of leanpub source
+      - name: Cache LeanPub
+        id: cache-leanpub
+        uses: actions/cache@v2
+        # Leanpub build step depends on the following files:
+        # - scripts/bookbuilder
+        # - scripts/ci/build_website.sh
+        # - docs
+        # - environment.yml
+        # so we ensure that the hash key contains all of their hashes.
+        with:
+          path: |
+            site
+          key: ${{ runner.os }}-bookbuilder.${{ hashFiles('scripts/bookbuilder') }}-scripts.${{ hashFiles('scripts/ci/build_website.sh') }}-source.${{ hashFiles('docs') }}-env.${{ hashFiles('environment.yml') }}
+
+      - name: Build leanpub manuscript files
+        if: steps.cache-leanpub.outputs.cache-hit != 'true'
+        run: |
+          bash scripts/ci/build_leanpub.sh
