@@ -91,6 +91,7 @@ jobs:
           key: ${{ runner.os }}-mkdocs.${{ hashFiles('mkdocs.yml') }}-scripts.${{ hashFiles('scripts/ci/build_website.sh') }}-source.${{ hashFiles('docs') }}-env.${{ hashFiles('environment.yml') }}
 
       - name: Build website
+        if: steps.cache-leanpub.outputs.cache-hit != 'true'
         run: |
           bash scripts/ci/build_website.sh
 
