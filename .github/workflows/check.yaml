@@ -1,5 +1,5 @@
 # This GitHub workflow runs on every commit.
-name: pull-request-checks
+name: Pull request checks
 
 on:
   pull_request:
@@ -88,12 +88,20 @@ jobs:
         with:
           path: |
             site
-          key: ${{ runner.os }}-mkdocs.${{ hashFiles('mkdocs.yml') }}-scripts.${{ hashFiles('scripts/ci/build_website.sh') }}-source.${{ hashFiles('docs') }}-env.${{ hashFiles('environment.yml') }}
+          key: ${{ runner.os }}-mkdocs.${{ hashFiles('mkdocs.yml') }}-scripts.${{ hashFiles('scripts/ci/build_website.sh') }}-source.${{ hashFiles('notebooks') }}-env.${{ hashFiles('environment.yml') }}
 
       - name: Build website
         if: steps.cache-website.outputs.cache-hit != 'true'
         run: |
           bash scripts/ci/build_website.sh
+
+      # https://www.bradmcgonigle.com/blog/github-action-for-continuous-deployment
+      # - NETLIFY_SITE_ID maps to the netlify site's API ID
+      # - NETLIFY_AUTH_TOKEN maps to netlify's Personal Access Token that I set on a per-user basis
+      - name: Netlify PR preview
+        uses: netlify/actions/cli@master
+        with:
+          args: deploy --site ${{ secrets.NETLIFY_SITE_ID }} --auth ${{ secrets.NETLIFY_AUTH_TOKEN }} --dir=site/
 
   # This job is copied over from `deploy.yaml`
   build-deploy-leanpub:
@@ -123,7 +131,7 @@ jobs:
         with:
           path: |
             site
-          key: ${{ runner.os }}-bookbuilder.${{ hashFiles('scripts/bookbuilder') }}-scripts.${{ hashFiles('scripts/ci/build_website.sh') }}-source.${{ hashFiles('docs') }}-env.${{ hashFiles('environment.yml') }}
+          key: ${{ runner.os }}-bookbuilder.${{ hashFiles('scripts/bookbuilder') }}-scripts.${{ hashFiles('scripts/ci/build_website.sh') }}-source.${{ hashFiles('notebooks') }}-env.${{ hashFiles('environment.yml') }}
 
       - name: Build leanpub manuscript files
         if: steps.cache-leanpub.outputs.cache-hit != 'true'
