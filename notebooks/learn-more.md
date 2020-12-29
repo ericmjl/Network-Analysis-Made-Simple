@@ -3,6 +3,8 @@ We hope you've enjoyed the book.
 If you want to further your learning,
 here's a few resources to keep you going.
 
+
+<!--
 ## DataCamp
 
 I have a course on DataCamp that you can use
@@ -40,6 +42,8 @@ Here's an overview of what's available
 
     The link to his "project course" is [here](https://learn.datacamp.com/projects/76).
 
+-->
+
 ## Academic Books
 
 === "Statistics"
@@ -55,3 +59,19 @@ Here's an overview of what's available
     and is available on Amazon (click on the book link below).
 
     <a target="_blank"  href="https://www.amazon.com/gp/product/038788145X/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=038788145X&linkCode=as2&tag=ericmjl-20&linkId=489e360e1beb1e46ab19a76214deaa77"><img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=US&ASIN=038788145X&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL250_&tag=ericmjl-20" ></a><img src="//ir-na.amazon-adsystem.com/e/ir?t=ericmjl-20&l=am2&o=1&a=038788145X" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+
+=== "Network Science"
+
+    This is a book by Albert Laszlo-Barabasi, and is freely available [online].
+    In it, he explores network analysis from the perspective of an applied academic discipline,
+    showing universal properties and processes that underly networks.
+
+    [online]: http://networksciencebook.com/
+
+## Online Resources
+
+=== "Snacks"
+
+    Snacks is a repository of network analysis learning tools
+    curated in the same spirit as the "Awesome-X" repositories
+    that show up on GitHub.
