@@ -20,7 +20,7 @@ Head over to [the official website][nams]!
 
 If you enjoy the material, please consider doing one of the following:
 
-1. [Share it on Twitter!](https://twitter.com/intent/tweet?url=http%3A%2F%2Fericmjl.github.io%2FNetwork-Analysis-Made-Simple%2F&text=Come%20learn%20about%20applied%20graph%20theory%20and%20network%20science%21&hashtags=%23datascience%2C%20%23networkscience%2C%20%23graphtheory)
+1. Share it around on Twitter!
 2. Purchase a copy of the [LeanPub eBook](https://leanpub.com/nams)
 3. Share it with your colleagues.
 
