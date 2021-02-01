@@ -1,6 +1,6 @@
 -e .
 hiveplot==2017.10.17.21.7
-ipykernel==5.4.2
+ipykernel==5.4.3
 jupyter==1.0.0
 matplotlib==3.3.3
 mkdocs-material==6.2.3
