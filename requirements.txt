@@ -10,7 +10,7 @@ nbconvert==6.0.7
 networkx==2.5
 numpy==1.20.1
 nxviz==0.6.2
-pandas==1.2.1
+pandas==1.2.3
 pyjanitor==0.20.10
 pymdown-extensions==8.1.1
 pyprojroot==0.2.0
