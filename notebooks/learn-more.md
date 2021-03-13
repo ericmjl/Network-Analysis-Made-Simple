@@ -62,7 +62,7 @@ Here's an overview of what's available
 
 === "Network Science"
 
-    This is a book by Prof. Albert Laszlo-Barabasi, and is freely available [online].
+    This is a book by Prof. Albert-Laszlo Barabasi, and is freely available [online].
     In it, he explores network analysis from the perspective of an applied academic discipline,
     showing universal properties and processes that underly networks.
 
