@@ -62,11 +62,23 @@ Here's an overview of what's available
 
 === "Network Science"
 
-    This is a book by Albert Laszlo-Barabasi, and is freely available [online].
+    This is a book by Prof. Albert Laszlo-Barabasi, and is freely available [online].
     In it, he explores network analysis from the perspective of an applied academic discipline,
     showing universal properties and processes that underly networks.
 
     [online]: http://networksciencebook.com/
+
+=== "Think Complexity"
+
+    This is a book by Prof. Allen Downey at the Olin College of Engineering.
+    In fact, this was the first book that exposed me (Eric Ma)
+    to network science and its ideas, which thus inspired my thesis topic,
+    which then gave me the impetus to learn graph theory and make this tutorial.
+    I hope it becomes a useful thing for you too.
+    You can find the book [at Green Tea Press][thinkcomp] for free,
+    but do consider purchasing a copy to support Allen's work!
+
+    [thinkcomp]: https://greenteapress.com/wp/think-complexity-2e/
 
 ## Online Resources
 
