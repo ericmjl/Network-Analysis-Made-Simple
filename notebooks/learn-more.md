@@ -54,8 +54,7 @@ Here's an overview of what's available
     Eric D. Kolaczyck.
     I used it during graduate school
     as part of my personnal learning journey.
-    The book's website can be found [here]
-    (http://math.bu.edu/people/kolaczyk/SAND.html),
+    The book's website can be found [here](http://math.bu.edu/people/kolaczyk/SAND.html),
     and is available on Amazon (click on the book link below).
 
     <a target="_blank"  href="https://www.amazon.com/gp/product/038788145X/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=038788145X&linkCode=as2&tag=ericmjl-20&linkId=489e360e1beb1e46ab19a76214deaa77"><img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=US&ASIN=038788145X&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL250_&tag=ericmjl-20" ></a><img src="//ir-na.amazon-adsystem.com/e/ir?t=ericmjl-20&l=am2&o=1&a=038788145X" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
