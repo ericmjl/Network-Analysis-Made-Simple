@@ -86,3 +86,4 @@ Here's an overview of what's available
     Snacks is a repository of network analysis learning tools
     curated in the same spirit as the "Awesome-X" repositories
     that show up on GitHub.
+    You can find it [here](https://github.com/alonnir/snacks/).
