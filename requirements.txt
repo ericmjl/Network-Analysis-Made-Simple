@@ -11,7 +11,7 @@ networkx==2.5
 numpy==1.20.2
 nxviz==0.6.3
 pandas==1.2.3
-pyjanitor==0.20.10
+pyjanitor==0.20.14
 pymdown-extensions==8.1.1
 pyprojroot==0.2.0
 python-louvain==0.15
