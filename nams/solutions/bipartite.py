@@ -10,42 +10,34 @@ def extract_partition_nodes(G: nx.Graph, partition: str):
     return nodeset
 
 
-def draw_bipartite_graph_example():
-    """Draw an example bipartite graph and its corresponding projection."""
-    import matplotlib.pyplot as plt
-
-    fig, axes = plt.subplots(figsize=(6, 3), nrows=1, ncols=2)
-
+def bipartite_example_graph():
     bG = nx.Graph()
     bG.add_nodes_from("abcd", bipartite="letters")
     bG.add_nodes_from(range(1, 4), bipartite="numbers")
     bG.add_edges_from([("a", 1), ("b", 1), ("b", 3), ("c", 2), ("c", 3), ("d", 1)])
 
-    nx.draw(
-        bG,
-        with_labels=True,
-        node_color=["r"] * 4 + ["y"] * 3,
-        pos={
-            "a": (0, 0),
-            "b": (0, 1),
-            "c": (0, 2),
-            "d": (0, 3),
-            1: (1, 0),
-            2: (1, 1),
-            3: (1, 2),
-        },
-        edge_color=["r"] * 2 + ["k"] * 4,
-        ax=axes[0],
-    )
+    return bG
+
+
+def draw_bipartite_graph_example():
+    """Draw an example bipartite graph and its corresponding projection."""
+    import matplotlib.pyplot as plt
+    import nxviz as nv
+    from nxviz import annotate, plots, highlights
+
+    fig, ax = plt.subplots(nrows=1, ncols=2, figsize=(8, 4))
+    plt.sca(ax[0])
+    bG = bipartite_example_graph()
+    nv.parallel(bG, group_by="bipartite", node_color_by="bipartite")
+    annotate.parallel_group(bG, group_by="bipartite", y_offset=-0.5)
+    highlights.parallel_edge(bG, "a", 1, group_by="bipartite")
+    highlights.parallel_edge(bG, "b", 1, group_by="bipartite")
 
     pG = nx.bipartite.projected_graph(bG, nodes=list("abcd"))
-    nx.draw(
-        pG,
-        with_labels=True,
-        node_color="red",
-        edge_color=("r", "k", "k", "k"),
-        ax=axes[1],
-    )
+    plt.sca(ax[1])
+    nv.arc(pG)
+    highlights.arc_edge(pG, "a", "b")
+    return ax
 
 
 def find_most_similar_crimes(cG: nx.Graph):

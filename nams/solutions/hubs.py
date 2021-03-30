@@ -3,7 +3,8 @@
 import matplotlib.pyplot as plt
 import networkx as nx
 import pandas as pd
-from nxviz import CircosPlot
+import nxviz as nv
+from nxviz import annotate
 
 from nams import ecdf
 
@@ -66,8 +67,10 @@ If defined as (2), $N$ is equal to $K$.
 
 def circos_plot(G):
     """Draw a Circos Plot of the graph."""
-    c = CircosPlot(G, node_order="order", node_color="order")
-    c.draw()
+    # c = CircosPlot(G, node_order="order", node_color="order")
+    # c.draw()
+    nv.circos(G, sort_by="order", node_color_by="order")
+    annotate.node_colormapping(G, color_by="order")
 
 
 def visual_insights():

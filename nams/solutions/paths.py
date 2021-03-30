@@ -104,23 +104,26 @@ def path_exists_deque(node1, node2, G):
     return False
 
 
-def plot_path_with_neighbors(G, n1, n2):
-    """Plot path while also including neighbors of nodes along path."""
-    path = nx.shortest_path(G, n1, n2)
+import nxviz as nv
+from nxviz import annotate, highlights
 
+
+def plot_path_with_neighbors(G, n1, n2):
+    """Plot a path with the heighbors of of the nodes along that path."""
+    path = nx.shortest_path(G, n1, n2)
     nodes = [*path]
     for node in path:
         nodes.extend(list(G.neighbors(node)))
     nodes = list(set(nodes))
 
-    colors = []
-    for n in nodes:
-        if n not in path:
-            colors.append("blue")
-        else:
-            colors.append("red")
-
-    nx.draw(G.subgraph(nodes), with_labels=False, node_color=colors)
+    g = G.subgraph(nodes)
+    nv.arc(
+        g, sort_by="order", node_color_by="order", edge_aes_kwargs={"alpha_scale": 0.5}
+    )
+    for n in path:
+        highlights.arc_node(g, n, sort_by="order")
+    for n1, n2 in zip(path[:-1], path[1:]):
+        highlights.arc_edge(g, n1, n2, sort_by="order")
 
 
 def plot_degree_betweenness(G):
