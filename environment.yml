@@ -7,7 +7,6 @@ dependencies:
   - networkx
   - scipy
   - numpy
-  - nxviz
   - hiveplot
   - jupyter
   - jupyterlab
@@ -34,3 +33,5 @@ dependencies:
   - markdown
   - gitpython  # used by mkdocs
   - mkdocs-material-extensions  # used by mkdocs-material
+  - pip:
+    - git+https://github.com/ericmjl/nxviz.git
