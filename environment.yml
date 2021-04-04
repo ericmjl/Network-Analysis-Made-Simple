@@ -33,5 +33,6 @@ dependencies:
   - markdown
   - gitpython  # used by mkdocs
   - mkdocs-material-extensions  # used by mkdocs-material
+  - decorator>=5.0.5  # https://github.com/networkx/networkx/issues/4718
   - pip:
     - git+https://github.com/ericmjl/nxviz.git
