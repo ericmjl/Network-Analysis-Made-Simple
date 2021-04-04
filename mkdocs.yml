@@ -51,7 +51,7 @@ plugins:
   - mknotebooks:
       execute: true
       write_markdown: true
-      allow_errors: true
+      allow_errors: false
       timeout: 1200
       binder: true
       binder_service_name: "gh"
