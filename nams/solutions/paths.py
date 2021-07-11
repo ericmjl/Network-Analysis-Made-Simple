@@ -118,7 +118,7 @@ def plot_path_with_neighbors(G, n1, n2):
 
     g = G.subgraph(nodes)
     nv.arc(
-        g, sort_by="order", node_color_by="order", edge_aes_kwargs={"alpha_scale": 0.5}
+        g, sort_by="order", node_color_by="order", edge_enc_kwargs={"alpha_scale": 0.5}
     )
     for n in path:
         highlights.arc_node(g, n, sort_by="order")
