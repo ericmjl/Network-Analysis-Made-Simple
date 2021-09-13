@@ -9,7 +9,7 @@ git+https://github.com/greenape/mknotebooks.git
 nbconvert==6.1.0
 networkx==2.6.3
 numpy==1.21.2
-nxviz==0.6.3
+nxviz==0.7.2
 pandas==1.2.3
 pyjanitor==0.20.14
 pymdown-extensions==8.1.1
