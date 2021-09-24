@@ -7,7 +7,7 @@ This network describes the face-to-face behavior of people during the exhibition
 
 
 More information about the network is provided here:
-http://konect.uni-koblenz.de/networks/sociopatterns-infectious
+http://konect.cc/networks/sociopatterns-infectious
 
 Files:
     meta.sociopatterns-infectious -- Metadata about the network
@@ -22,10 +22,10 @@ Files:
 Complete documentation about the file format can be found in the KONECT
 handbook, in the section File Formats, available at:
 
-http://konect.uni-koblenz.de/publications
+http://konect.cc/publications
 
 All files are licensed under a Creative Commons Attribution-ShareAlike 2.0 Germany License.
-For more information concerning license visit http://konect.uni-koblenz.de/license.
+For more information concerning license visit http://konect.cc/license.
 
 
 
@@ -35,7 +35,7 @@ Use the following References for citation:
     title = {Infectious network dataset -- {KONECT}},
     month = jan,
     year = {2016},
-    url = {http://konect.uni-koblenz.de/networks/sociopatterns-infectious}
+    url = {http://konect.cc/networks/sociopatterns-infectious}
 }
 
 @article{konect:sociopatterns,

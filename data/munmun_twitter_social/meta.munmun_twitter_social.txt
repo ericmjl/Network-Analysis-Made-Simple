@@ -10,6 +10,6 @@ entity-names:  user
 relationship-names: follow
 
 n3-add-prefix-1: sioc: <http://rdfs.org/sioc/ns#> .
-n3-prefix-m: konect_munmun_twitter_social_user: <http://konect.uni-koblenz.de/networks/munmun_twitter_social/User/> .
+n3-prefix-m: konect_munmun_twitter_social_user: <http://konect.cc/networks/munmun_twitter_social/User/> .
 n3-type-m: sioc:UserAccount
 n3-edgedata-1: $m sioc:follows $n .

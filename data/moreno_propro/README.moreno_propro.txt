@@ -7,7 +7,7 @@ This undirected network contains protein interactions contained in yeast. Resear
 
 
 More information about the network is provided here:
-http://konect.uni-koblenz.de/networks/moreno_propro
+http://konect.cc/networks/moreno_propro
 
 Files:
     meta.moreno_propro -- Metadata about the network
@@ -20,10 +20,10 @@ Files:
 Complete documentation about the file format can be found in the KONECT
 handbook, in the section File Formats, available at:
 
-http://konect.uni-koblenz.de/publications
+http://konect.cc/publications
 
 All files are licensed under a Creative Commons Attribution-ShareAlike 2.0 Germany License.
-For more information concerning license visit http://konect.uni-koblenz.de/license.
+For more information concerning license visit http://konect.cc/license.
 
 
 
@@ -33,7 +33,7 @@ Use the following References for citation:
     title = {Protein network dataset -- {KONECT}},
     month = jan,
     year = {2016},
-    url = {http://konect.uni-koblenz.de/networks/moreno_propro}
+    url = {http://konect.cc/networks/moreno_propro}
 }
 
 @article{konect:coulomb2005,

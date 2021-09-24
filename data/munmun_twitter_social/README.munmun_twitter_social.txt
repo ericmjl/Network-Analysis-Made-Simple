@@ -7,7 +7,7 @@ This is the directed network containing information about who follows whom on Tw
 
 
 More information about the network is provided here:
-http://konect.uni-koblenz.de/networks/munmun_twitter_social
+http://konect.cc/networks/munmun_twitter_social
 
 Files:
     meta.munmun_twitter_social -- Metadata about the network
@@ -20,10 +20,10 @@ Files:
 Complete documentation about the file format can be found in the KONECT
 handbook, in the section File Formats, available at:
 
-http://konect.uni-koblenz.de/publications
+http://konect.cc/publications
 
 All files are licensed under a Creative Commons Attribution-ShareAlike 2.0 Germany License.
-For more information concerning license visit http://konect.uni-koblenz.de/license.
+For more information concerning license visit http://konect.cc/license.
 
 
 
@@ -33,7 +33,7 @@ Use the following References for citation:
     title = {Twitter (ICWSM) network dataset -- {KONECT}},
     month = oct,
     year = {2014},
-    url = {http://konect.uni-koblenz.de/networks/munmun_twitter_social}
+    url = {http://konect.cc/networks/munmun_twitter_social}
 }
 
 @inproceedings{konect:choudhury10,

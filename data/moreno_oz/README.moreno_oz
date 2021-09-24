@@ -7,7 +7,7 @@ This directed network contains friendship ratings between 217 residents living a
 
 
 More information about the network is provided here:
-http://konect.uni-koblenz.de/networks/moreno_oz
+http://konect.cc/networks/moreno_oz
 
 Files:
     meta.moreno_oz -- Metadata about the network
@@ -21,10 +21,10 @@ Files:
 Complete documentation about the file format can be found in the KONECT
 handbook, in the section File Formats, available at:
 
-http://konect.uni-koblenz.de/publications
+http://konect.cc/publications
 
 All files are licensed under a Creative Commons Attribution-ShareAlike 2.0 Germany License.
-For more information concerning license visit http://konect.uni-koblenz.de/license.
+For more information concerning license visit http://konect.cc/license.
 
 
 
@@ -34,7 +34,7 @@ Use the following References for citation:
     title = {Residence hall network dataset -- {KONECT}},
     month = sep,
     year = {2016},
-    url = {http://konect.uni-koblenz.de/networks/moreno_oz}
+    url = {http://konect.cc/networks/moreno_oz}
 }
 
 @article{konect:freeman1998,
