@@ -9,7 +9,7 @@ long-description: This directed networks contains Facebook user–user friendshi
 cite: konect:McAuley2012
 relationship-names: friendship
 n3-add-prefix-1: sioc: <http://rdfs.org/sioc/ns#> .
-n3-prefix-m: konect_ego_facebook_user: <http://konect.uni-koblenz.de/networks/ego-facebook/User/> .
+n3-prefix-m: konect_ego_facebook_user: <http://konect.cc/networks/ego-facebook/User/> .
 n3-type-m: sioc:UserAccount
 n3-edgedata-1: $m foaf:knows $n .
 n3-edgedata-2: $n foaf:knows $m .
