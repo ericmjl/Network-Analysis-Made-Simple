@@ -3,7 +3,7 @@ hiveplot==2017.10.17.21.7
 ipykernel==6.6.0
 jupyter==1.0.0
 matplotlib==3.5.1
-mkdocs-material==7.2.8
+mkdocs-material==8.1.0
 mkdocs==1.2.2
 git+https://github.com/greenape/mknotebooks.git
 nbconvert==6.1.0
