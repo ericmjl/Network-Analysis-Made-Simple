@@ -31,7 +31,8 @@ RUN apt-get update \
     && /opt/conda/bin/pip install pylint \
     #
     # Update Python environment based on environment.yml (if present)
-    && if [ -f "/tmp/conda-tmp/environment.yml" ]; then /opt/conda/bin/conda env update -n base -f /tmp/conda-tmp/environment.yml; fi \
+    && /opt/conda/bin/conda install -c conda-forge mamba -y \
+    && if [ -f "/tmp/conda-tmp/environment.yml" ]; then /opt/conda/bin/mamba env update -n base -f /tmp/conda-tmp/environment.yml; fi \
     && rm -rf /tmp/conda-tmp \
     #
     # Create a non-root user to use if preferred - see https://aka.ms/vscode-remote/containers/non-root-user.
@@ -43,11 +44,11 @@ RUN apt-get update \
     && chmod 0440 /etc/sudoers.d/$USERNAME \
     # [Additional Customization]
     && apt-get install -y nano vim emacs \
-    && python -m ipykernel install --user --name "Network Analysis Made Simple"
+    && python -m ipykernel install --user --name "nams" --display-name "Network Analysis Made Simple" \
     # Clean up
     && apt-get autoremove -y \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/* \
 
-# Switch back to dialog for any ad-hoc use of apt-get
-ENV DEBIAN_FRONTEND=dialog
+    # Switch back to dialog for any ad-hoc use of apt-get
+    ENV DEBIAN_FRONTEND=dialog
