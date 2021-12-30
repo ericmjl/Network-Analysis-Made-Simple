@@ -3,36 +3,34 @@ channels:
   - conda-forge
 dependencies:
   - python=3.8
-  - matplotlib
-  - networkx
-  - scipy
-  - numpy
+  - black
+  - ffmpeg
+  - gitpython  # used by mkdocs
   - hiveplot
+  - ipykernel
+  - isort
   - jupyter
   - jupyterlab
-  - ipykernel
-  - pandas>=1.0
-  - rise
-  - python-louvain
-  - tqdm
-  - ffmpeg
-  - nbstripout>=0.3.9
-  - pygments
-  - pip
-  - pyprojroot
-  - isort
-  - black
-  - pyjanitor
-  - pre-commit
-  - tabulate  # used for exporting dataframe as Markdown tables
-  - nbconvert>=6.0.7
-  - nbconvert-utils>=0.6
-  - pymdown-extensions
-  - mkdocs-material
-  - mkdocs
   - markdown
-  - gitpython  # used by mkdocs
+  - matplotlib
+  - mkdocs
+  - mkdocs-material
   - mkdocs-material-extensions  # used by mkdocs-material
-  - decorator>=5.0.5  # https://github.com/networkx/networkx/issues/4718
-  - pip:
-    - git+https://github.com/ericmjl/nxviz.git
+  - nbconvert-utils>=0.6
+  - nbconvert>=6.0.7
+  - nbstripout>=0.3.9
+  - networkx=2.6.3
+  - numpy
+  - nxviz
+  - pandas>=1.0
+  - pip
+  - pre-commit
+  - pygments
+  - pyjanitor
+  - pymdown-extensions
+  - pyprojroot
+  - python-louvain
+  - rise
+  - scipy
+  - tabulate  # used for exporting dataframe as Markdown tables
+  - tqdm
