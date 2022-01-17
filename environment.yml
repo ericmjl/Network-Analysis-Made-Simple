@@ -32,5 +32,6 @@ dependencies:
   - python-louvain
   - rise
   - scipy
+  - seaborn
   - tabulate  # used for exporting dataframe as Markdown tables
   - tqdm
