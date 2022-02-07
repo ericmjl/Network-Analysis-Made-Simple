@@ -14,6 +14,6 @@ pandas==1.4.0
 pyjanitor==0.22.0
 pymdown-extensions==9.1
 pyprojroot==0.2.0
-python-louvain==0.15
+python-louvain==0.16
 scipy==1.7.1
 tqdm==4.62.2
