@@ -16,4 +16,4 @@ pymdown-extensions==9.2
 pyprojroot==0.2.0
 python-louvain==0.16
 scipy==1.8.0
-tqdm==4.62.3
+tqdm==4.63.0
