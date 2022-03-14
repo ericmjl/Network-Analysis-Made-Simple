@@ -8,7 +8,7 @@ mkdocs==1.2.3
 git+https://github.com/greenape/mknotebooks.git
 nbconvert==6.4.4
 networkx==2.7.1
-numpy==1.22.2
+numpy==1.22.3
 nxviz==0.7.3
 pandas==1.4.0
 pyjanitor==0.22.0
