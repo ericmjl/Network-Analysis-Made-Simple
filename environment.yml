@@ -19,7 +19,7 @@ dependencies:
   - nbconvert-utils>=0.6
   - nbconvert>=6.0.7
   - nbstripout>=0.3.9
-  - networkx=2.6.3
+  - networkx>=2.6.3
   - numpy
   - nxviz
   - pandas>=1.0
