@@ -3,7 +3,7 @@
 # Licensed under the MIT License. See https://go.microsoft.com/fwlink/?linkid=2090316 for license information.
 #-------------------------------------------------------------------------------------------------------------
 
-FROM continuumio/miniconda3
+FROM condaforge/mambaforge
 
 # Avoid warnings by switching to noninteractive
 ENV DEBIAN_FRONTEND=noninteractive
@@ -31,7 +31,6 @@ RUN apt-get update \
     && /opt/conda/bin/pip install pylint \
     #
     # Update Python environment based on environment.yml (if present)
-    && /opt/conda/bin/conda install -c conda-forge mamba -y \
     && if [ -f "/tmp/conda-tmp/environment.yml" ]; then /opt/conda/bin/mamba env update -n base -f /tmp/conda-tmp/environment.yml; fi \
     && rm -rf /tmp/conda-tmp \
     #
