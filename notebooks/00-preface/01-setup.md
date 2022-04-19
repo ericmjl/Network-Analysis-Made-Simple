@@ -29,10 +29,44 @@ which contains data loaders and solutions.
 python setup.py develop
 ```
 
+## VSCode Development Containers
+
+Assuming that you're using Visual Studio Code
+and have attempted to use development containers before,
+you can run the Network Analysis Made Simple tutorial content
+inside a development container.
+After Binder, this is the second easiest way to get set up.
+You need to have Docker installed on your computer
+but don't worry -- you won't have to execute any Docker commands :).
+
+### Install the Remote Containers extension
+
+This is found in the Extensions marketplace.
+
+![Remote Containers extension.](https://user-images.githubusercontent.com/2631566/164070556-7ca675bc-d700-4e1b-a8e4-f07bc77c79f8.png)
+
+### Clone the repository to your local drive
+
+```bash
+git clone https://github.com/ericmjl/Network-Analysis-Made-Simple.git
+```
+
+### Open the repository in VSCode
+
+Use `Cmd+Shift+P` to open the command palette, and search for "Rebuild and Reopen in Container" as below:
+
+![Search for "Rebuild and Reopen in Container"](https://user-images.githubusercontent.com/2631566/164071398-ff115bd0-02fc-4827-935a-2785a354360f.png)
+
+Hit enter and wait for the container to build automagically. This may take around 10 minutes or so, depending on your system.
+
+![Development container will be built.](https://user-images.githubusercontent.com/2631566/164071594-d3ddf3fa-9c78-48f3-be56-09a453f8eb0a.png)
+
 ## `conda` environments
 
 We also recommend the use of `conda` environments!
-If you are feeling confident enough to set up a conda environment at the terminal,
+Use this if you're not already using one of the options above.
+If you are feeling confident enough to set up
+a conda environment at the terminal,
 then follow along.
 (We'll be assuming you've already cloned the repository locally.)
 
