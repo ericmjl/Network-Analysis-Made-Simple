@@ -53,7 +53,8 @@ git clone https://github.com/ericmjl/Network-Analysis-Made-Simple.git
 
 ### Open the repository in VSCode
 
-Use `Cmd+Shift+P` to open the command palette, and search for "Rebuild and Reopen in Container" as below:
+Use `Cmd+Shift+P` (on macOS) or `Ctrl+Shift+P` (on Linux/Windows)
+to open the command palette, and search for "Rebuild and Reopen in Container" as below:
 
 ![Search for "Rebuild and Reopen in Container"](https://user-images.githubusercontent.com/2631566/164071398-ff115bd0-02fc-4827-935a-2785a354360f.png)
 
