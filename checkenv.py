@@ -56,7 +56,9 @@ for p, i in packages.items():
 # Credit: @bill-tucker-zywave for suggesting this fix.
 # https://github.com/ericmjl/Network-Analysis-Made-Simple/issues/286#issuecomment-1108793656
 result = subprocess.run("ffmpeg -version", shell=True)
-assert result.returncode == 0, "please install ffmpeg and ensure that it is on your PATH."
+assert (
+    result.returncode == 0
+), "please install ffmpeg and ensure that it is on your PATH."
 
 # Credit: @zmilicc for requesting this.
 print("All checks passed. Your environment is good to go!")
