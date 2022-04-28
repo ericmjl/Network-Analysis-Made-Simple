@@ -2,9 +2,7 @@
 
 In order to get the most of this book,
 you will want to be able to execute the examples in the notebooks,
-modify them,
-break the code,
-and fix it.
+modify them, break the code, and fix it.
 Pedagogically, that is the best way for you to learn the concepts.
 Here are the recommended ways in which you can get set up.
 
@@ -18,16 +16,6 @@ As such, you won't have to wrestle with anything at the terminal.
 To go there, click on the following button:
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/ericmjl/Network-Analysis-Made-Simple/master)
-
-Once you're in there, do a final setup step,
-by opening up a terminal in the Jupyter session,
-and installing the custom package `nams` that we wrote,
-which contains data loaders and solutions.
-
-```bash
-# In the root directory of the repository
-python setup.py develop
-```
 
 ## VSCode Development Containers
 
