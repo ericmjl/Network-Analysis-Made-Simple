@@ -3,7 +3,6 @@ We hope you've enjoyed the book.
 If you want to further your learning,
 here's a few resources to keep you going.
 
-
 <!--
 ## DataCamp
 
@@ -78,6 +77,15 @@ Here's an overview of what's available
     but do consider purchasing a copy to support Allen's work!
 
     [thinkcomp]: https://greenteapress.com/wp/think-complexity-2e/
+
+
+=== "Spectral Graph Theory"
+
+    This is a book by UCSD Prof. Fan Chung.
+    It is being partially revised, with chapters available [online][fanchung].
+    Contains valuable information on the connections between graphs and linear algebra.
+
+    [fanchung]: https://mathweb.ucsd.edu/~fan/research/revised.html
 
 ## Online Resources
 
