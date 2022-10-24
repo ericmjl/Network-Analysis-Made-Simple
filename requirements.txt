@@ -7,7 +7,7 @@ mkdocs-material==8.5.7
 mkdocs==1.4.1
 git+https://github.com/greenape/mknotebooks.git
 nbconvert==7.2.2
-networkx==2.8.6
+networkx==2.8.7
 numpy==1.23.2
 nxviz==0.7.4
 pandas==1.4.3
