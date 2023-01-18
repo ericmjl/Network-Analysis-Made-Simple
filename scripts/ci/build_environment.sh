@@ -1,5 +1,4 @@
 # Build conda environment.
-conda update -n base -c defaults conda
 conda install -c conda-forge mamba
 mamba env create -f environment.yml
 mamba activate nams || mamba activate nams
