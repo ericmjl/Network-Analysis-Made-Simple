@@ -1,0 +1,15 @@
+00-preface/preface.md/index.md
+00-preface/03-goals.md/index.md
+01-introduction/01-graphs.md/index.md
+01-introduction/02-networkx-intro.md/index.md
+01-introduction/03-viz.md/index.md
+02-algorithms/01-hubs.md/index.md
+02-algorithms/02-paths.md/index.md
+02-algorithms/03-structures.md/index.md
+03-practical/01-io.md/index.md
+03-practical/02-testing.md/index.md
+04-advanced/01-bipartite.md/index.md
+04-advanced/02-linalg.md/index.md
+04-advanced/03-stats.md/index.md
+05-casestudies/01-gameofthrones.md/index.md
+05-casestudies/02-airport.md/index.md
