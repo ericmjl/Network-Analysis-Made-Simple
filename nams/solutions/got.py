@@ -15,7 +15,7 @@ def weighted_degree(G, weight):
 def correlation_centrality(G):
     cor = pd.DataFrame.from_records(
         [
-            nx.pagerank_numpy(G, weight="weight"),
+            nx.pagerank(G, weight="weight"),
             nx.betweenness_centrality(G, weight="weight_inv"),
             weighted_degree(G, "weight"),
             nx.degree_centrality(G),
