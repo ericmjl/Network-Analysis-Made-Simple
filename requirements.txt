@@ -15,5 +15,5 @@ pyjanitor==0.26.0
 pymdown-extensions==10.5
 pyprojroot==0.3.0
 python-louvain==0.16
-scipy==1.11.3
+scipy==1.11.4
 tqdm==4.66.1
