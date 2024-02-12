@@ -4,6 +4,7 @@ Some utility functions to help with building notebooks.
 This module exists because I saw common usable functions
 across both the LeanPub and MkDocs build steps.
 """
+
 import nbformat
 from nbconvert import MarkdownExporter, PDFExporter
 from nbconvert.preprocessors import ExecutePreprocessor
