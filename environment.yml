@@ -2,11 +2,10 @@ name: nams # Network Analysis Made Simple
 channels:
   - conda-forge
 dependencies:
-  - python=3.9
+  - python>=3.9
   - black
   - ffmpeg
   - gitpython  # used by mkdocs
-  - hiveplot
   - ipykernel
   - isort
   - jupyter
@@ -21,7 +20,6 @@ dependencies:
   - nbstripout>=0.3.9
   - networkx>=2.6.3
   - numpy
-  - nxviz
   - pandas>=1.0
   - pip
   - pre-commit
@@ -36,3 +34,4 @@ dependencies:
   - tqdm
   - pip:
     - mknotebooks
+    - nxviz
