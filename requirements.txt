@@ -4,7 +4,7 @@ ipykernel==6.29.4
 jupyter==1.0.0
 matplotlib==3.8.4
 mkdocs-material==9.5.18
-mkdocs==1.5.3
+mkdocs==1.6.0
 git+https://github.com/greenape/mknotebooks.git
 nbconvert==7.11.0
 networkx==3.2.1
