@@ -6,7 +6,7 @@ matplotlib==3.9.0
 mkdocs-material==9.5.27
 mkdocs==1.6.0
 git+https://github.com/greenape/mknotebooks.git
-nbconvert==7.11.0
+nbconvert==7.16.4
 networkx==3.2.1
 numpy==1.26.1
 nxviz==0.7.4
