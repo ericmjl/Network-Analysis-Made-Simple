@@ -12,7 +12,7 @@ numpy==2.2.0
 nxviz==0.7.4
 pandas==2.2.3
 pyjanitor==0.30.0
-pymdown-extensions==10.3.1
+pymdown-extensions==10.12
 pyprojroot==0.3.0
 python-louvain==0.16
 scipy==1.11.3
