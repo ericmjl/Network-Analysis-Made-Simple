@@ -6,8 +6,7 @@ import pandas as pd
 from pyprojroot import here
 from tqdm import tqdm
 
-root = here()
-datasets = root / "data"
+datasets = here() / "data"
 
 
 def load_seventh_grader_network():
