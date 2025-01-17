@@ -129,3 +129,10 @@ dmypy.json
 .ipynb_checkpoints
 *.pdf
 *.profraw
+
+# pixi environments
+.pixi
+*.egg-info
+
+# SQLite database
+message_log.db
