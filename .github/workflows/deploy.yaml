@@ -24,28 +24,6 @@ jobs:
           auth-host: prefix.dev
           auth-token: ${{ secrets.PREFIX_DEV_TOKEN }}
 
-      # Build cache of environment
-      - name: Cache conda environment
-        id: cache-environment
-        uses: actions/cache@v3
-        # Conda environment build step depends on two files,
-        # so we ensure that the hash key contains both their hashes.
-        with:
-          path: |
-            nams.tar.gz
-          key: ${{ runner.os }}-${{ hashFiles('environment.yml') }}-${{ hashFiles('scripts/ci/build_environment.sh') }}-env
-
-      - name: Build environment
-        if: steps.cache-environment.outputs.cache-hit != 'true'
-        run: bash scripts/ci/build_environment.sh
-
-      # See: https://github.com/actions/upload-artifact
-      - name: Upload environment
-        uses: actions/upload-artifact@v3
-        with:
-          name: nams-tarball
-          path: nams.tar.gz
-
   build-deploy-website:
     runs-on: ubuntu-22.04
     needs: build-environment
