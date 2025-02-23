@@ -24,24 +24,9 @@ jobs:
           auth-host: prefix.dev
           auth-token: ${{ secrets.PREFIX_DEV_TOKEN }}
 
-  build-deploy-website:
-    runs-on: ubuntu-22.04
-    needs: build-environment
-    steps:
-      - uses: actions/checkout@v3
-
-      # https://github.com/actions/download-artifact
-      - name: Download environment tarball
-        uses: actions/download-artifact@v3
-        with:
-          name: nams-tarball
-
-      - name: Unpack environment and activate it
-        run: bash scripts/ci/unpack_environment.sh
-
       - name: Build website
         run: |
-          bash scripts/ci/build_website.sh
+          pixi run bash scripts/ci/build_website.sh
 
       - name: Deploy Website
         uses: peaceiris/actions-gh-pages@v3
