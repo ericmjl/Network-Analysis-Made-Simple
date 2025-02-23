@@ -15,12 +15,14 @@ jobs:
   build-environment:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      # See: https://github.com/marketplace/actions/setup-conda
-      - uses: s-weigand/setup-conda@v1
+      - uses: prefix-dev/setup-pixi@v0.8.3
         with:
-          conda-channels: "conda-forge"
+          pixi-version: v0.41.4
+          cache: true
+          auth-host: prefix.dev
+          auth-token: ${{ secrets.PREFIX_DEV_TOKEN }}
 
       # Build cache of environment
       - name: Cache conda environment
