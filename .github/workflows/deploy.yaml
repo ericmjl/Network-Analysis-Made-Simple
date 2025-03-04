@@ -27,6 +27,7 @@ jobs:
 
       - name: Build website
         run: |
+          pixi run python -m ipykernel install --user --name nams
           pixi run build-docs
 
       - name: Deploy Website
