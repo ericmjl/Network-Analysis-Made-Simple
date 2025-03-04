@@ -67,6 +67,7 @@ jobs:
         with:
           push: false
           tags: ericmjl/nams:latest
+          file: scripts/Dockerfile
 
   #     - name: Download environment tarball
   #       uses: actions/download-artifact@v3
