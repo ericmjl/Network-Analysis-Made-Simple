@@ -4,7 +4,7 @@
 # The full pipeline is also leveraged here,
 # as we don't want a broken website to be deployed anyways.
 
-name: Master branch deploy
+name: Deployments
 
 on:
   push:
