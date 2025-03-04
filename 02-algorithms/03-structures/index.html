@@ -1,0 +1,2530 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://ericmjl.github.io/Network-Analysis-Made-Simple/02-algorithms/03-structures/">
+      
+      
+        <link rel="prev" href="../02-paths/">
+      
+      
+        <link rel="next" href="../../03-practical/01-io/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.7">
+    
+    
+      
+        <title>Chapter 6: Structures - Network Analysis Made Simple</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8608ea7d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/nb_mods.css">
+    
+      <link rel="stylesheet" href="../../css/apidocs.css">
+    
+      <link rel="stylesheet" href="../../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../../css/pandas-dataframe.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Network Analysis Made Simple" class="md-header__button md-logo" aria-label="Network Analysis Made Simple" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M96 0C43 0 0 43 0 96v320c0 53 43 96 96 96h320c17.7 0 32-14.3 32-32s-14.3-32-32-32v-64c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H96m0 384h256v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32m32-240c0-8.8 7.2-16 16-16h192c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16m16 48h192c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Network Analysis Made Simple
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chapter 6: Structures
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ericmjl/Network-Analysis-Made-Simple" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ericmjl/Network-Analysis-Made-Simple
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Network Analysis Made Simple" class="md-nav__button md-logo" aria-label="Network Analysis Made Simple" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M96 0C43 0 0 43 0 96v320c0 53 43 96 96 96h320c17.7 0 32-14.3 32-32s-14.3-32-32-32v-64c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H96m0 384h256v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32m32-240c0-8.8 7.2-16 16-16h192c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16m16 48h192c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16"/></svg>
+
+    </a>
+    Network Analysis Made Simple
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ericmjl/Network-Analysis-Made-Simple" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ericmjl/Network-Analysis-Made-Simple
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Network Analysis Made Simple
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Network Analysis Made Simple
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Preface
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Preface
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-preface/01-setup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Get Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-preface/02-prereqs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prerequisites
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-preface/03-goals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Learning Goals
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Section 1: Introduction
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Section 1: Introduction
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-introduction/01-graphs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 1: Introduction to Graphs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-introduction/02-networkx-intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 2: The NetworkX API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-introduction/03-viz/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 3: Graph Visualization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Section 2: Algorithms
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Section 2: Algorithms
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-hubs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 4: Hubs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-paths/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 5: Paths
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Chapter 6: Structures
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 6: Structures
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#triangles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Triangles
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Triangles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#load-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Load Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-finding-triangles-in-a-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise: Finding triangles in a graph
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-identify-whether-a-node-is-in-a-triangle-relationship-or-not" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise: Identify whether a node is in a triangle relationship or not
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-extract-triangles-for-plotting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise: Extract triangles for plotting
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#triadic-closure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Triadic Closure
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Triadic Closure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-design-the-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise: Design the algorithm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-implement-triadic-closure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise: Implement triadic closure.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-plot-the-open-triangles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise: Plot the open triangles
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cliques" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cliques
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cliques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-simplest-cliques" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise: Simplest cliques
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kk-cliques" class="md-nav__link">
+    <span class="md-ellipsis">
+      kk-Cliques
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maximal-cliques" class="md-nav__link">
+    <span class="md-ellipsis">
+      Maximal Cliques
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-finding-sized-kk-maximal-cliques" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise: finding sized-kk maximal cliques
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clique-decomposition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clique Decomposition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-finding-all-kk-cliques-in-a-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise: finding all kk-cliques in a graph
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connected-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connected Components
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Connected Components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-visual-insights" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise: Visual insights
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#defining-connected-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Defining connected components
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-visualizing-connected-component-subgraphs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise: visualizing connected component subgraphs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solutions
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Section 3: Practical Matters
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Section 3: Practical Matters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-practical/01-io/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 7: Graph I/O
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-practical/02-testing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 8: Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Section 4: Advanced Topics
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Section 4: Advanced Topics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-advanced/01-bipartite/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 9: Bipartite Graphs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-advanced/02-linalg/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 10: Linear Algebra
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-advanced/03-stats/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 11: Statistical Inference
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Section 5: Case Studies
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Section 5: Case Studies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-casestudies/01-gameofthrones/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 12: Game of Thrones
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-casestudies/02-airport/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 13: Airport Network
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn-more/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Further Learning
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Development
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Development
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../devdocs/style/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Style Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#triangles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Triangles
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Triangles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#load-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Load Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-finding-triangles-in-a-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise: Finding triangles in a graph
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-identify-whether-a-node-is-in-a-triangle-relationship-or-not" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise: Identify whether a node is in a triangle relationship or not
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-extract-triangles-for-plotting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise: Extract triangles for plotting
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#triadic-closure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Triadic Closure
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Triadic Closure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-design-the-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise: Design the algorithm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-implement-triadic-closure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise: Implement triadic closure.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-plot-the-open-triangles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise: Plot the open triangles
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cliques" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cliques
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cliques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-simplest-cliques" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise: Simplest cliques
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kk-cliques" class="md-nav__link">
+    <span class="md-ellipsis">
+      kk-Cliques
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maximal-cliques" class="md-nav__link">
+    <span class="md-ellipsis">
+      Maximal Cliques
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-finding-sized-kk-maximal-cliques" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise: finding sized-kk maximal cliques
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clique-decomposition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clique Decomposition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-finding-all-kk-cliques-in-a-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise: finding all kk-cliques in a graph
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connected-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connected Components
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Connected Components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-visual-insights" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise: Visual insights
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#defining-connected-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Defining connected components
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-visualizing-connected-component-subgraphs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise: visualizing connected component subgraphs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solutions
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+  <h1>Chapter 6: Structures</h1>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>
+(function() {
+  function addWidgetsRenderer() {
+    var requireJsScript = document.createElement('script');
+    requireJsScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js';
+
+    var mimeElement = document.querySelector('script[type="application/vnd.jupyter.widget-view+json"]');
+    var jupyterWidgetsScript = document.createElement('script');
+    var widgetRendererSrc = 'https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js';
+    var widgetState;
+
+    // Fallback for older version:
+    try {
+      widgetState = mimeElement && JSON.parse(mimeElement.innerHTML);
+
+      if (widgetState && (widgetState.version_major < 2 || !widgetState.version_major)) {
+        widgetRendererSrc = 'jupyter-js-widgets@*/dist/embed.js';
+      }
+    } catch(e) {}
+
+    jupyterWidgetsScript.src = widgetRendererSrc;
+
+    document.body.appendChild(requireJsScript);
+    document.body.appendChild(jupyterWidgetsScript);
+  }
+
+  document.addEventListener('DOMContentLoaded', addWidgetsRenderer);
+}());
+</script>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://mybinder.org/v2/gh/ericmjl/Network-Analysis-Made-Simple/master?urlpath=lab%2Ftree%2Fnotebooks%2F02-algorithms%2F03-structures.ipynb"><img alt="Binder" src="https://mybinder.org/badge_logo.svg" /></a></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="o">%</span><span class="n">load_ext</span> <span class="n">autoreload</span>
+<span class="o">%</span><span class="n">autoreload</span> <span class="mi">2</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="o">%</span><span class="n">config</span> <span class="n">InlineBackend</span><span class="o">.</span><span class="n">figure_format</span> <span class="o">=</span> <span class="s1">&#39;retina&#39;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="introduction">Introduction</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">YouTubeVideo</span>
+
+<span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;3DWSRCbPPJs&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_html rendered_html output_subarea output_execute_result">
+<iframe allowfullscreen="" frameborder="0" height="300" src="https://www.youtube.com/embed/3DWSRCbPPJs" width="100%"></iframe>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If you remember, at the beginning of this book,
+we saw a quote from John Quackenbush that essentially said
+that the reason a graph is interesting is because of its edges.
+In this chapter, we'll see this in action once again,
+as we are going to figure out how to leverage the edges
+to find special <em>structures</em> in a graph.</p>
+<h2 id="triangles">Triangles</h2>
+<p>The first structure that we are going to learn about is <strong>triangles</strong>.
+Triangles are super interesting!
+They are what one might consider to be
+"the simplest complex structure" in a graph.
+Triangles can also have semantically-rich meaning depending on the application.
+To borrow a bad example, love triangles in social networks are generally frowned upon,
+while on the other hand, when we connect two people that we know together,
+we instead <em>complete</em> a triangle.</p>
+<h3 id="load-data">Load Data</h3>
+<p>To learn about triangles,
+we are going to leverage a physician trust network.
+Here's the data description:</p>
+<p>&gt; This directed network captures innovation spread among 246 physicians 
+&gt; for towns in Illinois, Peoria, Bloomington, Quincy and Galesburg.
+&gt; The data was collected in 1966.
+&gt; A node represents a physician and an edge between two physicians
+&gt; shows that the left physician told that the right physician is his friend
+&gt; or that he turns to the right physician if he needs advice
+&gt; or is interested in a discussion.
+&gt; There always only exists one edge between two nodes
+&gt; even if more than one of the listed conditions are true.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">nams</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_data</span> <span class="k">as</span> <span class="n">cf</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">load_physicians_network</span><span class="p">()</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="exercise-finding-triangles-in-a-graph">Exercise: Finding triangles in a graph</h3>
+<p>This exercise is going to flex your ability
+to "think on a graph", just as you did in the previous chapters.</p>
+<p>&gt; Leveraging what you know, can you think of a few strategies
+&gt; to find triangles in a graph?</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">nams.solutions.structures</span><span class="w"> </span><span class="kn">import</span> <span class="n">triangle_finding_strategies</span>
+
+<span class="c1"># triangle_finding_strategies()</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="exercise-identify-whether-a-node-is-in-a-triangle-relationship-or-not">Exercise: Identify whether a node is in a triangle relationship or not</h3>
+<p>Let's now get down to implementing this next piece of code.</p>
+<p>&gt; Write a function that identifies whether a node is or is not in a triangle relationship.
+&gt; It should take in a graph <code>G</code> and a node <code>n</code>,
+&gt; and return a boolean True if the node <code>n</code> is in any triangle relationship
+&gt; and boolean False if the node <code>n</code> is not in any triangle relationship.</p>
+<p>A hint that may help you:</p>
+<p>&gt; Every graph object <code>G</code> has a <code>G.has_edge(n1, n2)</code> method that you can use to identify whether a graph has an edge between <code>n1</code> and <code>n2</code>.</p>
+<p>Also:</p>
+<p>&gt; <code>itertools.combinations</code> lets you iterate over every <em>K-combination</em> of items in an iterable.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">in_triangle</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+    <span class="c1"># Your answer here</span>
+    <span class="k">pass</span>
+
+<span class="c1"># COMMENT OUT THE IMPORT LINE TO TEST YOUR ANSWER</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">nams.solutions.structures</span><span class="w"> </span><span class="kn">import</span> <span class="n">in_triangle</span>
+
+<span class="c1"># UNCOMMENT THE NEXT LINE TO SEE MY ANSWER</span>
+<span class="c1"># in_triangle??</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now, test your implementation below!
+The code cell will not error out if your answer is correct.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">random</span><span class="w"> </span><span class="kn">import</span> <span class="n">sample</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">networkx</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nx</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_in_triangle</span><span class="p">():</span>
+    <span class="n">nodes</span> <span class="o">=</span> <span class="n">sample</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">()),</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="n">in_triangle</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="nb">bool</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">triangles</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="n">test_in_triangle</span><span class="p">()</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As you can see from the test function above,
+NetworkX provides an <code>nx.triangles(G, node)</code> function.
+It returns the number of triangles that a node is involved in.
+We convert it to boolean as a hack to check whether or not
+a node is involved in a triangle relationship
+because 0 is equivalent to boolean <code>False</code>,
+while any non-zero number is equivalent to boolean <code>True</code>.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="exercise-extract-triangles-for-plotting">Exercise: Extract triangles for plotting</h3>
+<p>We're going to leverage another piece of knowledge that you already have:
+the ability to extract subgraphs.
+We'll be plotting all of the triangles that a node is involved in.</p>
+<p>&gt; Given a node, write a function that extracts out
+&gt; all of the neighbors that it is in a triangle relationship with.
+&gt; Then, in a new function,
+&gt; implement code that plots only the subgraph
+&gt; that contains those nodes.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_triangle_neighbors</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="c1"># Your answer here</span>
+    <span class="k">pass</span>
+
+<span class="c1"># COMMENT OUT THE IMPORT LINE TO TEST YOUR ANSWER</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">nams.solutions.structures</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_triangle_neighbors</span>
+
+<span class="c1"># UNCOMMENT THE NEXT LINE TO SEE MY ANSWER</span>
+<span class="c1"># get_triangle_neighbors??</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot_triangle_relations</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="c1"># Your answer here</span>
+    <span class="k">pass</span>
+
+<span class="c1"># COMMENT OUT THE IMPORT LINE TO TEST YOUR ANSWER</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">nams.solutions.structures</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_triangle_relations</span>
+
+<span class="n">plot_triangle_relations</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_png output_subarea">
+<img alt="No description has been provided for this image" height="499" src="output_15_0.png" width="660"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="triadic-closure">Triadic Closure</h2>
+<p>In professional circles, making connections between two people
+is one of the most valuable things you can do professionally.
+What you do in that moment is what we would call
+<strong>triadic closure</strong>.
+Algorithmically, we can do the same thing
+if we maintain a graph of connections!</p>
+<p>Essentially, what we are looking for
+are "open" or "unfinished" triangles".</p>
+<p>In this section, we'll try our hand at implementing
+a rudimentary triadic closure system.</p>
+<h3 id="exercise-design-the-algorithm">Exercise: Design the algorithm</h3>
+<p>&gt; What graph logic would you use to identify triadic closure opportunities?
+&gt; Try writing out your general strategy, or discuss it with someone.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">nams.solutions.structures</span><span class="w"> </span><span class="kn">import</span> <span class="n">triadic_closure_algorithm</span>
+
+<span class="c1"># UNCOMMENT FOR MY ANSWER</span>
+<span class="c1"># triadic_closure_algorithm()</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="exercise-implement-triadic-closure">Exercise: Implement triadic closure.</h3>
+<p>Now, try your hand at implementing triadic closure.</p>
+<p>&gt; Write a function that takes in a graph <code>G</code> and a node <code>n</code>,
+&gt; and returns all of the neighbors that are potential triadic closures
+&gt; with <code>n</code> being the center node.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_open_triangles_neighbors</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="c1"># Your answer here</span>
+    <span class="k">pass</span>
+
+
+<span class="c1"># COMMENT OUT THE IMPORT LINE TO TEST YOUR ANSWER</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">nams.solutions.structures</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_open_triangles_neighbors</span>
+
+<span class="c1"># UNCOMMENT THE NEXT LINE TO SEE MY ANSWER</span>
+<span class="c1"># get_open_triangles_neighbors??</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="exercise-plot-the-open-triangles">Exercise: Plot the open triangles</h3>
+<p>&gt; Now, write a function that takes in a graph <code>G</code> and a node <code>n</code>,
+&gt; and plots out that node <code>n</code> and all of the neighbors
+&gt; that it could help close triangles with.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot_open_triangle_relations</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="c1"># Your answer here</span>
+    <span class="k">pass</span>
+
+<span class="c1"># COMMENT OUT THE IMPORT LINE TO TEST YOUR ANSWER</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">nams.solutions.structures</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_open_triangle_relations</span>
+
+<span class="n">plot_open_triangle_relations</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_png output_subarea">
+<img alt="No description has been provided for this image" height="499" src="output_21_0.png" width="660"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="cliques">Cliques</h2>
+<p>Triangles are interesting in a graph theoretic setting
+because triangles are the simplest complex clique that exist.</p>
+<p>But wait!
+What is the definition of a "clique"?</p>
+<p>&gt; A "clique" is a set of nodes in a graph
+&gt; that are fully connected with one another
+&gt; by edges between them.</p>
+<h3 id="exercise-simplest-cliques">Exercise: Simplest cliques</h3>
+<p>Given this definition, what is the simplest "clique" possible?</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">nams.solutions.structures</span><span class="w"> </span><span class="kn">import</span> <span class="n">simplest_clique</span>
+
+<span class="c1"># UNCOMMENT THE NEXT LINE TO SEE MY ANSWER</span>
+<span class="c1"># simplest_clique()</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="kk-cliques"><span class="arithmatex"><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>-Cliques</h3>
+<p>Cliques are identified by their size <span class="arithmatex"><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>,
+which is the number of nodes that are present in the clique.</p>
+<p>A triangle is what we would consider to be a <span class="arithmatex"><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>-clique where <span class="arithmatex"><span class="MathJax_Preview">k=3</span><script type="math/tex">k=3</script></span>.</p>
+<p>A square with cross-diagonal connections is what we would consider to be
+a <span class="arithmatex"><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>-clique where <span class="arithmatex"><span class="MathJax_Preview">k=4</span><script type="math/tex">k=4</script></span>.</p>
+<p>By now, you should get the gist of the idea.</p>
+<h3 id="maximal-cliques">Maximal Cliques</h3>
+<p>Related to this idea of a <span class="arithmatex"><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>-clique is another idea called "maximal cliques".</p>
+<p>Maximal cliques are defined as follows:</p>
+<p>&gt; A maximal clique is a subgraph of nodes in a graph
+&gt; 
+&gt; 1. to which no other node can be added to it and 
+&gt; 2. still remain a clique.</p>
+<p>NetworkX provides a way to find all maximal cliques:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="c1"># I have truncated the output to the first 5 maximal cliques.</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">find_cliques</span><span class="p">(</span><span class="n">G</span><span class="p">))[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>[[np.int64(1), np.int64(2)],
+ [np.int64(1), np.int64(3)],
+ [np.int64(1), np.int64(4), np.int64(5), np.int64(6)],
+ [np.int64(1), np.int64(7)],
+ [np.int64(1), np.int64(72)]]</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="exercise-finding-sized-kk-maximal-cliques">Exercise: finding sized-<span class="arithmatex"><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> maximal cliques</h3>
+<p>&gt; Write a generator function that yields all maximal cliques of size <span class="arithmatex"><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>.</p>
+<p>I'm requesting a generator as a matter of good practice;
+you never know when the list you return might explode in memory consumption,
+so generators are a cheap and easy way to reduce memory usage.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">size_k_maximal_cliques</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+    <span class="c1"># Your answer here</span>
+    <span class="k">pass</span>
+
+
+<span class="c1"># COMMENT OUT THE IMPORT LINE TO TEST YOUR ANSWER</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">nams.solutions.structures</span><span class="w"> </span><span class="kn">import</span> <span class="n">size_k_maximal_cliques</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now, test your implementation against the test function below.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">test_size_k_maximal_cliques</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+    <span class="n">clique_generator</span> <span class="o">=</span> <span class="n">size_k_maximal_cliques</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">clique</span> <span class="ow">in</span> <span class="n">clique_generator</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">clique</span><span class="p">)</span> <span class="o">==</span> <span class="n">k</span>
+
+<span class="n">test_size_k_maximal_cliques</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="clique-decomposition">Clique Decomposition</h3>
+<p>One <em>super</em> neat property of cliques
+is that every clique of size <span class="arithmatex"><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>
+can be decomposed to the set of cliques of size <span class="arithmatex"><span class="MathJax_Preview">k-1</span><script type="math/tex">k-1</script></span>.</p>
+<p>Does this make sense to you?
+If not, think about triangles (3-cliques).
+They can be decomposed to three edges (2-cliques).</p>
+<p>Think again about 4-cliques.
+Housed within 4-cliques are four 3-cliques.
+<em>Draw it out if you're still not convinced!</em></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="exercise-finding-all-kk-cliques-in-a-graph">Exercise: finding all <span class="arithmatex"><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>-cliques in a graph</h3>
+<p>&gt; Knowing this property of <span class="arithmatex"><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>-cliques,
+&gt; write a generator function that yields all <span class="arithmatex"><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>-cliques in a graph,
+&gt; leveraging the <code>nx.find_cliques(G)</code> function.</p>
+<p>Some hints to help you along:</p>
+<p>&gt; If a <span class="arithmatex"><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>-clique can be decomposed to its <span class="arithmatex"><span class="MathJax_Preview">k-1</span><script type="math/tex">k-1</script></span> cliques,
+&gt; it follows that the <span class="arithmatex"><span class="MathJax_Preview">k-1</span><script type="math/tex">k-1</script></span> cliques can be decomposed into <span class="arithmatex"><span class="MathJax_Preview">k-2</span><script type="math/tex">k-2</script></span> cliques,
+&gt; and so on until you hit 2-cliques.
+&gt; This implies that all cliques of size <span class="arithmatex"><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>
+&gt; house cliques of size <span class="arithmatex"><span class="MathJax_Preview">n &lt; k</span><script type="math/tex">n &lt; k</script></span>, where <span class="arithmatex"><span class="MathJax_Preview">n &gt;= 2</span><script type="math/tex">n &gt;= 2</script></span>.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">find_k_cliques</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+    <span class="c1"># your answer here</span>
+    <span class="k">pass</span>
+
+<span class="c1"># COMMENT OUT THE IMPORT LINE TO TEST YOUR ANSWER</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">nams.solutions.structures</span><span class="w"> </span><span class="kn">import</span> <span class="n">find_k_cliques</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_find_k_cliques</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">clique</span> <span class="ow">in</span> <span class="n">find_k_cliques</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">clique</span><span class="p">)</span> <span class="o">==</span> <span class="n">k</span>
+
+<span class="n">test_find_k_cliques</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="connected-components">Connected Components</h2>
+<p>Now that we've explored a lot around cliques,
+we're now going to explore this idea of "connected components".
+To do so, I am going to have you draw the graph
+that we are working with.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">nxviz</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nv</span>
+
+<span class="n">nv</span><span class="o">.</span><span class="n">circos</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>&lt;Axes: &gt;</code>
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_png output_subarea">
+<img alt="No description has been provided for this image" height="389" src="output_34_1.png" width="389"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="exercise-visual-insights">Exercise: Visual insights</h3>
+<p>From this rendering of the CircosPlot,
+what visual insights do you have about the structure of the graph?</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">nams.solutions.structures</span><span class="w"> </span><span class="kn">import</span> <span class="n">visual_insights</span>
+
+<span class="c1"># UNCOMMENT TO SEE MY ANSWER</span>
+<span class="c1"># visual_insights()</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="defining-connected-components">Defining connected components</h3>
+<p>From <a href="https://en.wikipedia.org/wiki/Connected_component_%28graph_theory%29">Wikipedia</a>:</p>
+<p>&gt; In graph theory, a connected component (or just component) of an undirected graph is a subgraph in which any two vertices are connected to each other by paths, and which is connected to no additional vertices in the supergraph.</p>
+<p>NetworkX provides a function to let us find all of the connected components:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">ccsubgraph_nodes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">connected_components</span><span class="p">(</span><span class="n">G</span><span class="p">))</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's see how many connected component subgraphs are present:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="nb">len</span><span class="p">(</span><span class="n">ccsubgraph_nodes</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>4</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="exercise-visualizing-connected-component-subgraphs">Exercise: visualizing connected component subgraphs</h3>
+<p>In this exercise, we're going to draw a circos plot of the graph, 
+but colour and order the nodes by their connected component subgraph.</p>
+<p>Recall Circos API:</p>
+<div class="highlight"><pre><span></span><code><span class="n">c</span> <span class="o">=</span> <span class="n">CircosPlot</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">node_order</span><span class="o">=</span><span class="s1">&#39;node_attribute&#39;</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;node_attribute&#39;</span><span class="p">)</span>
+<span class="n">c</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>  <span class="c1"># or plt.savefig(...)</span>
+</code></pre></div>
+<p>Follow the steps along here to accomplish this.</p>
+<p>&gt; Firstly, label the nodes with a unique identifier for connected component subgraph
+&gt; that it resides in.
+&gt; Use <code>subgraph</code> to store this piece of metadata.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">label_connected_component_subgraphs</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
+    <span class="c1"># Your answer here</span>
+    <span class="k">return</span> <span class="n">G</span>
+
+
+<span class="c1"># COMMENT OUT THE IMPORT LINE TO TEST YOUR ANSWER</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">nams.solutions.structures</span><span class="w"> </span><span class="kn">import</span> <span class="n">label_connected_component_subgraphs</span>
+<span class="n">G_labelled</span> <span class="o">=</span> <span class="n">label_connected_component_subgraphs</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+
+<span class="c1"># UNCOMMENT TO SEE THE ANSWER</span>
+<span class="c1"># label_connected_component_subgraphs??</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>&gt; Now, draw a CircosPlot with the node order and colouring
+&gt; dictated by the <code>subgraph</code> key.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot_cc_subgraph</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
+    <span class="c1"># Your answer here</span>
+    <span class="k">pass</span>
+
+
+<span class="c1"># COMMENT OUT THE IMPORT LINE TO TEST YOUR ANSWER</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">nams.solutions.structures</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_cc_subgraph</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">nxviz</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotate</span>
+
+<span class="n">plot_cc_subgraph</span><span class="p">(</span><span class="n">G_labelled</span><span class="p">)</span>
+<span class="n">annotate</span><span class="o">.</span><span class="n">circos_group</span><span class="p">(</span><span class="n">G_labelled</span><span class="p">,</span> <span class="n">group_by</span><span class="o">=</span><span class="s2">&quot;subgraph&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_png output_subarea">
+<img alt="No description has been provided for this image" height="389" src="output_44_0.png" width="389"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Using an arc plot will also clearly illuminate for us
+that there are no inter-group connections.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">nv</span><span class="o">.</span><span class="n">arc</span><span class="p">(</span><span class="n">G_labelled</span><span class="p">,</span> <span class="n">group_by</span><span class="o">=</span><span class="s2">&quot;subgraph&quot;</span><span class="p">,</span> <span class="n">node_color_by</span><span class="o">=</span><span class="s2">&quot;subgraph&quot;</span><span class="p">)</span>
+<span class="n">annotate</span><span class="o">.</span><span class="n">arc_group</span><span class="p">(</span><span class="n">G_labelled</span><span class="p">,</span> <span class="n">group_by</span><span class="o">=</span><span class="s2">&quot;subgraph&quot;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_png output_subarea">
+<img alt="No description has been provided for this image" height="283" src="output_46_0.png" width="515"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Voila!</em> It looks quite clear that there are indeed four disjoint group of physicians.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="solutions">Solutions</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">nams.solutions</span><span class="w"> </span><span class="kn">import</span> <span class="n">structures</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">inspect</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">getsource</span><span class="p">(</span><span class="n">structures</span><span class="p">))</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+<code>"""Solutions to Structures chapter."""
+
+from itertools import combinations
+
+import networkx as nx
+from nxviz import circos
+from nams.functions import render_html
+
+
+def triangle_finding_strategies():
+    """
+    How to find triangles.
+    """
+    ans = """
+One way would be to take one node, and look at its neighbors.
+If its neighbors are also connected to one another,
+then we have found a triangle.
+
+Another way would be to start at a given node,
+and walk out two nodes.
+If the starting node is the neighbor of the node two hops away,
+then the path we traced traces out the nodes in a triangle.
+"""
+    return render_html(ans)
+
+
+def in_triangle(G, node):
+    """
+    Return whether a given node is present in a triangle relationship.
+    """
+    for nbr1, nbr2 in combinations(G.neighbors(node), 2):
+        if G.has_edge(nbr1, nbr2):
+            return True
+    return False
+
+
+def get_triangle_neighbors(G, node) -&gt; set:
+    """
+    Return neighbors involved in triangle relationship with node.
+    """
+    neighbors1 = set(G.neighbors(node))
+    triangle_nodes = set()
+    for nbr1, nbr2 in combinations(neighbors1, 2):
+        if G.has_edge(nbr1, nbr2):
+            triangle_nodes.add(nbr1)
+            triangle_nodes.add(nbr2)
+    return triangle_nodes
+
+
+def plot_triangle_relations(G, node):
+    """
+    Plot all triangle relationships for a given node.
+    """
+    triangle_nbrs = get_triangle_neighbors(G, node)
+    triangle_nbrs.add(node)
+    nx.draw(G.subgraph(triangle_nbrs), with_labels=True)
+
+
+def triadic_closure_algorithm():
+    """
+    How to do triadic closure.
+    """
+    ans = """
+I would suggest the following strategy:
+
+1. Pick a node
+1. For every pair of neighbors:
+    1. If neighbors are not connected,
+    then this is a potential triangle to close.
+
+This strategy gives you potential triadic closures
+given a "center" node `n`.
+
+The other way is to trace out a path two degrees out
+and ask whether the terminal node is a neighbor
+of the starting node.
+If not, then we have another triadic closure to make.
+"""
+    return render_html(ans)
+
+
+def get_open_triangles_neighbors(G, node) -&gt; set:
+    """
+    Return neighbors involved in open triangle relationships with a node.
+    """
+    open_triangle_nodes = set()
+    neighbors = list(G.neighbors(node))
+
+    for n1, n2 in combinations(neighbors, 2):
+        if not G.has_edge(n1, n2):
+            open_triangle_nodes.add(n1)
+            open_triangle_nodes.add(n2)
+
+    return open_triangle_nodes
+
+
+def plot_open_triangle_relations(G, node):
+    """
+    Plot open triangle relationships for a given node.
+    """
+    open_triangle_nbrs = get_open_triangles_neighbors(G, node)
+    open_triangle_nbrs.add(node)
+    nx.draw(G.subgraph(open_triangle_nbrs), with_labels=True)
+
+
+def simplest_clique():
+    """
+    Answer to "what is the simplest clique".
+    """
+    return render_html("The simplest clique is an edge.")
+
+
+def size_k_maximal_cliques(G, k):
+    """
+    Return all size-k maximal cliques.
+    """
+    for clique in nx.find_cliques(G):
+        if len(clique) == k:
+            yield clique
+
+
+def find_k_cliques(G, k):
+    """
+    Find all cliques of size k.
+    """
+    for clique in nx.find_cliques(G):
+        if len(clique) &gt;= k:
+            for nodeset in combinations(clique, k):
+                yield nodeset
+
+
+def visual_insights():
+    """
+    Answer to visual insights exercise.
+    """
+    ans = """
+We might hypothesize that there are 3,
+maybe 4 different "communities" of nodes
+that are completely disjoint with one another,
+i.e. there is no path between them.
+"""
+    print(ans)
+
+
+def label_connected_component_subgraphs(G):
+    """Label all connected component subgraphs."""
+    G = G.copy()
+    for i, nodeset in enumerate(nx.connected_components(G)):
+        for n in nodeset:
+            G.nodes[n]["subgraph"] = i
+    return G
+
+
+def plot_cc_subgraph(G):
+    """Plot all connected component subgraphs."""
+    c = circos(G, node_color_by="subgraph", group_by="subgraph")
+
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/ericmjl" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/ericmjl" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://linkedin.com/in/ericmjl" target="_blank" rel="noopener" title="linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["instant"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      
+        <script src="https://hypothes.is/embed.js"></script>
+      
+    
+  </body>
+</html>

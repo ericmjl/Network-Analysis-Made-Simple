@@ -1,0 +1,13 @@
+/*
+Hide cell output overflow
+
+Taken from: https://github.com/greenape/mknotebooks/issues/12
+*/
+.output pre {
+    overflow: auto;
+}
+
+
+.output_html {
+    overflow: auto;
+}
