@@ -61,7 +61,7 @@ jobs:
           cache: true
       - name: Build Docker image
         run: |
-          docker build -t nams-docker .
+          docker build -t nams-docker -f scripts/Dockerfile .
 
   #     - name: Download environment tarball
   #       uses: actions/download-artifact@v3
