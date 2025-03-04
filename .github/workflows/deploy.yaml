@@ -24,8 +24,6 @@ jobs:
         with:
           pixi-version: v0.41.4
           cache: true
-          auth-host: prefix.dev
-          auth-token: ${{ secrets.PREFIX_DEV_TOKEN }}
 
       - name: Build website
         run: |
