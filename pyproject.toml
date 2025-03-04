@@ -115,6 +115,7 @@ mkdocs = "*"
 mkdocs-material = "*"
 mkdocs-material-extensions = "*"
 pymdown-extensions = "*"
+mknotebooks = "*"
 
 [tool.pixi.feature.notebook.dependencies]
 ipykernel = "*"
