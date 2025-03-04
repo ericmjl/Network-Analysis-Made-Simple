@@ -119,7 +119,7 @@ mknotebooks = "*"
 
 [tool.pixi.feature.notebook.dependencies]
 ipykernel = "*"
-ipython = "*"
+ipython = "<=8.22.0"
 jupyter = "*"
 pixi-kernel = "*"
 
