@@ -10,10 +10,13 @@ on:
   push:
     branches:
       - master
+  pull_request:
+    branches:
+      - master
 
 jobs:
-  build-environment:
-    runs-on: ubuntu-22.04
+  build-and-deploy-website:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
@@ -29,6 +32,7 @@ jobs:
           pixi run bash scripts/ci/build_website.sh
 
       - name: Deploy Website
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         uses: peaceiris/actions-gh-pages@v3
         with:
           # https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-set-personal-access-token-personal_token
