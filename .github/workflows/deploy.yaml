@@ -27,7 +27,7 @@ jobs:
 
       - name: Build website
         run: |
-          pixi run bash scripts/ci/build_website.sh
+          pixi run build-docs
 
       - name: Deploy Website
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
