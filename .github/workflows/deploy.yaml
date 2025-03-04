@@ -44,11 +44,13 @@ jobs:
           enable_jekyll: false
           disable_nojekyll: false
 
-  # build-deploy-leanpub:
-  #   runs-on: ubuntu-22.04
-  #   needs: build-environment
-  #   steps:
-  #     - uses: actions/checkout@v4
+
+      - name: Deploy preview
+        uses: rossjrw/pr-preview-action@v1
+        if: github.event_name == 'pull_request'
+        with:
+          source-dir: ./site
+
 
   #     - name: Download environment tarball
   #       uses: actions/download-artifact@v3
