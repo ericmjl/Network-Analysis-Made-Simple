@@ -10,6 +10,7 @@ RUN pixi install
 RUN pixi run python -m ipykernel install --user --name nams
 
 # Build docs in the container in this step
+COPY mkdocs.yml /app/mkdocs.yml
 RUN pixi run build-docs
 
 # Run Python web server to serve up static files
