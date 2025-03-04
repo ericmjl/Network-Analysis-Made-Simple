@@ -59,9 +59,14 @@ jobs:
         with:
           pixi-version: v0.41.4
           cache: true
-      - name: Build Docker image
-        run: |
-          docker build -t nams-docker -f scripts/Dockerfile .
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          push: false
+          tags: ericmjl/nams:latest
 
   #     - name: Download environment tarball
   #       uses: actions/download-artifact@v3
