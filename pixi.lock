@@ -10555,7 +10555,7 @@ packages:
 - pypi: .
   name: nams
   version: 0.0.1
-  sha256: 61d20382d37504e735d27ad2c8af1649a9da24fa6032cb4b763a0321699f4d10
+  sha256: f5bcabb17e8a7fd483e8aca7d41a79ef8138a25bc125038813f3d1d7be65f957
   requires_dist:
   - nxviz>=0.7.4,<0.8
   requires_python: '>=3.10'
