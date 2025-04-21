@@ -1,0 +1,106 @@
+name: Release Python Package
+
+on:
+  workflow_dispatch:
+    inputs:
+      version_name:
+        description: "One of major, minor, or patch"
+        required: true
+        type: choice
+        options:
+          - major
+          - minor
+          - patch
+        default: patch
+  pull_request:
+    branches:
+      - '**'
+
+env:
+  UV_SYSTEM_PYTHON: 1
+  DEFAULT_VERSION_NAME: patch
+  UV_PUBLISH_USERNAME: ${{ secrets.UV_PUBLISH_USERNAME }}
+  UV_PUBLISH_PASSWORD: ${{ secrets.UV_PUBLISH_PASSWORD }}
+
+jobs:
+  deploy-package:
+    runs-on: ubuntu-latest
+    name: ${{ github.event_name == 'pull_request' && '(Dry Run) ' || '' }}Publish Python Package to PyPI
+    permissions:
+      id-token: write
+      contents: write
+
+    defaults:
+      run:
+        shell: bash -l {0}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+
+      - name: Setup Pixi Environment
+        uses: prefix-dev/setup-pixi@v0.8.8
+        with:
+          pixi-version: latest
+          cache: true
+          cache-write: ${{ github.event_name == 'push' }}
+
+      - name: Set version name
+        run: echo "VERSION_NAME=${{ github.event.inputs.version_name || env.DEFAULT_VERSION_NAME }}" >> $GITHUB_ENV
+
+      - name: Dry run bump2version
+        run: |
+          uvx bump2version@latest --dry-run ${{ env.VERSION_NAME }} --allow-dirty --verbose
+
+      - name: Store new version number
+        run: echo "version_number=`bump2version --dry-run --list ${{ env.VERSION_NAME }} | grep new_version | sed -r s,"^.*=",,`" >> $GITHUB_ENV
+
+      - name: Display new version number
+        run: |
+          echo "version_name: ${{ env.VERSION_NAME }}"
+          echo "version_number: v${{ env.version_number }}"
+
+      - name: Ensure repo status is clean
+        run: git status
+
+      - name: Configure Git
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+
+      - name: Run bump2version
+        run: uvx bump2version@latest ${{ env.VERSION_NAME }} --verbose
+
+      - name: Ensure tag creation
+        run: git tag | grep ${{ env.version_number }}
+
+      - name: Build package
+        run: |
+          uv build --sdist --wheel
+
+      - name: Publish package
+        if: github.event_name != 'pull_request'
+        run: |
+          uv publish --index ericmjl-personal-packages
+
+      - name: Push changes with tags
+        if: github.event_name != 'pull_request'
+        run: |
+          git push && git push --tags
+
+      - name: Create release in GitHub repo
+        if: github.event_name != 'pull_request'
+        uses: ncipollo/release-action@v1
+        with:
+          bodyFile: "docs/releases/v${{ env.version_number }}.md"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: v${{ env.version_number }}
+
+      - name: Ensure complete
+        if: github.event_name != 'pull_request'
+        run: echo "Auto-release complete!"

@@ -136,3 +136,6 @@ dmypy.json
 
 # SQLite database
 message_log.db
+
+# env
+.env

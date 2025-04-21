@@ -71,11 +71,18 @@ version = "0.0.1"
 requires-python = ">=3.10"
 readme = "README.md"
 dependencies = ["nxviz>=0.7.4,<0.8"]
+classifiers = ["Private :: Do Not Upload"]
 
 [tool.coverage.run]
 omit = [
     "tests/*",
 ]
+
+[[tool.uv.index]]
+name = "ericmjl-personal-packages"
+url = "https://ericmjl--pypiserver-server.modal.run/simple/"
+publish-url = "https://ericmjl--pypiserver-server.modal.run/"
+explicit = true
 
 [tool.pixi.project]
 channels = ["conda-forge"]
