@@ -70,7 +70,7 @@ version = "0.0.2"
 # NOTE: move dependencies into this section if you need to distribute the project as a Python package.
 requires-python = ">=3.10"
 readme = "README.md"
-dependencies = ["nxviz>=0.7.4,<0.8", "nams==0.0.2"]
+dependencies = ["nxviz>=0.7.4,<0.8"]
 classifiers = ["Private :: Do Not Upload"]
 
 [tool.coverage.run]

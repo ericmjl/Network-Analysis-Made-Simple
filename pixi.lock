@@ -10554,8 +10554,8 @@ packages:
   timestamp: 1735640521830
 - pypi: .
   name: nams
-  version: 0.0.1
-  sha256: f5bcabb17e8a7fd483e8aca7d41a79ef8138a25bc125038813f3d1d7be65f957
+  version: 0.0.2
+  sha256: 6ef1fc119ae56fbed0146ded605a22efde9181eba7aa98501ba60b7d3dd9c2b2
   requires_dist:
   - nxviz>=0.7.4,<0.8
   requires_python: '>=3.10'
