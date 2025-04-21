@@ -58,12 +58,12 @@ jobs:
           uvx bump2version@latest --dry-run ${{ env.VERSION_NAME }} --allow-dirty --verbose
 
       - name: Store new version number
-        run: echo "version_number=`bump2version --dry-run --list ${{ env.VERSION_NAME }} | grep new_version | sed -r s,"^.*=",,`" >> $GITHUB_ENV
+        run: echo "VERSION_NUMBER=`bump2version --dry-run --list ${{ env.VERSION_NAME }} | grep new_version | sed -r s,"^.*=",,`" >> $GITHUB_ENV
 
       - name: Display new version number
         run: |
-          echo "version_name: ${{ env.VERSION_NAME }}"
-          echo "version_number: v${{ env.version_number }}"
+          echo "VERSION_NAME: ${{ env.VERSION_NAME }}"
+          echo "VERSION_NUMBER: v${{ env.VERSION_NUMBER }}"
 
       - name: Ensure repo status is clean
         run: git status
