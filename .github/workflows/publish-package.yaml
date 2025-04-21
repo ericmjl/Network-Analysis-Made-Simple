@@ -79,6 +79,24 @@ jobs:
       - name: Ensure tag creation
         run: git tag | grep ${{ env.version_number }}
 
+      - name: Write release notes
+        if: github.event_name != 'pull_request'
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          uv tool install llamabot[cli] --python 3.12 --python-preference only-managed --force
+          llamabot configure default-model --model-name "${{ secrets.DEFAULT_LANGUAGE_MODEL }}"
+          llamabot git write-release-notes
+
+      - name: Commit release notes
+        if: github.event_name != 'pull_request'
+        run: |
+          uv tool install pre-commit
+          pre-commit run --all-files || pre-commit run --all-files
+          git add .
+          git commit -m "Add release notes for ${{ env.version_number }}"
+
+
       - name: Build package
         run: |
           uv build --sdist --wheel
