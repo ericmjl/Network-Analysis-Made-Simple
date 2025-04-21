@@ -41,7 +41,7 @@ jobs:
           fetch-tags: true
 
       - name: Install uv
-        uses: astral-sh/setup-uv@v3
+        uses: astral-sh/setup-uv@v5
 
       - name: Setup Pixi Environment
         uses: prefix-dev/setup-pixi@v0.8.8
