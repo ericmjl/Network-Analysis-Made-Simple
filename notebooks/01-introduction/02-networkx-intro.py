@@ -20,7 +20,7 @@
 
 import marimo
 
-__generated_with = "0.12.2"
+__generated_with = "0.13.0"
 app = marimo.App()
 
 
@@ -35,7 +35,7 @@ def _():
     from IPython.display import YouTubeVideo
 
     YouTubeVideo(id="sdF0uJo2KdU", width="100%")
-    return (YouTubeVideo,)
+    return
 
 
 @app.cell(hide_code=True)
@@ -139,7 +139,7 @@ def _():
     from nams import load_data as cf
 
     warnings.filterwarnings("ignore")
-    return cf, datetime, np, nx, plt, warnings
+    return cf, nx
 
 
 @app.cell
@@ -194,7 +194,7 @@ def _(mo):
 def _(nx):
     H = nx.Graph()
     type(H)
-    return (H,)
+    return
 
 
 @app.cell(hide_code=True)
@@ -313,7 +313,7 @@ def _(G):
 
     #### REPLACE THE NEXT LINE WITH YOUR ANSWER
     mf_counts = node_metadata(G)
-    return mf_counts, node_metadata
+    return (mf_counts,)
 
 
 @app.cell(hide_code=True)
@@ -333,7 +333,7 @@ def _(mf_counts):
         assert mf_counts["male"] == 12
 
     test_answer(mf_counts)
-    return Dict, test_answer
+    return
 
 
 @app.cell(hide_code=True)
@@ -486,7 +486,7 @@ def _(G):
 
     #### REPLACE THE NEXT LINE WITH YOUR ANSWER
     maxcount = edge_metadata(G)
-    return edge_metadata, maxcount
+    return (maxcount,)
 
 
 @app.cell(hide_code=True)
@@ -501,7 +501,7 @@ def _(maxcount):
         assert maxcount == 3
 
     test_maxcount(maxcount)
-    return (test_maxcount,)
+    return
 
 
 @app.cell(hide_code=True)
@@ -561,7 +561,7 @@ def _(G):
     from nams.solutions.intro import adding_students
 
     G_1 = adding_students(G)
-    return G_1, adding_students
+    return (G_1,)
 
 
 @app.cell(hide_code=True)
@@ -594,7 +594,7 @@ def _(G_1):
         print("All tests passed.")
 
     test_graph_integrity(G_1)
-    return (test_graph_integrity,)
+    return
 
 
 @app.cell(hide_code=True)
@@ -710,7 +710,7 @@ def _(G_1):
 
     unrequitted_friendships = unrequitted_friendships_v1(G_1)
     assert len(unrequitted_friendships) == 124
-    return unrequitted_friendships, unrequitted_friendships_v1
+    return
 
 
 @app.cell(hide_code=True)
@@ -738,7 +738,7 @@ def _():
     from inspect import getsource
 
     # print(getsource(unrequitted_friendships_v2))
-    return getsource, unrequitted_friendships_v2
+    return
 
 
 @app.cell(hide_code=True)
@@ -754,7 +754,7 @@ def _():
     from nams.solutions.intro import unrequitted_friendships_v3
 
     # print(getsource(unrequitted_friendships_v3))
-    return (unrequitted_friendships_v3,)
+    return
 
 
 @app.cell(hide_code=True)
@@ -775,7 +775,7 @@ def _():
     import inspect
 
     # print(inspect.getsource(solutions))
-    return inspect, solutions
+    return
 
 
 @app.cell
