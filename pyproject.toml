@@ -66,7 +66,7 @@ namespaces = false
 
 [project]
 name = "nams"
-version = "0.0.1"
+version = "0.0.2"
 # NOTE: move dependencies into this section if you need to distribute the project as a Python package.
 requires-python = ">=3.10"
 readme = "README.md"
