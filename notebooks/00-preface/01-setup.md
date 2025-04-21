@@ -19,7 +19,7 @@ To go there, click on the following button:
 
 ## VSCode Development Containers
 
-Assuming that you're using Visual Studio Code
+Assuming that y ou're using Visual Studio Code
 and have attempted to use development containers before,
 you can run the Network Analysis Made Simple tutorial content
 inside a development container.
