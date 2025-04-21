@@ -22,4 +22,4 @@ jobs:
           pixi-version: v0.41.4
           cache: true
 
-      - uses: pre-commit/action@v2.0.0
+      - uses: pre-commit/action@v3.0.1
