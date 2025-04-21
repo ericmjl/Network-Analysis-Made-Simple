@@ -32,7 +32,7 @@ jobs:
 
       - name: Deploy Website
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           # https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-set-personal-access-token-personal_token
           personal_token: ${{ secrets.GITHUB_TOKEN }}
@@ -82,7 +82,7 @@ jobs:
   #         bash scripts/ci/build_leanpub.sh
 
   #     - name: Deploy Leanpub
-  #       uses: peaceiris/actions-gh-pages@v3
+  #       uses: peaceiris/actions-gh-pages@v4
   #       with:
   #         # https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-set-personal-access-token-personal_token
   #         personal_token: ${{ secrets.GHPAGES_TOKEN }}
