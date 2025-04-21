@@ -77,7 +77,7 @@ jobs:
         run: uvx bump2version@latest ${{ env.VERSION_NAME }} --verbose
 
       - name: Ensure tag creation
-        run: git tag | grep ${{ env.version_number }}
+        run: git tag | grep ${{ env.VERSION_NUMBER }}
 
       - name: Write release notes
         if: github.event_name != 'pull_request'
@@ -94,7 +94,7 @@ jobs:
           uv tool install pre-commit
           pre-commit run --all-files || pre-commit run --all-files
           git add .
-          git commit -m "Add release notes for ${{ env.version_number }}"
+          git commit -m "Add release notes for ${{ env.VERSION_NUMBER }}"
 
 
       - name: Build package
@@ -115,9 +115,9 @@ jobs:
         if: github.event_name != 'pull_request'
         uses: ncipollo/release-action@v1
         with:
-          bodyFile: "docs/releases/v${{ env.version_number }}.md"
+          bodyFile: "docs/releases/v${{ env.VERSION_NUMBER }}.md"
           token: ${{ secrets.GITHUB_TOKEN }}
-          tag: v${{ env.version_number }}
+          tag: v${{ env.VERSION_NUMBER }}
 
       - name: Ensure complete
         if: github.event_name != 'pull_request'
