@@ -95,3 +95,11 @@ Here's an overview of what's available
     curated in the same spirit as the "Awesome-X" repositories
     that show up on GitHub.
     You can find it [here](https://github.com/alonnir/snacks/).
+
+## Interesting Papers
+
+=== "Network Analysis"
+
+    Here are some interesting papers that showcase the power of network analysis:
+
+    - [Matrix-Weighted Networks for Modeling Multidimensional Dynamics: Theoretical Foundations and Applications to Network Coherence](https://journals.aps.org/prl/abstract/10.1103/jw1k-6s7w) - A comprehensive overview of network analysis techniques and applications.
