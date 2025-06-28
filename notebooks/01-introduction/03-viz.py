@@ -20,11 +20,11 @@
 
 import marimo
 
-__generated_with = "0.13.0"
+__generated_with = "0.14.8"
 app = marimo.App()
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import warnings
 
@@ -50,18 +50,18 @@ def _():
 def _(mo):
     mo.md(
         r"""
-        In this chapter, We want to introduce you to the wonderful world of graph visualization.
+    In this chapter, We want to introduce you to the wonderful world of graph visualization.
 
-        You probably have seen graphs that are visualized as hairballs.
-        Apart from communicating how complex the graph is,
-        hairballs don't really communicate much else.
-        As such, my goal by the end of this chapter is
-        to introduce you to what I call _rational graph visualization_.
+    You probably have seen graphs that are visualized as hairballs.
+    Apart from communicating how complex the graph is,
+    hairballs don't really communicate much else.
+    As such, my goal by the end of this chapter is
+    to introduce you to what I call _rational graph visualization_.
 
-        But before we can do that, let's first make sure we understand
-        how to use NetworkX's drawing facilities to draw graphs to the screen.
-        In a pinch, and for small graphs, it's very handy to have.
-        """
+    But before we can do that, let's first make sure we understand
+    how to use NetworkX's drawing facilities to draw graphs to the screen.
+    In a pinch, and for small graphs, it's very handy to have.
+    """
     )
     return
 
@@ -70,15 +70,15 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-        ## Hairballs
+    ## Hairballs
 
-        The node-link diagram is the canonical diagram we will see in publications.
-        Nodes are commonly drawn as circles, while edges are drawn s lines.
+    The node-link diagram is the canonical diagram we will see in publications.
+    Nodes are commonly drawn as circles, while edges are drawn s lines.
 
-        Node-link diagrams are common,
-        and there's a good reason for this: it's convenient to draw!
-        In NetworkX, we can draw node-link diagrams using:
-        """
+    Node-link diagrams are common,
+    and there's a good reason for this: it's convenient to draw!
+    In NetworkX, we can draw node-link diagrams using:
+    """
     )
     return
 
@@ -94,8 +94,9 @@ def _():
 
 
 @app.cell
-def _(G, nx):
+def _(G, nx, plt):
     nx.draw(G)
+    plt.show()
     return
 
 
@@ -103,14 +104,14 @@ def _(G, nx):
 def _(mo):
     mo.md(
         r"""
-        Nodes more tightly connected with one another are clustered together.
-        Initial node placement is done typically at random,
-        so really it's tough to deterministically generate the same figure.
-        If the network is small enough to visualize,
-        and the node labels are small enough to fit in a circle,
-        then you can use the `with_labels=True` argument
-        to bring some degree of informativeness to the drawing:
-        """
+    Nodes more tightly connected with one another are clustered together.
+    Initial node placement is done typically at random,
+    so really it's tough to deterministically generate the same figure.
+    If the network is small enough to visualize,
+    and the node labels are small enough to fit in a circle,
+    then you can use the `with_labels=True` argument
+    to bring some degree of informativeness to the drawing:
+    """
     )
     return
 
@@ -122,8 +123,9 @@ def _(G):
 
 
 @app.cell
-def _(G, nx):
+def _(G, nx, plt):
     nx.draw(G, with_labels=True)
+    plt.show()
     return
 
 
@@ -131,19 +133,19 @@ def _(G, nx):
 def _(mo):
     mo.md(
         r"""
-        The downside to drawing graphs this way is that
-        large graphs end up looking like hairballs.
-        Can you imagine a graph with more than the 28 nodes that we have?
-        As you probably can imagine, the default `nx.draw(G)`
-        is probably not suitable for generating visual insights.
+    The downside to drawing graphs this way is that
+    large graphs end up looking like hairballs.
+    Can you imagine a graph with more than the 28 nodes that we have?
+    As you probably can imagine, the default `nx.draw(G)`
+    is probably not suitable for generating visual insights.
 
-        ## Matrix Plot
+    ## Matrix Plot
 
-        A different way that we can visualize a graph is by visualizing it in its matrix form.
-        The nodes are on the x- and y- axes, and a filled square represent an edge between the nodes.
+    A different way that we can visualize a graph is by visualizing it in its matrix form.
+    The nodes are on the x- and y- axes, and a filled square represent an edge between the nodes.
 
-        We can draw a graph's matrix form conveniently by using `nxviz.MatrixPlot`:
-        """
+    We can draw a graph's matrix form conveniently by using `nxviz.MatrixPlot`:
+    """
     )
     return
 
@@ -156,7 +158,6 @@ def _(G, plt):
     nv.matrix(G, group_by="gender", node_color_by="gender")
     annotate.matrix_group(G, group_by="gender")
     plt.show()
-
     return annotate, nv
 
 
@@ -164,20 +165,20 @@ def _(G, plt):
 def _(mo):
     mo.md(
         r"""
-        What can you tell from the graph visualization?
-        A few things are immediately obvious:
+    What can you tell from the graph visualization?
+    A few things are immediately obvious:
 
-        - The diagonal is empty: no student voted for themselves as their favourite.
-        - The matrix is asymmetric about the diagonal: this is a directed graph!
+    - The diagonal is empty: no student voted for themselves as their favourite.
+    - The matrix is asymmetric about the diagonal: this is a directed graph!
 
-        (An undirected graph would be symmetric about the diagonal.)
+    (An undirected graph would be symmetric about the diagonal.)
 
-        You might go on to suggest that there is some clustering happening,
-        but without applying a proper clustering algorithm on the adjacency matrix,
-        we would be hard-pressed to know for sure.
-        After all, we can simply re-order the node ordering along the axes
-        to produce a seemingly-random matrix.
-        """
+    You might go on to suggest that there is some clustering happening,
+    but without applying a proper clustering algorithm on the adjacency matrix,
+    we would be hard-pressed to know for sure.
+    After all, we can simply re-order the node ordering along the axes
+    to produce a seemingly-random matrix.
+    """
     )
     return
 
@@ -186,15 +187,15 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-        ## Arc Plot
+    ## Arc Plot
 
-        The Arc Plot is another rational graph visualization.
-        Here, we line up the nodes along a horizontal axis,
-        and draw _arcs_ between nodes if they are connected by an edge.
-        We can also optionally group and colour them by some metadata.
-        In the case of this student graph,
-        we group and colour them by "gender".
-        """
+    The Arc Plot is another rational graph visualization.
+    Here, we line up the nodes along a horizontal axis,
+    and draw _arcs_ between nodes if they are connected by an edge.
+    We can also optionally group and colour them by some metadata.
+    In the case of this student graph,
+    we group and colour them by "gender".
+    """
     )
     return
 
@@ -212,9 +213,9 @@ def _(G, annotate, nv, plt):
 def _(mo):
     mo.md(
         r"""
-        The Arc Plot forms the basis of the next visualization,
-        the highly popular Circos plot.
-        """
+    The Arc Plot forms the basis of the next visualization,
+    the highly popular Circos plot.
+    """
     )
     return
 
@@ -223,12 +224,12 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-        ## Circos Plot
+    ## Circos Plot
 
-        The Circos Plot was developed by [Martin Krzywinski][bccrc] at the BC Cancer Research Center. The `nxviz.CircosPlot` takes inspiration from the original by joining the two ends of the Arc Plot into a circle. Likewise, we can colour and order nodes by node metadata:
+    The Circos Plot was developed by [Martin Krzywinski][bccrc] at the BC Cancer Research Center. The `nxviz.CircosPlot` takes inspiration from the original by joining the two ends of the Arc Plot into a circle. Likewise, we can colour and order nodes by node metadata:
 
-        [bccrc]: http://circos.ca/
-        """
+    [bccrc]: http://circos.ca/
+    """
     )
     return
 
@@ -238,7 +239,6 @@ def _(G, annotate, nv, plt):
     nv.circos(G, group_by="gender", node_color_by="gender")
     annotate.circos_group(G, group_by="gender")
     plt.show()
-
     return
 
 
@@ -246,9 +246,9 @@ def _(G, annotate, nv, plt):
 def _(mo):
     mo.md(
         r"""
-        Generally speaking, you can think of a Circos Plot as being
-        a more compact and aesthetically pleasing version of Arc Plots.
-        """
+    Generally speaking, you can think of a Circos Plot as being
+    a more compact and aesthetically pleasing version of Arc Plots.
+    """
     )
     return
 
@@ -257,10 +257,10 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-        ## Hive Plot
+    ## Hive Plot
 
-        The final plot we'll show is, Hive Plots.
-        """
+    The final plot we'll show is, Hive Plots.
+    """
     )
     return
 
@@ -272,7 +272,6 @@ def _(G, annotate, nv, plt):
     nv.hive(G, group_by="gender", node_color_by="gender")
     annotate.hive_group(G, group_by="gender")
     plt.show()
-
     return
 
 
@@ -280,21 +279,21 @@ def _(G, annotate, nv, plt):
 def _(mo):
     mo.md(
         r"""
-        As you can see, with Hive Plots,
-        we first group nodes along two or three radial axes.
-        In this case, we have the boys along one radial axis
-        and the girls along the other.
-        We can also order the nodes along each axis if we so choose to.
-        In this case, no particular ordering is chosen.
+    As you can see, with Hive Plots,
+    we first group nodes along two or three radial axes.
+    In this case, we have the boys along one radial axis
+    and the girls along the other.
+    We can also order the nodes along each axis if we so choose to.
+    In this case, no particular ordering is chosen.
 
-        Next, we draw edges.
-        We start first with edges _between_ groups.
-        That is shown on the left side of the figure,
-        joining nodes in the "yellow" and "green" (boys/girls) groups.
-        We then proceed to edges _within_ groups.
-        This is done by cloning the node radial axis
-        before drawing edges.
-        """
+    Next, we draw edges.
+    We start first with edges _between_ groups.
+    That is shown on the left side of the figure,
+    joining nodes in the "yellow" and "green" (boys/girls) groups.
+    We then proceed to edges _within_ groups.
+    This is done by cloning the node radial axis
+    before drawing edges.
+    """
     )
     return
 
@@ -303,27 +302,27 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-        ## Principles of Rational Graph Viz
+    ## Principles of Rational Graph Viz
 
-        While I was implementing these visualizations in `nxviz`,
-        I learned an important lesson in implementing graph visualizations in general:
+    While I was implementing these visualizations in [`nxviz`](https://github.com/ericmjl/nxviz),
+    I learned an important lesson in implementing graph visualizations in general:
 
-        > To be most informative and communicative,
-        > a graph visualization should first prioritize node placement
-        > in a fashion that makes sense.
+    > To be most informative and communicative,
+    > a graph visualization should first prioritize node placement
+    > in a fashion that makes sense.
 
-        In some ways, this makes a ton of sense.
-        The nodes are the "entities" in a graph,
-        corresponding to people, proteins, and ports.
-        For "entities", we have natural ways to group, order and summarize (reduce).
-        (An example of a "reduction" is counting the number of things.)
-        Prioritizing node placement allows us
-        to appeal to our audience's natural sense of grouping, ordering and reduction.
+    In some ways, this makes a ton of sense.
+    The nodes are the "entities" in a graph,
+    corresponding to people, proteins, and ports.
+    For "entities", we have natural ways to group, order and summarize (reduce).
+    (An example of a "reduction" is counting the number of things.)
+    Prioritizing node placement allows us
+    to appeal to our audience's natural sense of grouping, ordering and reduction.
 
-        So the next time you see a hairball,
-        I hope you're able to critique it for what it doesn't communicate,
-        and possibly use the same principle to design a better visualization!
-        """
+    So the next time you see a hairball,
+    I hope you're able to critique it for what it doesn't communicate,
+    and possibly use the same principle to design a better visualization!
+    """
     )
     return
 
@@ -331,7 +330,6 @@ def _(mo):
 @app.cell
 def _():
     import marimo as mo
-
     return (mo,)
 
 
