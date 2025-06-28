@@ -22,11 +22,11 @@
 
 import marimo
 
-__generated_with = "0.13.0"
+__generated_with = "0.14.8"
 app = marimo.App()
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import warnings
 
@@ -40,7 +40,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     from IPython.display import YouTubeVideo
 
@@ -52,15 +52,11 @@ def _():
 def _(mo):
     mo.md(
         r"""
-        Graph traversal is akin to walking along the graph, node by node,
-        constrained by the edges that connect the nodes.
-        Graph traversal is particularly useful for understanding
-        the local structure of certain portions of the graph
-        and for finding paths that connect two nodes in the network.
+    ## What makes a node important?
 
-        In this chapter, we are going to learn how to perform pathfinding in a graph,
-        specifically by looking for _shortest paths_ via the _breadth-first search_ algorithm.
-        """
+    In the previous notebook, we explored degree centrality as a measure of node importance.
+    What other ways can we measure node importance?
+    """
     )
     return
 
@@ -69,27 +65,47 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-        ## Breadth-First Search
+    ## Graph traversal and node importance
 
-        The BFS algorithm is a staple of computer science curricula,
-        and for good reason:
-        it teaches learners how to "think on" a graph,
-        putting one in the position of
-        "the dumb computer" that can't use a visual cortex to
-        "_just know_" how to trace a path from one node to another.
-        As a topic, learning how to do BFS
-        additionally imparts algorithmic thinking to the learner.
+    Graph traversal is akin to walking along the graph, node by node,
+    constrained by the edges that connect the nodes.
+    Graph traversal is particularly useful for understanding
+    the local structure of certain portions of the graph
+    and for finding paths that connect two nodes in the network.
 
-        ### Exercise: Design the algorithm
+    In this chapter, we are going to learn how to perform pathfinding in a graph,
+    specifically by looking for _shortest paths_ via the _breadth-first search_ algorithm.
+    Then, we are going to explore measures of node importance that are related to traversals on a graph!
+    """
+    )
+    return
 
-        Try out this exercise to get some practice with algorithmic thinking.
 
-        > 1. On a piece of paper, conjure up a graph that has 15-20 nodes. Connect them any way you like.
-        > 1. Pick two nodes. Pretend that you're standing on one of the nodes, but you can't see any further beyond one neighbor away.
-        > 1. Work out how you can find _a_ path from the node you're standing on to the other node, given that you can _only_ see nodes that are one neighbor away but have an infinitely good memory.
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    ## Breadth-First Search
 
-        If you are successful at designing the algorithm, you should get the answer below.
-        """
+    The BFS algorithm is a staple of computer science curricula,
+    and for good reason:
+    it teaches learners how to "think on" a graph,
+    putting one in the position of
+    "the dumb computer" that can't use a visual cortex to
+    "_just know_" how to trace a path from one node to another.
+    As a topic, learning how to do BFS
+    additionally imparts algorithmic thinking to the learner.
+
+    ### Exercise: Design the algorithm
+
+    Try out this exercise to get some practice with algorithmic thinking.
+
+    > 1. On a piece of paper, conjure up a graph that has 15-20 nodes. Connect them any way you like.
+    > 1. Pick two nodes. Pretend that you're standing on one of the nodes, but you can't see any further beyond one neighbor away.
+    > 1. Work out how you can find _a_ path from the node you're standing on to the other node, given that you can _only_ see nodes that are one neighbor away but have an infinitely good memory.
+
+    If you are successful at designing the algorithm, you should get the answer below.
+    """
     )
     return
 
@@ -115,10 +131,10 @@ def _():
 def _(mo):
     mo.md(
         r"""
-        ### Exercise: Implement the algorithm
+    ### Exercise: Implement the algorithm
 
-        > Now that you've seen how the algorithm works, try implementing it!
-        """
+    > Now that you've seen how the algorithm works, try implementing it!
+    """
     )
     return
 
@@ -127,28 +143,38 @@ def _(mo):
 def _(____, _____, _________, ___________, _____________, _________________):
     # FILL IN THE BLANKS BELOW
 
+
     def path_exists(node1, node2, G):
         """
         This function checks whether a path exists between two nodes (node1,
         node2) in graph G.
         """
-        visited_nodes = _____
-        queue = [_____]
+        visited_nodes = _____  # should be a set
+        # Initialize with starting node.
+        queue = [_____]  # do NOT change to a set, trust me, order matters!
 
         while len(queue) > 0:
+            # Pick the next node for which to check neighbors.
             node = ___________
+
+            # Now get the neighbors of that node
             neighbors = list(_________________)
+
+            # Check if the destination is in the neighbors
             if _____ in _________:
-                # print('Path exists between nodes {0} and {1}'.format(node1, node2))
+                print("Path exists between nodes {0} and {1}".format(node1, node2))
                 return True
             else:
+                # Add current node to visited nodes
                 visited_nodes.___(____)
+                # You want to add nodes that don't already exist in visited_
                 nbrs = [_ for _ in _________ if _ not in _____________]
+
+                # Add the neighbors to the queue.
                 queue = ____ + _____
 
         # print('Path does not exist between nodes {0} and {1}'.format(node1, node2))
         return False
-
     return (path_exists,)
 
 
@@ -158,7 +184,7 @@ def _():
     from nams.solutions.paths import path_exists as path_exists_solution
     from inspect import getsource
 
-    # print(getsource(path_exists_solution))
+    print(getsource(path_exists_solution))
     return
 
 
@@ -166,6 +192,7 @@ def _():
 def _(G, path_exists):
     from random import sample
     import networkx as nx
+
 
     def test_path_exists(N):
         """
@@ -176,6 +203,7 @@ def _(G, path_exists):
             assert path_exists(n1, n2, G) == bool(nx.shortest_path(G, n1, n2))
         return True
 
+
     # Uncomment the next line to check the tests.
     # assert test_path_exists(10)
     return (nx,)
@@ -185,16 +213,16 @@ def _(G, path_exists):
 def _(mo):
     mo.md(
         r"""
-        ## Visualizing Paths
+    ## Visualizing Paths
 
-        One of the objectives of that exercise before was to help you "think on graphs".
-        Now that you've learned how to do so, you might be wondering,
-        "How do I visualize that path through the graph?"
+    One of the objectives of that exercise before was to help you "think on graphs".
+    Now that you've learned how to do so, you might be wondering,
+    "How do I visualize that path through the graph?"
 
-        Well first off, if you inspect the `test_path_exists` function above,
-        you'll notice that NetworkX provides a `shortest_path()` function
-        that you can use. Here's what using `nx.shortest_path()` looks like.
-        """
+    Well first off, if you inspect the `test_path_exists` function above,
+    you'll notice that NetworkX provides a `shortest_path()` function
+    that you can use. Here's what using `nx.shortest_path()` looks like.
+    """
     )
     return
 
@@ -210,23 +238,23 @@ def _(G, nx):
 def _(mo):
     mo.md(
         r"""
-        As you can see, it returns the nodes along the shortest path,
-        incidentally in the exact order that you would traverse.
+    As you can see, it returns the nodes along the shortest path,
+    incidentally in the exact order that you would traverse.
 
-        One thing to note, though!
-        If there are multiple shortest paths from one node to another,
-        NetworkX will only return one of them.
+    One thing to note, though!
+    If there are multiple shortest paths from one node to another,
+    NetworkX will only return one of them.
 
-        So how do you draw those nodes _only_?
+    So how do you draw those nodes _only_?
 
-        You can use the `G.subgraph(nodes)`
-        to return a new graph that only has nodes in `nodes`
-        and only the edges that exist between them.
-        After that, you can use any plotting library you like.
-        We will show an example here that uses nxviz's matrix plot.
+    You can use the `G.subgraph(nodes)`
+    to return a new graph that only has nodes in `nodes`
+    and only the edges that exist between them.
+    After that, you can use any plotting library you like.
+    We will show an example here that uses nxviz's matrix plot.
 
-        Let's see it in action:
-        """
+    Let's see it in action:
+    """
     )
     return
 
@@ -245,39 +273,39 @@ def _(G, path, plt):
 def _(mo):
     mo.md(
         r"""
-        _Voila!_ Now we have the subgraph (1) extracted and (2) drawn to screen!
-        In this case, the matrix plot is a suitable visualization for its compactness.
-        The off-diagonals also show that each node is a neighbor to the next one.
+    _Voila!_ Now we have the subgraph (1) extracted and (2) drawn to screen!
+    In this case, the matrix plot is a suitable visualization for its compactness.
+    The off-diagonals also show that each node is a neighbor to the next one.
 
-        You'll also notice that if you try to modify the graph `g`, say by adding a node:
+    You'll also notice that if you try to modify the graph `g`, say by adding a node:
 
-        ```python
-        g.add_node(2048)
-        ```
+    ```python
+    g.add_node(2048)
+    ```
 
-        you will get an error:
+    you will get an error:
 
-        ```python
-        ---------------------------------------------------------------------------
-        NetworkXError                             Traceback (most recent call last)
-        <ipython-input-10-ca6aa4c26819> in <module>
-        ----> 1 g.add_node(2048)
+    ```python
+    ---------------------------------------------------------------------------
+    NetworkXError                             Traceback (most recent call last)
+    <ipython-input-10-ca6aa4c26819> in <module>
+    ----> 1 g.add_node(2048)
 
-        ~/anaconda/envs/nams/lib/python3.7/site-packages/networkx/classes/function.py in frozen(*args, **kwargs)
-            156 def frozen(*args, **kwargs):
-            157     \"\"\"Dummy method for raising errors when trying to modify frozen graphs\"\"\"
-        --> 158     raise nx.NetworkXError("Frozen graph can't be modified")
-            159
-            160
+    ~/anaconda/envs/nams/lib/python3.7/site-packages/networkx/classes/function.py in frozen(*args, **kwargs)
+        156 def frozen(*args, **kwargs):
+        157     \"\"\"Dummy method for raising errors when trying to modify frozen graphs\"\"\"
+    --> 158     raise nx.NetworkXError("Frozen graph can't be modified")
+        159
+        160
 
-        NetworkXError: Frozen graph can't be modified
-        ```
+    NetworkXError: Frozen graph can't be modified
+    ```
 
-        From the perspective of semantics, this makes a ton of sense:
-        the subgraph `g` is a perfect subset of the larger graph `G`,
-        and should not be allowed to be modified
-        unless the larger container graph is modified.
-        """
+    From the perspective of semantics, this makes a ton of sense:
+    the subgraph `g` is a perfect subset of the larger graph `G`,
+    and should not be allowed to be modified
+    unless the larger container graph is modified.
+    """
     )
     return
 
@@ -286,23 +314,34 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-        ### Exercise: Draw path with neighbors one degree out
+    ### (Optional) Exercise: Draw path with neighbors of the path nodes
 
-        Try out this next exercise:
+    If there's enough time, we will work through this exercise. If not, we will simply discuss the plot.
 
-        > Extend graph drawing with the neighbors of each of those nodes.
-        > Use any of the nxviz plots (`nv.matrix`, `nv.arc`, `nv.circos`);
-        > try to see which one helps you tell the best story.
-        """
+    Try out this next puzzle 🧩: 
+
+    > Plot an arc plot, in which all nodes from G are ordered on the x-axis.
+    > Make a subgraph of the path nodes + their neighbors,
+    > and then plot the edges in the arc plot.
+    > Finally, highlight the path in red.
+
+    This one is advanced, and if you need to peek at the answer, please feel free to do so.
+    """
     )
     return
 
 
 @app.cell
-def _():
+def _(plt):
     from nams.solutions.paths import plot_path_with_neighbors
 
-    ### YOUR SOLUTION BELOW
+
+    def plot_path_with_neighbors_answer(G, node1, node2):
+        # Your answer here
+        plt.show()
+
+
+    # Now execute `plot_path_with_neighbors_answer`
     return (plot_path_with_neighbors,)
 
 
@@ -317,9 +356,9 @@ def _(G, plot_path_with_neighbors, plt):
 def _(mo):
     mo.md(
         r"""
-        In this case, we opted for an Arc plot because we only have one grouping of nodes but have a logical way to order them.
-        Because the path follows the order, the edges being highlighted automatically look like hops through the graph.
-        """
+    In this case, we opted for an Arc plot because we only have one grouping of nodes but have a logical way to order them.
+    Because the path follows the order, the edges being highlighted automatically look like hops through the graph.
+    """
     )
     return
 
@@ -328,29 +367,29 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-        ## Bottleneck nodes
+    ## Bottleneck nodes
 
-        We're now going to revisit the concept of an "important node",
-        this time now leveraging what we know about paths.
+    We're now going to revisit the concept of an "important node",
+    this time now leveraging what we know about paths.
 
-        In the "hubs" chapter, we saw how a node that is "important"
-        could be so because it is connected to many other nodes.
+    In the "hubs" chapter, we saw how a node that is "important"
+    could be so because it is connected to many other nodes.
 
-        Paths give us an alternative definition.
-        If we imagine that we have to pass a message on a graph
-        from one node to another,
-        then there may be "bottleneck" nodes
-        for which if they are removed,
-        then messages have a harder time flowing through the graph.
+    Paths give us an alternative definition.
+    If we imagine that we have to pass a message on a graph
+    from one node to another,
+    then there may be "bottleneck" nodes
+    for which if they are removed,
+    then messages have a harder time flowing through the graph.
 
-        One metric that measures this form of importance
-        is the "betweenness centrality" metric.
-        On a graph through which a generic "message" is flowing,
-        a node with a high betweenness centrality
-        is one that has a high proportion of shortest paths
-        flowing through it.
-        In other words, it behaves like a _bottleneck_.
-        """
+    One metric that measures this form of importance
+    is the "betweenness centrality" metric.
+    On a graph through which a generic "message" is flowing,
+    a node with a high betweenness centrality
+    is one that has a high proportion of shortest paths
+    flowing through it.
+    In other words, it behaves like a _bottleneck_.
+    """
     )
     return
 
@@ -359,12 +398,12 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-        ### Betweenness centrality in NetworkX
+    ### Betweenness centrality in NetworkX
 
-        NetworkX provides a "betweenness centrality" function
-        that behaves consistently with the "degree centrality" function,
-        in that it returns a mapping from node to metric:
-        """
+    NetworkX provides a "betweenness centrality" function
+    that behaves consistently with the "degree centrality" function,
+    in that it returns a mapping from node to metric:
+    """
     )
     return
 
@@ -381,12 +420,12 @@ def _(G, nx):
 def _(mo):
     mo.md(
         r"""
-        ### Exercise: compare degree and betweenness centrality
+    ### Exercise: compare degree and betweenness centrality
 
-        > Make a scatterplot of degree centrality on the x-axis
-        > and betweenness centrality on the y-axis.
-        > Do they correlate with one another?
-        """
+    > Make a scatterplot of degree centrality on the x-axis
+    > and betweenness centrality on the y-axis.
+    > Do they correlate with one another?
+    """
     )
     return
 
@@ -413,24 +452,25 @@ def _(G, plt):
 def _(mo):
     mo.md(
         r"""
-        ### Think about it...
+    ### Think about it...
 
-        ...does it make sense that degree centrality and betweenness centrality
-        are not well-correlated?
+    ...does it make sense that degree centrality and betweenness centrality
+    are not well-correlated?
 
-        Can you think of a scenario where a node has a
-        "high" betweenness centrality
-        but a "low" degree centrality?
-        Before peeking at the graph below,
-        think about your answer for a moment.
-        """
+    Can you think of a scenario where a node has a
+    "high" betweenness centrality
+    but a "low" degree centrality?
+    Before peeking at the graph below,
+    think about your answer for a moment.
+    """
     )
     return
 
 
 @app.cell
-def _(nx):
-    nx.draw(nx.barbell_graph(5, 1))
+def _(nx, plt):
+    nx.draw(nx.barbell_graph(10, 1))
+    plt.show()
     return
 
 
@@ -438,15 +478,15 @@ def _(nx):
 def _(mo):
     mo.md(
         r"""
-        ## Recap
+    ## Recap
 
-        In this chapter, you learned the following things:
+    In this chapter, you learned the following things:
 
-        1. You figured out how to implement the breadth-first-search algorithm to find shortest paths.
-        1. You learned how to extract subgraphs from a larger graph.
-        1. You implemented visualizations of subgraphs, which should help you as you communicate with colleagues.
-        1. You calculated betweenness centrality metrics for a graph, and visualized how they correlated with degree centrality.
-        """
+    1. You figured out how to implement the breadth-first-search algorithm to find shortest paths.
+    1. You learned how to extract subgraphs from a larger graph.
+    1. You implemented visualizations of subgraphs, which should help you as you communicate with colleagues.
+    1. You calculated betweenness centrality metrics for a graph, and visualized how they correlated with degree centrality.
+    """
     )
     return
 
@@ -455,10 +495,10 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-        ## Solutions
+    ## Solutions
 
-        Here are the solutions to the exercises above.
-        """
+    Here are the solutions to the exercises above.
+    """
     )
     return
 
@@ -475,7 +515,6 @@ def _():
 @app.cell
 def _():
     import marimo as mo
-
     return (mo,)
 
 
