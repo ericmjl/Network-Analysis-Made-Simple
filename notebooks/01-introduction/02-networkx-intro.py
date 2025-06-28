@@ -20,7 +20,7 @@
 
 import marimo
 
-__generated_with = "0.13.0"
+__generated_with = "0.14.8"
 app = marimo.App()
 
 
@@ -42,23 +42,23 @@ def _():
 def _(mo):
     mo.md(
         r"""
-        In this chapter, we will introduce you to the NetworkX API.
-        This will allow you to create and manipulate graphs in your computer memory,
-        thus giving you a language
-        to more concretely explore graph theory ideas.
+    In this chapter, we will introduce you to the NetworkX API.
+    This will allow you to create and manipulate graphs in your computer memory,
+    thus giving you a language
+    to more concretely explore graph theory ideas.
 
-        Throughout the book, we will be using different graph datasets
-        to help us anchor ideas.
-        In this section, we will work with a social network of seventh graders.
-        Here, nodes are individual students,
-        and edges represent their relationships.
-        Edges between individuals show how often
-        the seventh graders indicated other seventh graders as their favourite.
+    Throughout the book, we will be using different graph datasets
+    to help us anchor ideas.
+    In this section, we will work with a social network of seventh graders.
+    Here, nodes are individual students,
+    and edges represent their relationships.
+    Edges between individuals show how often
+    the seventh graders indicated other seventh graders as their favourite.
 
-        The data are taken from the [Konect] graph data repository
+    The data are taken from the [Konect] graph data repository
 
-        [Konect]: http://konect.cc/networks/moreno_seventh
-        """
+    [Konect]: http://konect.cc/networks/moreno_seventh
+    """
     )
     return
 
@@ -67,39 +67,39 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-        ## Data Model
+    ## Data Model
 
-        In NetworkX, graph data are stored in a dictionary-like fashion.
-        They are placed under a `Graph` object,
-        canonically instantiated with the variable `G` as follows:
+    In NetworkX, graph data are stored in a dictionary-like fashion.
+    They are placed under a `Graph` object,
+    canonically instantiated with the variable `G` as follows:
 
-        ```python
-        G = nx.Graph()
-        ```
+    ```python
+    G = nx.Graph()
+    ```
 
-        Of course, you are free to name the graph anything you want!
+    Of course, you are free to name the graph anything you want!
 
-        Nodes are part of the attribute `G.nodes`.
-        There, the node data are housed in a dictionary-like container,
-        where the key is the node itself
-        and the values are a dictionary of attributes.
-        Node data are accessible using syntax that looks like:
+    Nodes are part of the attribute `G.nodes`.
+    There, the node data are housed in a dictionary-like container,
+    where the key is the node itself
+    and the values are a dictionary of attributes.
+    Node data are accessible using syntax that looks like:
 
-        ```python
-        G.nodes[node1]
-        ```
+    ```python
+    G.nodes[node1]
+    ```
 
-        Edges are part of the attribute `G.edges`,
-        which is also stored in a dictionary-like container.
-        Edge data are accessible using syntax that looks like:
+    Edges are part of the attribute `G.edges`,
+    which is also stored in a dictionary-like container.
+    Edge data are accessible using syntax that looks like:
 
-        ```python
-        G.edges[node1, node2]
-        ```
-        Because of the dictionary-like implementation of the graph,
-        any hashable object can be a node.
-        This means strings and tuples, but not lists and sets.
-        """
+    ```python
+    G.edges[node1, node2]
+    ```
+    Because of the dictionary-like implementation of the graph,
+    any hashable object can be a node.
+    This means strings and tuples, but not lists and sets.
+    """
     )
     return
 
@@ -108,23 +108,23 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-        ## Load Data
+    ## Load Data
 
-        Let's load some real network data to get a feel for the NetworkX API. This [dataset](http://konect.cc/networks/moreno_seventh) comes from a study of 7th grade students.
+    Let's load some real network data to get a feel for the NetworkX API. This [dataset](http://konect.cc/networks/moreno_seventh) comes from a study of 7th grade students.
 
-        > This directed network contains proximity ratings between students
-        > from 29 seventh grade students from a school in Victoria.
-        > Among other questions the students were asked
-        > to nominate their preferred classmates for three different activities.
-        > A node represents a student.
-        > An edge between two nodes shows that
-        > the left student picked the right student as his or her answer.
-        > The edge weights are between 1 and 3
-        > and show how often the left student chose the right student as his/her favourite.
+    > This directed network contains proximity ratings between students
+    > from 29 seventh grade students from a school in Victoria.
+    > Among other questions the students were asked
+    > to nominate their preferred classmates for three different activities.
+    > A node represents a student.
+    > An edge between two nodes shows that
+    > the left student picked the right student as his or her answer.
+    > The edge weights are between 1 and 3
+    > and show how often the left student chose the right student as his/her favourite.
 
-        In the original dataset, students were from an all-boys school.
-        However, I have modified the dataset to instead be a mixed-gender school.
-        """
+    In the original dataset, students were from an all-boys school.
+    However, I have modified the dataset to instead be a mixed-gender school.
+    """
     )
     return
 
@@ -152,21 +152,21 @@ def _(cf):
 def _(mo):
     mo.md(
         r"""
-        ## Understanding a graph's basic statistics
+    ## Understanding a graph's basic statistics
 
-        When you get graph data,
-        one of the first things you'll want to do is to
-        check its basic graph statistics:
-        the number of nodes
-        and the number of edges
-        that are represented in the graph.
-        This is a basic sanity-check on your data
-        that you don't want to skip out on.
+    When you get graph data,
+    one of the first things you'll want to do is to
+    check its basic graph statistics:
+    the number of nodes
+    and the number of edges
+    that are represented in the graph.
+    This is a basic sanity-check on your data
+    that you don't want to skip out on.
 
-        ### Querying graph type
+    ### Querying graph type
 
-        The first thing you need to know is the `type` of the graph:
-        """
+    The first thing you need to know is the `type` of the graph:
+    """
     )
     return
 
@@ -181,11 +181,11 @@ def _(G):
 def _(mo):
     mo.md(
         r"""
-        Because the graph is a `DiGraph`,
-        this tells us that the graph is a **directed** one.
+    Because the graph is a `DiGraph`,
+    this tells us that the graph is a **directed** one.
 
-        If it were undirected, the type would change:
-        """
+    If it were undirected, the type would change:
+    """
     )
     return
 
@@ -201,17 +201,17 @@ def _(nx):
 def _(mo):
     mo.md(
         r"""
-        ### Querying node information
+    ### Querying node information
 
-        Let's now query for the nodeset:
-        """
+    Let's now query for the nodeset:
+    """
     )
     return
 
 
 @app.cell
 def _(G):
-    list(G.nodes())[0:5]
+    print(list(G.nodes())[0:5])
     return
 
 
@@ -219,14 +219,14 @@ def _(G):
 def _(mo):
     mo.md(
         r"""
-        `G.nodes()` returns a "view" on the nodes.
-        We can't actually slice into the view and grab out a sub-selection,
-        but we can _at least_ see what nodes are present.
-        For brevity, we have sliced into `G.nodes()` passed into a `list()` constructor,
-        so that we don't pollute the output.
-        Because a `NodeView` is iterable, though,
-        we can query it for its length:
-        """
+    `G.nodes()` returns a "view" on the nodes.
+    We can't actually slice into the view and grab out a sub-selection,
+    but we can _at least_ see what nodes are present.
+    For brevity, we have sliced into `G.nodes()` passed into a `list()` constructor,
+    so that we don't pollute the output.
+    Because a `NodeView` is iterable, though,
+    we can query it for its length:
+    """
     )
     return
 
@@ -241,17 +241,17 @@ def _(G):
 def _(mo):
     mo.md(
         r"""
-        If our nodes have metadata attached to them,
-        we can view the metadata at the same time
-        by passing in `data=True`:
-        """
+    If our nodes have metadata attached to them,
+    we can view the metadata at the same time
+    by passing in `data=True`:
+    """
     )
     return
 
 
 @app.cell
 def _(G):
-    list(G.nodes(data=True))[0:5]
+    print(list(G.nodes(data=True))[0:5])
     return
 
 
@@ -259,11 +259,11 @@ def _(G):
 def _(mo):
     mo.md(
         r"""
-        G.nodes(data=True) returns a `NodeDataView`,
-        which you can see is dictionary-like.
+    G.nodes(data=True) returns a `NodeDataView`,
+    which you can see is dictionary-like.
 
-        Additionally, we can select out individual nodes:
-        """
+    Additionally, we can select out individual nodes:
+    """
     )
     return
 
@@ -278,31 +278,39 @@ def _(G):
 def _(mo):
     mo.md(
         r"""
-        Now, because a `NodeDataView` is dictionary-like,
-        looping over `G.nodes(data=True)`
-        is very much like looping over key-value pairs of a dictionary.
-        As such, we can write things like:
+    Now, because a `NodeDataView` is dictionary-like,
+    looping over `G.nodes(data=True)`
+    is very much like looping over key-value pairs of a dictionary.
+    As such, we can write things like:
 
-        ```python
-        for n, d in G.nodes(data=True):
-            # n is the node
-            # d is the metadata dictionary
-            ...
-        ```
+    ```python
+    for n, d in G.nodes(data=True):
+        # n is the node
+        # d is the metadata dictionary
+        ...
+    ```
 
-        This is analogous to how we would loop over a dictionary:
+    This is analogous to how we would loop over a dictionary:
 
-        ```python
-        for k, v in dictionary.items():
-            # do stuff in the loop
-        ```
+    ```python
+    for k, v in dictionary.items():
+        # do stuff in the loop
+    ```
 
-        Naturally, this leads us to our first exercise.
+    Naturally, this leads us to our first exercise.
+    """
+    )
+    return
 
-        ### Exercise: Summarizing node metadata
 
-        > Can you count how many males and females are represented in the graph?
-        """
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    ### Exercise: Summarizing node metadata
+
+    > Can you count how many males and females are represented in the graph?
+    """
     )
     return
 
@@ -328,9 +336,11 @@ def _(mo):
 def _(mf_counts):
     from typing import Dict
 
+
     def test_answer(mf_counts: Dict):
         assert mf_counts["female"] == 17
         assert mf_counts["male"] == 12
+
 
     test_answer(mf_counts)
     return
@@ -340,9 +350,9 @@ def _(mf_counts):
 def _(mo):
     mo.md(
         r"""
-        With this dictionary-like syntax,
-        we can query back the metadata that's associated with any node.
-        """
+    With this dictionary-like syntax,
+    we can query back the metadata that's associated with any node.
+    """
     )
     return
 
@@ -351,18 +361,18 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-        ### Querying edge information
+    ### Querying edge information
 
-        Now that you've learned how to query for node information,
-        let's now see how to query for all of the edges in the graph:
-        """
+    Now that you've learned how to query for node information,
+    let's now see how to query for all of the edges in the graph:
+    """
     )
     return
 
 
 @app.cell
 def _(G):
-    list(G.edges())[0:5]
+    print(list(G.edges())[0:5])
     return
 
 
@@ -370,12 +380,12 @@ def _(G):
 def _(mo):
     mo.md(
         r"""
-        Similar to the `NodeView`, `G.edges()` returns an `EdgeView` that is also iterable.
-        As with above, we have abbreviated the output inside a sliced list
-        to keep things readable.
-        Because `G.edges()` is iterable, we can get its length to see the number of edges
-        that are present in a graph.
-        """
+    Similar to the `NodeView`, `G.edges()` returns an `EdgeView` that is also iterable.
+    As with above, we have abbreviated the output inside a sliced list
+    to keep things readable.
+    Because `G.edges()` is iterable, we can get its length to see the number of edges
+    that are present in a graph.
+    """
     )
     return
 
@@ -394,7 +404,7 @@ def _(mo):
 
 @app.cell
 def _(G):
-    list(G.edges(data=True))[0:5]
+    print(list(G.edges(data=True))[0:5])
     return
 
 
@@ -406,9 +416,21 @@ def _(mo):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    This yields the metadata dictionary for that edge.
+
+    If the edge does not exist, then we get an error:
+    """
+    )
+    return
+
+
 @app.cell
 def _(G):
-    G.edges[15, 10]
+    G.edges[15, 16]
     return
 
 
@@ -416,30 +438,20 @@ def _(G):
 def _(mo):
     mo.md(
         r"""
-        This yields the metadata dictionary for that edge.
+    As with the `NodeDataView`, the `EdgeDataView` is dictionary-like,
+    with the difference being that the keys are 2-tuple-like
+    instead of being single hashable objects.
+    Thus, we can write syntax like the following to loop over the edgelist:
 
-        If the edge does not exist, then we get an error:
+    ```python
+    for n1, n2, d in G.edges(data=True):
+        # n1, n2 are the nodes
+        # d is the metadata dictionary
+        ...
+    ```
 
-        ```python
-        >>> G.edges[15, 16]
-        ```
-
-        ```python
-        ---------------------------------------------------------------------------
-        KeyError                                  Traceback (most recent call last)
-        <ipython-input-21-ce014cab875a> in <module>
-        ----> 1 G.edges[15, 16]
-
-        ~/anaconda/envs/nams/lib/python3.7/site-packages/networkx/classes/reportviews.py in __getitem__(self, e)
-            928     def __getitem__(self, e):
-            929         u, v = e
-        --> 930         return self._adjdict[u][v]
-            931
-            932     # EdgeDataView methods
-
-        KeyError: 16
-        ```
-        """
+    Naturally, this leads us to our next exercise.
+    """
     )
     return
 
@@ -448,34 +460,12 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-        As with the `NodeDataView`, the `EdgeDataView` is dictionary-like,
-        with the difference being that the keys are 2-tuple-like
-        instead of being single hashable objects.
-        Thus, we can write syntax like the following to loop over the edgelist:
+    ### Exercise: Summarizing edge metadata
 
-        ```python
-        for n1, n2, d in G.edges(data=True):
-            # n1, n2 are the nodes
-            # d is the metadata dictionary
-            ...
-        ```
-
-        Naturally, this leads us to our next exercise.
-        """
-    )
-    return
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.md(
-        r"""
-        ### Exercise: Summarizing edge metadata
-
-        > Can you write code to verify
-        > that the maximum times any student rated another student as their favourite
-        > is 3 times?
-        """
+    > Can you write code to verify
+    > that the maximum times any student rated another student as their favourite
+    > is 3 times?
+    """
     )
     return
 
@@ -486,12 +476,22 @@ def _(G):
 
     #### REPLACE THE NEXT LINE WITH YOUR ANSWER
     maxcount = edge_metadata(G)
+
+
+    def edge_metadata_answer(G):
+        # Your answer goes here
+        return
+
+
+    # Now execute your function and assing `maxcount` to the return of the function.
     return (maxcount,)
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""Likewise, you can test your answer using the test function below:""")
+    mo.md(
+        r"""If you implemented it correctly, the next cell will auto-execute and no errors will show up."""
+    )
     return
 
 
@@ -499,6 +499,7 @@ def _(mo):
 def _(maxcount):
     def test_maxcount(maxcount):
         assert maxcount == 3
+
 
     test_maxcount(maxcount)
     return
@@ -508,50 +509,50 @@ def _(maxcount):
 def _(mo):
     mo.md(
         r"""
-        ## Manipulating the graph
+    ## Manipulating the graph
 
-        Great stuff! You now know how to query a graph for:
+    Great stuff! You now know how to query a graph for:
 
-        - its node set, optionally including metadata
-        - individual node metadata
-        - its edge set, optionally including metadata, and
-        - individual edges' metadata
+    - its node set, optionally including metadata
+    - individual node metadata
+    - its edge set, optionally including metadata, and
+    - individual edges' metadata
 
-        Now, let's learn how to manipulate the graph.
-        Specifically, we'll learn how to add nodes and edges to a graph.
+    Now, let's learn how to manipulate the graph.
+    Specifically, we'll learn how to add nodes and edges to a graph.
 
-        ### Adding Nodes
+    ### Adding Nodes
 
-        The NetworkX graph API lets you add a node easily:
+    The NetworkX graph API lets you add a node easily:
 
-        ```python
-        G.add_node(node, node_data1=some_value, node_data2=some_value)
-        ```
+    ```python
+    G.add_node(node, node_data1=some_value, node_data2=some_value)
+    ```
 
-        ### Adding Edges
+    ### Adding Edges
 
-        It also allows you to add an edge easily:
+    It also allows you to add an edge easily:
 
-        ```python
-        G.add_edge(node1, node2, edge_data1=some_value, edge_data2=some_value)
-        ```
+    ```python
+    G.add_edge(node1, node2, edge_data1=some_value, edge_data2=some_value)
+    ```
 
-        ### Metadata by Keyword Arguments
+    ### Metadata by Keyword Arguments
 
-        In both cases, the keyword arguments that are passed into `.add_node()`
-        are automatically collected into the metadata dictionary.
+    In both cases, the keyword arguments that are passed into `.add_node()`
+    are automatically collected into the metadata dictionary.
 
-        Knowing this gives you enough knowledge to tackle the next exercise.
+    Knowing this gives you enough knowledge to tackle the next exercise.
 
-        ### Exercise: adding students to the graph
+    ### Exercise: adding students to the graph
 
-        > We found out that there are two students that we left out of the network,
-        > student no. 30 and 31.
-        > They are one male (30) and one female (31),
-        > and they are a pair that just love hanging out with one another
-        > and with individual 7 (i.e. `count=3`), in both directions per pair.
-        > Add this information to the graph.
-        """
+    > We found out that there are two students that we left out of the network,
+    > student no. 30 and 31.
+    > They are one male (30) and one female (31),
+    > and they are a pair that just love hanging out with one another
+    > and with individual 7 (i.e. `count=3`), in both directions per pair.
+    > Add this information to the graph.
+    """
     )
     return
 
@@ -561,16 +562,22 @@ def _(G):
     from nams.solutions.intro import adding_students
 
     G_1 = adding_students(G)
+
+
+    def adding_students_answer(G):
+        G = G.copy()
+        # Your code goes here!
+        return
+
+
+    # Now execute the function and assign it to `G_1`.
     return (G_1,)
 
 
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(
-        r"""
-        You can verify that the graph has been correctly created
-        by executing the test function below.
-        """
+        r"""As with above, if your function is implemented correctly, the following cell will automatically execute with no errors."""
     )
     return
 
@@ -593,6 +600,7 @@ def _(G_1):
         assert G.edges[31, 30]["count"] == 3
         print("All tests passed.")
 
+
     test_graph_integrity(G_1)
     return
 
@@ -601,11 +609,11 @@ def _(G_1):
 def _(mo):
     mo.md(
         r"""
-        ## Coding Patterns
+    ## Coding Patterns
 
-        These are some recommended coding patterns when doing network analysis using NetworkX,
-        which stem from my personal experience with the package.
-        """
+    These are some recommended coding patterns when doing network analysis using NetworkX,
+    which stem from my personal experience with the package.
+    """
     )
     return
 
@@ -614,19 +622,19 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-        ### Iterating using List Comprehensions
-        I would recommend that you use the following for compactness:
+    ### Iterating using List Comprehensions
+    I would recommend that you use the following for compactness:
 
-        ```python
-        [d['attr'] for n, d in G.nodes(data=True)]
-        ```
+    ```python
+    [d['attr'] for n, d in G.nodes(data=True)]
+    ```
 
-        And if the node is unimportant, you can do:
+    And if the node is unimportant, you can do:
 
-        ```python
-        [d['attr'] for _, d in G.nodes(data=True)]
-        ```
-        """
+    ```python
+    [d['attr'] for _, d in G.nodes(data=True)]
+    ```
+    """
     )
     return
 
@@ -635,34 +643,34 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-        ### Iterating over Edges using List Comprehensions
+    ### Iterating over Edges using List Comprehensions
 
-        A similar pattern can be used for edges:
+    A similar pattern can be used for edges:
 
-        ```python
-        [n2 for n1, n2, d in G.edges(data=True)]
-        ```
+    ```python
+    [n2 for n1, n2, d in G.edges(data=True)]
+    ```
 
-        or
+    or
 
-        ```python
-        [n2 for _, n2, d in G.edges(data=True)]
-        ```
+    ```python
+    [n2 for _, n2, d in G.edges(data=True)]
+    ```
 
-        If the graph you are constructing is a directed graph,
-        with a "source" and "sink" available,
-        then I would recommend the following naming of variables instead:
+    If the graph you are constructing is a directed graph,
+    with a "source" and "sink" available,
+    then I would recommend the following naming of variables instead:
 
-        ```python
-        [(sc, sk) for sc, sk, d in G.edges(data=True)]
-        ```
+    ```python
+    [(sc, sk) for sc, sk, d in G.edges(data=True)]
+    ```
 
-        or
+    or
 
-        ```python
-        [d['attr'] for sc, sk, d in G.edges(data=True)]
-        ```
-        """
+    ```python
+    [d['attr'] for sc, sk, d in G.edges(data=True)]
+    ```
+    """
     )
     return
 
@@ -671,13 +679,13 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-        ## Further Reading
+    ## Further Reading
 
-        For a deeper look at the NetworkX API,
-        be sure to check out the [NetworkX docs][nxdocs].
+    For a deeper look at the NetworkX API,
+    be sure to check out the [NetworkX docs][nxdocs].
 
-        [nxdocs]: https://networkx.readthedocs.io
-        """
+    [nxdocs]: https://networkx.readthedocs.io
+    """
     )
     return
 
@@ -686,21 +694,26 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
-        ## Further Exercises
+    ## Further Exercises
 
-        Here's some further exercises that you can use to get some practice.
+    Here's some further exercises that you can use to get some practice.
 
-        ### Exercise: Unrequited Friendships
+    ### Exercise: Unrequited Friendships
 
-        > Try figuring out which students have "unrequited" friendships, that is,
-        > they have rated another student as their favourite at least once,
-        > but that other student has not rated them as their favourite at least once.
+    > Try figuring out which students have "unrequited" friendships, that is,
+    > they have rated another student as their favourite at least once,
+    > but that other student has not rated them as their favourite at least once.
 
-        _Hint: the goal here is to get a list of edges for which the reverse edge is not present._
+    _Hint: the goal here is to get a list of edges for which the reverse edge is not present._
 
-        _Hint: You may need the class method `G.has_edge(n1, n2)`. This returns whether a graph has an edge between the nodes `n1` and `n2`._
-        """
+    _Hint: You may need the class method `G.has_edge(n1, n2)`. This returns a boolean on whether a graph has an edge between the nodes `n1` and `n2`._
+    """
     )
+    return
+
+
+@app.cell
+def _():
     return
 
 
@@ -709,6 +722,15 @@ def _(G_1):
     from nams.solutions.intro import unrequitted_friendships_v1
 
     unrequitted_friendships = unrequitted_friendships_v1(G_1)
+
+
+    def unrequitted_friendships_answer(G):
+        # Your answer here
+        return
+
+
+    # Execute `unrequitted_friendships_answer` and assign it to the variable `unrequitted_friendships`.
+
     assert len(unrequitted_friendships) == 124
     return
 
@@ -717,9 +739,9 @@ def _(G_1):
 def _(mo):
     mo.md(
         r"""
-        In a previous session at ODSC East 2018, a few other class participants provided the following solutions,
-        which you can take a look at by uncommenting the following cells.
-        """
+    In a previous session at ODSC East 2018, a few other class participants provided the following solutions,
+    which you can take a look at by uncommenting the following cells.
+    """
     )
     return
 
@@ -761,10 +783,10 @@ def _():
 def _(mo):
     mo.md(
         r"""
-        ## Solution Answers
+    ## Solution Answers
 
-        Here are the answers to the exercises above.
-        """
+    Here are the answers to the exercises above.
+    """
     )
     return
 
@@ -774,14 +796,13 @@ def _():
     import nams.solutions.intro as solutions
     import inspect
 
-    # print(inspect.getsource(solutions))
+    print(inspect.getsource(solutions))
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import marimo as mo
-
     return (mo,)
 
 
