@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: 3.11
 
-      - uses: prefix-dev/setup-pixi@v0.8.8
+      - uses: prefix-dev/setup-pixi@v0.8.10
         with:
           pixi-version: v0.41.4
           cache: true
