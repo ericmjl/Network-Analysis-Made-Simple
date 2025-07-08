@@ -2,7 +2,7 @@ Hey, thanks for stopping by!
 
 Network Analysis Made Simple is a collection of Jupyter notebooks
 designed to help you get up and running with the NetworkX package
-in the Python programming langauge.
+in the Python programming language.
 It's written by programmers for programmers,
 and will give you a basic introduction to
 graph theory, applied network science,

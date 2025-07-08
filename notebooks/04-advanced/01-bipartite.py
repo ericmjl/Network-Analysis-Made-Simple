@@ -177,7 +177,7 @@ def _(mo):
         > from specified node partition.
         > It should also raise a plain Exception
         > if no nodes exist in that specified partition.
-        > (as a precuation against users putting in invalid partition names).
+        > (as a precaution against users putting in invalid partition names).
         """
     )
     return

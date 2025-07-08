@@ -304,7 +304,7 @@ def _(mo):
 
 @app.cell
 def _(cf, pass_2015_network):
-    # Loadin the GPS coordinates of all the airports
+    # Loading the GPS coordinates of all the airports
 
     lat_long = cf.load_airports_GPS_data()
     lat_long.columns = [
@@ -599,7 +599,7 @@ def _(mo):
         ---------------------------------------------------------------------------
         NetworkXNotImplemented                    Traceback (most recent call last)
         <ipython-input-144-15a6f513bf9b> in <module>
-              1 # Let's try to calulate the PageRank measures of this graph.
+              1 # Let's try to calculate the PageRank measures of this graph.
         ----> 2 nx.pagerank(passenger_graph)
 
         <decorator-gen-435> in pagerank(G, alpha, personalization, max_iter, tol, nstart, weight, dangling)
@@ -701,7 +701,7 @@ def _(top_10_dc):
 def _(mo):
     mo.md(
         r"""
-        The Degree Centrality results do make sense at first glance, ATL is Atlanta, ORD is Chicago, these are defintely airports one would expect to be at the top of a list which calculates "importance" of an airport. But when we look at PageRank and Betweenness Centrality we have an unexpected airport 'ANC'. Do think about measures like PageRank and Betweenness Centrality and what they calculate. Do note that currently we have used the core structure of the network, no other metadata like number of passengers. These are calculations on the unweighted network.
+        The Degree Centrality results do make sense at first glance, ATL is Atlanta, ORD is Chicago, these are definitely airports one would expect to be at the top of a list which calculates "importance" of an airport. But when we look at PageRank and Betweenness Centrality we have an unexpected airport 'ANC'. Do think about measures like PageRank and Betweenness Centrality and what they calculate. Do note that currently we have used the core structure of the network, no other metadata like number of passengers. These are calculations on the unweighted network.
 
         'ANC' is the airport code of Anchorage airport, a place in Alaska, and according to pagerank and betweenness centrality it is the most important airport in this network. Isn't that weird? Thoughts?
 
@@ -795,7 +795,7 @@ def _(mo):
     mo.md(
         r"""
         Wait, What? This network is not "connected" (ignore the term weakly for the moment).
-        That seems weird. It means that there are nodes which aren't reachable from other set of nodes, which isn't good news in especially a transporation network.
+        That seems weird. It means that there are nodes which aren't reachable from other set of nodes, which isn't good news in especially a transportation network.
 
         Let's have a look at these far flung airports which aren't reachable.
         """

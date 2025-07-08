@@ -49,7 +49,7 @@ def _(mo):
 
         In this chapter, we will use Game of Thrones as a case study to practice our newly learnt skills of network analysis.
 
-        It is suprising right? What is the relationship between a fatansy TV show/novel and network science or Python(not dragons).
+        It is surprising right? What is the relationship between a fatansy TV show/novel and network science or Python(not dragons).
 
         If you haven't heard of Game of Thrones, then you must be really good at hiding. Game of Thrones is a hugely popular television series by HBO based on the (also) hugely popular book series A Song of Ice and Fire by George R.R. Martin. In this notebook, we will analyze the co-occurrence network of the characters in the Game of Thrones books. Here, two characters are considered to co-occur if their names appear in the vicinity of 15 words from one another in the books.
 
@@ -58,7 +58,7 @@ def _(mo):
         ![](images/got.png)
 
 
-        The dataset is publicly avaiable for the 5 books at https://github.com/mathbeveridge/asoiaf. This is an interaction network and were created by connecting two characters whenever their names (or nicknames) appeared within 15 words of one another in one of the books. The edge weight corresponds to the number of interactions.
+        The dataset is publicly available for the 5 books at https://github.com/mathbeveridge/asoiaf. This is an interaction network and were created by connecting two characters whenever their names (or nicknames) appeared within 15 words of one another in one of the books. The edge weight corresponds to the number of interactions.
 
 
         Blog: https://networkofthrones.wordpress.com
@@ -328,9 +328,9 @@ def _(graphs, weighted_degree):
 def _(mo):
     mo.md(
         r"""
-        ## Betweeness centrality
+        ## Betweenness centrality
 
-        Let's do this for Betweeness centrality and check if this makes any difference. As different centrality method use different measures underneath, they find nodes which are important in the network. A centrality method like Betweeness centrality finds nodes which are structurally important to the network, which binds the network together and densely.
+        Let's do this for Betweenness centrality and check if this makes any difference. As different centrality method use different measures underneath, they find nodes which are important in the network. A centrality method like Betweenness centrality finds nodes which are structurally important to the network, which binds the network together and densely.
         """
     )
     return
@@ -521,7 +521,7 @@ def _(nx):
 def _(mo):
     mo.md(
         r"""
-        As we know the a higher betweenness centrality means that the node is crucial for the structure of the network, and in the case of Stannis Baratheon in the fifth book it seems like Stannis Baratheon has characterstics similar to that of node 5 in the above example as it seems to be the holding the network together.
+        As we know the a higher betweenness centrality means that the node is crucial for the structure of the network, and in the case of Stannis Baratheon in the fifth book it seems like Stannis Baratheon has characteristics similar to that of node 5 in the above example as it seems to be the holding the network together.
 
         As evident from the betweenness centrality scores of the above example of barbell graph, node 5 is the most important node in this network.
         """
@@ -540,7 +540,7 @@ def _(mo):
     mo.md(
         r"""
         ## Community detection in Networks
-        A network is said to have community structure if the nodes of the network can be easily grouped into (potentially overlapping) sets of nodes such that each set of nodes is densely connected internally. There are multiple algorithms and definitions to calculate these communites in a network.
+        A network is said to have community structure if the nodes of the network can be easily grouped into (potentially overlapping) sets of nodes such that each set of nodes is densely connected internally. There are multiple algorithms and definitions to calculate these communities in a network.
 
         We will use louvain community detection algorithm to find the modules in our graph.
         """
