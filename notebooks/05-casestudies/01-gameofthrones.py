@@ -44,7 +44,7 @@ def _():
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(
-        r"""
+        rf"""
         ## Introduction
 
         In this chapter, we will use Game of Thrones as a case study to practice our newly learnt skills of network analysis.
@@ -55,7 +55,7 @@ def _(mo):
 
         The figure below is a precusor of what we will analyse in this chapter.
 
-        ![](images/got.png)
+        {mo.image("images/got.png")}
 
 
         The dataset is publicly avaiable for the 5 books at https://github.com/mathbeveridge/asoiaf. This is an interaction network and were created by connecting two characters whenever their names (or nicknames) appeared within 15 words of one another in one of the books. The edge weight corresponds to the number of interactions.
