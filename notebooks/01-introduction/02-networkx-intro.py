@@ -483,7 +483,7 @@ def _(G):
         return
 
 
-    # Now execute your function and assing `maxcount` to the return of the function.
+    # Now execute your function and assign `maxcount` to the return of the function.
     return (maxcount,)
 
 

@@ -52,7 +52,7 @@ Here's an overview of what's available
     It is written by Boston University's professor of mathematics
     Eric D. Kolaczyck.
     I used it during graduate school
-    as part of my personnal learning journey.
+    as part of my personal learning journey.
     The book's website can be found [here](http://math.bu.edu/people/kolaczyk/SAND.html),
     and is available on Amazon (click on the book link below).
 

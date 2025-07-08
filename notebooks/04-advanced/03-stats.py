@@ -345,7 +345,7 @@ def _(mo):
 
         > This undirected network contains protein interactions contained in yeast.
         > Research showed that proteins with a high degree
-        > were more important for the surivial of the yeast than others.
+        > were more important for the survival of the yeast than others.
         > A node represents a protein and an edge represents a metabolic interaction between two proteins.
         > The network contains loops.
         """
