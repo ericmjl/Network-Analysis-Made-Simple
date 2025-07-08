@@ -14,15 +14,17 @@ with the code available for you to reference afterwards.
 
 To get started with the notebooks, follow these simple steps:
 
-1. **Install uv** (the Python package manager):
+1. Git clone the repository: `https://github.com/ericmjl/Network-Analysis-Made-Simple`
+
+2. **Install uv** (the Python package manager):
    Follow the installation instructions at [https://docs.astral.sh/uv/getting-started/installation/](https://docs.astral.sh/uv/getting-started/installation/)
 
-2. **Navigate to the notebook directory**:
+3. **Navigate to the notebook directory**:
    ```bash
    cd notebooks/subdir/
    ```
 
-3. **Run the notebook**:
+4. **Run the notebook**:
    ```bash
    uvx marimo edit --sandbox <notebook_name>.py
    ```
