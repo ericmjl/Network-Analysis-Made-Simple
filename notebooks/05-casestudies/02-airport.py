@@ -415,12 +415,12 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(
-        r"""
+        rf"""
         ## Directed Graphs and PageRank
 
         The figure below explains the basic idea behind the PageRank algorithm. The "importance" of the node depends on the incoming links to the node, i.e if an "important" node A points towards a node B it will increase the PageRank score of node B, and this is run iteratively. In the given figure, even though node C is only connected to one node it is considered "important" as the connection is to node B, which is an "important" node.
 
-        ![](images/pagerank.png)
+        {mo.image("images/pagerank.png")}
         <!-- <img src='images/pagerank.png' alt='pagerank' width='500'/> -->
 
         Source: Wikipedia
