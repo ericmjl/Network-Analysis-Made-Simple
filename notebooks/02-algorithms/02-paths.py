@@ -8,6 +8,7 @@
 #     "networkx==3.4.2",
 #     "nxviz==0.7.6",
 #     "pandas==2.2.3",
+#     "pyarrow==20.0.0",
 #     "pyprojroot==0.3.0",
 #     "seaborn==0.13.2",
 #     "tqdm==4.67.1",

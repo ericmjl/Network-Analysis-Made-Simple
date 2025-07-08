@@ -9,6 +9,9 @@
 #     "numpy==2.2.5",
 #     "nxviz==0.7.6",
 #     "pandas==2.2.3",
+#     "pyprojroot==0.3.0",
+#     "scipy==1.15.2",
+#     "tqdm==4.67.1",
 # ]
 # [[tool.uv.index]]
 # name = "ericmjl-personal-packages"
