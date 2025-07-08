@@ -42,12 +42,12 @@ def _(mo):
 
     2. **Navigate to the notebook directory**:
        ```bash
-       cd notebooks/00-preface/01-setup.py # replace with the actual numbered subdir!
+       cd notebooks/00-preface/ # replace with the actual numbered subdir!
        ```
 
     3. **Run the notebook**:
        ```bash
-       uvx marimo edit --sandbox <notebook_name>.py
+       uvx marimo edit --sandbox 01-setup.py
        ```
 
     Once Marimo is launched, on the bottom, click on "on startup", "on cel change", and "on module change" to disable automatic execution. This will allow us to mimic original Jupyter behaviour, which is advantageous for a teaching setting (but toggle them back to "autorun" )
