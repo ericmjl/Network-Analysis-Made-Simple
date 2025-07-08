@@ -10,9 +10,26 @@ in a variety of formats (ranging from 1.5 hr to 4 hour long workshops).
 The material is designed for a live tutorial presentation,
 with the code available for you to reference afterwards.
 
-## Getting Started
+## Quick Start
 
-Head over to [the official website][nams]!
+To get started with the notebooks, follow these simple steps:
+
+1. **Install uv** (the Python package manager):
+   Follow the installation instructions at [https://docs.astral.sh/uv/getting-started/installation/](https://docs.astral.sh/uv/getting-started/installation/)
+
+2. **Navigate to the notebook directory**:
+   ```bash
+   cd notebooks/subdir/
+   ```
+
+3. **Run the notebook**:
+   ```bash
+   uvx marimo edit --sandbox <notebook_name>.py
+   ```
+
+That's it! The `--sandbox` flag ensures a clean, isolated environment for running the notebooks.
+
+For more detailed information, head over to [the official website][nams]!
 
 [nams]: https://ericmjl.github.io/Network-Analysis-Made-Simple
 
