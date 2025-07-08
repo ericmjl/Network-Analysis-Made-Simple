@@ -9,6 +9,8 @@
 #     "networkx==3.4.2",
 #     "nxviz==0.7.6",
 #     "pandas==2.2.3",
+#     "pyjanitor==0.31.0",
+#     "pyprojroot==0.3.0",
 #     "scipy==1.15.2",
 #     "seaborn==0.13.2",
 #     "tqdm==4.67.1",
