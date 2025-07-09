@@ -13,12 +13,8 @@
 #     "pyprojroot==0.3.0",
 #     "tqdm==4.67.1",
 # ]
-# [[tool.uv.index]]
-# name = "ericmjl-personal-packages"
-# url = "https://ericmjl--pypiserver-server.modal.run/simple/"
-# explicit = true
 # [tool.uv.sources]
-# nams = { index = "ericmjl-personal-packages" }
+# nams = { path = "../../", editable = true }
 # ///
 
 import marimo
@@ -246,11 +242,9 @@ def _(mo):
 def _(G):
     from nams.solutions.hubs import rank_ordered_neighbors
 
-
     def rank_ordered_neighbors_answer(G):
         # Your answer here!
         return
-
 
     # Now execute `rank_ordered_neighbors_answer`.
     answer = rank_ordered_neighbors_answer(G)
@@ -452,13 +446,11 @@ def _(G):
     ecdf_degree_centrality(G)
     plt.show()
 
-
     def ecdf_degree_centrality_answer(G):
         # Your answer here
 
         # Do NOT delete the next line!
         plt.show()
-
 
     # Now comment out my answer and execute your answer.
     return ecdf, plt
@@ -634,10 +626,10 @@ def _(G, plt):
     dc_node_order(G)
     plt.show()
 
-
     def dc_node_order_answer(G):
         # Your answer here!
         plt.show()
+
     return
 
 
@@ -704,6 +696,7 @@ def _():
 @app.cell
 def _():
     import marimo as mo
+
     return (mo,)
 
 

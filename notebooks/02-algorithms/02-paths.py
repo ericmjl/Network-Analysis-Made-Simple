@@ -13,12 +13,8 @@
 #     "seaborn==0.13.2",
 #     "tqdm==4.67.1",
 # ]
-# [[tool.uv.index]]
-# name = "ericmjl-personal-packages"
-# url = "https://ericmjl--pypiserver-server.modal.run/simple/"
-# explicit = true
 # [tool.uv.sources]
-# nams = { index = "ericmjl-personal-packages" }
+# nams = { path = "../../", editable = true }
 # ///
 
 import marimo
@@ -319,7 +315,7 @@ def _(mo):
 
     If there's enough time, we will work through this exercise. If not, we will simply discuss the plot.
 
-    Try out this next puzzle 🧩: 
+    Try out this next puzzle 🧩:
 
     > Plot an arc plot, in which all nodes from G are ordered on the x-axis.
     > Make a subgraph of the path nodes + their neighbors,

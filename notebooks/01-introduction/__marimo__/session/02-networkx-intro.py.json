@@ -1,0 +1,804 @@
+{
+  "version": "1",
+  "metadata": {
+    "marimo_version": "0.14.10"
+  },
+  "cells": [
+    {
+      "id": "Hbol",
+      "code_hash": "8666047da6848f1368613f67bcac33ad",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><h1 id=\"introduction\">Introduction</h1></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "MJUe",
+      "code_hash": "747227215d198c1457a817922b8d58f5",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "\n        <iframe\n            width=\"100%\"\n            height=\"300\"\n            src=\"https://www.youtube.com/embed/sdF0uJo2KdU\"\n            frameborder=\"0\"\n            allowfullscreen\n            \n        ></iframe>\n        "
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "vblA",
+      "code_hash": "5b9412ae7ff551ad7c9207879ba558c0",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\">In this chapter, we will introduce you to the NetworkX API.\nThis will allow you to create and manipulate graphs in your computer memory,\nthus giving you a language\nto more concretely explore graph theory ideas.</span>\n<span class=\"paragraph\">Throughout the book, we will be using different graph datasets\nto help us anchor ideas.\nIn this section, we will work with a social network of seventh graders.\nHere, nodes are individual students,\nand edges represent their relationships.\nEdges between individuals show how often\nthe seventh graders indicated other seventh graders as their favourite.</span>\n<span class=\"paragraph\">The data are taken from the <a href=\"http://konect.cc/networks/moreno_seventh\" rel=\"noopener\" target=\"_blank\">Konect</a> graph data repository</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "bkHC",
+      "code_hash": "bce05daf95ad32fbcb2759563e3de8f2",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><h2 id=\"data-model\">Data Model</h2>\n<span class=\"paragraph\">In NetworkX, graph data are stored in a dictionary-like fashion.\nThey are placed under a <code>Graph</code> object,\ncanonically instantiated with the variable <code>G</code> as follows:</span>\n<div class=\"language-python codehilite\"><pre><span></span><code><span class=\"n\">G</span> <span class=\"o\">=</span> <span class=\"n\">nx</span><span class=\"o\">.</span><span class=\"n\">Graph</span><span class=\"p\">()</span>\n</code></pre></div>\n<span class=\"paragraph\">Of course, you are free to name the graph anything you want!</span>\n<span class=\"paragraph\">Nodes are part of the attribute <code>G.nodes</code>.\nThere, the node data are housed in a dictionary-like container,\nwhere the key is the node itself\nand the values are a dictionary of attributes.\nNode data are accessible using syntax that looks like:</span>\n<div class=\"language-python codehilite\"><pre><span></span><code><span class=\"n\">G</span><span class=\"o\">.</span><span class=\"n\">nodes</span><span class=\"p\">[</span><span class=\"n\">node1</span><span class=\"p\">]</span>\n</code></pre></div>\n<span class=\"paragraph\">Edges are part of the attribute <code>G.edges</code>,\nwhich is also stored in a dictionary-like container.\nEdge data are accessible using syntax that looks like:</span>\n<span class=\"paragraph\"><div class=\"language-python codehilite\"><pre><span></span><code><span class=\"n\">G</span><span class=\"o\">.</span><span class=\"n\">edges</span><span class=\"p\">[</span><span class=\"n\">node1</span><span class=\"p\">,</span> <span class=\"n\">node2</span><span class=\"p\">]</span>\n</code></pre></div>\nBecause of the dictionary-like implementation of the graph,\nany hashable object can be a node.\nThis means strings and tuples, but not lists and sets.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "lEQa",
+      "code_hash": "4343f1869d6020823aaa7ec430ca9b00",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><h2 id=\"load-data\">Load Data</h2>\n<span class=\"paragraph\">Let's load some real network data to get a feel for the NetworkX API. This <a href=\"http://konect.cc/networks/moreno_seventh\" rel=\"noopener\" target=\"_blank\">dataset</a> comes from a study of 7th grade students.</span>\n<blockquote>\n<span class=\"paragraph\">This directed network contains proximity ratings between students\nfrom 29 seventh grade students from a school in Victoria.\nAmong other questions the students were asked\nto nominate their preferred classmates for three different activities.\nA node represents a student.\nAn edge between two nodes shows that\nthe left student picked the right student as his or her answer.\nThe edge weights are between 1 and 3\nand show how often the left student chose the right student as his/her favourite.</span>\n</blockquote>\n<span class=\"paragraph\">In the original dataset, students were from an all-boys school.\nHowever, I have modified the dataset to instead be a mixed-gender school.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "PKri",
+      "code_hash": "7e2c0af8ac681617034be303eb04d90b",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Xref",
+      "code_hash": "56bee923fd1e5183fc725333da26a8eb",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "SFPL",
+      "code_hash": "d0ac95f7e3721e5407a1c46ac42b415f",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><h2 id=\"understanding-a-graphs-basic-statistics\">Understanding a graph's basic statistics</h2>\n<span class=\"paragraph\">When you get graph data,\none of the first things you'll want to do is to\ncheck its basic graph statistics:\nthe number of nodes\nand the number of edges\nthat are represented in the graph.\nThis is a basic sanity-check on your data\nthat you don't want to skip out on.</span>\n<h3 id=\"querying-graph-type\">Querying graph type</h3>\n<span class=\"paragraph\">The first thing you need to know is the <code>type</code> of the graph:</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "BYtC",
+      "code_hash": "1e78ad9683b92d3717e3e94f0ae9b071",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre style='font-size: 12px'>&lt;class &#x27;networkx.classes.digraph.DiGraph&#x27;&gt;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "RGSE",
+      "code_hash": "82168010b426b1baffdf9ebe219bc42d",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\">Because the graph is a <code>DiGraph</code>,\nthis tells us that the graph is a <strong>directed</strong> one.</span>\n<span class=\"paragraph\">If it were undirected, the type would change:</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Kclp",
+      "code_hash": "ada707f750b9c89394fe447025bf6586",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre style='font-size: 12px'>&lt;class &#x27;networkx.classes.graph.Graph&#x27;&gt;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "emfo",
+      "code_hash": "8f925cef0bc515f0adf7bec887aaa9c5",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><h3 id=\"querying-node-information\">Querying node information</h3>\n<span class=\"paragraph\">Let's now query for the nodeset:</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Hstk",
+      "code_hash": "8243eb6bd5bb95dcc53d7c93ee8e1480",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "[np.int64(1), np.int64(2), np.int64(3), np.int64(4), np.int64(5)]\n"
+        }
+      ]
+    },
+    {
+      "id": "nWHF",
+      "code_hash": "dcea36ecb5ea15f9b9714e9b212a3f46",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\"><code>G.nodes()</code> returns a \"view\" on the nodes.\nWe can't actually slice into the view and grab out a sub-selection,\nbut we can <em>at least</em> see what nodes are present.\nFor brevity, we have sliced into <code>G.nodes()</code> passed into a <code>list()</code> constructor,\nso that we don't pollute the output.\nBecause a <code>NodeView</code> is iterable, though,\nwe can query it for its length:</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "iLit",
+      "code_hash": "2a2d768d7a0a5a879ddfe1ec93377acf",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre style='font-size: 12px'>29</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ZHCJ",
+      "code_hash": "92e8b05a867cf8b91f8b61ed2f0b4f80",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\">If our nodes have metadata attached to them,\nwe can view the metadata at the same time\nby passing in <code>data=True</code>:</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ROlb",
+      "code_hash": "59ec8e88dc971994cd175cbae000decc",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "[(np.int64(1), {'gender': 'male'}), (np.int64(2), {'gender': 'male'}), (np.int64(3), {'gender': 'male'}), (np.int64(4), {'gender': 'male'}), (np.int64(5), {'gender': 'male'})]\n"
+        }
+      ]
+    },
+    {
+      "id": "qnkX",
+      "code_hash": "51af1da4f38b122948ce294f2f14c245",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\">G.nodes(data=True) returns a <code>NodeDataView</code>,\nwhich you can see is dictionary-like.</span>\n<span class=\"paragraph\">Additionally, we can select out individual nodes:</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "TqIu",
+      "code_hash": "71c4418cfd96ee1babdf80611139b20c",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "{\"gender\": \"male\"}"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Vxnm",
+      "code_hash": "bb2b4c117932085cbd00fce0247e1f77",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\">Now, because a <code>NodeDataView</code> is dictionary-like,\nlooping over <code>G.nodes(data=True)</code>\nis very much like looping over key-value pairs of a dictionary.\nAs such, we can write things like:</span>\n<div class=\"language-python codehilite\"><pre><span></span><code><span class=\"k\">for</span> <span class=\"n\">n</span><span class=\"p\">,</span> <span class=\"n\">d</span> <span class=\"ow\">in</span> <span class=\"n\">G</span><span class=\"o\">.</span><span class=\"n\">nodes</span><span class=\"p\">(</span><span class=\"n\">data</span><span class=\"o\">=</span><span class=\"kc\">True</span><span class=\"p\">):</span>\n    <span class=\"c1\"># n is the node</span>\n    <span class=\"c1\"># d is the metadata dictionary</span>\n    <span class=\"o\">...</span>\n</code></pre></div>\n<span class=\"paragraph\">This is analogous to how we would loop over a dictionary:</span>\n<div class=\"language-python codehilite\"><pre><span></span><code><span class=\"k\">for</span> <span class=\"n\">k</span><span class=\"p\">,</span> <span class=\"n\">v</span> <span class=\"ow\">in</span> <span class=\"n\">dictionary</span><span class=\"o\">.</span><span class=\"n\">items</span><span class=\"p\">():</span>\n    <span class=\"c1\"># do stuff in the loop</span>\n</code></pre></div>\n<span class=\"paragraph\">Naturally, this leads us to our first exercise.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "DnEU",
+      "code_hash": "2d5ed5c09c911f14085af6bec31e95c9",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><h3 id=\"exercise-summarizing-node-metadata\">Exercise: Summarizing node metadata</h3>\n<blockquote>\n<span class=\"paragraph\">Can you count how many males and females are represented in the graph?</span>\n</blockquote></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ulZA",
+      "code_hash": "2cac41e39b884724b1f9f5d095a048bf",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ecfG",
+      "code_hash": "c5c01f74a2f58bc4dc4b58cb434253a8",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\">Test your implementation by checking it against the <code>test_answer</code> function below.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Pvdt",
+      "code_hash": "66873a9109a5292a1f680d60c46ae94c",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ZBYS",
+      "code_hash": "87d9e56a47c79fefc2174b0c48bf822c",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\">With this dictionary-like syntax,\nwe can query back the metadata that's associated with any node.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "aLJB",
+      "code_hash": "83393af92b7c07269bd37ff30806f1d1",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><h3 id=\"querying-edge-information\">Querying edge information</h3>\n<span class=\"paragraph\">Now that you've learned how to query for node information,\nlet's now see how to query for all of the edges in the graph:</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "nHfw",
+      "code_hash": "554171bb031a27f0cd1c9e89104662b5",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "[(np.int64(1), np.int64(2)), (np.int64(1), np.int64(3)), (np.int64(1), np.int64(4)), (np.int64(1), np.int64(5)), (np.int64(1), np.int64(6))]\n"
+        }
+      ]
+    },
+    {
+      "id": "xXTn",
+      "code_hash": "b7ffe6e7af8338366182d69da4a9c6d3",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\">Similar to the <code>NodeView</code>, <code>G.edges()</code> returns an <code>EdgeView</code> that is also iterable.\nAs with above, we have abbreviated the output inside a sliced list\nto keep things readable.\nBecause <code>G.edges()</code> is iterable, we can get its length to see the number of edges\nthat are present in a graph.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "AjVT",
+      "code_hash": "94c08e10e5d1b8f8e6d0fe99cb39253f",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre style='font-size: 12px'>376</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "pHFh",
+      "code_hash": "8b201f4daae2fd3ace9eee02ac77c685",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\">Likewise, we can also query for all of the edge's metadata:</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "NCOB",
+      "code_hash": "fb85faaa26cd4fc50988f26a303b20c4",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "[(np.int64(1), np.int64(2), {'count': np.int64(1)}), (np.int64(1), np.int64(3), {'count': np.int64(1)}), (np.int64(1), np.int64(4), {'count': np.int64(2)}), (np.int64(1), np.int64(5), {'count': np.int64(2)}), (np.int64(1), np.int64(6), {'count': np.int64(3)})]\n"
+        }
+      ]
+    },
+    {
+      "id": "aqbW",
+      "code_hash": "1bc40dc501081fb05394ba622dc87010",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\">Additionally, it is possible for us to select out individual edges, as long as they exist in the graph:</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "TRpd",
+      "code_hash": "ccbd06684a4b1bcecc62cf8ca14cf60e",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\">This yields the metadata dictionary for that edge.</span>\n<span class=\"paragraph\">If the edge does not exist, then we get an error:</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "TXez",
+      "code_hash": "76999d1427787abee9ee8ba659d2ad1d",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "'The edge (15, 16) is not in the graph.'",
+          "traceback": []
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">&quot;/Users/ericmjl/.cache/uv/archive-v0/Lw-JV93NyoDvcDv-N5OmP/lib/python3.13/site-packages/networkx/classes/reportviews.py&quot;</span>, line <span class=\"m\">1097</span>, in <span class=\"n\">__getitem__</span>\n<span class=\"w\">    </span><span class=\"k\">return</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_adjdict</span><span class=\"p\">[</span><span class=\"n\">u</span><span class=\"p\">][</span><span class=\"n\">v</span><span class=\"p\">]</span>\n<span class=\"w\">           </span><span class=\"pm\">~~~~~~~~~~~~~~~~^^^</span>\n<span class=\"gr\">KeyError</span>: <span class=\"n\">16</span>\n\n<span class=\"gt\">During handling of the above exception, another exception occurred:</span>\n\n<span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">&quot;/Users/ericmjl/.cache/uv/archive-v0/Lw-JV93NyoDvcDv-N5OmP/lib/python3.13/site-packages/marimo/_runtime/executor.py&quot;</span>, line <span class=\"m\">139</span>, in <span class=\"n\">execute_cell</span>\n<span class=\"w\">    </span><span class=\"k\">return</span> <span class=\"nb\">eval</span><span class=\"p\">(</span><span class=\"n\">cell</span><span class=\"o\">.</span><span class=\"n\">last_expr</span><span class=\"p\">,</span> <span class=\"n\">glbls</span><span class=\"p\">)</span>\n  File <span class=\"nb\">&quot;/var/folders/36/vb250n_s0zncstw3sk74qfxr0000gn/T/marimo_89354/__marimo__cell_TXez_.py&quot;</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">G</span><span class=\"o\">.</span><span class=\"n\">edges</span><span class=\"p\">[</span><span class=\"mi\">15</span><span class=\"p\">,</span> <span class=\"mi\">16</span><span class=\"p\">]</span>\n<span class=\"w\">    </span><span class=\"pm\">~~~~~~~^^^^^^^^</span>\n  File <span class=\"nb\">&quot;/Users/ericmjl/.cache/uv/archive-v0/Lw-JV93NyoDvcDv-N5OmP/lib/python3.13/site-packages/networkx/classes/reportviews.py&quot;</span>, line <span class=\"m\">1099</span>, in <span class=\"n\">__getitem__</span>\n<span class=\"w\">    </span><span class=\"k\">raise</span> <span class=\"ne\">KeyError</span><span class=\"p\">(</span><span class=\"sa\">f</span><span class=\"s2\">&quot;The edge </span><span class=\"si\">{</span><span class=\"n\">e</span><span class=\"si\">}</span><span class=\"s2\"> is not in the graph.&quot;</span><span class=\"p\">)</span>\n<span class=\"gr\">KeyError</span>: <span class=\"n\">&#39;The edge (15, 16) is not in the graph.&#39;</span>\n</pre></div>\n</span>"
+        }
+      ]
+    },
+    {
+      "id": "dNNg",
+      "code_hash": "e7b7425ee9d7f529fc51db39e82f179f",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\">As with the <code>NodeDataView</code>, the <code>EdgeDataView</code> is dictionary-like,\nwith the difference being that the keys are 2-tuple-like\ninstead of being single hashable objects.\nThus, we can write syntax like the following to loop over the edgelist:</span>\n<div class=\"language-python codehilite\"><pre><span></span><code><span class=\"k\">for</span> <span class=\"n\">n1</span><span class=\"p\">,</span> <span class=\"n\">n2</span><span class=\"p\">,</span> <span class=\"n\">d</span> <span class=\"ow\">in</span> <span class=\"n\">G</span><span class=\"o\">.</span><span class=\"n\">edges</span><span class=\"p\">(</span><span class=\"n\">data</span><span class=\"o\">=</span><span class=\"kc\">True</span><span class=\"p\">):</span>\n    <span class=\"c1\"># n1, n2 are the nodes</span>\n    <span class=\"c1\"># d is the metadata dictionary</span>\n    <span class=\"o\">...</span>\n</code></pre></div>\n<span class=\"paragraph\">Naturally, this leads us to our next exercise.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "yCnT",
+      "code_hash": "4e84f75597188889888788ecb7d25186",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><h3 id=\"exercise-summarizing-edge-metadata\">Exercise: Summarizing edge metadata</h3>\n<blockquote>\n<span class=\"paragraph\">Can you write code to verify\nthat the maximum times any student rated another student as their favourite\nis 3 times?</span>\n</blockquote></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "wlCL",
+      "code_hash": "9a6d8f3cc436a35593d4028bf869387e",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "kqZH",
+      "code_hash": "62827cbecc6f3cd0ca01b32553e93ed2",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\">If you implemented it correctly, the next cell will auto-execute and no errors will show up.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "wAgl",
+      "code_hash": "36885508015eb90a6a4f107cd898496e",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "rEll",
+      "code_hash": "9527abc5114d22749fbb68c4c0f97d90",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><h2 id=\"manipulating-the-graph\">Manipulating the graph</h2>\n<span class=\"paragraph\">Great stuff! You now know how to query a graph for:</span>\n<ul>\n<li>its node set, optionally including metadata</li>\n<li>individual node metadata</li>\n<li>its edge set, optionally including metadata, and</li>\n<li>individual edges' metadata</li>\n</ul>\n<span class=\"paragraph\">Now, let's learn how to manipulate the graph.\nSpecifically, we'll learn how to add nodes and edges to a graph.</span>\n<h3 id=\"adding-nodes\">Adding Nodes</h3>\n<span class=\"paragraph\">The NetworkX graph API lets you add a node easily:</span>\n<div class=\"language-python codehilite\"><pre><span></span><code><span class=\"n\">G</span><span class=\"o\">.</span><span class=\"n\">add_node</span><span class=\"p\">(</span><span class=\"n\">node</span><span class=\"p\">,</span> <span class=\"n\">node_data1</span><span class=\"o\">=</span><span class=\"n\">some_value</span><span class=\"p\">,</span> <span class=\"n\">node_data2</span><span class=\"o\">=</span><span class=\"n\">some_value</span><span class=\"p\">)</span>\n</code></pre></div>\n<h3 id=\"adding-edges\">Adding Edges</h3>\n<span class=\"paragraph\">It also allows you to add an edge easily:</span>\n<div class=\"language-python codehilite\"><pre><span></span><code><span class=\"n\">G</span><span class=\"o\">.</span><span class=\"n\">add_edge</span><span class=\"p\">(</span><span class=\"n\">node1</span><span class=\"p\">,</span> <span class=\"n\">node2</span><span class=\"p\">,</span> <span class=\"n\">edge_data1</span><span class=\"o\">=</span><span class=\"n\">some_value</span><span class=\"p\">,</span> <span class=\"n\">edge_data2</span><span class=\"o\">=</span><span class=\"n\">some_value</span><span class=\"p\">)</span>\n</code></pre></div>\n<h3 id=\"metadata-by-keyword-arguments\">Metadata by Keyword Arguments</h3>\n<span class=\"paragraph\">In both cases, the keyword arguments that are passed into <code>.add_node()</code>\nare automatically collected into the metadata dictionary.</span>\n<span class=\"paragraph\">Knowing this gives you enough knowledge to tackle the next exercise.</span>\n<h3 id=\"exercise-adding-students-to-the-graph\">Exercise: adding students to the graph</h3>\n<blockquote>\n<span class=\"paragraph\">We found out that there are two students that we left out of the network,\nstudent no. 30 and 31.\nThey are one male (30) and one female (31),\nand they are a pair that just love hanging out with one another\nand with individual 7 (i.e. <code>count=3</code>), in both directions per pair.\nAdd this information to the graph.</span>\n</blockquote></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "dGlV",
+      "code_hash": "6f4914172c752820e222959a5c3e184c",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "SdmI",
+      "code_hash": "b11b1cf7575d4992a45877a1abbcc69f",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\">As with above, if your function is implemented correctly, the following cell will automatically execute with no errors.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "lgWD",
+      "code_hash": "a2d1ca103519bfe32e75eb02a6eddbdc",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "All tests passed.\n"
+        }
+      ]
+    },
+    {
+      "id": "yOPj",
+      "code_hash": "70318b54bf8f8e780a1438d6e626a1c0",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><h2 id=\"coding-patterns\">Coding Patterns</h2>\n<span class=\"paragraph\">These are some recommended coding patterns when doing network analysis using NetworkX,\nwhich stem from my personal experience with the package.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "fwwy",
+      "code_hash": "409b916ad42a24e8f0d76b5b9199556c",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><h3 id=\"iterating-using-list-comprehensions\">Iterating using List Comprehensions</h3>\n<span class=\"paragraph\">I would recommend that you use the following for compactness:</span>\n<div class=\"language-python codehilite\"><pre><span></span><code><span class=\"p\">[</span><span class=\"n\">d</span><span class=\"p\">[</span><span class=\"s1\">&#39;attr&#39;</span><span class=\"p\">]</span> <span class=\"k\">for</span> <span class=\"n\">n</span><span class=\"p\">,</span> <span class=\"n\">d</span> <span class=\"ow\">in</span> <span class=\"n\">G</span><span class=\"o\">.</span><span class=\"n\">nodes</span><span class=\"p\">(</span><span class=\"n\">data</span><span class=\"o\">=</span><span class=\"kc\">True</span><span class=\"p\">)]</span>\n</code></pre></div>\n<span class=\"paragraph\">And if the node is unimportant, you can do:</span>\n<div class=\"language-python codehilite\"><pre><span></span><code><span class=\"p\">[</span><span class=\"n\">d</span><span class=\"p\">[</span><span class=\"s1\">&#39;attr&#39;</span><span class=\"p\">]</span> <span class=\"k\">for</span> <span class=\"n\">_</span><span class=\"p\">,</span> <span class=\"n\">d</span> <span class=\"ow\">in</span> <span class=\"n\">G</span><span class=\"o\">.</span><span class=\"n\">nodes</span><span class=\"p\">(</span><span class=\"n\">data</span><span class=\"o\">=</span><span class=\"kc\">True</span><span class=\"p\">)]</span>\n</code></pre></div></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "LJZf",
+      "code_hash": "d6aa144a2546e0e3cf84d8fd45c479e4",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><h3 id=\"iterating-over-edges-using-list-comprehensions\">Iterating over Edges using List Comprehensions</h3>\n<span class=\"paragraph\">A similar pattern can be used for edges:</span>\n<div class=\"language-python codehilite\"><pre><span></span><code><span class=\"p\">[</span><span class=\"n\">n2</span> <span class=\"k\">for</span> <span class=\"n\">n1</span><span class=\"p\">,</span> <span class=\"n\">n2</span><span class=\"p\">,</span> <span class=\"n\">d</span> <span class=\"ow\">in</span> <span class=\"n\">G</span><span class=\"o\">.</span><span class=\"n\">edges</span><span class=\"p\">(</span><span class=\"n\">data</span><span class=\"o\">=</span><span class=\"kc\">True</span><span class=\"p\">)]</span>\n</code></pre></div>\n<span class=\"paragraph\">or</span>\n<div class=\"language-python codehilite\"><pre><span></span><code><span class=\"p\">[</span><span class=\"n\">n2</span> <span class=\"k\">for</span> <span class=\"n\">_</span><span class=\"p\">,</span> <span class=\"n\">n2</span><span class=\"p\">,</span> <span class=\"n\">d</span> <span class=\"ow\">in</span> <span class=\"n\">G</span><span class=\"o\">.</span><span class=\"n\">edges</span><span class=\"p\">(</span><span class=\"n\">data</span><span class=\"o\">=</span><span class=\"kc\">True</span><span class=\"p\">)]</span>\n</code></pre></div>\n<span class=\"paragraph\">If the graph you are constructing is a directed graph,\nwith a \"source\" and \"sink\" available,\nthen I would recommend the following naming of variables instead:</span>\n<div class=\"language-python codehilite\"><pre><span></span><code><span class=\"p\">[(</span><span class=\"n\">sc</span><span class=\"p\">,</span> <span class=\"n\">sk</span><span class=\"p\">)</span> <span class=\"k\">for</span> <span class=\"n\">sc</span><span class=\"p\">,</span> <span class=\"n\">sk</span><span class=\"p\">,</span> <span class=\"n\">d</span> <span class=\"ow\">in</span> <span class=\"n\">G</span><span class=\"o\">.</span><span class=\"n\">edges</span><span class=\"p\">(</span><span class=\"n\">data</span><span class=\"o\">=</span><span class=\"kc\">True</span><span class=\"p\">)]</span>\n</code></pre></div>\n<span class=\"paragraph\">or</span>\n<div class=\"language-python codehilite\"><pre><span></span><code><span class=\"p\">[</span><span class=\"n\">d</span><span class=\"p\">[</span><span class=\"s1\">&#39;attr&#39;</span><span class=\"p\">]</span> <span class=\"k\">for</span> <span class=\"n\">sc</span><span class=\"p\">,</span> <span class=\"n\">sk</span><span class=\"p\">,</span> <span class=\"n\">d</span> <span class=\"ow\">in</span> <span class=\"n\">G</span><span class=\"o\">.</span><span class=\"n\">edges</span><span class=\"p\">(</span><span class=\"n\">data</span><span class=\"o\">=</span><span class=\"kc\">True</span><span class=\"p\">)]</span>\n</code></pre></div></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "urSm",
+      "code_hash": "5fd47614d16293e208edc60640221771",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><h2 id=\"further-reading\">Further Reading</h2>\n<span class=\"paragraph\">For a deeper look at the NetworkX API,\nbe sure to check out the <a href=\"https://networkx.readthedocs.io\" rel=\"noopener\" target=\"_blank\">NetworkX docs</a>.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "jxvo",
+      "code_hash": "4c0296875f29544952aa2ecf9568ddc1",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><h2 id=\"further-exercises\">Further Exercises</h2>\n<span class=\"paragraph\">Here's some further exercises that you can use to get some practice.</span>\n<h3 id=\"exercise-unrequited-friendships\">Exercise: Unrequited Friendships</h3>\n<blockquote>\n<span class=\"paragraph\">Try figuring out which students have \"unrequited\" friendships, that is,\nthey have rated another student as their favourite at least once,\nbut that other student has not rated them as their favourite at least once.</span>\n</blockquote>\n<span class=\"paragraph\"><em>Hint: the goal here is to get a list of edges for which the reverse edge is not present.</em></span>\n<span class=\"paragraph\"><em>Hint: You may need the class method <code>G.has_edge(n1, n2)</code>. This returns a boolean on whether a graph has an edge between the nodes <code>n1</code> and <code>n2</code>.</em></span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "mWxS",
+      "code_hash": null,
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "CcZR",
+      "code_hash": "243600932c31bb3cd78b9f96f8ab7b05",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "YWSi",
+      "code_hash": "58f419f5417329ebaa9f502ebb9f7779",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\">In a previous session at ODSC East 2018, a few other class participants provided the following solutions,\nwhich you can take a look at by uncommenting the following cells.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "zlud",
+      "code_hash": "2479a67845d958f97fd3ea025e4566a6",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\">This first one by <a href=\"https://github.com/schwanne\" rel=\"noopener\" target=\"_blank\">@schwanne</a> is the list comprehension version of the above solution:</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "tZnO",
+      "code_hash": "6977edef2a2dfda14c83c64536519965",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "xvXZ",
+      "code_hash": "c2664bb5872114a7ddf3f02e99004fb6",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\">This one by <a href=\"https://github.com/end0\" rel=\"noopener\" target=\"_blank\">@end0</a> is a unique one involving sets.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "CLip",
+      "code_hash": "02251b340a2fd9f628c792148b5c6611",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "YECM",
+      "code_hash": "62c47388fe5d027364e4dde2614e6952",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><h2 id=\"solution-answers\">Solution Answers</h2>\n<span class=\"paragraph\">Here are the answers to the exercises above.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "cEAS",
+      "code_hash": "e32af6d4ce5d89dab1f1bd2b64c46aca",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "\"\"\"\nSolutions to Intro Chapter.\n\"\"\"\n\n\ndef node_metadata(G):\n    \"\"\"Counts of students of each gender.\"\"\"\n    from collections import Counter\n\n    mf_counts = Counter([d[\"gender\"] for n, d in G.nodes(data=True)])\n    return mf_counts\n\n\ndef edge_metadata(G):\n    \"\"\"Maximum number of times that a student rated another student.\"\"\"\n    counts = [d[\"count\"] for n1, n2, d in G.edges(data=True)]\n    maxcount = max(counts)\n    return maxcount\n\n\ndef adding_students(G):\n    \"\"\"How to nodes and edges to a graph.\"\"\"\n    G = G.copy()\n    G.add_node(30, gender=\"male\")\n    G.add_node(31, gender=\"female\")\n    G.add_edge(30, 31, count=3)\n    G.add_edge(31, 30, count=3)  # reverse is optional in undirected network\n    G.add_edge(30, 7, count=3)  # but this network is directed\n    G.add_edge(7, 30, count=3)\n    G.add_edge(31, 7, count=3)\n    G.add_edge(7, 31, count=3)\n    return G\n\n\ndef unrequitted_friendships_v1(G):\n    \"\"\"Answer to unrequitted friendships problem.\"\"\"\n    unrequitted_friendships = []\n    for n1, n2 in G.edges():\n        if not G.has_edge(n2, n1):\n            unrequitted_friendships.append((n1, n2))\n    return unrequitted_friendships\n\n\ndef unrequitted_friendships_v2(G):\n    \"\"\"Alternative answer to unrequitted friendships problem. By @schwanne.\"\"\"\n    return len([(n1, n2) for n1, n2 in G.edges() if not G.has_edge(n2, n1)])\n\n\ndef unrequitted_friendships_v3(G):\n    \"\"\"Alternative answer to unrequitted friendships problem. By @end0.\"\"\"\n    links = ((n1, n2) for n1, n2, d in G.edges(data=True))\n    reverse_links = ((n2, n1) for n1, n2, d in G.edges(data=True))\n\n    return len(list(set(links) - set(reverse_links)))\n\n"
+        }
+      ]
+    },
+    {
+      "id": "iXej",
+      "code_hash": "b03ae3d1a8c7e35b57a5d71425064bb8",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    }
+  ]
+}

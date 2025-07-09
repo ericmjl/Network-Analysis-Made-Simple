@@ -10,17 +10,13 @@
 #     "pyprojroot==0.3.0",
 #     "tqdm==4.67.1",
 # ]
-# [[tool.uv.index]]
-# name = "ericmjl-personal-packages"
-# url = "https://ericmjl--pypiserver-server.modal.run/simple/"
-# explicit = true
 # [tool.uv.sources]
-# nams = { index = "ericmjl-personal-packages" }
+# nams = { path = "../../", editable = true }
 # ///
 
 import marimo
 
-__generated_with = "0.14.8"
+__generated_with = "0.14.10"
 app = marimo.App()
 
 
@@ -336,11 +332,9 @@ def _(mo):
 def _(mf_counts):
     from typing import Dict
 
-
     def test_answer(mf_counts: Dict):
         assert mf_counts["female"] == 17
         assert mf_counts["male"] == 12
-
 
     test_answer(mf_counts)
     return
@@ -477,11 +471,9 @@ def _(G):
     #### REPLACE THE NEXT LINE WITH YOUR ANSWER
     maxcount = edge_metadata(G)
 
-
     def edge_metadata_answer(G):
         # Your answer goes here
         return
-
 
     # Now execute your function and assign `maxcount` to the return of the function.
     return (maxcount,)
@@ -499,7 +491,6 @@ def _(mo):
 def _(maxcount):
     def test_maxcount(maxcount):
         assert maxcount == 3
-
 
     test_maxcount(maxcount)
     return
@@ -563,12 +554,10 @@ def _(G):
 
     G_1 = adding_students(G)
 
-
     def adding_students_answer(G):
         G = G.copy()
         # Your code goes here!
         return
-
 
     # Now execute the function and assign it to `G_1`.
     return (G_1,)
@@ -599,7 +588,6 @@ def _(G_1):
         assert G.edges[30, 31]["count"] == 3
         assert G.edges[31, 30]["count"] == 3
         print("All tests passed.")
-
 
     test_graph_integrity(G_1)
     return
@@ -723,11 +711,9 @@ def _(G_1):
 
     unrequitted_friendships = unrequitted_friendships_v1(G_1)
 
-
     def unrequitted_friendships_answer(G):
         # Your answer here
         return
-
 
     # Execute `unrequitted_friendships_answer` and assign it to the variable `unrequitted_friendships`.
 
@@ -803,6 +789,7 @@ def _():
 @app.cell(hide_code=True)
 def _():
     import marimo as mo
+
     return (mo,)
 
 

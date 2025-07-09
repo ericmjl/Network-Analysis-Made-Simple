@@ -14,12 +14,8 @@
 #     "pyprojroot==0.3.0",
 #     "python-louvain==0.16",
 # ]
-# [[tool.uv.index]]
-# name = "ericmjl-personal-packages"
-# url = "https://ericmjl--pypiserver-server.modal.run/simple/"
-# explicit = true
 # [tool.uv.sources]
-# nams = { index = "ericmjl-personal-packages" }
+# nams = { path = "../../", editable = true }
 # ///
 
 import marimo

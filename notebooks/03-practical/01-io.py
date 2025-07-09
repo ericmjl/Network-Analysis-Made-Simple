@@ -12,12 +12,8 @@
 #     "tqdm==4.67.1",
 #     "matplotlib==3.10.1",
 # ]
-# [[tool.uv.index]]
-# name = "ericmjl-personal-packages"
-# url = "https://ericmjl--pypiserver-server.modal.run/simple/"
-# explicit = true
 # [tool.uv.sources]
-# nams = { index = "ericmjl-personal-packages" }
+# nams = { path = "../../", editable = true }
 # ///
 
 import marimo
