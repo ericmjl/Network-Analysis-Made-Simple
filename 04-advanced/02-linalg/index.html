@@ -1,0 +1,2908 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://ericmjl.github.io/Network-Analysis-Made-Simple/04-advanced/02-linalg/">
+      
+      
+        <link rel="prev" href="../01-bipartite/">
+      
+      
+        <link rel="next" href="../03-stats/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.7">
+    
+    
+      
+        <title>Chapter 10: Linear Algebra - Network Analysis Made Simple</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8608ea7d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/nb_mods.css">
+    
+      <link rel="stylesheet" href="../../css/apidocs.css">
+    
+      <link rel="stylesheet" href="../../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../../css/pandas-dataframe.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Network Analysis Made Simple" class="md-header__button md-logo" aria-label="Network Analysis Made Simple" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M96 0C43 0 0 43 0 96v320c0 53 43 96 96 96h320c17.7 0 32-14.3 32-32s-14.3-32-32-32v-64c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H96m0 384h256v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32m32-240c0-8.8 7.2-16 16-16h192c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16m16 48h192c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Network Analysis Made Simple
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chapter 10: Linear Algebra
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ericmjl/Network-Analysis-Made-Simple" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ericmjl/Network-Analysis-Made-Simple
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Network Analysis Made Simple" class="md-nav__button md-logo" aria-label="Network Analysis Made Simple" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M96 0C43 0 0 43 0 96v320c0 53 43 96 96 96h320c17.7 0 32-14.3 32-32s-14.3-32-32-32v-64c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H96m0 384h256v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32m32-240c0-8.8 7.2-16 16-16h192c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16m16 48h192c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16"/></svg>
+
+    </a>
+    Network Analysis Made Simple
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ericmjl/Network-Analysis-Made-Simple" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ericmjl/Network-Analysis-Made-Simple
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Network Analysis Made Simple
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Network Analysis Made Simple
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Preface
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Preface
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-preface/01-setup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Get Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-preface/02-prereqs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prerequisites
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-preface/03-goals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Learning Goals
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Section 1: Introduction
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Section 1: Introduction
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-introduction/01-graphs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 1: Introduction to Graphs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-introduction/02-networkx-intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 2: The NetworkX API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-introduction/03-viz/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 3: Graph Visualization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Section 2: Algorithms
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Section 2: Algorithms
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-algorithms/01-hubs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 4: Hubs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-algorithms/02-paths/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 5: Paths
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-algorithms/03-structures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 6: Structures
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Section 3: Practical Matters
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Section 3: Practical Matters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-practical/01-io/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 7: Graph I/O
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-practical/02-testing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 8: Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Section 4: Advanced Topics
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Section 4: Advanced Topics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-bipartite/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 9: Bipartite Graphs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Chapter 10: Linear Algebra
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 10: Linear Algebra
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preliminaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Preliminaries
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Preliminaries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#symmetry" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symmetry
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#path-finding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Path finding
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Path finding">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-adjacency-matrix-power" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise: adjacency matrix power?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#higher-matrix-powers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Higher matrix powers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#with-directed-graphs" class="md-nav__link">
+    <span class="md-ellipsis">
+      With directed graphs?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-directed-graph-matrix-power" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise: directed graph matrix power
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#message-passing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Message Passing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Message Passing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#message-representation-in-matrix-form" class="md-nav__link">
+    <span class="md-ellipsis">
+      "Message" representation in matrix form
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bipartite-graphs-matrices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bipartite Graphs &amp; Matrices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bipartite Graphs &amp; Matrices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercises
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-finding-customers-who-reviewed-the-most-number-of-music-items" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: finding customers who reviewed the most number of music items.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-finding-similar-customers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: finding similar customers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-object-vs-matrices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance: Object vs. Matrices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance: Object vs. Matrices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objects
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#matrices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Matrices
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acceleration-on-a-gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceleration on a GPU
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-stats/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 11: Statistical Inference
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Section 5: Case Studies
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Section 5: Case Studies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-casestudies/01-gameofthrones/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 12: Game of Thrones
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-casestudies/02-airport/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 13: Airport Network
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn-more/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Further Learning
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Development
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Development
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../devdocs/style/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Style Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preliminaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Preliminaries
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Preliminaries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#symmetry" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symmetry
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#path-finding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Path finding
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Path finding">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-adjacency-matrix-power" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise: adjacency matrix power?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#higher-matrix-powers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Higher matrix powers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#with-directed-graphs" class="md-nav__link">
+    <span class="md-ellipsis">
+      With directed graphs?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-directed-graph-matrix-power" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise: directed graph matrix power
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#message-passing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Message Passing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Message Passing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#message-representation-in-matrix-form" class="md-nav__link">
+    <span class="md-ellipsis">
+      "Message" representation in matrix form
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bipartite-graphs-matrices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bipartite Graphs &amp; Matrices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bipartite Graphs &amp; Matrices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercises
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-finding-customers-who-reviewed-the-most-number-of-music-items" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: finding customers who reviewed the most number of music items.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-finding-similar-customers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: finding similar customers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-object-vs-matrices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance: Object vs. Matrices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance: Object vs. Matrices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objects
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#matrices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Matrices
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acceleration-on-a-gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceleration on a GPU
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+  <h1>Chapter 10: Linear Algebra</h1>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>
+(function() {
+  function addWidgetsRenderer() {
+    var requireJsScript = document.createElement('script');
+    requireJsScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js';
+
+    var mimeElement = document.querySelector('script[type="application/vnd.jupyter.widget-view+json"]');
+    var jupyterWidgetsScript = document.createElement('script');
+    var widgetRendererSrc = 'https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js';
+    var widgetState;
+
+    // Fallback for older version:
+    try {
+      widgetState = mimeElement && JSON.parse(mimeElement.innerHTML);
+
+      if (widgetState && (widgetState.version_major < 2 || !widgetState.version_major)) {
+        widgetRendererSrc = 'jupyter-js-widgets@*/dist/embed.js';
+      }
+    } catch(e) {}
+
+    jupyterWidgetsScript.src = widgetRendererSrc;
+
+    document.body.appendChild(requireJsScript);
+    document.body.appendChild(jupyterWidgetsScript);
+  }
+
+  document.addEventListener('DOMContentLoaded', addWidgetsRenderer);
+}());
+</script>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://mybinder.org/v2/gh/ericmjl/Network-Analysis-Made-Simple/master?urlpath=lab%2Ftree%2Fnotebooks%2F04-advanced%2F02-linalg.ipynb"><img alt="Binder" src="https://mybinder.org/badge_logo.svg" /></a></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="o">%</span><span class="n">load_ext</span> <span class="n">autoreload</span>
+<span class="o">%</span><span class="n">autoreload</span> <span class="mi">2</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="o">%</span><span class="n">config</span> <span class="n">InlineBackend</span><span class="o">.</span><span class="n">figure_format</span> <span class="o">=</span> <span class="s1">&#39;retina&#39;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="introduction">Introduction</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">YouTubeVideo</span>
+
+<span class="n">YouTubeVideo</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;uTHihJiRELc&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_html rendered_html output_subarea output_execute_result">
+<iframe allowfullscreen="" frameborder="0" height="300" src="https://www.youtube.com/embed/uTHihJiRELc" width="100%"></iframe>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In this chapter, we will look at the relationship between graphs and linear algebra.</p>
+<p>The deep connection between these two topics is super interesting,
+and I'd like to show it to you through an exploration of three topics:</p>
+<ol>
+<li>Path finding</li>
+<li>Message passing</li>
+<li>Bipartite projections</li>
+</ol>
+<h2 id="preliminaries">Preliminaries</h2>
+<p>Before we go deep into the linear algebra piece though,
+we have to first make sure some ideas are clear.</p>
+<p>The most important thing that we need
+when treating graphs in linear algebra form
+is the <strong>adjacency matrix</strong>.
+For example, for four nodes joined in a chain:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">networkx</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nx</span>
+
+<span class="n">nodes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">G1</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+<span class="n">G1</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
+<span class="n">G1</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">nodes</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>we can visualize the graph:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G1</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_png output_subarea">
+<img alt="No description has been provided for this image" height="499" src="output_7_0.png" width="660"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>and we can visualize its adjacency matrix:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">nxviz</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nv</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">nv</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">G1</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_png output_subarea">
+<img alt="No description has been provided for this image" height="389" src="output_9_0.png" width="389"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>and we can obtain the adjacency matrix as a NumPy array:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">A1</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_array</span><span class="p">(</span><span class="n">G1</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="nb">sorted</span><span class="p">(</span><span class="n">G1</span><span class="o">.</span><span class="n">nodes</span><span class="p">()))</span>
+<span class="n">A1</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>array([[0., 1., 0., 0.],
+       [1., 0., 1., 0.],
+       [0., 1., 0., 1.],
+       [0., 0., 1., 0.]])</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="symmetry">Symmetry</h3>
+<p>Remember that for an undirected graph,
+the adjacency matrix will be symmetric about the diagonal,
+while for a directed graph,
+the adjacency matrix will be <em>asymmetric</em>.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="path-finding">Path finding</h2>
+<p>In the Paths chapter, we can use the breadth-first search algorithm
+<em>to find a shortest path between any two nodes</em>.</p>
+<p>As it turns out, using adjacency matrices, we can answer a related question,
+which is <em>how many paths exist of length K between two nodes</em>.</p>
+<p>To see how, we need to see the relationship between matrix powers and graph path lengths.</p>
+<p>Let's take the adjacency matrix above,
+raise it to the second power,
+and see what it tells us.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">matrix_power</span><span class="p">(</span><span class="n">A1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>array([[1., 0., 1., 0.],
+       [0., 2., 0., 1.],
+       [1., 0., 2., 0.],
+       [0., 1., 0., 1.]])</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="exercise-adjacency-matrix-power">Exercise: adjacency matrix power?</h3>
+<p>&gt; What do you think the values in the adjacency matrix are related to?
+&gt; If studying in a group, discuss with your neighbors;
+&gt; if working on this alone, write down your thoughts.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">nams.solutions.linalg</span><span class="w"> </span><span class="kn">import</span> <span class="n">adjacency_matrix_power</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">nams.functions</span><span class="w"> </span><span class="kn">import</span> <span class="n">render_html</span>
+
+<span class="n">render_html</span><span class="p">(</span><span class="n">adjacency_matrix_power</span><span class="p">())</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_html rendered_html output_subarea output_execute_result">
+<ol>
+<li>The diagonals equal to the degree of each node.</li>
+<li>The off-diagonals also contain values,
+which correspond to the number of paths that exist of length 2
+between the node on the row axis and the node on the column axis.</li>
+</ol>
+<p>In fact, the diagonal also takes on the same meaning!</p>
+<p>For the terminal nodes, there is only 1 path
+from itself back to itself,
+while for the middle nodes, there are 2 paths
+from itself back to itself!</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="higher-matrix-powers">Higher matrix powers</h3>
+<p>The semantic meaning of adjacency matrix powers
+is preserved even if we go to higher powers.
+For example, if we go to the 3rd matrix power:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">matrix_power</span><span class="p">(</span><span class="n">A1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>array([[0., 2., 0., 1.],
+       [2., 0., 3., 0.],
+       [0., 3., 0., 2.],
+       [1., 0., 2., 0.]])</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>You should be able to convince yourself that:</p>
+<ol>
+<li>There's no way to go from a node back to itself in 3 steps, thus explaining the diagonals, and </li>
+<li>The off-diagonals take on the correct values when you think about them in terms of "ways to go from one node to another".</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="with-directed-graphs">With directed graphs?</h3>
+<p>Does the "number of steps" interpretation hold
+with directed graphs?
+Yes it does!
+Let's see it in action.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">G2</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+<span class="n">G2</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
+<span class="n">G2</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">nodes</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G2</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_png output_subarea">
+<img alt="No description has been provided for this image" height="499" src="output_21_0.png" width="660"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="exercise-directed-graph-matrix-power">Exercise: directed graph matrix power</h3>
+<p>&gt; Convince yourself that the resulting adjacency matrix power
+&gt; contains the same semantic meaning
+&gt; as that for an undirected graph,
+&gt; that is,
+&gt; <em>the number of ways to go from "row" node to "column" node
+&gt; in K steps</em>.
+&gt; (I have provided three different matrix powers for you.)</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">A2</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_array</span><span class="p">(</span><span class="n">G2</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">matrix_power</span><span class="p">(</span><span class="n">A2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>array([[0., 0., 1., 0.],
+       [0., 0., 0., 1.],
+       [0., 0., 0., 0.],
+       [0., 0., 0., 0.]])</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">matrix_power</span><span class="p">(</span><span class="n">A2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>array([[0., 0., 0., 1.],
+       [0., 0., 0., 0.],
+       [0., 0., 0., 0.],
+       [0., 0., 0., 0.]])</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">matrix_power</span><span class="p">(</span><span class="n">A2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>array([[0., 0., 0., 0.],
+       [0., 0., 0., 0.],
+       [0., 0., 0., 0.],
+       [0., 0., 0., 0.]])</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="message-passing">Message Passing</h2>
+<p>Let's now dive into the second topic here,
+that of message passing.</p>
+<p>To show how message passing works on a graph,
+let's start with the directed linear chain,
+as this will make things easier to understand.</p>
+<h3 id="message-representation-in-matrix-form">"Message" representation in matrix form</h3>
+<p>Our graph adjacency matrix contains nodes ordered in a particular fashion
+along the rows and columns.
+We can also create a "message" matrix <span class="arithmatex"><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span>,
+using the same ordering of nodes along the rows,
+with columns instead representing a "message"
+that is intended to be "passed" from one node to another:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">M</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>array([1, 0, 0, 0])</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Notice where the position of the value <code>1</code> is - at the first node.</p>
+<p>If we take M and matrix multiply it against A2, let's see what we get:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">M</span> <span class="o">@</span> <span class="n">A2</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>array([0., 1., 0., 0.])</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The message has been passed onto the next node!
+And if we pass the message one more time:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">M</span> <span class="o">@</span> <span class="n">A2</span> <span class="o">@</span> <span class="n">A2</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>array([0., 0., 1., 0.])</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now, the message lies on the 3rd node!</p>
+<p>We can make an animation to visualize this more clearly. 
+<em>There are comments in the code to explain what's going on!</em></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">propagate</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">n_frames</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Computes the node values based on propagation.</span>
+
+<span class="sd">    Intended to be used before or when being passed into the</span>
+<span class="sd">    anim() function (defined below).</span>
+
+<span class="sd">    :param G: A NetworkX Graph.</span>
+<span class="sd">    :param msg: The initial state of the message.</span>
+<span class="sd">    :returns: A list of 1/0 representing message status at</span>
+<span class="sd">        each node.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Initialize a list to store message states at each timestep.</span>
+    <span class="n">msg_states</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># Set a variable `new_msg` to be the initial message state.</span>
+    <span class="n">new_msg</span> <span class="o">=</span> <span class="n">msg</span>
+
+    <span class="c1"># Get the adjacency matrix of the graph G.</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_array</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+
+    <span class="c1"># Perform message passing at each time step</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_frames</span><span class="p">):</span>
+        <span class="n">msg_states</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_msg</span><span class="p">)</span>
+        <span class="n">new_msg</span> <span class="o">=</span> <span class="n">new_msg</span> <span class="o">@</span> <span class="n">A</span>
+
+    <span class="c1"># Return the message states.</span>
+    <span class="k">return</span> <span class="n">msg_states</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">animation</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">update_func</span><span class="p">(</span><span class="n">step</span><span class="p">,</span> <span class="n">nodes</span><span class="p">,</span> <span class="n">colors</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The update function for each animation time step.</span>
+
+<span class="sd">    :param step: Passed in from matplotlib&#39;s FuncAnimation. Must</span>
+<span class="sd">        be present in the function signature.</span>
+<span class="sd">    :param nodes: Returned from nx.draw_networkx_edges(). Is an</span>
+<span class="sd">        array of colors.</span>
+<span class="sd">    :param colors: A list of pre-computed colors.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">nodes</span><span class="o">.</span><span class="n">set_array</span><span class="p">(</span><span class="n">colors</span><span class="p">[</span><span class="n">step</span><span class="p">]</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">nodes</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">anim</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">initial_state</span><span class="p">,</span> <span class="n">n_frames</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Animation function!</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># First, pre-compute the message passing states over all frames.</span>
+    <span class="n">colors</span> <span class="o">=</span> <span class="n">propagate</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">initial_state</span><span class="p">,</span> <span class="n">n_frames</span><span class="p">)</span>
+    <span class="c1"># Instantiate a figure</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    <span class="c1"># Precompute node positions so that they stay fixed over the entire animation</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">kamada_kawai_layout</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+    <span class="c1"># Draw nodes to screen</span>
+    <span class="n">nodes</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_nodes</span><span class="p">(</span>
+        <span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">20</span>
+    <span class="p">)</span>
+    <span class="c1"># Draw edges to screen</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edges</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+    <span class="c1"># Finally, return the animation through matplotlib.</span>
+    <span class="k">return</span> <span class="n">animation</span><span class="o">.</span><span class="n">FuncAnimation</span><span class="p">(</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">update_func</span><span class="p">,</span> <span class="n">frames</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="n">n_frames</span><span class="p">),</span> <span class="n">fargs</span><span class="o">=</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">colors</span><span class="p">)</span>
+    <span class="p">)</span>
+
+
+<span class="c1"># Initialize the message</span>
+<span class="n">msg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">G2</span><span class="p">))</span>
+<span class="n">msg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># Animate the graph with message propagation.</span>
+<span class="n">HTML</span><span class="p">(</span><span class="n">anim</span><span class="p">(</span><span class="n">G2</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">n_frames</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">())</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_html rendered_html output_subarea output_execute_result">
+<video autoplay="" controls="" height="480" loop="" width="640">
+<source src="data:video/mp4;base64,AAAAIGZ0eXBNNFYgAAACAE00ViBpc29taXNvMmF2YzEAAAAIZnJlZQAADnNtZGF0AAACrQYF//+p
+3EXpvebZSLeWLNgg2SPu73gyNjQgLSBjb3JlIDE2NCByMzA5NSBiYWVlNDAwIC0gSC4yNjQvTVBF
+Ry00IEFWQyBjb2RlYyAtIENvcHlsZWZ0IDIwMDMtMjAyMiAtIGh0dHA6Ly93d3cudmlkZW9sYW4u
+b3JnL3gyNjQuaHRtbCAtIG9wdGlvbnM6IGNhYmFjPTEgcmVmPTMgZGVibG9jaz0xOjA6MCBhbmFs
+eXNlPTB4MzoweDExMyBtZT1oZXggc3VibWU9NyBwc3k9MSBwc3lfcmQ9MS4wMDowLjAwIG1peGVk
+X3JlZj0xIG1lX3JhbmdlPTE2IGNocm9tYV9tZT0xIHRyZWxsaXM9MSA4eDhkY3Q9MSBjcW09MCBk
+ZWFkem9uZT0yMSwxMSBmYXN0X3Bza2lwPTEgY2hyb21hX3FwX29mZnNldD0tMiB0aHJlYWRzPTYg
+bG9va2FoZWFkX3RocmVhZHM9MSBzbGljZWRfdGhyZWFkcz0wIG5yPTAgZGVjaW1hdGU9MSBpbnRl
+cmxhY2VkPTAgYmx1cmF5X2NvbXBhdD0wIGNvbnN0cmFpbmVkX2ludHJhPTAgYmZyYW1lcz0zIGJf
+cHlyYW1pZD0yIGJfYWRhcHQ9MSBiX2JpYXM9MCBkaXJlY3Q9MSB3ZWlnaHRiPTEgb3Blbl9nb3A9
+MCB3ZWlnaHRwPTIga2V5aW50PTI1MCBrZXlpbnRfbWluPTUgc2NlbmVjdXQ9NDAgaW50cmFfcmVm
+cmVzaD0wIHJjX2xvb2thaGVhZD00MCByYz1jcmYgbWJ0cmVlPTEgY3JmPTIzLjAgcWNvbXA9MC42
+MCBxcG1pbj0wIHFwbWF4PTY5IHFwc3RlcD00IGlwX3JhdGlvPTEuNDAgYXE9MToxLjAwAIAAAAo5
+ZYiEABL//vet34FNwEDta7pXOLTLq5Q0PVH2lKZ4tkgAAAMAAAMAAA/wzb6fURXXl6YAAAMAfgAS
+tJf4M9/8QLomX8eGrHHXHVnN/UFSkIrnlcf2LPklZjMdqdLeNgs7bcA1Hu4fmNn/PcheaR/8RBxn
+ujE7A/9eyg1joquyuArMR/o9ijAbcAAAAwAGAqXloYf2RhXJkupzmlB5nRQAAGqzyJrzgbDuACMG
+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
+" type="video/mp4"/>
+  Your browser does not support the video tag.
+</video>
+</div>
+</div>
+<div class="output_area">
+<div class="output_png output_subarea">
+<img alt="No description has been provided for this image" height="389" src="output_34_1.png" width="515"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="bipartite-graphs-matrices">Bipartite Graphs &amp; Matrices</h2>
+<p>The section on message passing above assumed unipartite graphs, or at least graphs for which messages can be meaningfully passed between nodes. </p>
+<p>In this section, we will look at bipartite graphs. </p>
+<p>Recall from before the definition of a bipartite graph:</p>
+<ul>
+<li>Nodes are separated into two partitions (hence 'bi'-'partite').</li>
+<li>Edges can only occur between nodes of different partitions.</li>
+</ul>
+<p>Bipartite graphs have a natural matrix representation, known as the <strong>biadjacency matrix</strong>. Nodes on one partition are the rows, and nodes on the other partition are the columns.</p>
+<p>NetworkX's <code>bipartite</code> module provides a function for computing the biadjacency matrix of a bipartite graph.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's start by looking at a toy bipartite graph, a "customer-product" purchase record graph, with 4 products and 3 customers. The matrix representation might be as follows:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Rows = customers, columns = products, 1 = customer purchased product, 0 = customer did not purchase product.</span>
+<span class="n">cp_mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>From this "bi-adjacency" matrix, one can compute the projection onto the customers, matrix multiplying the matrix with its transpose.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">c_mat</span> <span class="o">=</span> <span class="n">cp_mat</span> <span class="o">@</span> <span class="n">cp_mat</span><span class="o">.</span><span class="n">T</span>  <span class="c1"># c_mat means &quot;customer matrix&quot;</span>
+<span class="n">c_mat</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>array([[1, 0, 1],
+       [0, 2, 2],
+       [1, 2, 4]])</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>What we get is the connectivity matrix of the customers, based on shared purchases. 
+The diagonals are the degree of the customers in the original graph, 
+i.e. the number of purchases they originally made, 
+and the off-diagonals are the connectivity matrix, based on shared products.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To get the products matrix, we make the transposed matrix the left side of the matrix multiplication.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">p_mat</span> <span class="o">=</span> <span class="n">cp_mat</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">cp_mat</span>  <span class="c1"># p_mat means &quot;product matrix&quot;</span>
+<span class="n">p_mat</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>array([[2, 1, 2, 1],
+       [1, 2, 1, 1],
+       [2, 1, 2, 1],
+       [1, 1, 1, 1]])</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>You may now try to convince yourself that the diagonals are the number of times a customer purchased that product, and the off-diagonals are the connectivity matrix of the products, weighted by how similar two customers are.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="exercises">Exercises</h3>
+<p>In the following exercises, you will now play with a customer-product graph from Amazon. This dataset was downloaded from <a href="http://jmcauley.ucsd.edu/data/amazon/">UCSD's Julian McAuley's website</a>, and corresponds to the digital music dataset.</p>
+<p>This is a bipartite graph. The two partitions are:</p>
+<ul>
+<li><code>customers</code>: The customers that were doing the reviews.</li>
+<li><code>products</code>: The music that was being reviewed.</li>
+</ul>
+<p>In the original dataset (see the original JSON in the <code>datasets/</code> directory), they are referred to as:</p>
+<ul>
+<li><code>customers</code>: <code>reviewerID</code></li>
+<li><code>products</code>: <code>asin</code></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">nams</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_data</span> <span class="k">as</span> <span class="n">cf</span>
+
+<span class="n">G_amzn</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">load_amazon_reviews</span><span class="p">()</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code>
+  0%|          | 0/64706 [00:00&lt;?, ?it/s]</code>
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code>
+ 24%|██▍       | 15820/64706 [00:00&lt;00:00, 158188.84it/s]</code>
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code>
+ 50%|████▉     | 32199/64706 [00:00&lt;00:00, 161476.16it/s]</code>
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code>
+ 75%|███████▍  | 48347/64706 [00:00&lt;00:00, 112490.61it/s]</code>
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code>
+ 98%|█████████▊| 63731/64706 [00:00&lt;00:00, 125405.76it/s]</code>
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code>
+100%|██████████| 64706/64706 [00:00&lt;00:00, 129069.62it/s]</code>
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code>
+</code>
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code>
+  0%|          | 0/64706 [00:00&lt;?, ?it/s]</code>
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code>
+100%|██████████| 64706/64706 [00:00&lt;00:00, 801464.25it/s]</code>
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code>
+</code>
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code>
+  0%|          | 0/64706 [00:00&lt;?, ?it/s]</code>
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code>
+100%|██████████| 64706/64706 [00:00&lt;00:00, 849904.59it/s]</code>
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+<code>
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Remember that with bipartite graphs, it is useful to obtain nodes from one of the partitions.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">nams.solutions.bipartite</span><span class="w"> </span><span class="kn">import</span> <span class="n">extract_partition_nodes</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">customer_nodes</span> <span class="o">=</span> <span class="n">extract_partition_nodes</span><span class="p">(</span><span class="n">G_amzn</span><span class="p">,</span> <span class="s2">&quot;customer&quot;</span><span class="p">)</span>
+<span class="n">mat</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">bipartite</span><span class="o">.</span><span class="n">biadjacency_matrix</span><span class="p">(</span><span class="n">G_amzn</span><span class="p">,</span> <span class="n">row_order</span><span class="o">=</span><span class="n">customer_nodes</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>You'll notice that this matrix is extremely large! There are 5541 customers and 3568 products,
+for a total matrix size of <span class="arithmatex"><span class="MathJax_Preview">5541 \times 3568 = 19770288</span><script type="math/tex">5541 \times 3568 = 19770288</script></span>, but it is stored in a sparse format because only 64706 elements are filled in.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">mat</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>&lt;Compressed Sparse Row sparse array of dtype 'int64'
+    with 64706 stored elements and shape (5541, 3568)&gt;</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="example-finding-customers-who-reviewed-the-most-number-of-music-items">Example: finding customers who reviewed the most number of music items.</h3>
+<p>Let's find out which customers reviewed the most number of music items.</p>
+<p>To do so, you can break the problem into a few steps.</p>
+<p>First off, we compute the customer projection using matrix operations.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">customer_mat</span> <span class="o">=</span> <span class="n">mat</span> <span class="o">@</span> <span class="n">mat</span><span class="o">.</span><span class="n">T</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Next, get the diagonals of the customer-customer matrix. Recall here that in <code>customer_mat</code>, the diagonals correspond to the degree of the customer nodes in the bipartite matrix.</p>
+<p>SciPy sparse matrices provide a <code>.diagonal()</code> method that returns the diagonal elements.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Get the diagonal.</span>
+<span class="n">degrees</span> <span class="o">=</span> <span class="n">customer_mat</span><span class="o">.</span><span class="n">diagonal</span><span class="p">()</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Finally, find the index of the customer that has the highest degree.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">cust_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">degrees</span><span class="p">)</span>
+<span class="n">cust_idx</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>np.int64(294)</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can verify this independently by sorting the customer nodes by degree.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">janitor</span>
+
+<span class="c1"># There&#39;s some pandas-fu we need to use to get this correct.</span>
+<span class="n">deg</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">G_amzn</span><span class="p">,</span> <span class="n">customer_nodes</span><span class="p">)))</span>
+    <span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">rename_column</span><span class="p">(</span><span class="s2">&quot;index&quot;</span><span class="p">,</span> <span class="s2">&quot;customer&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">rename_column</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;num_reviews&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;num_reviews&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">deg</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>customer</th>
+<th>num_reviews</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>294</th>
+<td>A9Q28YTLYREO7</td>
+<td>578</td>
+</tr>
+<tr>
+<th>86</th>
+<td>A3HU0B9XUEVHIM</td>
+<td>375</td>
+</tr>
+<tr>
+<th>77</th>
+<td>A3KJ6JAZPH382D</td>
+<td>301</td>
+</tr>
+<tr>
+<th>307</th>
+<td>A3C6ZCBUNXUT7V</td>
+<td>261</td>
+</tr>
+<tr>
+<th>218</th>
+<td>A8IFUOL8S9BZC</td>
+<td>256</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Indeed, customer 294 was the one who had the most number of reviews!</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="example-finding-similar-customers">Example: finding similar customers</h3>
+<p>Let's now also compute which two customers are similar, based on shared reviews. To do so involves the following steps:</p>
+<ol>
+<li>We construct a sparse matrix consisting of only the diagonals. <code>scipy.sparse.diags(elements)</code> will construct a sparse diagonal matrix based on the elements inside <code>elements</code>.</li>
+<li>Subtract the diagonals from the customer matrix projection. This yields the customer-customer similarity matrix, which should only consist of the off-diagonal elements of the customer matrix projection.</li>
+<li>Finally, get the indices where the weight (shared number of between the customers is highest. (<em>This code is provided for you.</em>)</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">scipy.sparse</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Construct diagonal elements.</span>
+<span class="n">customer_diags</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">diags</span><span class="p">(</span><span class="n">degrees</span><span class="p">)</span>
+<span class="c1"># Subtract off-diagonals.</span>
+<span class="n">off_diagonals</span> <span class="o">=</span> <span class="n">customer_mat</span> <span class="o">-</span> <span class="n">customer_diags</span>
+<span class="c1"># Compute index of most similar individuals.</span>
+<span class="n">np</span><span class="o">.</span><span class="n">unravel_index</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">off_diagonals</span><span class="p">),</span> <span class="n">customer_mat</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>(np.int64(86), np.int64(294))</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="performance-object-vs-matrices">Performance: Object vs. Matrices</h2>
+<p>Finally, to motivate why you might want to use matrices rather than graph objects to compute some of these statistics, let's time the two ways of getting to the same answer.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="objects">Objects</h3>
+<p>Let's first use NetworkX's built-in machinery to find customers that are most similar.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">time</span>
+
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+
+<span class="c1"># Compute the projection</span>
+<span class="n">G_cust</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">bipartite</span><span class="o">.</span><span class="n">weighted_projected_graph</span><span class="p">(</span><span class="n">G_amzn</span><span class="p">,</span> <span class="n">customer_nodes</span><span class="p">)</span>
+
+<span class="c1"># Identify the most similar customers</span>
+<span class="n">most_similar_customers</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span>
+    <span class="n">G_cust</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="s2">&quot;weight&quot;</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">end</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Most similar customers: </span><span class="si">{</span><span class="n">most_similar_customers</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+<code>9.579 seconds
+Most similar customers: ('A3HU0B9XUEVHIM', 'A9Q28YTLYREO7', {'weight': 154})
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="matrices">Matrices</h3>
+<p>Now, let's implement the same thing in matrix form.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+
+<span class="c1"># Compute the projection using matrices</span>
+<span class="n">mat</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">bipartite</span><span class="o">.</span><span class="n">matrix</span><span class="o">.</span><span class="n">biadjacency_matrix</span><span class="p">(</span><span class="n">G_amzn</span><span class="p">,</span> <span class="n">customer_nodes</span><span class="p">)</span>
+<span class="n">cust_mat</span> <span class="o">=</span> <span class="n">mat</span> <span class="o">@</span> <span class="n">mat</span><span class="o">.</span><span class="n">T</span>
+
+<span class="c1"># Identify the most similar customers</span>
+<span class="n">degrees</span> <span class="o">=</span> <span class="n">customer_mat</span><span class="o">.</span><span class="n">diagonal</span><span class="p">()</span>
+<span class="n">customer_diags</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">diags</span><span class="p">(</span><span class="n">degrees</span><span class="p">)</span>
+<span class="n">off_diagonals</span> <span class="o">=</span> <span class="n">customer_mat</span> <span class="o">-</span> <span class="n">customer_diags</span>
+<span class="n">c1</span><span class="p">,</span> <span class="n">c2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unravel_index</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">off_diagonals</span><span class="p">),</span> <span class="n">customer_mat</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">end</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;Most similar customers: </span><span class="si">{</span><span class="n">customer_nodes</span><span class="p">[</span><span class="n">c1</span><span class="p">]</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">customer_nodes</span><span class="p">[</span><span class="n">c2</span><span class="p">]</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">cust_mat</span><span class="p">[</span><span class="n">c1</span><span class="p">,</span><span class="w"> </span><span class="n">c2</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+<code>0.343 seconds
+Most similar customers: A3HU0B9XUEVHIM, A9Q28YTLYREO7, 154
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>On a modern PC, the matrix computation should be about 10-50X faster
+using the matrix form compared to the object-oriented form.
+(The web server that is used to build the book
+might not necessarily have the software stack to do this though,
+so the time you see reported might not reflect the expected speedups.)
+I'd encourage you to fire up a Binder session or clone the book locally 
+to test out the code yourself.</p>
+<p>You may notice that it's much easier to read the "objects" code, 
+but the matrix code way outperforms the object code. 
+This tradeoff is common in computing, and shouldn't surprise you.
+That said, the speed gain alone is a great reason to use matrices!</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="acceleration-on-a-gpu">Acceleration on a GPU</h2>
+<p>If your appetite has been whipped up for even more acceleration
+and you have a GPU on your daily compute,
+then you're very much in luck!</p>
+<p>The <a href="https://rapids.ai">RAPIDS.AI</a> project has a package called <a href="https://github.com/rapidsai/cugraph">cuGraph</a>,
+which provides GPU-accelerated graph algorithms.
+As over release 0.16.0, all cuGraph algorithms will be able to accept NetworkX graph objects!
+This came about through online conversations on GitHub and Twitter,
+which for us, personally, speaks volumes to the power of open source projects!</p>
+<p>Because cuGraph does presume that you have access to a GPU,
+and because we assume most readers of this book might not have access to one easily,
+we'll delegate teaching how to install and use cuGraph to the cuGraph devs and <a href="https://docs.rapids.ai/api/cugraph/stable/api.html">their documentation</a>.
+Nonetheless, if you do have the ability to install and use the RAPIDS stack,
+definitely check it out!</p>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/ericmjl" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/ericmjl" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://linkedin.com/in/ericmjl" target="_blank" rel="noopener" title="linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["instant"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      
+        <script src="https://hypothes.is/embed.js"></script>
+      
+    
+  </body>
+</html>
