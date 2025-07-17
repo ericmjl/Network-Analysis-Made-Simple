@@ -52,7 +52,7 @@ def _(mo):
 
     Once Marimo is launched, on the bottom, click on "on startup", "on cel change", and "on module change" to disable automatic execution. This will allow us to mimic original Jupyter behaviour, which is advantageous for a teaching setting (but toggle them back to "autorun" )
 
- 
+
     That's it! The `--sandbox` flag ensures a clean, isolated environment for running the notebooks with all necessary dependencies automatically managed.
     """
     )
@@ -79,6 +79,7 @@ def _(mo):
 @app.cell(hide_code=True)
 def _():
     import marimo as mo
+
     return (mo,)
 
 
