@@ -2,7 +2,6 @@
 # requires-python = ">=3.13"
 # dependencies = [
 #     "ipython==9.1.0",
-#     "ipywidgets==8.1.6",
 #     "marimo",
 #     "matplotlib==3.10.1",
 #     "nams==0.0.2",
