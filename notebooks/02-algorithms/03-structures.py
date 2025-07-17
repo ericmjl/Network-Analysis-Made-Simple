@@ -148,7 +148,6 @@ def _():
         # Your answer here
         pass
 
-
     # COMMENT OUT THE IMPORT LINE TO TEST YOUR ANSWER
     from nams.solutions.structures import in_triangle
 
@@ -173,12 +172,10 @@ def _(G, in_triangle):
     from random import sample
     import networkx as nx
 
-
     def test_in_triangle():
         nodes = sample(list(G.nodes()), 10)
         for node in nodes:
             assert in_triangle(G, 3) == bool(nx.triangles(G, 3))
-
 
     test_in_triangle()
     return (nx,)
@@ -226,7 +223,6 @@ def _(getsource):
         # Your answer here
         pass
 
-
     # COMMENT OUT THE IMPORT LINE TO TEST YOUR ANSWER
     from nams.solutions.structures import get_triangle_neighbors
 
@@ -240,7 +236,6 @@ def _(G, plt):
     def plot_triangle_relations(G, n):
         # Your answer here
         pass
-
 
     # COMMENT OUT THE IMPORT LINE TO TEST YOUR ANSWER
     from nams.solutions.structures import plot_triangle_relations
@@ -309,7 +304,6 @@ def _():
         # Your answer here
         pass
 
-
     # COMMENT OUT THE IMPORT LINE TO TEST YOUR ANSWER
     from nams.solutions.structures import get_open_triangles_neighbors
 
@@ -337,7 +331,6 @@ def _(G, plt):
     def plot_open_triangle_relations(G, n):
         # Your answer here
         pass
-
 
     # COMMENT OUT THE IMPORT LINE TO TEST YOUR ANSWER
     from nams.solutions.structures import plot_open_triangle_relations
@@ -442,9 +435,9 @@ def _():
         # Your answer here
         pass
 
-
     # COMMENT OUT THE IMPORT LINE TO TEST YOUR ANSWER
     from nams.solutions.structures import size_k_maximal_cliques
+
     return (size_k_maximal_cliques,)
 
 
@@ -460,7 +453,6 @@ def _(G, size_k_maximal_cliques):
         clique_generator = size_k_maximal_cliques(G, k)
         for clique in clique_generator:
             assert len(clique) == k
-
 
     test_size_k_maximal_cliques(G, 5)
     return
@@ -516,15 +508,12 @@ def _(G):
         # your answer here
         pass
 
-
     # COMMENT OUT THE IMPORT LINE TO TEST YOUR ANSWER
     from nams.solutions.structures import find_k_cliques
-
 
     def test_find_k_cliques(G, k):
         for clique in find_k_cliques(G, k):
             assert len(clique) == k
-
 
     test_find_k_cliques(G, 3)
     return
@@ -642,7 +631,6 @@ def _(G):
         # Your answer here
         return G
 
-
     # COMMENT OUT THE IMPORT LINE TO TEST YOUR ANSWER
     from nams.solutions.structures import label_connected_component_subgraphs
 
@@ -668,11 +656,9 @@ def _(mo):
 def _(G_labelled):
     import matplotlib.pyplot as plt
 
-
     def plot_cc_subgraph(G):
         # Your answer here
         pass
-
 
     # COMMENT OUT THE IMPORT LINE TO TEST YOUR ANSWER
     from nams.solutions.structures import plot_cc_subgraph
@@ -740,6 +726,7 @@ def _(getsource):
 @app.cell
 def _():
     import marimo as mo
+
     return (mo,)
 
 

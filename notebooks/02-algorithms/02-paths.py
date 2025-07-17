@@ -140,7 +140,6 @@ def _(mo):
 def _(____, _____, _________, ___________, _____________, _________________):
     # FILL IN THE BLANKS BELOW
 
-
     def path_exists(node1, node2, G):
         """
         This function checks whether a path exists between two nodes (node1,
@@ -172,6 +171,7 @@ def _(____, _____, _________, ___________, _____________, _________________):
 
         # print('Path does not exist between nodes {0} and {1}'.format(node1, node2))
         return False
+
     return (path_exists,)
 
 
@@ -190,7 +190,6 @@ def _(G, path_exists):
     from random import sample
     import networkx as nx
 
-
     def test_path_exists(N):
         """
         N: The number of times to spot-check.
@@ -199,7 +198,6 @@ def _(G, path_exists):
             n1, n2 = sample(list(G.nodes()), 2)
             assert path_exists(n1, n2, G) == bool(nx.shortest_path(G, n1, n2))
         return True
-
 
     # Uncomment the next line to check the tests.
     # assert test_path_exists(10)
@@ -332,11 +330,9 @@ def _(mo):
 def _(plt):
     from nams.solutions.paths import plot_path_with_neighbors
 
-
     def plot_path_with_neighbors_answer(G, node1, node2):
         # Your answer here
         plt.show()
-
 
     # Now execute `plot_path_with_neighbors_answer`
     return (plot_path_with_neighbors,)
@@ -512,6 +508,7 @@ def _():
 @app.cell
 def _():
     import marimo as mo
+
     return (mo,)
 
 

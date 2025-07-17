@@ -83,7 +83,8 @@ def __(mo):
 @app.cell(hide_code=True)
 def __():
     import marimo as mo
-    return mo,
+
+    return (mo,)
 
 
 if __name__ == "__main__":
