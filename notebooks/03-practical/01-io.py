@@ -322,7 +322,9 @@ def _(G):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""You'll notice that the edge metadata have been added correctly: we have recorded in there the number of trips between stations.""")
+    mo.md(
+        r"""You'll notice that the edge metadata have been added correctly: we have recorded in there the number of trips between stations."""
+    )
     return
 
 

@@ -476,7 +476,9 @@ def _(mo):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""Let's start by looking at a toy bipartite graph, a "customer-product" purchase record graph, with 4 products and 3 customers. The matrix representation might be as follows:""")
+    mo.md(
+        r"""Let's start by looking at a toy bipartite graph, a "customer-product" purchase record graph, with 4 products and 3 customers. The matrix representation might be as follows:"""
+    )
     return
 
 
@@ -489,7 +491,9 @@ def _(np):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""From this "bi-adjacency" matrix, one can compute the projection onto the customers, matrix multiplying the matrix with its transpose.""")
+    mo.md(
+        r"""From this "bi-adjacency" matrix, one can compute the projection onto the customers, matrix multiplying the matrix with its transpose."""
+    )
     return
 
 
@@ -515,7 +519,9 @@ def _(mo):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""To get the products matrix, we make the transposed matrix the left side of the matrix multiplication.""")
+    mo.md(
+        r"""To get the products matrix, we make the transposed matrix the left side of the matrix multiplication."""
+    )
     return
 
 
@@ -528,7 +534,9 @@ def _(cp_mat):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""You may now try to convince yourself that the diagonals are the number of times a customer purchased that product, and the off-diagonals are the connectivity matrix of the products, weighted by how similar two customers are.""")
+    mo.md(
+        r"""You may now try to convince yourself that the diagonals are the number of times a customer purchased that product, and the off-diagonals are the connectivity matrix of the products, weighted by how similar two customers are."""
+    )
     return
 
 
@@ -564,7 +572,9 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""Remember that with bipartite graphs, it is useful to obtain nodes from one of the partitions.""")
+    mo.md(
+        r"""Remember that with bipartite graphs, it is useful to obtain nodes from one of the partitions."""
+    )
     return
 
 
@@ -655,7 +665,9 @@ def _(degrees, np):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""We can verify this independently by sorting the customer nodes by degree.""")
+    mo.md(
+        r"""We can verify this independently by sorting the customer nodes by degree."""
+    )
     return
 
 
@@ -834,6 +846,7 @@ def _(mo):
 @app.cell(hide_code=True)
 def _():
     import marimo as mo
+
     return (mo,)
 
 
