@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 import networkx as nx
 import pandas as pd
 import seaborn as sns
-from nams.functions import render_html
 
 
 def bfs_algorithm():
@@ -22,10 +21,10 @@ It essentially is as follows:
 3. For each node in the queue:
     1. Remove node from the queue.
     2. Add neighbors of the node to the queue. Check if destination node is present or not.
-    3. If destination node is present, end. <!--Credit: @cavaunpeu for finding bug in pseudocode.-->
+    3. If destination node is present, end.
     4. If destination node is not present, continue.
 """
-    return render_html(ans)
+    return ans
 
 
 def path_exists(node1, node2, G):

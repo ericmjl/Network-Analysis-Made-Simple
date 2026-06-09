@@ -1,26 +1,6 @@
-# /// script
-# requires-python = ">=3.13"
-# dependencies = [
-#     "ipython==9.1.0",
-#     "marimo",
-#     "matplotlib==3.10.1",
-#     "nams==0.0.2",
-#     "networkx==3.4.2",
-#     "numpy==2.2.5",
-#     "nxviz==0.7.6",
-#     "pandas==2.2.3",
-#     "pyjanitor==0.31.0",
-#     "pyprojroot==0.3.0",
-#     "scipy==1.15.2",
-#     "tqdm==4.67.1",
-# ]
-# [tool.uv.sources]
-# nams = { path = "../../", editable = true }
-# ///
-
+import marimo as mo
 import marimo
 
-__generated_with = "0.14.9"
 app = marimo.App()
 
 
@@ -104,11 +84,10 @@ def _(mo):
 
 
 @app.cell
-def _(G1, plt):
+def _(G1):
     import nxviz as nv
 
-    m = nv.matrix(G1)
-    plt.show()
+    nv.matrix(G1, backend="plotly")
     return
 
 
@@ -187,9 +166,8 @@ def _(mo):
 @app.cell
 def _():
     from nams.solutions.linalg import adjacency_matrix_power
-    from nams.functions import render_html
 
-    render_html(adjacency_matrix_power())
+    print(adjacency_matrix_power())
     return
 
 
@@ -242,11 +220,12 @@ def _(mo):
 
 
 @app.cell
-def _(nodes, nx):
+def _(nodes, nx, plt):
     G2 = nx.DiGraph()
     G2.add_nodes_from(nodes)
     G2.add_edges_from(zip(nodes, nodes[1:]))
     nx.draw(G2, with_labels=True)
+    plt.show()
     return (G2,)
 
 
@@ -382,30 +361,20 @@ def _(nx):
         :returns: A list of 1/0 representing message status at
             each node.
         """
-        # Initialize a list to store message states at each timestep.
         msg_states = []
-
-        # Set a variable `new_msg` to be the initial message state.
         new_msg = msg
-
-        # Get the adjacency matrix of the graph G.
         A = nx.to_numpy_array(G)
-
-        # Perform message passing at each time step
         for i in range(n_frames):
             msg_states.append(new_msg)
             new_msg = new_msg @ A
-
-        # Return the message states.
         return msg_states
 
     return (propagate,)
 
 
 @app.cell
-def _(G2, np, nx, propagate):
+def _(G2, np, nx, propagate, plt):
     from IPython.display import HTML
-    import matplotlib.pyplot as plt
     from matplotlib import animation
 
     def update_func(step, nodes, colors):
@@ -425,30 +394,22 @@ def _(G2, np, nx, propagate):
         """
         Animation function!
         """
-        # First, pre-compute the message passing states over all frames.
         colors = propagate(G, initial_state, n_frames)
-        # Instantiate a figure
         fig = plt.figure()
-        # Precompute node positions so that they stay fixed over the entire animation
         pos = nx.kamada_kawai_layout(G)
-        # Draw nodes to screen
         nodes = nx.draw_networkx_nodes(
             G, pos=pos, node_color=colors[0].ravel(), node_size=20
         )
-        # Draw edges to screen
         ax = nx.draw_networkx_edges(G, pos)
-        # Finally, return the animation through matplotlib.
         return animation.FuncAnimation(
             fig, update_func, frames=range(n_frames), fargs=(nodes, colors)
         )
 
-    # Initialize the message
     msg = np.zeros(len(G2))
     msg[0] = 1
 
-    # Animate the graph with message propagation.
     HTML(anim(G2, msg, n_frames=4).to_html5_video())
-    return (plt,)
+    return
 
 
 @app.cell(hide_code=True)
@@ -482,7 +443,6 @@ def _(mo):
 
 @app.cell
 def _(np):
-    # Rows = customers, columns = products, 1 = customer purchased product, 0 = customer did not purchase product.
     cp_mat = np.array([[0, 1, 0, 0], [1, 0, 1, 0], [1, 1, 1, 1]])
     return (cp_mat,)
 
@@ -495,7 +455,7 @@ def _(mo):
 
 @app.cell
 def _(cp_mat):
-    c_mat = cp_mat @ cp_mat.T  # c_mat means "customer matrix"
+    c_mat = cp_mat @ cp_mat.T
     c_mat
     return
 
@@ -521,7 +481,7 @@ def _(mo):
 
 @app.cell
 def _(cp_mat):
-    p_mat = cp_mat.T @ cp_mat  # p_mat means "product matrix"
+    p_mat = cp_mat.T @ cp_mat
     p_mat
     return
 
@@ -635,7 +595,6 @@ def _(mo):
 
 @app.cell
 def _(customer_mat):
-    # Get the diagonal.
     degrees = customer_mat.diagonal()
     return (degrees,)
 
@@ -664,7 +623,6 @@ def _(G_amzn, customer_nodes, nx):
     import pandas as pd
     import janitor
 
-    # There's some pandas-fu we need to use to get this correct.
     deg = (
         pd.Series(dict(nx.degree(G_amzn, customer_nodes)))
         .to_frame()
@@ -807,6 +765,31 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
+    ## Faster CPU alternatives
+
+    If you're looking for even better performance but want to stick with CPU computing,
+    there are some excellent alternatives that can provide significant speedups
+    while maintaining compatibility with NetworkX APIs.
+
+    [rustworkx](https://www.rustworkx.org/) is a high-performance graph library
+    written in Rust with Python bindings.
+    It provides many of the same algorithms as NetworkX
+    but with significantly better performance for large graphs.
+    The library offers both a NetworkX-compatible interface
+    and its own optimized API for maximum speed.
+
+    For cases where you need to process large graphs efficiently on CPU,
+    rustworkx can be a great step up from pure NetworkX
+    while still maintaining the familiar graph theory concepts you've learned.
+    """
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
     ## Acceleration on a GPU
 
     If your appetite has been whipped up for even more acceleration
@@ -831,10 +814,11 @@ def _(mo):
     return
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _():
-    import marimo as mo
-    return (mo,)
+    import matplotlib.pyplot as plt
+
+    return (plt,)
 
 
 if __name__ == "__main__":

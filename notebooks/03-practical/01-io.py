@@ -1,25 +1,6 @@
-# /// script
-# requires-python = ">=3.13"
-# dependencies = [
-#     "ipython==9.1.0",
-#     "pyjanitor",
-#     "marimo",
-#     "nams==0.0.2",
-#     "networkx==3.4.2",
-#     "nxviz==0.7.6",
-#     "pandas==2.2.3",
-#     "pyprojroot==0.3.0",
-#     "tqdm==4.67.1",
-#     "matplotlib==3.10.1",
-# ]
-# [tool.uv.sources]
-# nams = { path = "../../", editable = true }
-# ///
+import marimo as mo
 
-import marimo
-
-__generated_with = "0.14.9"
-app = marimo.App()
+app = mo.App()
 
 
 @app.cell(hide_code=True)
@@ -185,7 +166,6 @@ def _():
     import os
     from nams.load_data import datasets
 
-    # This block of code checks to make sure that a particular directory is present.
     if "divvy_2013" not in os.listdir(datasets):
         print("Unzipping the divvy_2013.zip file in the datasets folder.")
         with zipfile.ZipFile(datasets / "divvy_2013.zip", "r") as zip_ref:
@@ -495,10 +475,8 @@ def _(mo):
 @app.cell
 def _(G_filtered):
     import nxviz as nv
-    import matplotlib.pyplot as plt
 
-    c = nv.geo(G_filtered, node_color_by="dpcapacity")
-    plt.show()
+    nv.geo(G_filtered, node_color_by="dpcapacity", backend="plotly")
     return
 
 
@@ -629,13 +607,6 @@ def _():
 
     print(inspect.getsource(io))
     return
-
-
-@app.cell
-def _():
-    import marimo as mo
-
-    return (mo,)
 
 
 if __name__ == "__main__":

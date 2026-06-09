@@ -1,14 +1,12 @@
-# /// script
-# requires-python = ">=3.13"
-# dependencies = [
-#     "marimo",
-# ]
-# ///
-
 import marimo
 
-__generated_with = "0.14.10"
 app = marimo.App(width="medium")
+
+
+@app.cell
+def _():
+    import marimo as mo
+    return (mo,)
 
 
 @app.cell(hide_code=True)
@@ -37,23 +35,17 @@ def _(mo):
 
     1. Git clone the repository: https://github.com/ericmjl/Network-Analysis-Made-Simple
 
-    1. **Install uv** (the Python package manager):
-       Follow the installation instructions at [https://docs.astral.sh/uv/getting-started/installation/](https://docs.astral.sh/uv/getting-started/installation/)
+    2. **Install pixi** (the package manager):
+       Follow the installation instructions at [https://pixi.sh](https://pixi.sh)
 
-    2. **Navigate to the notebook directory**:
+    3. **Run the notebooks**:
        ```bash
-       cd notebooks/00-preface/ # replace with the actual numbered subdir!
+       pixi run marimo edit --no-token notebooks/
        ```
 
-    3. **Run the notebook**:
-       ```bash
-       uvx marimo edit --sandbox 01-setup.py
-       ```
+    Once Marimo is launched, on the bottom, click on "on startup", "on cell change", and "on module change" to disable automatic execution. This will allow us to mimic original Jupyter behaviour, which is advantageous for a teaching setting (but toggle them back to "autorun" when you're done with the tutorial).
 
-    Once Marimo is launched, on the bottom, click on "on startup", "on cel change", and "on module change" to disable automatic execution. This will allow us to mimic original Jupyter behaviour, which is advantageous for a teaching setting (but toggle them back to "autorun" )
-
- 
-    That's it! The `--sandbox` flag ensures a clean, isolated environment for running the notebooks with all necessary dependencies automatically managed.
+    That's it! Pixi ensures a clean, isolated environment for running the notebooks with all necessary dependencies automatically managed.
     """
     )
     return
@@ -65,21 +57,15 @@ def _(mo):
         r"""
     ## What this does
 
-    - **uv** is a fast Python package manager that handles dependency resolution and virtual environments
+    - **pixi** is a fast package manager that handles dependency resolution and environments
     - **marimo** is an interactive notebook environment optimized for Python
-    - The `--sandbox` flag creates an isolated environment for each notebook, preventing dependency conflicts
-    - All required packages are automatically installed when you run the notebook
+    - All required packages are automatically installed via the pixi manifest
+    - No manual environment setup, conda environments, or Docker containers needed
 
-    This approach eliminates the need for manual environment setup, conda environments, or Docker containers while ensuring reproducible execution of the tutorial content.
+    This approach ensures reproducible execution of the tutorial content.
     """
     )
     return
-
-
-@app.cell(hide_code=True)
-def _():
-    import marimo as mo
-    return (mo,)
 
 
 if __name__ == "__main__":

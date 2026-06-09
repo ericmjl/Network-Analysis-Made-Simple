@@ -1,27 +1,12 @@
-# /// script
-# requires-python = ">=3.13"
-# dependencies = [
-#     "ipython==9.1.0",
-#     "marimo",
-#     "nams==0.0.2",
-#     "matplotlib==3.10.1",
-#     "networkx==3.4.2",
-#     "nxviz==0.7.6",
-#     "pandas==2.2.3",
-#     "scipy==1.15.2",
-#     "tqdm==4.67.1",
-#     "numpy==2.2.5",
-#     "pyprojroot==0.3.0",
-#     "python-louvain==0.16",
-# ]
-# [tool.uv.sources]
-# nams = { path = "../../", editable = true }
-# ///
-
 import marimo
 
-__generated_with = "0.13.0"
 app = marimo.App()
+
+
+@app.cell
+def _():
+    import marimo as mo
+    return (mo,)
 
 
 @app.cell
@@ -85,8 +70,6 @@ def _(mo):
 
 @app.cell
 def _(books):
-    # We also add this weight_inv to our dataset.
-    # Why? we will discuss it in a later section.
     books["weight_inv"] = 1 / books.weight
     return
 
@@ -136,21 +119,11 @@ def _(mo):
 
 @app.cell
 def _():
-    # example of creating a MultiGraph
-
-    # all_books_multigraph = nx.from_pandas_edgelist(
-    #            books, source='Source', target='Target',
-    #            edge_attr=['weight', 'book'],
-    #            create_using=nx.MultiGraph)
     return
 
 
 @app.cell
 def _(books, nx):
-    # we create a list of graph objects using
-    # nx.from_pandas_edgelist and specifying
-    # the edge attributes.
-
     graphs = [
         nx.from_pandas_edgelist(
             books[books.book == i],
@@ -165,15 +138,12 @@ def _(books, nx):
 
 @app.cell
 def _(graphs):
-    # The Graph object associated with the first book.
     graphs[0]
     return
 
 
 @app.cell
 def _(graphs):
-    # To access the relationship edges in the graph with
-    # the edge attribute weight data (data=True)
     relationships = list(graphs[0].edges(data=True))
     return (relationships,)
 
@@ -206,7 +176,6 @@ def _(mo):
 
 @app.cell
 def _(graphs, nx):
-    # We use the in-built degree_centrality method
     deg_cen_book1 = nx.degree_centrality(graphs[0])
     deg_cen_book5 = nx.degree_centrality(graphs[4])
     return deg_cen_book1, deg_cen_book5
@@ -236,9 +205,6 @@ def _(mo):
 
 @app.cell
 def _(deg_cen_book1):
-    # The following expression sorts the dictionary by
-    # degree centrality and returns the top 5 from a graph
-
     sorted(deg_cen_book1.items(), key=lambda x: x[1], reverse=True)[0:5]
     return
 
@@ -282,7 +248,6 @@ def _(mo):
 
 @app.cell
 def _(deg_cen_book1, np, plt):
-    # A log-log plot to show the "signature" of power law in graphs.
     from collections import Counter
 
     hist = Counter(deg_cen_book1.values())
@@ -334,8 +299,6 @@ def _(mo):
 
 @app.cell
 def _(graphs, nx):
-    # First check unweighted (just the structure)
-
     sorted(
         nx.betweenness_centrality(graphs[0]).items(), key=lambda x: x[1], reverse=True
     )[0:10]
@@ -344,8 +307,6 @@ def _(graphs, nx):
 
 @app.cell
 def _(graphs, nx):
-    # Let's care about interactions now
-
     sorted(
         nx.betweenness_centrality(graphs[0], weight="weight_inv").items(),
         key=lambda x: x[1],
@@ -377,8 +338,6 @@ def _(mo):
 
 @app.cell
 def _(graphs, nx):
-    # by default weight attribute in PageRank is weight
-    # so we use weight=None to find the unweighted results
     sorted(
         nx.pagerank(graphs[0], weight=None).items(), key=lambda x: x[1], reverse=True
     )[0:10]
@@ -508,8 +467,9 @@ def _(graphs, nx):
 
 
 @app.cell
-def _(nx):
+def _(nx, plt):
     nx.draw(nx.barbell_graph(5, 1), with_labels=True)
+    plt.show()
     return
 
 
@@ -545,24 +505,22 @@ def _(mo):
 
 
 @app.cell
-def _(community, graphs, plt):
+def _(community, graphs):
     import nxviz as nv
-    from nxviz import annotate
-
-    plt.figure(figsize=(8, 8))
 
     partition = community.best_partition(graphs[0], randomize=False)
 
-    # Annotate nodes' partitions
     for n in graphs[0].nodes():
         graphs[0].nodes[n]["partition"] = partition[n]
         graphs[0].nodes[n]["degree"] = graphs[0].degree(n)
 
     nv.matrix(
-        graphs[0], group_by="partition", sort_by="degree", node_color_by="partition"
+        graphs[0],
+        group_by="partition",
+        sort_by="degree",
+        node_color_by="partition",
+        backend="plotly",
     )
-    annotate.matrix_block(graphs[0], group_by="partition", color_by="partition")
-    annotate.matrix_group(graphs[0], group_by="partition", offset=-8)
     return (partition,)
 
 
@@ -579,7 +537,6 @@ def _(mo):
 
 @app.cell
 def _(partition):
-    # louvain community detection find us 8 different set of communities
     partition_dict = {}
     for character, par in partition.items():
         if par in partition_dict:
@@ -612,12 +569,14 @@ def _(mo):
 @app.cell
 def _(graphs, nx, partition_dict):
     nx.draw(nx.subgraph(graphs[0], partition_dict[3]))
+    plt.show()
     return
 
 
 @app.cell
-def _(graphs, nx, partition_dict):
+def _(graphs, nx, partition_dict, plt):
     nx.draw(nx.subgraph(graphs[0], partition_dict[1]))
+    plt.show()
     return
 
 
@@ -683,13 +642,6 @@ def _():
 
     print(inspect.getsource(got))
     return
-
-
-@app.cell
-def _():
-    import marimo as mo
-
-    return (mo,)
 
 
 if __name__ == "__main__":
