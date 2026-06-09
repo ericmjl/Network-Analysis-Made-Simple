@@ -1,12 +1,18 @@
 import marimo
 
+__generated_with = "0.23.9"
 app = marimo.App()
 
 
 @app.cell(hide_code=True)
-def _(mo):
-    mo.md(r"""# Introduction""")
-    return
+def _():
+    import marimo as mo
+
+    mo.md(r"""
+    # Introduction
+    """)
+
+    return (mo,)
 
 
 @app.cell(hide_code=True)
@@ -19,8 +25,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     In this chapter, we will introduce you to the NetworkX API.
     This will allow you to create and manipulate graphs in your computer memory,
     thus giving you a language
@@ -37,15 +42,13 @@ def _(mo):
     The data are taken from the [Konect] graph data repository
 
     [Konect]: http://konect.cc/networks/moreno_seventh
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## Data Model
 
     In NetworkX, graph data are stored in a dictionary-like fashion.
@@ -78,15 +81,13 @@ def _(mo):
     Because of the dictionary-like implementation of the graph,
     any hashable object can be a node.
     This means strings and tuples, but not lists and sets.
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## Load Data
 
     Let's load some real network data to get a feel for the NetworkX API. This [dataset](http://konect.cc/networks/moreno_seventh) comes from a study of 7th grade students.
@@ -103,8 +104,7 @@ def _(mo):
 
     In the original dataset, students were from an all-boys school.
     However, I have modified the dataset to instead be a mixed-gender school.
-    """
-    )
+    """)
     return
 
 
@@ -129,8 +129,7 @@ def _(cf):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## Understanding a graph's basic statistics
 
     When you get graph data,
@@ -145,8 +144,7 @@ def _(mo):
     ### Querying graph type
 
     The first thing you need to know is the `type` of the graph:
-    """
-    )
+    """)
     return
 
 
@@ -158,14 +156,12 @@ def _(G):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     Because the graph is a `DiGraph`,
     this tells us that the graph is a **directed** one.
 
     If it were undirected, the type would change:
-    """
-    )
+    """)
     return
 
 
@@ -178,13 +174,11 @@ def _(nx):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### Querying node information
 
     Let's now query for the nodeset:
-    """
-    )
+    """)
     return
 
 
@@ -196,8 +190,7 @@ def _(G):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     `G.nodes()` returns a "view" on the nodes.
     We can't actually slice into the view and grab out a sub-selection,
     but we can _at least_ see what nodes are present.
@@ -205,8 +198,7 @@ def _(mo):
     so that we don't pollute the output.
     Because a `NodeView` is iterable, though,
     we can query it for its length:
-    """
-    )
+    """)
     return
 
 
@@ -218,13 +210,11 @@ def _(G):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     If our nodes have metadata attached to them,
     we can view the metadata at the same time
     by passing in `data=True`:
-    """
-    )
+    """)
     return
 
 
@@ -236,14 +226,12 @@ def _(G):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     G.nodes(data=True) returns a `NodeDataView`,
     which you can see is dictionary-like.
 
     Additionally, we can select out individual nodes:
-    """
-    )
+    """)
     return
 
 
@@ -255,8 +243,7 @@ def _(G):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     Now, because a `NodeDataView` is dictionary-like,
     looping over `G.nodes(data=True)`
     is very much like looping over key-value pairs of a dictionary.
@@ -277,20 +264,17 @@ def _(mo):
     ```
 
     Naturally, this leads us to our first exercise.
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### Exercise: Summarizing node metadata
 
     > Can you count how many males and females are represented in the graph?
-    """
-    )
+    """)
     return
 
 
@@ -305,9 +289,9 @@ def _(G):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""Test your implementation by checking it against the `test_answer` function below."""
-    )
+    mo.md(r"""
+    Test your implementation by checking it against the `test_answer` function below.
+    """)
     return
 
 
@@ -325,25 +309,21 @@ def _(mf_counts):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     With this dictionary-like syntax,
     we can query back the metadata that's associated with any node.
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### Querying edge information
 
     Now that you've learned how to query for node information,
     let's now see how to query for all of the edges in the graph:
-    """
-    )
+    """)
     return
 
 
@@ -355,15 +335,13 @@ def _(G):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     Similar to the `NodeView`, `G.edges()` returns an `EdgeView` that is also iterable.
     As with above, we have abbreviated the output inside a sliced list
     to keep things readable.
     Because `G.edges()` is iterable, we can get its length to see the number of edges
     that are present in a graph.
-    """
-    )
+    """)
     return
 
 
@@ -375,7 +353,9 @@ def _(G):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""Likewise, we can also query for all of the edge's metadata:""")
+    mo.md(r"""
+    Likewise, we can also query for all of the edge's metadata:
+    """)
     return
 
 
@@ -387,32 +367,34 @@ def _(G):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""Additionally, it is possible for us to select out individual edges, as long as they exist in the graph:""")
+    mo.md(r"""
+    Additionally, it is possible for us to select out individual edges, as long as they exist in the graph:
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     This yields the metadata dictionary for that edge.
 
     If the edge does not exist, then we get an error:
-    """
-    )
+    """)
     return
 
 
 @app.cell
 def _(G):
-    G.edges[15, 16]
+    try:
+        _ = G.edges[15, 16]
+    except KeyError as e:
+        print(f"KeyError: {e}")
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     As with the `NodeDataView`, the `EdgeDataView` is dictionary-like,
     with the difference being that the keys are 2-tuple-like
     instead of being single hashable objects.
@@ -426,22 +408,19 @@ def _(mo):
     ```
 
     Naturally, this leads us to our next exercise.
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### Exercise: Summarizing edge metadata
 
     > Can you write code to verify
     > that the maximum times any student rated another student as their favourite
     > is 3 times?
-    """
-    )
+    """)
     return
 
 
@@ -462,9 +441,9 @@ def _(G):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""If you implemented it correctly, the next cell will auto-execute and no errors will show up."""
-    )
+    mo.md(r"""
+    If you implemented it correctly, the next cell will auto-execute and no errors will show up.
+    """)
     return
 
 
@@ -479,8 +458,7 @@ def _(maxcount):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## Manipulating the graph
 
     Great stuff! You now know how to query a graph for:
@@ -524,8 +502,7 @@ def _(mo):
     > and they are a pair that just love hanging out with one another
     > and with individual 7 (i.e. `count=3`), in both directions per pair.
     > Add this information to the graph.
-    """
-    )
+    """)
     return
 
 
@@ -546,9 +523,9 @@ def _(G):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""As with above, if your function is implemented correctly, the following cell will automatically execute with no errors."""
-    )
+    mo.md(r"""
+    As with above, if your function is implemented correctly, the following cell will automatically execute with no errors.
+    """)
     return
 
 
@@ -576,21 +553,18 @@ def _(G_1):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## Coding Patterns
 
     These are some recommended coding patterns when doing network analysis using NetworkX,
     which stem from my personal experience with the package.
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### Iterating using List Comprehensions
     I would recommend that you use the following for compactness:
 
@@ -603,15 +577,13 @@ def _(mo):
     ```python
     [d['attr'] for _, d in G.nodes(data=True)]
     ```
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### Iterating over Edges using List Comprehensions
 
     A similar pattern can be used for edges:
@@ -639,30 +611,26 @@ def _(mo):
     ```python
     [d['attr'] for sc, sk, d in G.edges(data=True)]
     ```
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## Further Reading
 
     For a deeper look at the NetworkX API,
     be sure to check out the [NetworkX docs][nxdocs].
 
     [nxdocs]: https://networkx.readthedocs.io
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## Further Exercises
 
     Here's some further exercises that you can use to get some practice.
@@ -676,13 +644,7 @@ def _(mo):
     _Hint: the goal here is to get a list of edges for which the reverse edge is not present._
 
     _Hint: You may need the class method `G.has_edge(n1, n2)`. This returns a boolean on whether a graph has an edge between the nodes `n1` and `n2`._
-    """
-    )
-    return
-
-
-@app.cell
-def _():
+    """)
     return
 
 
@@ -704,20 +666,18 @@ def _(G_1):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     In a previous session at ODSC East 2018, a few other class participants provided the following solutions,
     which you can take a look at by uncommenting the following cells.
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""This first one by [@schwanne](https://github.com/schwanne) is the list comprehension version of the above solution:"""
-    )
+    mo.md(r"""
+    This first one by [@schwanne](https://github.com/schwanne) is the list comprehension version of the above solution:
+    """)
     return
 
 
@@ -732,9 +692,9 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""This one by [@end0](https://github.com/end0) is a unique one involving sets."""
-    )
+    mo.md(r"""
+    This one by [@end0](https://github.com/end0) is a unique one involving sets.
+    """)
     return
 
 
@@ -748,13 +708,11 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## Solution Answers
 
     Here are the answers to the exercises above.
-    """
-    )
+    """)
     return
 
 

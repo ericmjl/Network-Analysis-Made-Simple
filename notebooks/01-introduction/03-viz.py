@@ -1,6 +1,14 @@
 import marimo
 
+__generated_with = "0.23.9"
 app = marimo.App()
+
+
+@app.cell(hide_code=True)
+def mo_import():
+    import marimo as mo
+
+    return (mo,)
 
 
 @app.cell(hide_code=True)
@@ -13,7 +21,9 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""## Introduction""")
+    mo.md(r"""
+    ## Introduction
+    """)
     return
 
 
@@ -27,8 +37,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     In this chapter, We want to introduce you to the wonderful world of graph visualization.
 
     You probably have seen graphs that are visualized as hairballs.
@@ -40,15 +49,13 @@ def _(mo):
     But before we can do that, let's first make sure we understand
     how to use NetworkX's drawing facilities to draw graphs to the screen.
     In a pinch, and for small graphs, it's very handy to have.
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## Hairballs
 
     The node-link diagram is the canonical diagram we will see in publications.
@@ -57,8 +64,7 @@ def _(mo):
     Node-link diagrams are common,
     and there's a good reason for this: it's convenient to draw!
     In NetworkX, we can draw node-link diagrams using:
-    """
-    )
+    """)
     return
 
 
@@ -81,8 +87,7 @@ def _(G, nx, plt):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     Nodes more tightly connected with one another are clustered together.
     Initial node placement is done typically at random,
     so really it's tough to deterministically generate the same figure.
@@ -90,8 +95,7 @@ def _(mo):
     and the node labels are small enough to fit in a circle,
     then you can use the `with_labels=True` argument
     to bring some degree of informativeness to the drawing:
-    """
-    )
+    """)
     return
 
 
@@ -110,8 +114,7 @@ def _(G, nx, plt):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     The downside to drawing graphs this way is that
     large graphs end up looking like hairballs.
     Can you imagine a graph with more than the 28 nodes that we have?
@@ -124,8 +127,7 @@ def _(mo):
     The nodes are on the x- and y- axes, and a filled square represent an edge between the nodes.
 
     We can draw a graph's matrix form conveniently by using `nxviz.MatrixPlot`:
-    """
-    )
+    """)
     return
 
 
@@ -139,8 +141,7 @@ def _(G):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     What can you tell from the graph visualization?
     A few things are immediately obvious:
 
@@ -154,15 +155,13 @@ def _(mo):
     we would be hard-pressed to know for sure.
     After all, we can simply re-order the node ordering along the axes
     to produce a seemingly-random matrix.
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## Arc Plot
 
     The Arc Plot is another rational graph visualization.
@@ -171,8 +170,7 @@ def _(mo):
     We can also optionally group and colour them by some metadata.
     In the case of this student graph,
     we group and colour them by "gender".
-    """
-    )
+    """)
     return
 
 
@@ -184,26 +182,22 @@ def _(G, nv):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     The Arc Plot forms the basis of the next visualization,
     the highly popular Circos plot.
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## Circos Plot
 
     The Circos Plot was developed by [Martin Krzywinski][bccrc] at the BC Cancer Research Center. The `nxviz.CircosPlot` takes inspiration from the original by joining the two ends of the Arc Plot into a circle. Likewise, we can colour and order nodes by node metadata:
 
     [bccrc]: http://circos.ca/
-    """
-    )
+    """)
     return
 
 
@@ -215,24 +209,20 @@ def _(G, nv):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     Generally speaking, you can think of a Circos Plot as being
     a more compact and aesthetically pleasing version of Arc Plots.
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## Hive Plot
 
     The final plot we'll show is, Hive Plots.
-    """
-    )
+    """)
     return
 
 
@@ -244,8 +234,7 @@ def _(G, nv):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     As you can see, with Hive Plots,
     we first group nodes along two or three radial axes.
     In this case, we have the boys along one radial axis
@@ -260,15 +249,13 @@ def _(mo):
     We then proceed to edges _within_ groups.
     This is done by cloning the node radial axis
     before drawing edges.
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## Principles of Rational Graph Viz
 
     While I was implementing these visualizations in [`nxviz`](https://github.com/ericmjl/nxviz),
@@ -289,8 +276,7 @@ def _(mo):
     So the next time you see a hairball,
     I hope you're able to critique it for what it doesn't communicate,
     and possibly use the same principle to design a better visualization!
-    """
-    )
+    """)
     return
 
 
