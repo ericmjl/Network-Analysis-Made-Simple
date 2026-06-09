@@ -1,6 +1,6 @@
-import marimo as mo
+import marimo
 
-app = mo.App()
+app = marimo.App()
 
 
 @app.cell(hide_code=True)
