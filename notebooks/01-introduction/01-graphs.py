@@ -1,12 +1,18 @@
 import marimo
 
+__generated_with = "0.23.9"
 app = marimo.App()
 
 
 @app.cell(hide_code=True)
-def _(mo):
-    mo.md(r"""# Introduction""")
-    return
+def _():
+    import marimo as mo
+
+    mo.md(r"""
+    # Introduction
+    """)
+
+    return (mo,)
 
 
 @app.cell(hide_code=True)
@@ -19,21 +25,18 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     In our world, networks are an immensely useful _data modelling tool_
     to model complex _relational_ problems.
     Building on top of a network-oriented data model,
     they have been put to great use in a wide variety of settings.
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## A _formal_ definition of networks
 
     Before we explore examples of networks,
@@ -65,15 +68,13 @@ def _(mo):
 
     If you draw out a network, the "nodes" are commonly represented as shapes, such as circles,
     while the "edges" are the lines between the shapes.
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## Examples of Networks
 
     Now that we have a proper definition of a graph,
@@ -103,15 +104,13 @@ def _(mo):
     **What examples of networks have _you_ seen before in your profession?**
 
     Go ahead and list it out.
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## Types of Graphs
 
     As you probably can see, graphs are a really flexible data model
@@ -142,15 +141,13 @@ def _(mo):
     If we wanted to turn LinkedIn into a directed graph,
     we might want to keep information on who initiated the invitation.
     In that way, the relationship is automatically bi-directional.
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## Edges define the interesting part of a graph
 
     While in graduate school, I (Eric Ma) once sat in a seminar
@@ -168,8 +165,7 @@ def _(mo):
     In a data table, they would correspond to the rows.
     That alone can be interesting,
     but doesn't yield _relational insights_ between the entities.
-    """
-    )
+    """)
     return
 
 
