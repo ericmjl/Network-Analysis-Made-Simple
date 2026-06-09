@@ -1,14 +1,12 @@
-# /// script
-# requires-python = ">=3.13"
-# dependencies = [
-#     "marimo",
-# ]
-# ///
-
 import marimo
 
-__generated_with = "0.14.8"
 app = marimo.App(width="medium")
+
+
+@app.cell
+def _():
+    import marimo as mo
+    return (mo,)
 
 
 @app.cell(hide_code=True)
@@ -52,7 +50,7 @@ def _(mo):
     Given the following line of code:
 
     ```python
-    [s for s in my_fav_things if s[‘name’] == ‘raindrops on roses’]
+    [s for s in my_fav_things if s['name'] == 'raindrops on roses']
     ```
 
     What are plausible data structures for `s` and `my_fav_things`?
@@ -98,8 +96,6 @@ def _(mo):
 
 @app.function
 def find_persons_with_surname(persons, query_surname):
-    # Assert that the persons parameter is a list.
-    # This is a good defensive programming practice.
     assert isinstance(persons, list)
 
     results = []
@@ -123,20 +119,12 @@ def _(mo):
 
 @app.cell
 def _(names):
-    # Test your result below.
     results = find_persons_with_surname(names, "Lee")
     assert len(results) == 1
 
     results = find_persons_with_surname(names, "Elmer")
     assert len(results) == 2
     return
-
-
-@app.cell
-def _():
-    import marimo as mo
-
-    return (mo,)
 
 
 if __name__ == "__main__":

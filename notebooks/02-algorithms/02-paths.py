@@ -1,25 +1,5 @@
-# /// script
-# requires-python = ">=3.13"
-# dependencies = [
-#     "ipython==9.1.0",
-#     "marimo",
-#     "matplotlib==3.10.1",
-#     "nams==0.0.2",
-#     "networkx==3.4.2",
-#     "nxviz==0.7.6",
-#     "pandas==2.2.3",
-#     "pyarrow==20.0.0",
-#     "pyprojroot==0.3.0",
-#     "seaborn==0.13.2",
-#     "tqdm==4.67.1",
-# ]
-# [tool.uv.sources]
-# nams = { path = "../../", editable = true }
-# ///
-
 import marimo
 
-__generated_with = "0.14.8"
 app = marimo.App()
 
 
@@ -29,6 +9,13 @@ def _():
 
     warnings.filterwarnings("ignore")
     return
+
+
+@app.cell
+def _():
+    import marimo as mo
+
+    return (mo,)
 
 
 @app.cell(hide_code=True)
@@ -257,12 +244,11 @@ def _(mo):
 
 
 @app.cell
-def _(G, path, plt):
+def _(G, path):
     import nxviz as nv
 
     g = G.subgraph(path)
-    nv.matrix(g, sort_by="order")
-    plt.show()
+    nv.matrix(g, sort_by="order", backend="plotly")
     return
 
 
@@ -507,12 +493,6 @@ def _():
 
     print(inspect.getsource(paths))
     return
-
-
-@app.cell
-def _():
-    import marimo as mo
-    return (mo,)
 
 
 if __name__ == "__main__":

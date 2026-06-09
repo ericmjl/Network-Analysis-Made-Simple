@@ -1,25 +1,5 @@
-# /// script
-# requires-python = ">=3.13"
-# dependencies = [
-#     "anthropic==0.55.0",
-#     "ipython==9.1.0",
-#     "marimo",
-#     "matplotlib==3.10.3",
-#     "nams==0.0.2",
-#     "networkx==3.4.2",
-#     "nxviz==0.7.6",
-#     "pandas==2.2.3",
-#     "pyarrow==20.0.0",
-#     "pyprojroot==0.3.0",
-#     "tqdm==4.67.1",
-# ]
-# [tool.uv.sources]
-# nams = { path = "../../", editable = true }
-# ///
-
 import marimo
 
-__generated_with = "0.14.8"
 app = marimo.App()
 
 
@@ -29,6 +9,13 @@ def _():
 
     warnings.filterwarnings("ignore")
     return
+
+
+@app.cell
+def _():
+    import marimo as mo
+
+    return (mo,)
 
 
 @app.cell(hide_code=True)
@@ -555,12 +542,11 @@ def _(mo):
 
 
 @app.cell
-def _(G, plt):
-    from nams.solutions.hubs import circos_plot
+def _(G):
+    import nxviz as nv
 
     #### REPLACE THE NEXT LINE WITH YOUR ANSWER
-    circos_plot(G)
-    plt.show()
+    nv.circos(G, sort_by="order", node_color_by="order", backend="plotly")
     return
 
 
@@ -574,7 +560,7 @@ def _(mo):
 def _(G):
     import nxviz as nv
 
-    nv.arc(G, sort_by="order", node_color_by="order")
+    nv.arc(G, sort_by="order", node_color_by="order", backend="plotly")
     return
 
 
@@ -691,13 +677,6 @@ def _():
 
     print(inspect.getsource(hubs))
     return
-
-
-@app.cell
-def _():
-    import marimo as mo
-
-    return (mo,)
 
 
 if __name__ == "__main__":

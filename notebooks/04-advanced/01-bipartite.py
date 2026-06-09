@@ -1,24 +1,6 @@
-# /// script
-# requires-python = ">=3.13"
-# dependencies = [
-#     "ipython==9.1.0",
-#     "marimo",
-#     "matplotlib==3.10.1",
-#     "nams==0.0.2",
-#     "networkx==3.4.2",
-#     "nxviz==0.7.6",
-#     "pandas==2.2.3",
-#     "pyarrow==20.0.0",
-#     "pyprojroot==0.3.0",
-#     "tqdm==4.67.1",
-# ]
-# [tool.uv.sources]
-# nams = { path = "../../", editable = true }
-# ///
-
+import marimo as mo
 import marimo
 
-__generated_with = "0.13.0"
 app = marimo.App()
 
 
@@ -147,18 +129,16 @@ def _(mo):
 @app.cell
 def _(G):
     import nxviz as nv
-    import matplotlib.pyplot as plt
 
-    fig, _ax = plt.subplots(figsize=(7, 7))
     nv.circos(
         G,
         sort_by="degree",
         group_by="bipartite",
         node_color_by="bipartite",
         node_enc_kwargs={"size_scale": 3},
+        backend="plotly",
     )
-    plt.show()
-    return (plt,)
+    return
 
 
 @app.cell(hide_code=True)
@@ -231,6 +211,7 @@ def _(nx, plt):
     annotate.parallel_labels(bG, group_by="bipartite")
     plt.sca(_ax[1])
     annotate.arc_labels(pG)
+    plt.show()
     return
 
 
@@ -529,9 +510,8 @@ def _(mo):
 @app.cell
 def _():
     from nams.solutions.bipartite import bipartite_degree_centrality_denominator
-    from nams.functions import render_html
 
-    render_html(bipartite_degree_centrality_denominator())
+    print(bipartite_degree_centrality_denominator())
     return
 
 
@@ -600,9 +580,9 @@ def _(getsource):
 
 @app.cell
 def _():
-    import marimo as mo
+    import matplotlib.pyplot as plt
 
-    return (mo,)
+    return (plt,)
 
 
 if __name__ == "__main__":

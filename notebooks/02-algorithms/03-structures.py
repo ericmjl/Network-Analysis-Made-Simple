@@ -1,32 +1,21 @@
-# /// script
-# requires-python = ">=3.13"
-# dependencies = [
-#     "ipython==9.1.0",
-#     "marimo",
-#     "matplotlib==3.10.1",
-#     "nams==0.0.2",
-#     "networkx==3.4.2",
-#     "nxviz==0.7.6",
-#     "pyprojroot==0.3.0",
-#     "tqdm==4.67.1",
-# ]
-# [tool.uv.sources]
-# nams = { path = "../../", editable = true }
-# ///
-
 import marimo
 
-__generated_with = "0.14.9"
 app = marimo.App()
 
 
 @app.cell(hide_code=True)
 def _():
     import warnings
-    from inspect import getsource
 
     warnings.filterwarnings("ignore")
-    return (getsource,)
+    return
+
+
+@app.cell
+def _():
+    import marimo as mo
+
+    return (mo,)
 
 
 @app.cell(hide_code=True)
@@ -221,7 +210,9 @@ def _(mo):
 
 
 @app.cell
-def _(getsource):
+def _():
+    from inspect import getsource
+
     def get_triangle_neighbors(G, n):
         # Your answer here
         pass
@@ -236,7 +227,9 @@ def _(getsource):
 
 
 @app.cell
-def _(G, plt):
+def _(G):
+    import matplotlib.pyplot as plt
+
     def plot_triangle_relations(G, n):
         # Your answer here
         pass
@@ -247,7 +240,7 @@ def _(G, plt):
 
     plot_triangle_relations(G, 3)
     plt.show()
-    return
+    return (plt,)
 
 
 @app.cell(hide_code=True)
@@ -549,7 +542,7 @@ def _(mo):
 def _(G):
     import nxviz as nv
 
-    nv.arc(G)
+    nv.arc(G, backend="plotly")
     return (nv,)
 
 
@@ -666,8 +659,7 @@ def _(mo):
 
 @app.cell
 def _(G_labelled):
-    import matplotlib.pyplot as plt
-
+    import nxviz as nv
 
     def plot_cc_subgraph(G):
         # Your answer here
@@ -676,12 +668,10 @@ def _(G_labelled):
 
     # COMMENT OUT THE IMPORT LINE TO TEST YOUR ANSWER
     from nams.solutions.structures import plot_cc_subgraph
-    from nxviz import annotate
 
-    plot_cc_subgraph(G_labelled)
-    annotate.circos_group(G_labelled, group_by="subgraph")
-    plt.show()
-    return annotate, plt
+    #### REPLACE THE NEXT LINE WITH YOUR ANSWER
+    nv.circos(G_labelled, group_by="subgraph", node_color_by="subgraph", backend="plotly")
+    return
 
 
 @app.cell(hide_code=True)
@@ -696,18 +686,14 @@ def _(mo):
 
 
 @app.cell
-def _(G_labelled, annotate, nv, plt):
-    nv.arc(G_labelled, group_by="subgraph", node_color_by="subgraph")
-    annotate.arc_group(G_labelled, group_by="subgraph", rotation=0)
-    plt.show()
+def _(G_labelled, nv):
+    nv.arc(G_labelled, group_by="subgraph", node_color_by="subgraph", backend="plotly")
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""_Voila!_ It looks quite clear that there are indeed four disjoint group of physicians."""
-    )
+    mo.md(r"""_Voila!_ It looks quite clear that there are indeed four disjoint group of physicians.""")
     return
 
 
@@ -730,17 +716,12 @@ def _(mo):
 
 
 @app.cell
-def _(getsource):
+def _():
     from nams.solutions import structures
+    from inspect import getsource
 
     print(getsource(structures))
     return
-
-
-@app.cell
-def _():
-    import marimo as mo
-    return (mo,)
 
 
 if __name__ == "__main__":

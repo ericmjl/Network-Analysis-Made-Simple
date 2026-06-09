@@ -1,23 +1,6 @@
-# /// script
-# requires-python = ">=3.13"
-# dependencies = [
-#     "ipython==9.1.0",
-#     "marimo",
-#     "matplotlib==3.10.1",
-#     "nams==0.0.2",
-#     "networkx==3.4.2",
-#     "numpy==2.2.5",
-#     "pyprojroot==0.3.0",
-#     "tqdm==4.67.1",
-# ]
-# [tool.uv.sources]
-# nams = { path = "../../", editable = true }
-# ///
+import marimo as mo
 
-import marimo
-
-__generated_with = "0.14.10"
-app = marimo.App()
+app = mo.App()
 
 
 @app.cell(hide_code=True)
@@ -404,9 +387,7 @@ def _(G):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""Additionally, it is possible for us to select out individual edges, as long as they exist in the graph:"""
-    )
+    mo.md(r"""Additionally, it is possible for us to select out individual edges, as long as they exist in the graph:""")
     return
 
 
@@ -784,13 +765,6 @@ def _():
 
     print(inspect.getsource(solutions))
     return
-
-
-@app.cell(hide_code=True)
-def _():
-    import marimo as mo
-
-    return (mo,)
 
 
 if __name__ == "__main__":

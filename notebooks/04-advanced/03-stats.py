@@ -1,27 +1,6 @@
-# /// script
-# requires-python = ">=3.13"
-# dependencies = [
-#     "ipython==9.1.0",
-#     "ipywidgets==8.1.6",
-#     "marimo",
-#     "matplotlib==3.10.1",
-#     "nams==0.0.2",
-#     "networkx==3.4.2",
-#     "nxviz==0.7.6",
-#     "pandas==2.2.3",
-#     "pyjanitor==0.31.0",
-#     "pyprojroot==0.3.0",
-#     "scipy==1.15.2",
-#     "seaborn==0.13.2",
-#     "tqdm==4.67.1",
-# ]
-# [tool.uv.sources]
-# nams = { path = "../../", editable = true }
-# ///
-
+import marimo as mo
 import marimo
 
-__generated_with = "0.13.0"
 app = marimo.App()
 
 
@@ -235,8 +214,9 @@ def _():
 
 
 @app.cell
-def _(G_er, nx):
+def _(G_er, plt):
     nx.draw(G_er)
+    plt.show()
     return
 
 
@@ -274,6 +254,7 @@ def _(G_er, nx):
 
     _x, _y = ecdf(pd.Series(dict(nx.degree(G_er))))
     plt.scatter(_x, _y)
+    plt.show()
     return ecdf, pd, plt
 
 
@@ -291,9 +272,10 @@ def _(mo):
 
 
 @app.cell
-def _(nx):
+def _(nx, plt):
     G_ba = nx.barabasi_albert_graph(n=30, m=3)
     nx.draw(G_ba)
+    plt.show()
     return (G_ba,)
 
 
@@ -313,6 +295,7 @@ def _(mo):
 def _(G_ba, ecdf, nx, pd, plt):
     _x, _y = ecdf(pd.Series(dict(nx.degree(G_ba))))
     plt.scatter(_x, _y)
+    plt.show()
     return
 
 
@@ -389,6 +372,7 @@ def _(mo):
 def _(G, ecdf, nx, pd, plt):
     _x, _y = ecdf(pd.Series(dict(nx.degree(G))))
     plt.scatter(_x, _y)
+    plt.show()
     return
 
 
@@ -401,12 +385,11 @@ def _(mo):
 @app.cell
 def _(G):
     import nxviz as nv
-    from nxviz import annotate
 
     nv.circos(
-        G, sort_by="degree", node_color_by="degree", node_enc_kwargs={"size_scale": 10}
+        G, sort_by="degree", node_color_by="degree", node_enc_kwargs={"size_scale": 10},
+        backend="plotly",
     )
-    annotate.node_colormapping(G, color_by="degree")
     return
 
 
@@ -474,6 +457,7 @@ def _(G, ecdf, nx, pd, plt):
         _x, _y = ecdf(pd.Series(dict(nx.degree(G))))
         ax.scatter(_x, _y, label="Protein Interaction Network")
         ax.legend()
+        plt.show()
 
     return (interact,)
 
@@ -500,6 +484,7 @@ def _(G, ecdf, interact, nx, pd, plt):
         ax.scatter(_x, _y, label="Protein Interaction Network")
         ax.legend()
         ax.set_title(f"p={p}")
+        plt.show()
 
     return
 
@@ -596,7 +581,7 @@ def _(
 
 
 @app.cell
-def _(ba_dist, er_dist, pd):
+def _(ba_dist, er_dist, pd, plt):
     import seaborn as sns
     import janitor
 
@@ -611,6 +596,7 @@ def _(ba_dist, er_dist, pd):
         .rename_columns({"variable": "Graph Model", "value": "Wasserstein Distance"})
     )
     sns.swarmplot(data=data, x="Graph Model", y="Wasserstein Distance")
+    plt.show()
     return
 
 
@@ -659,11 +645,12 @@ def _(mo):
     return
 
 
-@app.cell
-def _():
-    import marimo as mo
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""## Solutions
 
-    return (mo,)
+No code exercises in this chapter.""")
+    return
 
 
 if __name__ == "__main__":

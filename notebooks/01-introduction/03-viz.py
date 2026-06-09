@@ -1,23 +1,6 @@
-# /// script
-# requires-python = ">=3.13"
-# dependencies = [
-#     "ipython==9.1.0",
-#     "marimo",
-#     "matplotlib==3.10.1",
-#     "nams==0.0.2",
-#     "networkx==3.4.2",
-#     "nxviz==0.7.4",
-#     "pyprojroot==0.3.0",
-#     "tqdm==4.67.1",
-# ]
-# [tool.uv.sources]
-# nams = { path = "../../", editable = true }
-# ///
+import marimo as mo
 
-import marimo
-
-__generated_with = "0.14.8"
-app = marimo.App()
+app = mo.App()
 
 
 @app.cell(hide_code=True)
@@ -147,14 +130,11 @@ def _(mo):
 
 
 @app.cell
-def _(G, plt):
+def _(G):
     import nxviz as nv
-    from nxviz import annotate
 
-    nv.matrix(G, group_by="gender", node_color_by="gender")
-    annotate.matrix_group(G, group_by="gender")
-    plt.show()
-    return annotate, nv
+    nv.matrix(G, group_by="gender", node_color_by="gender", backend="plotly")
+    return (nv,)
 
 
 @app.cell(hide_code=True)
@@ -197,11 +177,8 @@ def _(mo):
 
 
 @app.cell
-def _(G, annotate, nv, plt):
-    # a = ArcPlot(G, node_color='gender', node_grouping='gender')
-    nv.arc(G, node_color_by="gender", group_by="gender")
-    annotate.arc_group(G, group_by="gender")
-    plt.show()
+def _(G, nv):
+    nv.arc(G, node_color_by="gender", group_by="gender", backend="plotly")
     return
 
 
@@ -231,10 +208,8 @@ def _(mo):
 
 
 @app.cell
-def _(G, annotate, nv, plt):
-    nv.circos(G, group_by="gender", node_color_by="gender")
-    annotate.circos_group(G, group_by="gender")
-    plt.show()
+def _(G, nv):
+    nv.circos(G, group_by="gender", node_color_by="gender", backend="plotly")
     return
 
 
@@ -262,12 +237,8 @@ def _(mo):
 
 
 @app.cell
-def _(G, annotate, nv, plt):
-    from nxviz import plots
-
-    nv.hive(G, group_by="gender", node_color_by="gender")
-    annotate.hive_group(G, group_by="gender")
-    plt.show()
+def _(G, nv):
+    nv.hive(G, group_by="gender", node_color_by="gender", backend="plotly")
     return
 
 
@@ -321,13 +292,6 @@ def _(mo):
     """
     )
     return
-
-
-@app.cell
-def _():
-    import marimo as mo
-
-    return (mo,)
 
 
 if __name__ == "__main__":

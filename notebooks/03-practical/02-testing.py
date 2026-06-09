@@ -1,18 +1,6 @@
-# /// script
-# requires-python = ">=3.13"
-# dependencies = [
-#     "ipython==9.1.0",
-#     "marimo",
-#     "nams==0.0.2",
-# ]
-# [tool.uv.sources]
-# nams = { path = "../../", editable = true }
-# ///
+import marimo as mo
 
-import marimo
-
-__generated_with = "0.13.0"
-app = marimo.App()
+app = mo.App()
 
 
 @app.cell(hide_code=True)
@@ -257,13 +245,6 @@ def _(mo):
         """
     )
     return
-
-
-@app.cell
-def _():
-    import marimo as mo
-
-    return (mo,)
 
 
 if __name__ == "__main__":

@@ -1,19 +1,10 @@
-# /// script
-# requires-python = ">=3.13"
-# dependencies = [
-#     "ipython==9.1.0",
-#     "marimo",
-# ]
-# ///
+import marimo as mo
 
-import marimo
-
-__generated_with = "0.14.8"
-app = marimo.App()
+app = mo.App()
 
 
 @app.cell(hide_code=True)
-def _(mo):
+def _():
     mo.md(r"""# Introduction""")
     return
 
@@ -180,13 +171,6 @@ def _(mo):
     """
     )
     return
-
-
-@app.cell
-def _():
-    import marimo as mo
-
-    return (mo,)
 
 
 if __name__ == "__main__":

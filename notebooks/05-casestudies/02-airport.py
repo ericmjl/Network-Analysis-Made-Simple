@@ -1,26 +1,12 @@
-# /// script
-# requires-python = ">=3.13"
-# dependencies = [
-#     "ipython==9.1.0",
-#     "marimo",
-#     "matplotlib==3.10.1",
-#     "nams==0.0.2",
-#     "networkx==3.4.2",
-#     "numpy==2.2.5",
-#     "nxviz==0.7.6",
-#     "pandas==2.2.3",
-#     "pyprojroot==0.3.0",
-#     "scipy==1.15.2",
-#     "tqdm==4.67.1",
-# ]
-# [tool.uv.sources]
-# nams = { path = "../../", editable = true }
-# ///
-
 import marimo
 
-__generated_with = "0.13.0"
 app = marimo.App()
+
+
+@app.cell
+def _():
+    import marimo as mo
+    return (mo,)
 
 
 @app.cell
@@ -255,12 +241,6 @@ def _(mo):
 @app.cell
 def _(nx):
     def year_network(G, year):
-        """Extract edges for a particular year from
-        a MultiGraph. The edge is also populated with
-        two attributes, weight and weight_inv where
-        weight is the number of passengers and
-        weight_inv the inverse of it.
-        """
         year_network = nx.DiGraph()
         for edge in G.edges:
             source, target, edge_year = edge
@@ -287,10 +267,6 @@ def _(passenger_graph, year_network):
 
 @app.cell
 def _(pass_2015_network):
-    # Extracted a Directed Graph from the Multi Directed Graph
-    # Number of nodes = airports
-    # Number of edges = routes
-
     print(pass_2015_network)
     return
 
@@ -303,8 +279,6 @@ def _(mo):
 
 @app.cell
 def _(cf, pass_2015_network):
-    # Loading the GPS coordinates of all the airports
-
     lat_long = cf.load_airports_GPS_data()
     lat_long.columns = [
         "CODE4",
@@ -332,25 +306,20 @@ def _(cf, pass_2015_network):
         .set_index("CODE3")
     )
     us_airports.head()
-    # us_airports
     return (us_airports,)
 
 
 @app.cell
 def _(pass_2015_network, us_airports):
-    # Annotate graph with latitude and longitude
     no_gps = []
     for n, d in pass_2015_network.nodes(data=True):
         try:
             pass_2015_network.nodes[n]["longitude"] = us_airports.loc[n, "LONGITUDE"]
             pass_2015_network.nodes[n]["latitude"] = us_airports.loc[n, "LATITUDE"]
             pass_2015_network.nodes[n]["degree"] = pass_2015_network.degree(n)
-
-        # Some of the nodes are not represented
         except KeyError:
             no_gps.append(n)
 
-    # Get subgraph of nodes that do have GPS coords
     has_gps = set(pass_2015_network.nodes()).difference(no_gps)
     g = pass_2015_network.subgraph(has_gps)
     return (g,)
@@ -366,8 +335,7 @@ def _(mo):
 
 @app.cell
 def _(g, plt):
-    import nxviz as nv
-    from nxviz import nodes, plots, edges
+    from nxviz import nodes, plots
 
     plt.figure(figsize=(20, 9))
     pos = nodes.geo(g, encodings_kwargs={"size_scale": 1})
@@ -385,17 +353,14 @@ def _(mo):
 
 @app.cell
 def _(g, plt):
-    def _():
-        from nxviz import nodes, plots, edges, annotate
+    from nxviz import nodes, plots, edges, annotate
 
-        plt.figure(figsize=(20, 9))
-        pos = nodes.geo(g, color_by="degree", encodings_kwargs={"size_scale": 1})
-        edges.line(g, pos, encodings_kwargs={"alpha_scale": 0.1})
-        annotate.node_colormapping(g, color_by="degree")
-        plots.aspect_equal()
-        return plots.despine()
-
-    _()
+    plt.figure(figsize=(20, 9))
+    pos = nodes.geo(g, color_by="degree", encodings_kwargs={"size_scale": 1})
+    edges.line(g, pos, encodings_kwargs={"alpha_scale": 0.1})
+    annotate.node_colormapping(g, color_by="degree")
+    plots.aspect_equal()
+    plots.despine()
     plt.show()
     return
 
@@ -429,9 +394,7 @@ def _(mo):
 
 @app.cell
 def _(nx):
-    # Create an empty directed graph object
     G = nx.DiGraph()
-    # Add an edge from 1 to 2 with weight 4
     G.add_edge(1, 2, weight=4)
     return (G,)
 
@@ -444,7 +407,6 @@ def _(G):
 
 @app.cell
 def _(G):
-    # Access edge from 1 to 2
     G[1][2]
     return
 
@@ -487,11 +449,10 @@ def _(mo):
 
 
 @app.cell
-def _(G, nx):
+def _(G, nx, plt):
     G.add_edges_from([(1, 2), (3, 2), (4, 2), (5, 2), (6, 2), (7, 2)])
     nx.draw_circular(G, with_labels=True)
-
-    # nv.circos(G, node_enc_kwargs={"size_scale": 0.3})
+    plt.show()
     return
 
 
@@ -520,10 +481,10 @@ def _(mo):
 
 
 @app.cell
-def _(G, nx):
+def _(G, nx, plt):
     G.add_edge(5, 6)
-    # nv.circos(G, node_enc_kwargs={"size_scale": 0.3})
     nx.draw_circular(G, with_labels=True)
+    plt.show()
     return
 
 
@@ -542,9 +503,10 @@ def _(mo):
 
 
 @app.cell
-def _(G, nx):
+def _(G, nx, plt):
     G.add_edge(2, 8)
     nx.draw_circular(G, with_labels=True)
+    plt.show()
     return
 
 
@@ -627,16 +589,12 @@ def _(mo):
 
 @app.cell
 def _(nx, pass_2015_network):
-    # As pagerank will take weighted measure
-    # by default we pass in None to make this
-    # calculation for unweighted network
     PR_2015_scores = nx.pagerank(pass_2015_network, weight=None)
     return (PR_2015_scores,)
 
 
 @app.cell
 def _(PR_2015_scores):
-    # Let's check the PageRank score for JFK
     PR_2015_scores["JFK"]
     return
 
@@ -677,21 +635,18 @@ def _(mo):
 
 @app.cell
 def _(top_10_pr):
-    # PageRank
     top_10_pr
     return
 
 
 @app.cell
 def _(top_10_bc):
-    # Betweenness Centrality
     top_10_bc
     return
 
 
 @app.cell
 def _(top_10_dc):
-    # Degree Centrality
     top_10_dc
     return
 
@@ -810,7 +765,6 @@ def _(nx, pass_2015_network):
 
 @app.cell
 def _(components):
-    # There are 3 weakly connected components in the network.
     for c in components:
         print(len(c))
     return
@@ -818,7 +772,6 @@ def _(components):
 
 @app.cell
 def _(components):
-    # Let's look at the component with 2 and 1 airports respectively.
     print(components[1])
     print(components[2])
     return
@@ -847,21 +800,18 @@ def _(pass_air_data):
 
 @app.cell
 def _(pass_2015_network):
-    # Let's get rid of them, we don't like them
     pass_2015_network.remove_nodes_from(["SPB", "SSB", "AIK"])
     return
 
 
 @app.cell
 def _(nx, pass_2015_network):
-    # Our network is now weakly connected
     nx.is_weakly_connected(pass_2015_network)
     return
 
 
 @app.cell
 def _(nx, pass_2015_network):
-    # It's not strongly connected
     nx.is_strongly_connected(pass_2015_network)
     return
 
@@ -879,12 +829,13 @@ def _(mo):
 
 
 @app.cell
-def _(nx):
+def _(nx, plt):
     G_1 = nx.DiGraph()
     G_1.add_edge(1, 2)
     G_1.add_edge(2, 3)
     G_1.add_edge(3, 1)
     nx.draw(G_1, with_labels=True)
+    plt.show()
     return (G_1,)
 
 
@@ -903,9 +854,10 @@ def _(G_1, nx):
 
 
 @app.cell
-def _(G_1, nx):
+def _(G_1, nx, plt):
     G_1.add_edge(3, 4)
     nx.draw(G_1, with_labels=True)
+    plt.show()
     return
 
 
@@ -975,7 +927,6 @@ def _(nx, pass_2015_network):
 
 @app.cell
 def _(strongly_connected_components):
-    # Let's look at one of the examples of a strong connected component
     strongly_connected_components[0]
     return
 
@@ -999,15 +950,12 @@ def _(mo):
 
 @app.cell
 def _(strongly_connected_components):
-    # Let's find the biggest strongly connected component
     pass_2015_strong_nodes = max(strongly_connected_components, key=len)
     return (pass_2015_strong_nodes,)
 
 
 @app.cell
 def _(pass_2015_network, pass_2015_strong_nodes):
-    # Create a subgraph with the nodes in the
-    # biggest strongly connected component
     pass_2015_strong = pass_2015_network.subgraph(nodes=pass_2015_strong_nodes)
     return (pass_2015_strong,)
 
@@ -1028,7 +976,6 @@ def _(mo):
 
 @app.cell
 def _(pass_2015_strong):
-    # We started with 1258 airports
     len(pass_2015_strong)
     return
 
@@ -1106,13 +1053,11 @@ def _(mo):
 
 @app.cell
 def _(pass_2015_network):
-    # We have access to the airlines that fly the route in the edge attribute airlines
     pass_2015_network["JFK"]["SFO"]
     return
 
 
 @app.function
-# A helper function to extract the airlines names from the edge attribute
 def str_to_list(a):
     return a[1:-1].split(", ")
 
@@ -1148,8 +1093,6 @@ def _(nx, pass_2015_network):
 
 @app.cell
 def _(united_network):
-    # number of nodes -> airports
-    # number of edges -> routes
     print(united_network)
     return
 
@@ -1191,13 +1134,6 @@ def _():
 
     print(inspect.getsource(airport))
     return
-
-
-@app.cell
-def _():
-    import marimo as mo
-
-    return (mo,)
 
 
 if __name__ == "__main__":

@@ -4,14 +4,13 @@ from itertools import combinations
 
 import networkx as nx
 from nxviz import circos
-from nams.functions import render_html
 
 
 def triangle_finding_strategies():
     """
     How to find triangles.
     """
-    ans = """
+    return """
 One way would be to take one node, and look at its neighbors.
 If its neighbors are also connected to one another,
 then we have found a triangle.
@@ -21,7 +20,6 @@ and walk out two nodes.
 If the starting node is the neighbor of the node two hops away,
 then the path we traced traces out the nodes in a triangle.
 """
-    return render_html(ans)
 
 
 def in_triangle(G, node):
@@ -60,7 +58,7 @@ def triadic_closure_algorithm():
     """
     How to do triadic closure.
     """
-    ans = """
+    return """
 I would suggest the following strategy:
 
 1. Pick a node
@@ -76,7 +74,6 @@ and ask whether the terminal node is a neighbor
 of the starting node.
 If not, then we have another triadic closure to make.
 """
-    return render_html(ans)
 
 
 def get_open_triangles_neighbors(G, node) -> set:
@@ -107,7 +104,7 @@ def simplest_clique():
     """
     Answer to "what is the simplest clique".
     """
-    return render_html("The simplest clique is an edge.")
+    return "The simplest clique is an edge."
 
 
 def size_k_maximal_cliques(G, k):
