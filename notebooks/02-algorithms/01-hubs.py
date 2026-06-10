@@ -1,5 +1,6 @@
 import marimo
 
+__generated_with = "0.23.9"
 app = marimo.App()
 
 
@@ -20,7 +21,9 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""## Introduction""")
+    mo.md(r"""
+    ## Introduction
+    """)
     return
 
 
@@ -34,8 +37,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     Because of the relational structure in a graph,
     we can begin to think about "importance" of a node
     that is induced because of its relationships
@@ -83,8 +85,7 @@ def _(mo):
     > The network contains the data from the day with the most interactions.
 
     To simplify the network, we have represented only the last contact between individuals.
-    """
-    )
+    """)
     return
 
 
@@ -98,7 +99,9 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""It is loaded as an undirected graph object:""")
+    mo.md(r"""
+    It is loaded as an undirected graph object:
+    """)
     return
 
 
@@ -110,12 +113,10 @@ def _(G):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     As usual, before proceeding with any analysis,
     we should know basic graph statistics.
-    """
-    )
+    """)
     return
 
 
@@ -127,8 +128,7 @@ def _(G):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## A Measure of Importance: "Number of Neighbors"
 
     One measure of importance of a node is
@@ -143,8 +143,7 @@ def _(mo):
     Every NetworkX graph provides a `G.neighbors(node)` class method,
     which lets us query a graph for the number of neighbors
     of a given node:
-    """
-    )
+    """)
     return
 
 
@@ -156,8 +155,7 @@ def _(G):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     It returns a generator that doesn't immediately return
     the exact neighbors list.
     This means we cannot know its exact length,
@@ -182,8 +180,7 @@ def _(mo):
     Hence, we will need to cast it as a list in order to know
     both its length
     and its members:
-    """
-    )
+    """)
     return
 
 
@@ -195,20 +192,17 @@ def _(G):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     In the event that some nodes have an extensive list of neighbors,
     then using the `dict_keyiterator` is potentially a good memory-saving technique,
     as it lazily yields the neighbors.
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### Exercise: Rank-ordering the number of neighbors a node has
 
     Since we know how to get the list of nodes that are neighbors of a given node,
@@ -220,8 +214,7 @@ def _(mo):
 
     - You could consider using a `pandas Series`. This would be a modern and idiomatic way of approaching the problem.
     - You could also consider using Python's `sorted` function.
-    """
-    )
+    """)
     return
 
 
@@ -229,9 +222,11 @@ def _(mo):
 def _(G):
     from nams.solutions.hubs import rank_ordered_neighbors
 
+
     def rank_ordered_neighbors_answer(G):
         # Your answer here!
         return
+
 
     # Now execute `rank_ordered_neighbors_answer`.
     answer = rank_ordered_neighbors_answer(G)
@@ -241,13 +236,10 @@ def _(G):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     Within whatever data structure you have chosen, ensure that nodes 51, 272, and 235 are listed as the first three nodes in the list, and that the number of neighbors that they have are 50, 47, and 43 respectively.
     Alternatively, you can simply compare your answer to mine below:
-
-    """
-    )
+    """)
     return
 
 
@@ -259,7 +251,9 @@ def _(G, rank_ordered_neighbors):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""The original implementation looked like the following""")
+    mo.md(r"""
+    The original implementation looked like the following
+    """)
     return
 
 
@@ -274,7 +268,9 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""And another implementation that uses generators:""")
+    mo.md(r"""
+    And another implementation that uses generators:
+    """)
     return
 
 
@@ -288,8 +284,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## Generalizing "neighbors" to arbitrarily-sized graphs
 
     The concept of neighbors is simple and appealing,
@@ -313,8 +308,7 @@ def _(mo):
     $$d = \frac{n}{N}$$
 
     NetworkX provides a function for us to calculate degree centrality conveniently:
-    """
-    )
+    """)
     return
 
 
@@ -330,8 +324,7 @@ def _(G):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     `nx.degree_centrality(G)` returns to us a dictionary of key-value pairs,
     where the keys are node IDs
     and values are the degree centrality score.
@@ -340,8 +333,7 @@ def _(mo):
 
     Incidentally, we can also sort the series
     to find the nodes with the highest degree centralities:
-    """
-    )
+    """)
     return
 
 
@@ -353,22 +345,18 @@ def _(dcs):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     Does the list order look familiar?
     It should, since the numerator of the degree centrality metric
     is identical to the number of neighbors,
     and the denominator is a constant.
-
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## Distribution of graph metrics
 
     One important concept that you should come to know
@@ -390,15 +378,13 @@ def _(mo):
     more easily.
 
     [ecdf]: https://ericmjl.github.io/blog/2018/7/14/ecdfs/
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### Exercise: Degree distribution
 
     In this next exercise, we are going to get practice visualizing these values
@@ -418,8 +404,7 @@ def _(mo):
     > Plot the ECDF of the degree centrality and degree distributions.
 
     First do it for **degree centrality**:
-    """
-    )
+    """)
     return
 
 
@@ -433,11 +418,13 @@ def _(G):
     ecdf_degree_centrality(G)
     plt.show()
 
+
     def ecdf_degree_centrality_answer(G):
         # Your answer here
 
         # Do NOT delete the next line!
         plt.show()
+
 
     # Now comment out my answer and execute your answer.
     return ecdf, plt
@@ -445,7 +432,9 @@ def _(G):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""Now let's compare it to what we get for **degree**:""")
+    mo.md(r"""
+    Now let's compare it to what we get for **degree**:
+    """)
     return
 
 
@@ -461,24 +450,20 @@ def _(G, plt):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     The fact that they are identically-shaped
     should not surprise you!
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### Why ECDFs and not histograms?
 
     Because you can lie, cheat, and steal very easily by simply changing the bin width of a histogram.
-    """
-    )
+    """)
     return
 
 
@@ -506,15 +491,13 @@ def _(G, bins, ecdf, nx, plt):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### Exercise: What about that denominator?
 
     The denominator $N$ in the degree centrality definition
     is "the number of nodes that a node could _possibly_ be connected to".
     Can you think of two ways $N$ be defined?
-    """
-    )
+    """)
     return
 
 
@@ -529,30 +512,28 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### Optional Exercise: Circos Plotting
 
     Let's get some practice with the `nxviz` API.
 
     > Visualize the graph `G`, while ordering and colouring them by the 'order' node attribute.
-    """
-    )
+    """)
     return
 
 
 @app.cell
-def _(G):
-    import nxviz as nv
-
+def _(G, nv):
     #### REPLACE THE NEXT LINE WITH YOUR ANSWER
-    nv.circos(G, sort_by="order", node_color_by="order", backend="plotly")
+    nv.circos(G, sort_by="order", node_color_by="order")
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""And here's an alternative view using an arc plot.""")
+    mo.md(r"""
+    And here's an alternative view using an arc plot.
+    """)
     return
 
 
@@ -560,21 +541,19 @@ def _(mo):
 def _(G):
     import nxviz as nv
 
-    nv.arc(G, sort_by="order", node_color_by="order", backend="plotly")
-    return
+    nv.arc(G, sort_by="order", node_color_by="order")
+    return (nv,)
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### Exercise: Visual insights
 
     Since we know that node colour and order
     are by the "order" in which the person entered into the exhibit,
     what does this visualization tell you?
-    """
-    )
+    """)
     return
 
 
@@ -589,8 +568,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### Exercise: Investigating degree centrality and node order
 
     One of the insights that we might have gleaned from visualizing the graph
@@ -600,8 +578,7 @@ def _(mo):
 
     - x-axis: node degree centrality
     - y-axis: maximum difference between the neighbors' `order`s (a node attribute) and the node's `order`.
-    """
-    )
+    """)
     return
 
 
@@ -612,6 +589,7 @@ def _(G, plt):
     dc_node_order(G)
     plt.show()
 
+
     def dc_node_order_answer(G):
         # Your answer here!
         plt.show()
@@ -621,8 +599,7 @@ def _(G, plt):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     The somewhat positive correlation between the degree centrality might tell us that this trend holds true.
     A further applied question would be to ask what behaviour of these nodes would give rise to this pattern.
     Are these nodes actually exhibit staff?
@@ -631,15 +608,13 @@ def _(mo):
     that we would overlay on top of the graph
     (by adding them as node or edge attributes)
     before we might make further statements.
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## Reflections
 
     In this chapter, we defined a metric of node importance: the degree centrality metric.
@@ -653,20 +628,17 @@ def _(mo):
 
     What other settings can you think of in which the number of neighbors that a node has can become
     a metric of importance for the node?
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## Solutions
 
     Here are the solutions to the exercises above.
-    """
-    )
+    """)
     return
 
 

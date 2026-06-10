@@ -1,5 +1,6 @@
 import marimo
 
+__generated_with = "0.23.9"
 app = marimo.App()
 
 
@@ -20,7 +21,9 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""## Introduction""")
+    mo.md(r"""
+    ## Introduction
+    """)
     return
 
 
@@ -34,21 +37,18 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## What makes a node important?
 
     In the previous notebook, we explored degree centrality as a measure of node importance.
     What other ways can we measure node importance?
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## Graph traversal and node importance
 
     Graph traversal is akin to walking along the graph, node by node,
@@ -60,15 +60,13 @@ def _(mo):
     In this chapter, we are going to learn how to perform pathfinding in a graph,
     specifically by looking for _shortest paths_ via the _breadth-first search_ algorithm.
     Then, we are going to explore measures of node importance that are related to traversals on a graph!
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## Breadth-First Search
 
     The BFS algorithm is a staple of computer science curricula,
@@ -89,8 +87,7 @@ def _(mo):
     > 1. Work out how you can find _a_ path from the node you're standing on to the other node, given that you can _only_ see nodes that are one neighbor away but have an infinitely good memory.
 
     If you are successful at designing the algorithm, you should get the answer below.
-    """
-    )
+    """)
     return
 
 
@@ -113,13 +110,11 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### Exercise: Implement the algorithm
 
     > Now that you've seen how the algorithm works, try implementing it!
-    """
-    )
+    """)
     return
 
 
@@ -159,6 +154,7 @@ def _(____, _____, _________, ___________, _____________, _________________):
 
         # print('Path does not exist between nodes {0} and {1}'.format(node1, node2))
         return False
+
     return (path_exists,)
 
 
@@ -195,8 +191,7 @@ def _(G, path_exists):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## Visualizing Paths
 
     One of the objectives of that exercise before was to help you "think on graphs".
@@ -206,8 +201,7 @@ def _(mo):
     Well first off, if you inspect the `test_path_exists` function above,
     you'll notice that NetworkX provides a `shortest_path()` function
     that you can use. Here's what using `nx.shortest_path()` looks like.
-    """
-    )
+    """)
     return
 
 
@@ -220,8 +214,7 @@ def _(G, nx):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     As you can see, it returns the nodes along the shortest path,
     incidentally in the exact order that you would traverse.
 
@@ -238,8 +231,7 @@ def _(mo):
     We will show an example here that uses nxviz's matrix plot.
 
     Let's see it in action:
-    """
-    )
+    """)
     return
 
 
@@ -254,8 +246,7 @@ def _(G, path):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     _Voila!_ Now we have the subgraph (1) extracted and (2) drawn to screen!
     In this case, the matrix plot is a suitable visualization for its compactness.
     The off-diagonals also show that each node is a neighbor to the next one.
@@ -288,15 +279,13 @@ def _(mo):
     the subgraph `g` is a perfect subset of the larger graph `G`,
     and should not be allowed to be modified
     unless the larger container graph is modified.
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### (Optional) Exercise: Draw path with neighbors of the path nodes
 
     If there's enough time, we will work through this exercise. If not, we will simply discuss the plot.
@@ -309,8 +298,7 @@ def _(mo):
     > Finally, highlight the path in red.
 
     This one is advanced, and if you need to peek at the answer, please feel free to do so.
-    """
-    )
+    """)
     return
 
 
@@ -337,19 +325,16 @@ def _(G, plot_path_with_neighbors, plt):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     In this case, we opted for an Arc plot because we only have one grouping of nodes but have a logical way to order them.
     Because the path follows the order, the edges being highlighted automatically look like hops through the graph.
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## Bottleneck nodes
 
     We're now going to revisit the concept of an "important node",
@@ -372,22 +357,19 @@ def _(mo):
     is one that has a high proportion of shortest paths
     flowing through it.
     In other words, it behaves like a _bottleneck_.
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### Betweenness centrality in NetworkX
 
     NetworkX provides a "betweenness centrality" function
     that behaves consistently with the "degree centrality" function,
     in that it returns a mapping from node to metric:
-    """
-    )
+    """)
     return
 
 
@@ -401,15 +383,13 @@ def _(G, nx):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### Exercise: compare degree and betweenness centrality
 
     > Make a scatterplot of degree centrality on the x-axis
     > and betweenness centrality on the y-axis.
     > Do they correlate with one another?
-    """
-    )
+    """)
     return
 
 
@@ -433,8 +413,7 @@ def _(G, plt):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### Think about it...
 
     ...does it make sense that degree centrality and betweenness centrality
@@ -445,8 +424,7 @@ def _(mo):
     but a "low" degree centrality?
     Before peeking at the graph below,
     think about your answer for a moment.
-    """
-    )
+    """)
     return
 
 
@@ -459,8 +437,7 @@ def _(nx, plt):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## Recap
 
     In this chapter, you learned the following things:
@@ -469,20 +446,17 @@ def _(mo):
     1. You learned how to extract subgraphs from a larger graph.
     1. You implemented visualizations of subgraphs, which should help you as you communicate with colleagues.
     1. You calculated betweenness centrality metrics for a graph, and visualized how they correlated with degree centrality.
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## Solutions
 
     Here are the solutions to the exercises above.
-    """
-    )
+    """)
     return
 
 
