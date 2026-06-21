@@ -86,7 +86,6 @@ dependencies = [
     "seaborn>=0.13",
     "ipython>=8.0",
 ]
-classifiers = ["Private :: Do Not Upload"]
 
 [tool.coverage.run]
 omit = [
