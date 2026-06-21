@@ -1,5 +1,6 @@
 import marimo
 
+__generated_with = "0.23.9"
 app = marimo.App()
 
 
@@ -15,12 +16,15 @@ def _():
 def _():
     import marimo as mo
 
+    mo
     return (mo,)
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""## Introduction""")
+    mo.md(r"""
+    ## Introduction
+    """)
     return
 
 
@@ -34,8 +38,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     If you remember, at the beginning of this book,
     we saw a quote from John Quackenbush that essentially said
     that the reason a graph is interesting is because of its edges.
@@ -69,8 +72,7 @@ def _(mo):
     > or is interested in a discussion.
     > There always only exists one edge between two nodes
     > even if more than one of the listed conditions are true.
-    """
-    )
+    """)
     return
 
 
@@ -84,8 +86,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### Exercise: Finding triangles in a graph
 
     This exercise is going to flex your ability
@@ -93,8 +94,7 @@ def _(mo):
 
     > Leveraging what you know, can you think of a few strategies
     > to find triangles in a graph?
-    """
-    )
+    """)
     return
 
 
@@ -108,8 +108,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### Exercise: Identify whether a node is in a triangle relationship or not
 
     Let's now get down to implementing this next piece of code.
@@ -126,8 +125,7 @@ def _(mo):
     Also:
 
     > `itertools.combinations` lets you iterate over every _K-combination_ of items in an iterable.
-    """
-    )
+    """)
     return
 
 
@@ -148,12 +146,10 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     Now, test your implementation below!
     The code cell will not error out if your answer is correct.
-    """
-    )
+    """)
     return
 
 
@@ -175,8 +171,7 @@ def _(G, in_triangle):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     As you can see from the test function above,
     NetworkX provides an `nx.triangles(G, node)` function.
     It returns the number of triangles that a node is involved in.
@@ -184,15 +179,13 @@ def _(mo):
     a node is involved in a triangle relationship
     because 0 is equivalent to boolean `False`,
     while any non-zero number is equivalent to boolean `True`.
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### Exercise: Extract triangles for plotting
 
     We're going to leverage another piece of knowledge that you already have:
@@ -204,8 +197,7 @@ def _(mo):
     > Then, in a new function,
     > implement code that plots only the subgraph
     > that contains those nodes.
-    """
-    )
+    """)
     return
 
 
@@ -223,7 +215,7 @@ def _():
 
     # UNCOMMENT THE NEXT LINE TO SEE MY ANSWER
     print(getsource(get_triangle_neighbors))
-    return
+    return (getsource,)
 
 
 @app.cell
@@ -245,8 +237,7 @@ def _(G):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## Triadic Closure
 
     In professional circles, making connections between two people
@@ -266,8 +257,7 @@ def _(mo):
 
     > What graph logic would you use to identify triadic closure opportunities?
     > Try writing out your general strategy, or discuss it with someone.
-    """
-    )
+    """)
     return
 
 
@@ -282,8 +272,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### Exercise: Implement triadic closure.
 
     Now, try your hand at implementing triadic closure.
@@ -291,8 +280,7 @@ def _(mo):
     > Write a function that takes in a graph `G` and a node `n`,
     > and returns all of the neighbors that are potential triadic closures
     > with `n` being the center node.
-    """
-    )
+    """)
     return
 
 
@@ -313,15 +301,13 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### Exercise: Plot the open triangles
 
     > Now, write a function that takes in a graph `G` and a node `n`,
     > and plots out that node `n` and all of the neighbors
     > that it could help close triangles with.
-    """
-    )
+    """)
     return
 
 
@@ -342,8 +328,7 @@ def _(G, plt):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## Cliques
 
     Triangles are interesting in a graph theoretic setting
@@ -359,8 +344,7 @@ def _(mo):
     ### Exercise: Simplest cliques
 
     Given this definition, what is the simplest "clique" possible?
-    """
-    )
+    """)
     return
 
 
@@ -375,8 +359,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### $k$-Cliques
 
     Cliques are identified by their size $k$,
@@ -401,8 +384,7 @@ def _(mo):
     > 2. still remain a clique.
 
     NetworkX provides a way to find all maximal cliques:
-    """
-    )
+    """)
     return
 
 
@@ -415,8 +397,7 @@ def _(G, nx):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### Exercise: finding sized-$k$ maximal cliques
 
     > Write a generator function that yields all maximal cliques of size $k$.
@@ -424,8 +405,7 @@ def _(mo):
     I'm requesting a generator as a matter of good practice;
     you never know when the list you return might explode in memory consumption,
     so generators are a cheap and easy way to reduce memory usage.
-    """
-    )
+    """)
     return
 
 
@@ -438,12 +418,15 @@ def _():
 
     # COMMENT OUT THE IMPORT LINE TO TEST YOUR ANSWER
     from nams.solutions.structures import size_k_maximal_cliques
+
     return (size_k_maximal_cliques,)
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""Now, test your implementation against the test function below.""")
+    mo.md(r"""
+    Now, test your implementation against the test function below.
+    """)
     return
 
 
@@ -461,8 +444,7 @@ def _(G, size_k_maximal_cliques):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### Clique Decomposition
 
     One _super_ neat property of cliques
@@ -476,15 +458,13 @@ def _(mo):
     Think again about 4-cliques.
     Housed within 4-cliques are four 3-cliques.
     _Draw it out if you're still not convinced!_
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### Exercise: finding all $k$-cliques in a graph
 
     > Knowing this property of $k$-cliques,
@@ -498,8 +478,7 @@ def _(mo):
     > and so on until you hit 2-cliques.
     > This implies that all cliques of size $k$
     > house cliques of size $n < k$, where $n >= 2$.
-    """
-    )
+    """)
     return
 
 
@@ -525,16 +504,14 @@ def _(G):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## Connected Components
 
     Now that we've explored a lot around cliques,
     we're now going to explore this idea of "connected components".
     To do so, I am going to have you draw the graph
     that we are working with.
-    """
-    )
+    """)
     return
 
 
@@ -548,14 +525,12 @@ def _(G):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### Exercise: Visual insights
 
     From this rendering of the CircosPlot,
     what visual insights do you have about the structure of the graph?
-    """
-    )
+    """)
     return
 
 
@@ -570,8 +545,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### Defining connected components
 
     From [Wikipedia](https://en.wikipedia.org/wiki/Connected_component_%28graph_theory%29):
@@ -579,8 +553,7 @@ def _(mo):
     > In graph theory, a connected component (or just component) of an undirected graph is a subgraph in which any two vertices are connected to each other by paths, and which is connected to no additional vertices in the supergraph.
 
     NetworkX provides a function to let us find all of the connected components:
-    """
-    )
+    """)
     return
 
 
@@ -592,7 +565,9 @@ def _(G, nx):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""Let's see how many connected component subgraphs are present:""")
+    mo.md(r"""
+    Let's see how many connected component subgraphs are present:
+    """)
     return
 
 
@@ -604,8 +579,7 @@ def _(ccsubgraph_nodes):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### Exercise: visualizing connected component subgraphs
 
     In this exercise, we're going to draw a circos plot of the graph,
@@ -624,8 +598,7 @@ def _(mo):
     > Firstly, label the nodes with a unique identifier for connected component subgraph
     > that it resides in.
     > Use `subgraph` to store this piece of metadata.
-    """
-    )
+    """)
     return
 
 
@@ -648,19 +621,15 @@ def _(G):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     > Now, draw a CircosPlot with the node order and colouring
     > dictated by the `subgraph` key.
-    """
-    )
+    """)
     return
 
 
 @app.cell
-def _(G_labelled):
-    import nxviz as nv
-
+def _(G_labelled, nv):
     def plot_cc_subgraph(G):
         # Your answer here
         pass
@@ -670,55 +639,58 @@ def _(G_labelled):
     from nams.solutions.structures import plot_cc_subgraph
 
     #### REPLACE THE NEXT LINE WITH YOUR ANSWER
-    nv.circos(G_labelled, group_by="subgraph", node_color_by="subgraph", backend="plotly")
+    nv.circos(
+        G_labelled, group_by="subgraph", node_color_by="subgraph", backend="plotly"
+    )
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     Using an arc plot will also clearly illuminate for us
     that there are no inter-group connections.
-    """
-    )
+    """)
     return
 
 
 @app.cell
 def _(G_labelled, nv):
-    nv.arc(G_labelled, group_by="subgraph", node_color_by="subgraph", backend="plotly")
-    return
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.md(r"""_Voila!_ It looks quite clear that there are indeed four disjoint group of physicians.""")
-    return
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.md(
-        r"""
-    ## Discussion question
-
-    This was from an innovation graph from 1960s. What would you expect the structure to look like in 2025?
-    """
+    nv.arc(
+        G_labelled, group_by="subgraph", node_color_by="subgraph", backend="plotly"
     )
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""## Solutions""")
+    mo.md(r"""
+    _Voila!_ It looks quite clear that there are indeed four disjoint group of physicians.
+    """)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    ## Discussion question
+
+    This was from an innovation graph from 1960s. What would you expect the structure to look like in 2025?
+    """)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    ## Solutions
+    """)
     return
 
 
 @app.cell
-def _():
+def _(getsource):
     from nams.solutions import structures
-    from inspect import getsource
 
     print(getsource(structures))
     return

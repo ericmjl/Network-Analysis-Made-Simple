@@ -1,7 +1,14 @@
-import marimo as mo
 import marimo
 
+__generated_with = "0.23.9"
 app = marimo.App()
+
+
+@app.cell(hide_code=True)
+def mo_def():
+    import marimo as mo
+
+    return (mo,)
 
 
 @app.cell
@@ -14,7 +21,9 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""## Introduction""")
+    mo.md(r"""
+    ## Introduction
+    """)
     return
 
 
@@ -28,180 +37,158 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""In this chapter, we are going to take a look at how to perform statistical inference on graphs."""
-    )
+    mo.md(r"""
+    In this chapter, we are going to take a look at how to perform statistical inference on graphs.
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        ## Statistics refresher
+    mo.md(r"""
+    ## Statistics refresher
 
-        Before we can proceed with statistical inference on graphs,
-        we must first refresh ourselves with some ideas from the world of statistics.
-        Otherwise, the methods that we will end up using
-        may seem a tad _weird_, and hence difficult to follow along.
+    Before we can proceed with statistical inference on graphs,
+    we must first refresh ourselves with some ideas from the world of statistics.
+    Otherwise, the methods that we will end up using
+    may seem a tad _weird_, and hence difficult to follow along.
 
-        To review statistical ideas,
-        let's set up a few statements and explore what they mean.
-        """
-    )
+    To review statistical ideas,
+    let's set up a few statements and explore what they mean.
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        ## We are concerned with models of randomness
+    mo.md(r"""
+    ## We are concerned with models of randomness
 
-        As with all things statistics, we are concerned with models of randomness.
-        Here, probability distributions give us a way to think about random events
-        and how to assign credibility points to them.
-        """
-    )
+    As with all things statistics, we are concerned with models of randomness.
+    Here, probability distributions give us a way to think about random events
+    and how to assign credibility points to them.
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        ### In an abstract fashion...
+    mo.md(r"""
+    ### In an abstract fashion...
 
-        The supremely abstract way of thinking about a probability distribution
-        is that it is the space of all possibilities of "stuff"
-        with different credibility points _distributed_ amongst each possible "thing".
-        """
-    )
+    The supremely abstract way of thinking about a probability distribution
+    is that it is the space of all possibilities of "stuff"
+    with different credibility points _distributed_ amongst each possible "thing".
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        ### More concretely: the coin flip
+    mo.md(r"""
+    ### More concretely: the coin flip
 
-        A more concrete example is to consider the coin flip.
-        Here, the space of all possibilities of "stuff" is the set of "heads" and "tails".
-        If we have a fair coin, then we have 0.5 credibility points _distributed_
-        to each of "heads" and "tails".
-        """
-    )
+    A more concrete example is to consider the coin flip.
+    Here, the space of all possibilities of "stuff" is the set of "heads" and "tails".
+    If we have a fair coin, then we have 0.5 credibility points _distributed_
+    to each of "heads" and "tails".
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        ### Another example: dice rolls
+    mo.md(r"""
+    ### Another example: dice rolls
 
-        Another concrete example is to consider the six-sided dice.
-        Here, the space of all possibilities of "stuff" is the set of numbers in the range $[1, 6]$.
-        If we have a fair dice, then we have 1/6 credibility points assigned
-        to each of the numbers.
-        (Unfair dice will have an unequal _distribution_ of credibility points across each face.)
-        """
-    )
+    Another concrete example is to consider the six-sided dice.
+    Here, the space of all possibilities of "stuff" is the set of numbers in the range $[1, 6]$.
+    If we have a fair dice, then we have 1/6 credibility points assigned
+    to each of the numbers.
+    (Unfair dice will have an unequal _distribution_ of credibility points across each face.)
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        ### A graph-based example: social networks
+    mo.md(r"""
+    ### A graph-based example: social networks
 
-        If we receive an undirected social network graph with 5 nodes and 6 edges,
-        we have to keep in mind that this graph with 6 edges
-        was merely one of $15 \choose 6$ ways to construct 5 node, 6 edge graphs.
-        (15 comes up because there are 15 edges that can be constructed in a 5-node undirected graph.)
-        """
-    )
+    If we receive an undirected social network graph with 5 nodes and 6 edges,
+    we have to keep in mind that this graph with 6 edges
+    was merely one of $15 \choose 6$ ways to construct 5 node, 6 edge graphs.
+    (15 comes up because there are 15 edges that can be constructed in a 5-node undirected graph.)
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        ## Hypothesis Testing
+    mo.md(r"""
+    ## Hypothesis Testing
 
-        A commonplace task in statistical inferences
-        is calculating the probability of observing a value or something more extreme
-        under an assumed "null" model of reality.
-        This is what we commonly call "hypothesis testing",
-        and where the oft-misunderstood term "p-value" shows up.
-        """
-    )
+    A commonplace task in statistical inferences
+    is calculating the probability of observing a value or something more extreme
+    under an assumed "null" model of reality.
+    This is what we commonly call "hypothesis testing",
+    and where the oft-misunderstood term "p-value" shows up.
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        ### Hypothesis testing in coin flips, by simulation
+    mo.md(r"""
+    ### Hypothesis testing in coin flips, by simulation
 
-        As an example, hypothesis testing in coin flips follows this logic:
+    As an example, hypothesis testing in coin flips follows this logic:
 
-        - I observe that 8 out of 10 coin tosses give me heads, giving me a probability of heads $p=0.8$ (a summary statistic).
-        - Under a "null distribution" of a fair coin, I simulate the distribution of probability of heads (the summary statistic) that I would get from 10 coin tosses.
-        - Finally, I use that distribution to calculate the probability of observing $p=0.8$ or more extreme.
-        """
-    )
+    - I observe that 8 out of 10 coin tosses give me heads, giving me a probability of heads $p=0.8$ (a summary statistic).
+    - Under a "null distribution" of a fair coin, I simulate the distribution of probability of heads (the summary statistic) that I would get from 10 coin tosses.
+    - Finally, I use that distribution to calculate the probability of observing $p=0.8$ or more extreme.
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        ### Hypothesis testing in graphs
+    mo.md(r"""
+    ### Hypothesis testing in graphs
 
-        The same protocol applies when we perform hypothesis testing on graphs.
+    The same protocol applies when we perform hypothesis testing on graphs.
 
-        Firstly, we calculate a _summary statistic_ that describes our graph.
+    Firstly, we calculate a _summary statistic_ that describes our graph.
 
-        Secondly, we propose a _null graph model_, and calculate our summary statistic under simulated versions of that null graph model.
+    Secondly, we propose a _null graph model_, and calculate our summary statistic under simulated versions of that null graph model.
 
-        Thirdly, we look at the probability of observing the summary statistic value that we calculated in step 1 or more extreme, under the assumed graph null model distribution.
-        """
-    )
+    Thirdly, we look at the probability of observing the summary statistic value that we calculated in step 1 or more extreme, under the assumed graph null model distribution.
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        ## Stochastic graph creation models
+    mo.md(r"""
+    ## Stochastic graph creation models
 
-        Since we are going to be dealing with models of randomness in graphs,
-        let's take a look at some examples.
-        """
-    )
+    Since we are going to be dealing with models of randomness in graphs,
+    let's take a look at some examples.
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        ### Erdos-Renyi (a.k.a. "binomial") graph
+    mo.md(r"""
+    ### Erdos-Renyi (a.k.a. "binomial") graph
 
-        On easy one to study is the Erdos-Renyi graph, also known as the "binomial" graph.
+    On easy one to study is the Erdos-Renyi graph, also known as the "binomial" graph.
 
-        The data generation story here is that we instantiate an undirected graph with $n$ nodes,
-        giving $\frac{n^2 - n}{2}$ possible edges.
-        Each edge has a probability $p$ of being created.
-        """
-    )
+    The data generation story here is that we instantiate an undirected graph with $n$ nodes,
+    giving $\frac{n^2 - n}{2}$ possible edges.
+    Each edge has a probability $p$ of being created.
+    """)
     return
 
 
@@ -214,7 +201,7 @@ def _():
 
 
 @app.cell
-def _(G_er, plt):
+def _(G_er, nx, plt):
     nx.draw(G_er)
     plt.show()
     return
@@ -222,9 +209,9 @@ def _(G_er, plt):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""You can verify that there's approximately 20% of $\frac{30^2 - 30}{2} = 435$."""
-    )
+    mo.md(r"""
+    You can verify that there's approximately 20% of $\frac{30^2 - 30}{2} = 435$.
+    """)
     return
 
 
@@ -242,7 +229,9 @@ def _(G_er):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""We can also look at the degree distribution:""")
+    mo.md(r"""
+    We can also look at the degree distribution:
+    """)
     return
 
 
@@ -260,14 +249,12 @@ def _(G_er, nx):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        ### Barabasi-Albert Graph
+    mo.md(r"""
+    ### Barabasi-Albert Graph
 
-        The data generating story of this graph generator is essentially that nodes that have lots of edges preferentially get new edges attached onto them.
-        This is what we call a "preferential attachment" process.
-        """
-    )
+    The data generating story of this graph generator is essentially that nodes that have lots of edges preferentially get new edges attached onto them.
+    This is what we call a "preferential attachment" process.
+    """)
     return
 
 
@@ -287,7 +274,9 @@ def _(G_ba):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""And the degree distribution:""")
+    mo.md(r"""
+    And the degree distribution:
+    """)
     return
 
 
@@ -301,34 +290,30 @@ def _(G_ba, ecdf, nx, pd, plt):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        You can see that even though the number of edges between the two graphs are similar,
-        their degree distribution is wildly different.
-        """
-    )
+    mo.md(r"""
+    You can see that even though the number of edges between the two graphs are similar,
+    their degree distribution is wildly different.
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        ## Load Data
+    mo.md(r"""
+    ## Load Data
 
-        For this notebook, we are going to look at a protein-protein interaction network,
-        and test the hypothesis that this network was _not_ generated by the data generating process
-        described by an Erdos-Renyi graph.
+    For this notebook, we are going to look at a protein-protein interaction network,
+    and test the hypothesis that this network was _not_ generated by the data generating process
+    described by an Erdos-Renyi graph.
 
-        Let's load a [protein-protein interaction network dataset](http://konect.cc/networks/moreno_propro).
+    Let's load a [protein-protein interaction network dataset](http://konect.cc/networks/moreno_propro).
 
-        > This undirected network contains protein interactions contained in yeast.
-        > Research showed that proteins with a high degree
-        > were more important for the survival of the yeast than others.
-        > A node represents a protein and an edge represents a metabolic interaction between two proteins.
-        > The network contains loops.
-        """
-    )
+    > This undirected network contains protein interactions contained in yeast.
+    > Research showed that proteins with a high degree
+    > were more important for the survival of the yeast than others.
+    > A node represents a protein and an edge represents a metabolic interaction between two proteins.
+    > The network contains loops.
+    """)
     return
 
 
@@ -344,9 +329,9 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""As is always the case, let's make sure we know some basic stats of the graph."""
-    )
+    mo.md(r"""
+    As is always the case, let's make sure we know some basic stats of the graph.
+    """)
     return
 
 
@@ -364,7 +349,9 @@ def _(G):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""Let's also examine the degree distribution of the graph.""")
+    mo.md(r"""
+    Let's also examine the degree distribution of the graph.
+    """)
     return
 
 
@@ -378,7 +365,9 @@ def _(G, ecdf, nx, pd, plt):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""Finally, we should visualize the graph to get a feel for it.""")
+    mo.md(r"""
+    Finally, we should visualize the graph to get a feel for it.
+    """)
     return
 
 
@@ -395,50 +384,46 @@ def _(G):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        One thing we might infer from this visualization
-        is that the vast majority of nodes have a very small degree,
-        while a very small number of nodes have a high degree.
-        That would prompt us to think:
-        what process could be responsible for generating this graph?
-        """
-    )
+    mo.md(r"""
+    One thing we might infer from this visualization
+    is that the vast majority of nodes have a very small degree,
+    while a very small number of nodes have a high degree.
+    That would prompt us to think:
+    what process could be responsible for generating this graph?
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        ## Inferring Graph Generating Model
+    mo.md(r"""
+    ## Inferring Graph Generating Model
 
-        Given a graph dataset, how do we identify which data generating model provides the best fit?
+    Given a graph dataset, how do we identify which data generating model provides the best fit?
 
-        One way to do this is to compare characteristics of a graph generating model against the characteristics of the graph.
-        The logic here is that if we have a good graph generating model for the data,
-        we should, in theory, observe the observed graph's characteristics
-        in the graphs generated by the graph generating model.
-        """
-    )
+    One way to do this is to compare characteristics of a graph generating model against the characteristics of the graph.
+    The logic here is that if we have a good graph generating model for the data,
+    we should, in theory, observe the observed graph's characteristics
+    in the graphs generated by the graph generating model.
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        ### Comparison of degree distribution
+    mo.md(r"""
+    ### Comparison of degree distribution
 
-        Let's compare the degree distribution between the data, a few Erdos-Renyi graphs, and a few Barabasi-Albert graphs.
-        """
-    )
+    Let's compare the degree distribution between the data, a few Erdos-Renyi graphs, and a few Barabasi-Albert graphs.
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""### Comparison with Barabasi-Albert graphs""")
+    mo.md(r"""
+    ### Comparison with Barabasi-Albert graphs
+    """)
     return
 
 
@@ -464,7 +449,9 @@ def _(G, ecdf, nx, pd, plt):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""### Comparison with Erdos-Renyi graphs""")
+    mo.md(r"""
+    ### Comparison with Erdos-Renyi graphs
+    """)
     return
 
 
@@ -491,27 +478,25 @@ def _(G, ecdf, interact, nx, pd, plt):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""Given the degree distribution only, which model do you think better describes the generation of a protein-protein interaction network?"""
-    )
+    mo.md(r"""
+    Given the degree distribution only, which model do you think better describes the generation of a protein-protein interaction network?
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        ## Quantitative Model Comparison
+    mo.md(r"""
+    ## Quantitative Model Comparison
 
-        Each time we plug in a value of $m$ for the Barabasi-Albert graph model, we are using one of many possible Barabasi-Albert graph models, each with a different $m$.
-        Similarly, each time we choose a different $p$ for the Erdos-Renyi model, we are using one of many possible Erdos-Renyi graph models, each with a different $p$.
+    Each time we plug in a value of $m$ for the Barabasi-Albert graph model, we are using one of many possible Barabasi-Albert graph models, each with a different $m$.
+    Similarly, each time we choose a different $p$ for the Erdos-Renyi model, we are using one of many possible Erdos-Renyi graph models, each with a different $p$.
 
-        To quantitatively compare degree distributions, we can use the [Wasserstein distance][wasd] between the data.
-        Let's see how to implement this.
+    To quantitatively compare degree distributions, we can use the [Wasserstein distance][wasd] between the data.
+    Let's see how to implement this.
 
-        [wasd]: https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.wasserstein_distance.html
-        """
-    )
+    [wasd]: https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.wasserstein_distance.html
+    """)
     return
 
 
@@ -550,13 +535,11 @@ def _(
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        Notice that because the graphs are instantiated in a non-deterministic fashion, re-running the cell above will give you different values for each new graph generated.
+    mo.md(r"""
+    Notice that because the graphs are instantiated in a non-deterministic fashion, re-running the cell above will give you different values for each new graph generated.
 
-        Let's now plot the wasserstein distance to our graph data for the two particular Erdos-Renyi and Barabasi-Albert graph models shown above.
-        """
-    )
+    Let's now plot the wasserstein distance to our graph data for the two particular Erdos-Renyi and Barabasi-Albert graph models shown above.
+    """)
     return
 
 
@@ -602,54 +585,54 @@ def _(ba_dist, er_dist, pd, plt):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""From this, we might conclude that the Barabasi-Albert graph with $m=1$ has the better fit to the protein-protein interaction network graph."""
-    )
+    mo.md(r"""
+    From this, we might conclude that the Barabasi-Albert graph with $m=1$ has the better fit to the protein-protein interaction network graph.
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        ## Interpretation
+    mo.md(r"""
+    ## Interpretation
 
-        That statement, accurate as it might be, still does not connect the dots to _biology_.
+    That statement, accurate as it might be, still does not connect the dots to _biology_.
 
-        Let's think about the generative model for this graph.
-        The Barabasi-Albert graph gives us a model for "rich gets richer".
-        Given the current state of the graph,
-        if we want to add a new edge, we first pick a node with probability proportional to
-        the number of edges it already has.
-        Then, we pick another node with probability proportional to the number of edges that it has too.
-        Finally, we add an edge there.
-        This has the effect of "enriching" nodes that have a large number of edges with more edges.
+    Let's think about the generative model for this graph.
+    The Barabasi-Albert graph gives us a model for "rich gets richer".
+    Given the current state of the graph,
+    if we want to add a new edge, we first pick a node with probability proportional to
+    the number of edges it already has.
+    Then, we pick another node with probability proportional to the number of edges that it has too.
+    Finally, we add an edge there.
+    This has the effect of "enriching" nodes that have a large number of edges with more edges.
 
-        How might this connect to biology?
+    How might this connect to biology?
 
-        We can't necessarily provide a concrete answer, but this model might help raise new hypotheses.
+    We can't necessarily provide a concrete answer, but this model might help raise new hypotheses.
 
-        For example, if protein-protein interactions of the "binding" kind
-        are driven by subdomains, then proteins that acquire a domain through recombination
-        may end up being able to bind to everything else that the domain was able to.
-        In this fashion, proteins with that particular binding domain
-        gain new edges more readily.
+    For example, if protein-protein interactions of the "binding" kind
+    are driven by subdomains, then proteins that acquire a domain through recombination
+    may end up being able to bind to everything else that the domain was able to.
+    In this fashion, proteins with that particular binding domain
+    gain new edges more readily.
 
-        Testing these hypotheses would be a totally different matter, and at this point,
-        I submit the above hypothesis with a large amount of salt thrown over my shoulder.
-        In other words, the hypothesized mechanism could be completely wrong.
-        However, I hope that this example illustrated that
-        the usage of a "graph generative model" can help us narrow down hypotheses about the observed world.
-        """
-    )
+    Testing these hypotheses would be a totally different matter, and at this point,
+    I submit the above hypothesis with a large amount of salt thrown over my shoulder.
+    In other words, the hypothesized mechanism could be completely wrong.
+    However, I hope that this example illustrated that
+    the usage of a "graph generative model" can help us narrow down hypotheses about the observed world.
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""## Solutions
+    mo.md(r"""
+    ## Solutions
 
-No code exercises in this chapter.""")
+    No code exercises in this chapter.
+    """)
     return
 
 
