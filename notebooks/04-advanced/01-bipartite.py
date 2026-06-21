@@ -1,7 +1,21 @@
-import marimo as mo
 import marimo
 
+__generated_with = "0.23.9"
 app = marimo.App()
+
+
+@app.cell(hide_code=True)
+def mo_def():
+    import marimo as mo
+
+    return (mo,)
+
+
+@app.cell(hide_code=True)
+def plt_import():
+    import matplotlib.pyplot as plt
+
+    return
 
 
 @app.cell
@@ -14,7 +28,9 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""## Introduction""")
+    mo.md(r"""
+    ## Introduction
+    """)
     return
 
 
@@ -28,66 +44,64 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        In this chapter, we will look at bipartite graphs and their applications.
+    mo.md(r"""
+    In this chapter, we will look at bipartite graphs and their applications.
 
-        ## What are bipartite graphs?
+    ## What are bipartite graphs?
 
-        As the name suggests,
-        bipartite have two (bi) node partitions (partite).
-        In other words, we can assign nodes to one of the two partitions.
-        (By contrast, all of the graphs that we have seen before are _unipartite_:
-        they only have a single partition.)
+    As the name suggests,
+    bipartite have two (bi) node partitions (partite).
+    In other words, we can assign nodes to one of the two partitions.
+    (By contrast, all of the graphs that we have seen before are _unipartite_:
+    they only have a single partition.)
 
-        ### Rules for bipartite graphs
+    ### Rules for bipartite graphs
 
-        With unipartite graphs, you might remember a few rules that apply.
+    With unipartite graphs, you might remember a few rules that apply.
 
-        Firstly, nodes and edges belong to a _set_.
-        This means the node set contains only unique members,
-        i.e. no node can be duplicated.
-        The same applies for the edge set.
+    Firstly, nodes and edges belong to a _set_.
+    This means the node set contains only unique members,
+    i.e. no node can be duplicated.
+    The same applies for the edge set.
 
-        On top of those two basic rules, bipartite graphs add an additional rule:
-        Edges can only occur between nodes of **different** partitions.
-        In other words, nodes within the same partition
-        are not allowed to be connected to one another.
+    On top of those two basic rules, bipartite graphs add an additional rule:
+    Edges can only occur between nodes of **different** partitions.
+    In other words, nodes within the same partition
+    are not allowed to be connected to one another.
 
-        ### Applications of bipartite graphs
+    ### Applications of bipartite graphs
 
-        Where do we see bipartite graphs being used?
-        Here's one that is very relevant to e-commerce,
-        which touches our daily lives:
+    Where do we see bipartite graphs being used?
+    Here's one that is very relevant to e-commerce,
+    which touches our daily lives:
 
-        > We can model customer purchases of products using a bipartite graph.
-        > Here, the two node sets are **customer** nodes and **product** nodes,
-        > and edges indicate that a customer $C$ purchased a product $P$.
+    > We can model customer purchases of products using a bipartite graph.
+    > Here, the two node sets are **customer** nodes and **product** nodes,
+    > and edges indicate that a customer $C$ purchased a product $P$.
 
-        On the basis of this graph, we can do interesting analyses,
-        such as finding customers that are similar to one another
-        on the basis of their shared product purchases.
+    On the basis of this graph, we can do interesting analyses,
+    such as finding customers that are similar to one another
+    on the basis of their shared product purchases.
 
-        Can you think of other situations
-        where a bipartite graph model can be useful?
+    Can you think of other situations
+    where a bipartite graph model can be useful?
 
-        ## Dataset
+    ## Dataset
 
-        Here's another application in crime analysis,
-        which is relevant to the example that we will use in this chapter:
+    Here's another application in crime analysis,
+    which is relevant to the example that we will use in this chapter:
 
-        > This bipartite network contains persons
-        > who appeared in at least one crime case
-        > as either a suspect, a victim, a witness
-        > or both a suspect and victim at the same time.
-        > A left node represents a person and a right node represents a crime.
-        > An edge between two nodes shows that
-        > the left node was involved in the crime
-        > represented by the right node.
+    > This bipartite network contains persons
+    > who appeared in at least one crime case
+    > as either a suspect, a victim, a witness
+    > or both a suspect and victim at the same time.
+    > A left node represents a person and a right node represents a crime.
+    > An edge between two nodes shows that
+    > the left node was involved in the crime
+    > represented by the right node.
 
-        This crime dataset was also sourced from Konect.
-        """
-    )
+    This crime dataset was also sourced from Konect.
+    """)
     return
 
 
@@ -103,26 +117,22 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        If you inspect the nodes,
-        you will see that they contain a special metadata keyword: `bipartite`.
-        This is a special keyword that NetworkX can use
-        to identify nodes of a given partition.
-        """
-    )
+    mo.md(r"""
+    If you inspect the nodes,
+    you will see that they contain a special metadata keyword: `bipartite`.
+    This is a special keyword that NetworkX can use
+    to identify nodes of a given partition.
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        ### Visualize the crime network
+    mo.md(r"""
+    ### Visualize the crime network
 
-        To help us get our bearings right, let's visualize the crime network.
-        """
-    )
+    To help us get our bearings right, let's visualize the crime network.
+    """)
     return
 
 
@@ -136,29 +146,26 @@ def _(G):
         group_by="bipartite",
         node_color_by="bipartite",
         node_enc_kwargs={"size_scale": 3},
-        backend="plotly",
     )
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        ### Exercise: Extract each node set
+    mo.md(r"""
+    ### Exercise: Extract each node set
 
-        A useful thing to be able to do
-        is to extract each partition's node set.
-        This will become handy when interacting with
-        NetworkX's bipartite algorithms later on.
+    A useful thing to be able to do
+    is to extract each partition's node set.
+    This will become handy when interacting with
+    NetworkX's bipartite algorithms later on.
 
-        > Write a function that extracts all of the nodes
-        > from specified node partition.
-        > It should also raise a plain Exception
-        > if no nodes exist in that specified partition.
-        > (as a precaution against users putting in invalid partition names).
-        """
-    )
+    > Write a function that extracts all of the nodes
+    > from specified node partition.
+    > It should also raise a plain Exception
+    > if no nodes exist in that specified partition.
+    > (as a precaution against users putting in invalid partition names).
+    """)
     return
 
 
@@ -182,71 +189,61 @@ def _(_______, ____________, _____________):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        ## Bipartite Graph Projections
+    mo.md(r"""
+    ## Bipartite Graph Projections
 
-        In a bipartite graph, one task that can be useful to do
-        is to calculate the projection of a graph onto one of its nodes.
+    In a bipartite graph, one task that can be useful to do
+    is to calculate the projection of a graph onto one of its nodes.
 
-        What do we mean by the "projection of a graph"?
-        It is best visualized using this figure:
-        """
-    )
+    What do we mean by the "projection of a graph"?
+    It is best visualized using this figure:
+    """)
     return
 
 
 @app.cell
-def _(nx, plt):
+def _(nx):
+    import matplotlib.pyplot as _plt
     from nams.solutions.bipartite import (
         draw_bipartite_graph_example,
         bipartite_example_graph,
     )
-    from nxviz import annotate
 
     bG = bipartite_example_graph()
     pG = nx.bipartite.projection.projected_graph(bG, "abcd")
     _ax = draw_bipartite_graph_example()
-    plt.sca(_ax[0])
-    annotate.parallel_labels(bG, group_by="bipartite")
-    plt.sca(_ax[1])
-    annotate.arc_labels(pG)
-    plt.show()
+    _plt.show()
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        As shown in the figure above, we start first with a bipartite graph with two node sets,
-        the "alphabet" set and the "numeric" set.
-        The projection of this bipartite graph onto the "alphabet" node set
-        is a graph that is constructed such that it only contains the "alphabet" nodes,
-        and edges join the "alphabet" nodes because they share a connection to a "numeric" node.
-        The red edge on the right
-        is basically the red path traced on the left.
-        """
-    )
+    mo.md(r"""
+    As shown in the figure above, we start first with a bipartite graph with two node sets,
+    the "alphabet" set and the "numeric" set.
+    The projection of this bipartite graph onto the "alphabet" node set
+    is a graph that is constructed such that it only contains the "alphabet" nodes,
+    and edges join the "alphabet" nodes because they share a connection to a "numeric" node.
+    The red edge on the right
+    is basically the red path traced on the left.
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        ### Computing graph projections
+    mo.md(r"""
+    ### Computing graph projections
 
-        How does one compute graph projections using NetworkX?
-        Turns out, NetworkX has a `bipartite` submodule,
-        which gives us all of the facilities that we need
-        to interact with bipartite algorithms.
+    How does one compute graph projections using NetworkX?
+    Turns out, NetworkX has a `bipartite` submodule,
+    which gives us all of the facilities that we need
+    to interact with bipartite algorithms.
 
-        First of all, we need to check that the graph
-        is indeed a bipartite graph.
-        NetworkX provides a function for us to do so:
-        """
-    )
+    First of all, we need to check that the graph
+    is indeed a bipartite graph.
+    NetworkX provides a function for us to do so:
+    """)
     return
 
 
@@ -260,15 +257,13 @@ def _(G):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        Now that we've confirmed that the graph is indeed bipartite,
-        we can use the NetworkX bipartite submodule functions
-        to generate the bipartite projection onto one of the node partitions.
+    mo.md(r"""
+    Now that we've confirmed that the graph is indeed bipartite,
+    we can use the NetworkX bipartite submodule functions
+    to generate the bipartite projection onto one of the node partitions.
 
-        First off, we need to extract nodes from a particular partition.
-        """
-    )
+    First off, we need to extract nodes from a particular partition.
+    """)
     return
 
 
@@ -281,7 +276,9 @@ def _(G, extract_partition_nodes):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""Next, we can compute the projection:""")
+    mo.md(r"""
+    Next, we can compute the projection:
+    """)
     return
 
 
@@ -294,13 +291,11 @@ def _(G, bipartite, crime_nodes, person_nodes):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        And with that, we have our projected graphs!
+    mo.md(r"""
+    And with that, we have our projected graphs!
 
-        Go ahead and inspect them:
-        """
-    )
+    Go ahead and inspect them:
+    """)
     return
 
 
@@ -318,33 +313,29 @@ def _(crime_graph):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        Now, what is the _interpretation_ of these projected graphs?
+    mo.md(r"""
+    Now, what is the _interpretation_ of these projected graphs?
 
-        - For `person_graph`, we have found _individuals who are linked by shared participation (whether witness or suspect) in a crime._
-        - For `crime_graph`, we have found _crimes that are linked by shared involvement by people._
+    - For `person_graph`, we have found _individuals who are linked by shared participation (whether witness or suspect) in a crime._
+    - For `crime_graph`, we have found _crimes that are linked by shared involvement by people._
 
-        Just by this graph, we already can find out pretty useful information.
-        Let's use an exercise that leverages what you already know
-        to extract useful information from the projected graph.
-        """
-    )
+    Just by this graph, we already can find out pretty useful information.
+    Let's use an exercise that leverages what you already know
+    to extract useful information from the projected graph.
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        ### Exercise: find the crime(s) that have the most shared connections with other crimes
+    mo.md(r"""
+    ### Exercise: find the crime(s) that have the most shared connections with other crimes
 
-        > Find crimes that are most similar to one another
-        > on the basis of the number of shared connections to individuals.
+    > Find crimes that are most similar to one another
+    > on the basis of the number of shared connections to individuals.
 
-        _Hint: This is a degree centrality problem!_
-        """
-    )
+    _Hint: This is a degree centrality problem!_
+    """)
     return
 
 
@@ -367,13 +358,11 @@ def _(______________, ___________________, crime_graph, nx):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        ### Exercise: find the individual(s) that have the most shared connections with other individuals
+    mo.md(r"""
+    ### Exercise: find the individual(s) that have the most shared connections with other individuals
 
-        > Now do the analogous thing for individuals!
-        """
-    )
+    > Now do the analogous thing for individuals!
+    """)
     return
 
 
@@ -394,16 +383,14 @@ def _(______________, ___________________, nx, person_graph):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        ## Weighted Projection
+    mo.md(r"""
+    ## Weighted Projection
 
-        Though we were able to find out which graphs were connected with one another,
-        we did not record in the resulting projected graph
-        the **strength** by which the two nodes were connected.
-        To preserve this information, we need another function:
-        """
-    )
+    Though we were able to find out which graphs were connected with one another,
+    we did not record in the resulting projected graph
+    the **strength** by which the two nodes were connected.
+    To preserve this information, we need another function:
+    """)
     return
 
 
@@ -416,24 +403,22 @@ def _(G, bipartite, person_nodes):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        ### Exercise: Find the people that can help with investigating a `crime`'s `person`.
+    mo.md(r"""
+    ### Exercise: Find the people that can help with investigating a `crime`'s `person`.
 
-        Let's pretend that we are a detective trying to solve a crime,
-        and that we right now need to find other individuals
-        who were not implicated in the same _exact_ crime as an individual was,
-        but who might be able to give us information about that individual
-        because they were implicated in other crimes with that individual.
+    Let's pretend that we are a detective trying to solve a crime,
+    and that we right now need to find other individuals
+    who were not implicated in the same _exact_ crime as an individual was,
+    but who might be able to give us information about that individual
+    because they were implicated in other crimes with that individual.
 
-        > Implement a function that takes in a bipartite graph `G`, a string `person` and a string `crime`,
-        > and returns a list of other `person`s that were **not** implicated in the `crime`,
-        > but were connected to the `person` via other crimes.
-        > It should return a _ranked list_,
-        > based on the **number of shared crimes** (from highest to lowest)
-        > because the ranking will help with triage.
-        """
-    )
+    > Implement a function that takes in a bipartite graph `G`, a string `person` and a string `crime`,
+    > and returns a list of other `person`s that were **not** implicated in the `crime`,
+    > but were connected to the `person` via other crimes.
+    > It should return a _ranked list_,
+    > based on the **number of shared crimes** (from highest to lowest)
+    > because the ranking will help with triage.
+    """)
     return
 
 
@@ -487,23 +472,21 @@ def _(
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        ## Degree Centrality
+    mo.md(r"""
+    ## Degree Centrality
 
-        The degree centrality metric is something we can calculate for bipartite graphs.
-        Recall that the degree centrality metric is the number of neighbors of a node
-        divided by the total number of _possible_ neighbors.
+    The degree centrality metric is something we can calculate for bipartite graphs.
+    Recall that the degree centrality metric is the number of neighbors of a node
+    divided by the total number of _possible_ neighbors.
 
-        In a unipartite graph, the denominator can be the total number of nodes less one
-        (if self-loops are not allowed)
-        or simply the total number of nodes (if self loops _are_ allowed).
+    In a unipartite graph, the denominator can be the total number of nodes less one
+    (if self-loops are not allowed)
+    or simply the total number of nodes (if self loops _are_ allowed).
 
-        ### Exercise: What is the denominator for bipartite graphs?
+    ### Exercise: What is the denominator for bipartite graphs?
 
-        Think about it for a moment, then write down your answer.
-        """
-    )
+    Think about it for a moment, then write down your answer.
+    """)
     return
 
 
@@ -517,27 +500,25 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        ### Exercise: Which `persons` are implicated in the most number of crimes?
+    mo.md(r"""
+    ### Exercise: Which `persons` are implicated in the most number of crimes?
 
-        > Find the `persons` (singular or plural) who are connected to the most number of crimes.
+    > Find the `persons` (singular or plural) who are connected to the most number of crimes.
 
-        To do so, you will need to use `nx.bipartite.degree_centrality`,
-        rather than the regular `nx.degree_centrality` function.
+    To do so, you will need to use `nx.bipartite.degree_centrality`,
+    rather than the regular `nx.degree_centrality` function.
 
-        `nx.bipartite.degree_centrality` requires that you pass in
-        a node set from one of the partitions
-        so that it can correctly partition nodes on the other set.
-        What is returned, though, is the degree centrality
-        for nodes in both sets.
-        Here is an example to show you how the function is used:
+    `nx.bipartite.degree_centrality` requires that you pass in
+    a node set from one of the partitions
+    so that it can correctly partition nodes on the other set.
+    What is returned, though, is the degree centrality
+    for nodes in both sets.
+    Here is an example to show you how the function is used:
 
-        ```python
-        dcs = nx.bipartite.degree_centrality(my_graph, nodes_from_one_partition)
-        ```
-        """
-    )
+    ```python
+    dcs = nx.bipartite.degree_centrality(my_graph, nodes_from_one_partition)
+    ```
+    """)
     return
 
 
@@ -560,13 +541,11 @@ def _(
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        ## Solutions
+    mo.md(r"""
+    ## Solutions
 
-        Here are the solutions to the exercises above.
-        """
-    )
+    Here are the solutions to the exercises above.
+    """)
     return
 
 
@@ -576,13 +555,6 @@ def _(getsource):
 
     print(getsource(bipartite_nams))
     return
-
-
-@app.cell
-def _():
-    import matplotlib.pyplot as plt
-
-    return (plt,)
 
 
 if __name__ == "__main__":

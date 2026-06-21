@@ -1,6 +1,15 @@
-import marimo as mo
+import marimo
 
-app = mo.App()
+__generated_with = "0.23.9"
+app = marimo.App()
+
+
+@app.cell(hide_code=True)
+def mo_def():
+    import marimo as mo
+
+    mo
+    return (mo,)
 
 
 @app.cell(hide_code=True)
@@ -13,7 +22,9 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""## Introduction""")
+    mo.md(r"""
+    ## Introduction
+    """)
     return
 
 
@@ -27,8 +38,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     In order to get you familiar with graph ideas,
     I have deliberately chosen to steer away from
     the more pedantic matters
@@ -122,15 +132,13 @@ def _(mo):
     In this chapter, the datasets that we will be looking at
     are going to be formatted in both ways.
     Let's get going.
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## Dataset
 
     We will be working with the Divvy bike sharing dataset.
@@ -142,8 +150,7 @@ def _(mo):
     > - `DivvyTrips_2013.csv`, containing the trips.
 
     Let's dig into the data!
-    """
-    )
+    """)
     return
 
 
@@ -156,7 +163,9 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""Firstly, we need to unzip the dataset:""")
+    mo.md(r"""
+    Firstly, we need to unzip the dataset:
+    """)
     return
 
 
@@ -175,13 +184,11 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     Now, let's load in both tables.
 
     First is the `stations` table:
-    """
-    )
+    """)
     return
 
 
@@ -206,7 +213,9 @@ def _(stations):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""Now, let's load in the `trips` table.""")
+    mo.md(r"""
+    Now, let's load in the `trips` table.
+    """)
     return
 
 
@@ -242,8 +251,7 @@ def _(trips_summary):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## Graph Model
 
     Given the data, if we wished to use a graph as a data model
@@ -262,8 +270,7 @@ def _(mo):
 
     NetworkX provides an extremely convenient way
     to load data from a pandas DataFrame:
-    """
-    )
+    """)
     return
 
 
@@ -283,14 +290,12 @@ def _(trips_summary):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### Inspect the graph
 
     Once the graph is in memory,
     we can inspect it to get out summary graph statistics.
-    """
-    )
+    """)
     return
 
 
@@ -302,7 +307,9 @@ def _(G):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""You'll notice that the edge metadata have been added correctly: we have recorded in there the number of trips between stations.""")
+    mo.md(r"""
+    You'll notice that the edge metadata have been added correctly: we have recorded in there the number of trips between stations.
+    """)
     return
 
 
@@ -314,7 +321,9 @@ def _(G):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""However, the node metadata is not present:""")
+    mo.md(r"""
+    However, the node metadata is not present:
+    """)
     return
 
 
@@ -326,8 +335,7 @@ def _(G):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### Annotate node metadata
 
     We have rich station data on hand,
@@ -338,8 +346,7 @@ def _(mo):
     Let's see how we can add this information in.
 
     Firstly, recall what the `stations` dataframe looked like:
-    """
-    )
+    """)
     return
 
 
@@ -351,8 +358,7 @@ def _(stations):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     The `id` column gives us the node ID in the graph,
     so if we set `id` to be the index,
     if we then also loop over each row,
@@ -361,8 +367,7 @@ def _(mo):
     and add the information into the graph.
 
     Let's see this in action.
-    """
-    )
+    """)
     return
 
 
@@ -376,7 +381,9 @@ def _(G, stations):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""Now, our node metadata should be populated.""")
+    mo.md(r"""
+    Now, our node metadata should be populated.
+    """)
     return
 
 
@@ -388,8 +395,7 @@ def _(G):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     In `nxviz`, a `GeoPlot` object is available
     that allows you to quickly visualize
     a graph that has geographic data.
@@ -416,8 +422,7 @@ def _(mo):
     ```python
     G.remove_edge(node1, node2)  # does not return anything
     ```
-    """
-    )
+    """)
     return
 
 
@@ -443,21 +448,18 @@ def _(G, G_________, ___, ____, ___________, d):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### Visualize using GeoPlot
 
     `nxviz` provides a GeoPlot object
     that lets you quickly visualize geospatial graph data.
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     A note on geospatial visualizations:
 
     > As the creator of `nxviz`,
@@ -467,8 +469,7 @@ def _(mo):
     >
     > That said, `nxviz` can probably do what you need
     > for a quick-and-dirty view of the data.
-    """
-    )
+    """)
     return
 
 
@@ -482,30 +483,26 @@ def _(G_filtered):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     Does that look familiar to you? Looks quite a bit like Chicago, I'd say :)
 
     Jesting aside, this visualization does help illustrate
     that the majority of trips occur between stations that are
     near the city center.
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## Pickling Graphs
 
     Since NetworkX graphs are Python objects,
     the canonical way to save them is by pickling them.
 
     Here's an example in action:
-    """
-    )
+    """)
     return
 
 
@@ -520,7 +517,9 @@ def _(G):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""And just to show that it can be loaded back into memory:""")
+    mo.md(r"""
+    And just to show that it can be loaded back into memory:
+    """)
     return
 
 
@@ -533,8 +532,7 @@ def _(pickle):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### Exercise: checking graph integrity
 
     If you get a graph dataset as a pickle,
@@ -543,8 +541,7 @@ def _(mo):
 
     > Write a function that tests that the graph
     > has the correct number of nodes and edges inside it.
-    """
-    )
+    """)
     return
 
 
@@ -563,8 +560,7 @@ def _(G):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## Other text formats
 
     CSV files and `pandas` DataFrames
@@ -583,20 +579,17 @@ def _(mo):
     You can see other examples of how we load data
     by browsing through the source file of `load_data.py`
     and studying how we construct graph objects.
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## Solutions
 
     The solutions to this chapter's exercises are below
-    """
-    )
+    """)
     return
 
 

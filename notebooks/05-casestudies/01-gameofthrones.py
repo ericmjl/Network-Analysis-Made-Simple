@@ -1,11 +1,14 @@
 import marimo
 
+__generated_with = "0.23.9"
 app = marimo.App()
 
 
 @app.cell
 def _():
     import marimo as mo
+
+    mo
     return (mo,)
 
 
@@ -24,27 +27,25 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        rf"""
-        ## Introduction
+    mo.md(rf"""
+    ## Introduction
 
-        In this chapter, we will use Game of Thrones as a case study to practice our newly learnt skills of network analysis.
+    In this chapter, we will use Game of Thrones as a case study to practice our newly learnt skills of network analysis.
 
-        It is surprising right? What is the relationship between a fatansy TV show/novel and network science or Python(not dragons).
+    It is surprising right? What is the relationship between a fatansy TV show/novel and network science or Python(not dragons).
 
-        If you haven't heard of Game of Thrones, then you must be really good at hiding. Game of Thrones is a hugely popular television series by HBO based on the (also) hugely popular book series A Song of Ice and Fire by George R.R. Martin. In this notebook, we will analyze the co-occurrence network of the characters in the Game of Thrones books. Here, two characters are considered to co-occur if their names appear in the vicinity of 15 words from one another in the books.
+    If you haven't heard of Game of Thrones, then you must be really good at hiding. Game of Thrones is a hugely popular television series by HBO based on the (also) hugely popular book series A Song of Ice and Fire by George R.R. Martin. In this notebook, we will analyze the co-occurrence network of the characters in the Game of Thrones books. Here, two characters are considered to co-occur if their names appear in the vicinity of 15 words from one another in the books.
 
-        The figure below is a precusor of what we will analyse in this chapter.
+    The figure below is a precusor of what we will analyse in this chapter.
 
-        {mo.image("images/got.png")}
-
-
-        The dataset is publicly available for the 5 books at https://github.com/mathbeveridge/asoiaf. This is an interaction network and were created by connecting two characters whenever their names (or nicknames) appeared within 15 words of one another in one of the books. The edge weight corresponds to the number of interactions.
+    {mo.image("images/got.png")}
 
 
-        Blog: https://networkofthrones.wordpress.com
-        """
-    )
+    The dataset is publicly available for the 5 books at https://github.com/mathbeveridge/asoiaf. This is an interaction network and were created by connecting two characters whenever their names (or nicknames) appeared within 15 words of one another in one of the books. The edge weight corresponds to the number of interactions.
+
+
+    Blog: https://networkofthrones.wordpress.com
+    """)
     return
 
 
@@ -58,13 +59,11 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        The resulting DataFrame books has 5 columns: Source, Target, Type, weight, and book. Source and target are the two nodes that are linked by an edge. As we know a network can have directed or undirected edges and in this network all the edges are undirected. The weight attribute of every edge tells us the number of interactions that the characters have had over the book, and the book column tells us the book number.
+    mo.md(r"""
+    The resulting DataFrame books has 5 columns: Source, Target, Type, weight, and book. Source and target are the two nodes that are linked by an edge. As we know a network can have directed or undirected edges and in this network all the edges are undirected. The weight attribute of every edge tells us the number of interactions that the characters have had over the book, and the book column tells us the book number.
 
-        Let's have a look at the data.
-        """
-    )
+    Let's have a look at the data.
+    """)
     return
 
 
@@ -82,13 +81,11 @@ def _(books):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        From the above data we can see that the characters Addam Marbrand and Tywin Lannister have interacted 6 times in the first book.
+    mo.md(r"""
+    From the above data we can see that the characters Addam Marbrand and Tywin Lannister have interacted 6 times in the first book.
 
-        We can investigate this data by using the pandas DataFrame. Let's find all the interactions of Robb Stark in the third book.
-        """
-    )
+    We can investigate this data by using the pandas DataFrame. Let's find all the interactions of Robb Stark in the third book.
+    """)
     return
 
 
@@ -108,17 +105,10 @@ def _(robbstark):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        As you can see this data easily translates to a network problem. Now it's time to create a network.
-        We create a graph for each book. It's possible to create one `MultiGraph`(Graph with multiple edges between nodes) instead of 5 graphs, but it is easier to analyse and manipulate individual `Graph` objects rather than a `MultiGraph`.
-        """
-    )
-    return
-
-
-@app.cell
-def _():
+    mo.md(r"""
+    As you can see this data easily translates to a network problem. Now it's time to create a network.
+    We create a graph for each book. It's possible to create one `MultiGraph`(Graph with multiple edges between nodes) instead of 5 graphs, but it is easier to analyse and manipulate individual `Graph` objects rather than a `MultiGraph`.
+    """)
     return
 
 
@@ -156,21 +146,19 @@ def _(relationships):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        ## Finding the most important node i.e character in these networks.
+    mo.md(r"""
+    ## Finding the most important node i.e character in these networks.
 
-        Let's use our network analysis knowledge to decrypt these Graphs that we have just created.
+    Let's use our network analysis knowledge to decrypt these Graphs that we have just created.
 
-        Is it Jon Snow, Tyrion, Daenerys, or someone else? Let's see! Network Science offers us many different metrics to measure the importance of a node in a network as we saw in the first part of the tutorial. Note that there is no "correct" way of calculating the most important node in a network, every metric has a different meaning.
+    Is it Jon Snow, Tyrion, Daenerys, or someone else? Let's see! Network Science offers us many different metrics to measure the importance of a node in a network as we saw in the first part of the tutorial. Note that there is no "correct" way of calculating the most important node in a network, every metric has a different meaning.
 
-        First, let's measure the importance of a node in a network by looking at the number of neighbors it has, that is, the number of nodes it is connected to. For example, an influential account on Twitter, where the follower-followee relationship forms the network, is an account which has a high number of followers. This measure of importance is called degree centrality.
+    First, let's measure the importance of a node in a network by looking at the number of neighbors it has, that is, the number of nodes it is connected to. For example, an influential account on Twitter, where the follower-followee relationship forms the network, is an account which has a high number of followers. This measure of importance is called degree centrality.
 
-        Using this measure, let's extract the top ten important characters from the first book (`graphs[0]`) and the fifth book (`graphs[4]`).
+    Using this measure, let's extract the top ten important characters from the first book (`graphs[0]`) and the fifth book (`graphs[4]`).
 
-        NOTE: We are using zero-indexing and that's why the graph of the first book is acceseed by `graphs[0]`.
-        """
-    )
+    NOTE: We are using zero-indexing and that's why the graph of the first book is acceseed by `graphs[0]`.
+    """)
     return
 
 
@@ -183,9 +171,9 @@ def _(graphs, nx):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""`degree_centrality` returns a dictionary and to access the results we can directly use the name of the character."""
-    )
+    mo.md(r"""
+    `degree_centrality` returns a dictionary and to access the results we can directly use the name of the character.
+    """)
     return
 
 
@@ -197,9 +185,9 @@ def _(deg_cen_book1):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""Top 5 important characters in the first book according to degree centrality."""
-    )
+    mo.md(r"""
+    Top 5 important characters in the first book according to degree centrality.
+    """)
     return
 
 
@@ -211,9 +199,9 @@ def _(deg_cen_book1):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""Top 5 important characters in the fifth book according to degree centrality."""
-    )
+    mo.md(r"""
+    Top 5 important characters in the fifth book according to degree centrality.
+    """)
     return
 
 
@@ -225,9 +213,9 @@ def _(deg_cen_book5):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""To visualize the distribution of degree centrality let's plot a histogram of degree centrality."""
-    )
+    mo.md(r"""
+    To visualize the distribution of degree centrality let's plot a histogram of degree centrality.
+    """)
     return
 
 
@@ -240,9 +228,9 @@ def _(deg_cen_book1, plt):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""The above plot shows something that is expected, a high portion of characters aren't connected to lot of other characters while some characters are highly connected all through the network. A close real world example of this is a social network like Twitter where a few people have millions of connections(followers) but majority of users aren't connected to that many other users. This exponential decay like property resembles power law in real life networks."""
-    )
+    mo.md(r"""
+    The above plot shows something that is expected, a high portion of characters aren't connected to lot of other characters while some characters are highly connected all through the network. A close real world example of this is a social network like Twitter where a few people have millions of connections(followers) but majority of users aren't connected to that many other users. This exponential decay like property resembles power law in real life networks.
+    """)
     return
 
 
@@ -258,13 +246,11 @@ def _(deg_cen_book1, np, plt):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        ### Exercise
+    mo.md(r"""
+    ### Exercise
 
-        Create a new centrality measure, weighted_degree(Graph, weight) which takes in Graph and the weight attribute and returns a weighted degree dictionary. Weighted degree is calculated by summing the weight of the all edges of a node and find the top five characters according to this measure.
-        """
-    )
+    Create a new centrality measure, weighted_degree(Graph, weight) which takes in Graph and the weight attribute and returns a weighted degree dictionary. Weighted degree is calculated by summing the weight of the all edges of a node and find the top five characters according to this measure.
+    """)
     return
 
 
@@ -287,13 +273,11 @@ def _(graphs, weighted_degree):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        ## Betweenness centrality
+    mo.md(r"""
+    ## Betweenness centrality
 
-        Let's do this for Betweenness centrality and check if this makes any difference. As different centrality method use different measures underneath, they find nodes which are important in the network. A centrality method like Betweenness centrality finds nodes which are structurally important to the network, which binds the network together and densely.
-        """
-    )
+    Let's do this for Betweenness centrality and check if this makes any difference. As different centrality method use different measures underneath, they find nodes which are important in the network. A centrality method like Betweenness centrality finds nodes which are structurally important to the network, which binds the network together and densely.
+    """)
     return
 
 
@@ -317,22 +301,20 @@ def _(graphs, nx):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""We can see there are some differences between the unweighted and weighted centrality measures. Another thing to note is that we are using the weight_inv attribute instead of weight(the number of interactions between characters). This decision is based on the way we want to assign the notion of "importance" of a character. The basic idea behind betweenness centrality is to find nodes which are essential to the structure of the network. As betweenness centrality computes shortest paths underneath, in the case of weighted betweenness centrality it will end up penalising characters with high number of interactions. By using weight_inv we will prop up the characters with high interactions with other characters."""
-    )
+    mo.md(r"""
+    We can see there are some differences between the unweighted and weighted centrality measures. Another thing to note is that we are using the weight_inv attribute instead of weight(the number of interactions between characters). This decision is based on the way we want to assign the notion of "importance" of a character. The basic idea behind betweenness centrality is to find nodes which are essential to the structure of the network. As betweenness centrality computes shortest paths underneath, in the case of weighted betweenness centrality it will end up penalising characters with high number of interactions. By using weight_inv we will prop up the characters with high interactions with other characters.
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        ## PageRank
-        The billion dollar algorithm, PageRank works by counting the number and quality of links to a page to determine a rough estimate of how important the website is. The underlying assumption is that more important websites are likely to receive more links from other websites.
+    mo.md(r"""
+    ## PageRank
+    The billion dollar algorithm, PageRank works by counting the number and quality of links to a page to determine a rough estimate of how important the website is. The underlying assumption is that more important websites are likely to receive more links from other websites.
 
-        NOTE: We don't need to worry about weight and weight_inv in PageRank as the algorithm uses weights in the opposite sense (larger weights are better). This may seem confusing as different centrality measures have different definition of weights. So it is always better to have a look at documentation before using weights in a centrality measure.
-        """
-    )
+    NOTE: We don't need to worry about weight and weight_inv in PageRank as the algorithm uses weights in the opposite sense (larger weights are better). This may seem confusing as different centrality measures have different definition of weights. So it is always better to have a look at documentation before using weights in a centrality measure.
+    """)
     return
 
 
@@ -356,23 +338,21 @@ def _(graphs, nx):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        ### Exercise
+    mo.md(r"""
+    ### Exercise
 
-        #### Is there a correlation between these techniques?
+    #### Is there a correlation between these techniques?
 
 
-        Find the correlation between these four techniques.
+    Find the correlation between these four techniques.
 
-        - pagerank (weight = 'weight')
-        - betweenness_centrality (weight = 'weight_inv')
-        - weighted_degree
-        - degree centrality
+    - pagerank (weight = 'weight')
+    - betweenness_centrality (weight = 'weight_inv')
+    - weighted_degree
+    - degree centrality
 
-        HINT: Use pandas correlation
-        """
-    )
+    HINT: Use pandas correlation
+    """)
     return
 
 
@@ -386,18 +366,16 @@ def _(graphs):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        ## Evolution of importance of characters over the books
+    mo.md(r"""
+    ## Evolution of importance of characters over the books
 
-        According to degree centrality the most important character in the first book is Eddard Stark but he is not even in the top 10 of the fifth book. The importance changes over the course of five books, because you know stuff happens ;)
+    According to degree centrality the most important character in the first book is Eddard Stark but he is not even in the top 10 of the fifth book. The importance changes over the course of five books, because you know stuff happens ;)
 
-        Let's look at the evolution of degree centrality of a couple of characters like Eddard Stark, Jon Snow, Tyrion which showed up in the top 10 of degree centrality in first book.
+    Let's look at the evolution of degree centrality of a couple of characters like Eddard Stark, Jon Snow, Tyrion which showed up in the top 10 of degree centrality in first book.
 
-        We create a dataframe with character columns and index as books where every entry is the degree centrality of the character in that particular book and plot the evolution of degree centrality Eddard Stark, Jon Snow and Tyrion.
-        We can see that the importance of Eddard Stark in the network dies off and with Jon Snow there is a drop in the fourth book but a sudden rise in the fifth book
-        """
-    )
+    We create a dataframe with character columns and index as books where every entry is the degree centrality of the character in that particular book and plot the evolution of degree centrality Eddard Stark, Jon Snow and Tyrion.
+    We can see that the importance of Eddard Stark in the network dies off and with Jon Snow there is a drop in the fourth book but a sudden rise in the fifth book
+    """)
     return
 
 
@@ -421,13 +399,11 @@ def _(evol_df):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        ### Exercise
+    mo.md(r"""
+    ### Exercise
 
-        Plot the evolution of betweenness centrality of the above mentioned characters over the 5 books.
-        """
-    )
+    Plot the evolution of betweenness centrality of the above mentioned characters over the 5 books.
+    """)
     return
 
 
@@ -446,7 +422,9 @@ def _(evol_betweenness, graphs):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""## So what's up with Stannis Baratheon?""")
+    mo.md(r"""
+    ## So what's up with Stannis Baratheon?
+    """)
     return
 
 
@@ -475,13 +453,11 @@ def _(nx, plt):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        As we know the a higher betweenness centrality means that the node is crucial for the structure of the network, and in the case of Stannis Baratheon in the fifth book it seems like Stannis Baratheon has characteristics similar to that of node 5 in the above example as it seems to be the holding the network together.
+    mo.md(r"""
+    As we know the a higher betweenness centrality means that the node is crucial for the structure of the network, and in the case of Stannis Baratheon in the fifth book it seems like Stannis Baratheon has characteristics similar to that of node 5 in the above example as it seems to be the holding the network together.
 
-        As evident from the betweenness centrality scores of the above example of barbell graph, node 5 is the most important node in this network.
-        """
-    )
+    As evident from the betweenness centrality scores of the above example of barbell graph, node 5 is the most important node in this network.
+    """)
     return
 
 
@@ -493,14 +469,12 @@ def _(nx):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        ## Community detection in Networks
-        A network is said to have community structure if the nodes of the network can be easily grouped into (potentially overlapping) sets of nodes such that each set of nodes is densely connected internally. There are multiple algorithms and definitions to calculate these communities in a network.
+    mo.md(r"""
+    ## Community detection in Networks
+    A network is said to have community structure if the nodes of the network can be easily grouped into (potentially overlapping) sets of nodes such that each set of nodes is densely connected internally. There are multiple algorithms and definitions to calculate these communities in a network.
 
-        We will use louvain community detection algorithm to find the modules in our graph.
-        """
-    )
+    We will use louvain community detection algorithm to find the modules in our graph.
+    """)
     return
 
 
@@ -526,12 +500,10 @@ def _(community, graphs):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        A common defining quality of a community is that
-        the within-community edges are denser than the between-community edges.
-        """
-    )
+    mo.md(r"""
+    A common defining quality of a community is that
+    the within-community edges are denser than the between-community edges.
+    """)
     return
 
 
@@ -560,14 +532,14 @@ def _(partition_dict):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""If we plot these communities of the network we see a denser network as compared to the original network which contains all the characters."""
-    )
+    mo.md(r"""
+    If we plot these communities of the network we see a denser network as compared to the original network which contains all the characters.
+    """)
     return
 
 
 @app.cell
-def _(graphs, nx, partition_dict):
+def _(graphs, nx, partition_dict, plt):
     nx.draw(nx.subgraph(graphs[0], partition_dict[3]))
     plt.show()
     return
@@ -582,13 +554,11 @@ def _(graphs, nx, partition_dict, plt):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        We can test this by calculating the density of the network and the community.
+    mo.md(r"""
+    We can test this by calculating the density of the network and the community.
 
-        Like in the following example the network between characters in a community is 5 times more dense than the original network.
-        """
-    )
+    Like in the following example the network between characters in a community is 5 times more dense than the original network.
+    """)
     return
 
 
@@ -600,13 +570,11 @@ def _(graphs, nx, partition_dict):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        ### Exercise
+    mo.md(r"""
+    ### Exercise
 
-        Find the most important node in the partitions according to degree centrality of the nodes using the partition_dict we have already created.
-        """
-    )
+    Find the most important node in the partitions according to degree centrality of the nodes using the partition_dict we have already created.
+    """)
     return
 
 
@@ -625,13 +593,11 @@ def _(graphs, most_important_node_in_partition, partition_dict):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
-        ## Solutions
+    mo.md(r"""
+    ## Solutions
 
-        Here are the solutions to the exercises above.
-        """
-    )
+    Here are the solutions to the exercises above.
+    """)
     return
 
 

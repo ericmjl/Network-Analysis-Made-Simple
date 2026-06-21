@@ -1,7 +1,14 @@
-import marimo as mo
 import marimo
 
+__generated_with = "0.23.9"
 app = marimo.App()
+
+
+@app.cell(hide_code=True)
+def mo_def():
+    import marimo as mo
+
+    return (mo,)
 
 
 @app.cell(hide_code=True)
@@ -14,7 +21,9 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""## Introduction""")
+    mo.md(r"""
+    ## Introduction
+    """)
     return
 
 
@@ -28,8 +37,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     In this chapter, we will look at the relationship between graphs and linear algebra.
 
     The deep connection between these two topics is super interesting,
@@ -48,8 +56,7 @@ def _(mo):
     when treating graphs in linear algebra form
     is the **adjacency matrix**.
     For example, for four nodes joined in a chain:
-    """
-    )
+    """)
     return
 
 
@@ -66,7 +73,9 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""we can visualize the graph:""")
+    mo.md(r"""
+    we can visualize the graph:
+    """)
     return
 
 
@@ -79,7 +88,9 @@ def _(G1, nx, plt):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""and we can visualize its adjacency matrix:""")
+    mo.md(r"""
+    and we can visualize its adjacency matrix:
+    """)
     return
 
 
@@ -93,7 +104,9 @@ def _(G1):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""and we can obtain the adjacency matrix as a NumPy array:""")
+    mo.md(r"""
+    and we can obtain the adjacency matrix as a NumPy array:
+    """)
     return
 
 
@@ -106,23 +119,20 @@ def _(G1, nx):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### Symmetry
 
     Remember that for an undirected graph,
     the adjacency matrix will be symmetric about the diagonal,
     while for a directed graph,
     the adjacency matrix will be _asymmetric_.
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## Path finding
 
     In the Paths chapter, we can use the breadth-first search algorithm
@@ -136,8 +146,7 @@ def _(mo):
     Let's take the adjacency matrix above,
     raise it to the second power,
     and see what it tells us.
-    """
-    )
+    """)
     return
 
 
@@ -151,15 +160,13 @@ def _(A1):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### Exercise: adjacency matrix power?
 
     > What do you think the values in the adjacency matrix are related to?
     > If studying in a group, discuss with your neighbors;
     > if working on this alone, write down your thoughts.
-    """
-    )
+    """)
     return
 
 
@@ -173,15 +180,13 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### Higher matrix powers
 
     The semantic meaning of adjacency matrix powers
     is preserved even if we go to higher powers.
     For example, if we go to the 3rd matrix power:
-    """
-    )
+    """)
     return
 
 
@@ -193,29 +198,25 @@ def _(A1, np):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     You should be able to convince yourself that:
 
     1. There's no way to go from a node back to itself in 3 steps, thus explaining the diagonals, and
     1. The off-diagonals take on the correct values when you think about them in terms of "ways to go from one node to another".
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### With directed graphs?
 
     Does the "number of steps" interpretation hold
     with directed graphs?
     Yes it does!
     Let's see it in action.
-    """
-    )
+    """)
     return
 
 
@@ -231,8 +232,7 @@ def _(nodes, nx, plt):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### Exercise: directed graph matrix power
 
     > Convince yourself that the resulting adjacency matrix power
@@ -242,8 +242,7 @@ def _(mo):
     > _the number of ways to go from "row" node to "column" node
     > in K steps_.
     > (I have provided three different matrix powers for you.)
-    """
-    )
+    """)
     return
 
 
@@ -268,8 +267,7 @@ def _(A2, np):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## Message Passing
 
     Let's now dive into the second topic here,
@@ -287,8 +285,7 @@ def _(mo):
     using the same ordering of nodes along the rows,
     with columns instead representing a "message"
     that is intended to be "passed" from one node to another:
-    """
-    )
+    """)
     return
 
 
@@ -301,13 +298,11 @@ def _(np):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     Notice where the position of the value `1` is - at the first node.
 
     If we take M and matrix multiply it against A2, let's see what we get:
-    """
-    )
+    """)
     return
 
 
@@ -319,12 +314,10 @@ def _(A2, M):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     The message has been passed onto the next node!
     And if we pass the message one more time:
-    """
-    )
+    """)
     return
 
 
@@ -336,14 +329,12 @@ def _(A2, M):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     Now, the message lies on the 3rd node!
 
     We can make an animation to visualize this more clearly.
     _There are comments in the code to explain what's going on!_
-    """
-    )
+    """)
     return
 
 
@@ -373,7 +364,7 @@ def _(nx):
 
 
 @app.cell
-def _(G2, np, nx, propagate, plt):
+def _(G2, np, nx, plt, propagate):
     from IPython.display import HTML
     from matplotlib import animation
 
@@ -414,8 +405,7 @@ def _(G2, np, nx, propagate, plt):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## Bipartite Graphs & Matrices
 
     The section on message passing above assumed unipartite graphs, or at least graphs for which messages can be meaningfully passed between nodes.
@@ -430,14 +420,15 @@ def _(mo):
     Bipartite graphs have a natural matrix representation, known as the **biadjacency matrix**. Nodes on one partition are the rows, and nodes on the other partition are the columns.
 
     NetworkX's `bipartite` module provides a function for computing the biadjacency matrix of a bipartite graph.
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""Let's start by looking at a toy bipartite graph, a "customer-product" purchase record graph, with 4 products and 3 customers. The matrix representation might be as follows:""")
+    mo.md(r"""
+    Let's start by looking at a toy bipartite graph, a "customer-product" purchase record graph, with 4 products and 3 customers. The matrix representation might be as follows:
+    """)
     return
 
 
@@ -449,7 +440,9 @@ def _(np):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""From this "bi-adjacency" matrix, one can compute the projection onto the customers, matrix multiplying the matrix with its transpose.""")
+    mo.md(r"""
+    From this "bi-adjacency" matrix, one can compute the projection onto the customers, matrix multiplying the matrix with its transpose.
+    """)
     return
 
 
@@ -462,20 +455,20 @@ def _(cp_mat):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     What we get is the connectivity matrix of the customers, based on shared purchases.
     The diagonals are the degree of the customers in the original graph,
     i.e. the number of purchases they originally made,
     and the off-diagonals are the connectivity matrix, based on shared products.
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""To get the products matrix, we make the transposed matrix the left side of the matrix multiplication.""")
+    mo.md(r"""
+    To get the products matrix, we make the transposed matrix the left side of the matrix multiplication.
+    """)
     return
 
 
@@ -488,14 +481,15 @@ def _(cp_mat):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""You may now try to convince yourself that the diagonals are the number of times a customer purchased that product, and the off-diagonals are the connectivity matrix of the products, weighted by how similar two customers are.""")
+    mo.md(r"""
+    You may now try to convince yourself that the diagonals are the number of times a customer purchased that product, and the off-diagonals are the connectivity matrix of the products, weighted by how similar two customers are.
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### Exercises
 
     In the following exercises, you will now play with a customer-product graph from Amazon. This dataset was downloaded from [UCSD's Julian McAuley's website](http://jmcauley.ucsd.edu/data/amazon/), and corresponds to the digital music dataset.
@@ -509,8 +503,7 @@ def _(mo):
 
     - `customers`: `reviewerID`
     - `products`: `asin`
-    """
-    )
+    """)
     return
 
 
@@ -524,7 +517,9 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""Remember that with bipartite graphs, it is useful to obtain nodes from one of the partitions.""")
+    mo.md(r"""
+    Remember that with bipartite graphs, it is useful to obtain nodes from one of the partitions.
+    """)
     return
 
 
@@ -544,12 +539,10 @@ def _(G_amzn, extract_partition_nodes, nx):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     You'll notice that this matrix is extremely large! There are 5541 customers and 3568 products,
     for a total matrix size of $5541 \times 3568 = 19770288$, but it is stored in a sparse format because only 64706 elements are filled in.
-    """
-    )
+    """)
     return
 
 
@@ -561,8 +554,7 @@ def _(mat):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### Example: finding customers who reviewed the most number of music items.
 
     Let's find out which customers reviewed the most number of music items.
@@ -570,8 +562,7 @@ def _(mo):
     To do so, you can break the problem into a few steps.
 
     First off, we compute the customer projection using matrix operations.
-    """
-    )
+    """)
     return
 
 
@@ -583,13 +574,11 @@ def _(mat):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     Next, get the diagonals of the customer-customer matrix. Recall here that in `customer_mat`, the diagonals correspond to the degree of the customer nodes in the bipartite matrix.
 
     SciPy sparse matrices provide a `.diagonal()` method that returns the diagonal elements.
-    """
-    )
+    """)
     return
 
 
@@ -601,7 +590,9 @@ def _(customer_mat):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""Finally, find the index of the customer that has the highest degree.""")
+    mo.md(r"""
+    Finally, find the index of the customer that has the highest degree.
+    """)
     return
 
 
@@ -614,7 +605,9 @@ def _(degrees, np):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""We can verify this independently by sorting the customer nodes by degree.""")
+    mo.md(r"""
+    We can verify this independently by sorting the customer nodes by degree.
+    """)
     return
 
 
@@ -637,14 +630,15 @@ def _(G_amzn, customer_nodes, nx):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""Indeed, customer 294 was the one who had the most number of reviews!""")
+    mo.md(r"""
+    Indeed, customer 294 was the one who had the most number of reviews!
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### Example: finding similar customers
 
     Let's now also compute which two customers are similar, based on shared reviews. To do so involves the following steps:
@@ -652,8 +646,7 @@ def _(mo):
     1. We construct a sparse matrix consisting of only the diagonals. `scipy.sparse.diags(elements)` will construct a sparse diagonal matrix based on the elements inside `elements`.
     1. Subtract the diagonals from the customer matrix projection. This yields the customer-customer similarity matrix, which should only consist of the off-diagonal elements of the customer matrix projection.
     1. Finally, get the indices where the weight (shared number of between the customers is highest. (*This code is provided for you.*)
-    """
-    )
+    """)
     return
 
 
@@ -674,25 +667,21 @@ def _(customer_mat, degrees, np, sp):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## Performance: Object vs. Matrices
 
     Finally, to motivate why you might want to use matrices rather than graph objects to compute some of these statistics, let's time the two ways of getting to the same answer.
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### Objects
 
     Let's first use NetworkX's built-in machinery to find customers that are most similar.
-    """
-    )
+    """)
     return
 
 
@@ -713,13 +702,11 @@ def _(G_amzn, customer_nodes, nx):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### Matrices
 
     Now, let's implement the same thing in matrix form.
-    """
-    )
+    """)
     return
 
 
@@ -742,8 +729,7 @@ def _(G_amzn, customer_mat, customer_nodes, np, nx, sp, time):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     On a modern PC, the matrix computation should be about 10-50X faster
     using the matrix form compared to the object-oriented form.
     (The web server that is used to build the book
@@ -756,15 +742,13 @@ def _(mo):
     but the matrix code way outperforms the object code.
     This tradeoff is common in computing, and shouldn't surprise you.
     That said, the speed gain alone is a great reason to use matrices!
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## Faster CPU alternatives
 
     If you're looking for even better performance but want to stick with CPU computing,
@@ -781,15 +765,13 @@ def _(mo):
     For cases where you need to process large graphs efficiently on CPU,
     rustworkx can be a great step up from pure NetworkX
     while still maintaining the familiar graph theory concepts you've learned.
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## Acceleration on a GPU
 
     If your appetite has been whipped up for even more acceleration
@@ -809,8 +791,7 @@ def _(mo):
     definitely check it out!
 
     [docs]: https://docs.rapids.ai/api/cugraph/stable/api.html
-    """
-    )
+    """)
     return
 
 
