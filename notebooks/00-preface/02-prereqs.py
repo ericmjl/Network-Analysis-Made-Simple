@@ -7,13 +7,13 @@ app = marimo.App(width="medium")
 @app.cell
 def _():
     import marimo as mo
+
     return (mo,)
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     # Preface
 
     To get maximum benefit from this book, you should know how to program in Python.
@@ -25,27 +25,23 @@ def _(mo):
     1. handle `pandas` DataFrames,
 
     will help you a ton during the tutorial.
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## Exercises
 
     We have a few exercises below that should help you get warmed up.
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### Exercise 1
 
     Given the following line of code:
@@ -55,20 +51,17 @@ def _(mo):
     ```
 
     What are plausible data structures for `s` and `my_fav_things`?
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ### Exercise 2
 
     Given the following data:
-    """
-    )
+    """)
     return
 
 
@@ -85,13 +78,11 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     Write a function that takes in the `names` list of dictionaries
     and returns the dictionaries in which the `surname` value
     matches exactly some `query_surname`.
-    """
-    )
+    """)
     return
 
 
@@ -109,12 +100,10 @@ def find_persons_with_surname(persons, query_surname):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     To test your implementation, check it with the following code.
     No errors should be raised.
-    """
-    )
+    """)
     return
 
 

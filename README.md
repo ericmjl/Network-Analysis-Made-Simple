@@ -14,22 +14,21 @@ with the code available for you to reference afterwards.
 
 To get started with the notebooks, follow these simple steps:
 
-1. Git clone the repository: `https://github.com/ericmjl/Network-Analysis-Made-Simple`
-
-2. **Install uv** (the Python package manager):
-   Follow the installation instructions at [https://docs.astral.sh/uv/getting-started/installation/](https://docs.astral.sh/uv/getting-started/installation/)
-
-3. **Navigate to the notebook directory**:
+1. Git clone the repository:
    ```bash
-   cd notebooks/subdir/
+   git clone https://github.com/ericmjl/Network-Analysis-Made-Simple
+   cd Network-Analysis-Made-Simple
    ```
 
-4. **Run the notebook**:
+2. **Install pixi** (the package manager):
+   Follow the installation instructions at [https://pixi.sh/latest/](https://pixi.sh/latest/)
+
+3. **Launch the notebooks**:
    ```bash
-   uvx marimo edit --sandbox <notebook_name>.py
+   pixi run notebook
    ```
 
-That's it! The `--sandbox` flag ensures a clean, isolated environment for running the notebooks.
+That's it! Pixi automatically creates an isolated environment with all dependencies and launches `marimo edit --no-token notebooks/`. Your browser will open to the notebook directory where you can click on any notebook to run it.
 
 For more detailed information, head over to [the official website][nams]!
 
