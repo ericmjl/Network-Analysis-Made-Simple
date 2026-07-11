@@ -5,13 +5,56 @@ app = marimo.App(width="medium", auto_download=["html"])
 
 
 @app.cell(hide_code=True)
+def _(mo):
+    mo.Html(f"""
+    <div class="nams-hero">
+    <style>
+      .nams-hero{{color:#e2e8f0;margin:0;font-family:inherit}}
+      .nams-hero__grid{{display:grid;gap:22px;grid-template-columns:minmax(0,1.25fr) minmax(200px,0.85fr);padding:32px 28px;border-radius:14px;background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%)}}
+      @media(max-width:760px){{.nams-hero__grid{{grid-template-columns:1fr;padding:22px 16px}}}}
+      .nams-badge{{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border:1px solid rgba(52,211,153,0.3);background:rgba(52,211,153,0.1);border-radius:999px;color:#34d399;font-size:0.72rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase}}
+      .nams-hero h1{{margin:14px 0 8px;font-size:2.2rem;line-height:1.05;font-weight:880;letter-spacing:-0.02em;color:#f1f5f9}}
+      .nams-hero h1 .nams-em{{color:#34d399}}
+      .nams-hero p.lead{{margin:0;max-width:520px;color:#94a3b8;font-size:1.02rem;line-height:1.5}}
+      .nams-byline{{margin-top:16px;color:#64748b;font-size:0.88rem;line-height:1.5}}
+      .nams-byline b{{color:#cbd5e1}}
+      .nams-art{{display:flex;align-items:center;justify-content:center}}
+    </style>
+    <div class="nams-hero__grid">
+      <div>
+        <span class="nams-badge">Chapter 01 &middot; Introduction</span>
+        <h1>What is a<br><span class="nams-em">Graph?</span></h1>
+        <p class="lead">Nodes and edges &mdash; the two atomic ingredients of every network. From protein interactions to Twitter feeds, the same simple building blocks model an astonishing range of real-world systems.</p>
+        <div class="nams-byline">Network Analysis Made Simple &middot; <b>Eric Ma</b></div>
+      </div>
+      <div class="nams-art">
+        <svg viewBox="0 0 140 140" style="width:100%;max-width:160px;height:auto">
+          <line x1="35" y1="45" x2="100" y2="35" stroke="#34d399" stroke-width="2" opacity="0.35" stroke-linecap="round"/>
+          <line x1="35" y1="45" x2="50" y2="100" stroke="#34d399" stroke-width="2" opacity="0.35" stroke-linecap="round"/>
+          <line x1="100" y1="35" x2="105" y2="95" stroke="#34d399" stroke-width="2" opacity="0.25" stroke-linecap="round"/>
+          <line x1="50" y1="100" x2="105" y2="95" stroke="#34d399" stroke-width="1.5" opacity="0.2" stroke-linecap="round"/>
+          <line x1="35" y1="45" x2="105" y2="95" stroke="#34d399" stroke-width="1.5" opacity="0.15" stroke-linecap="round"/>
+          <circle cx="35" cy="45" r="9" fill="#34d399" opacity="0.9"/>
+          <text x="35" y="28" text-anchor="middle" fill="#6ee7b7" font-size="8" font-weight="700">node</text>
+          <circle cx="100" cy="35" r="8" fill="#34d399" opacity="0.8"/>
+          <circle cx="50" cy="100" r="7" fill="#10b981" opacity="0.8"/>
+          <circle cx="105" cy="95" r="6" fill="#10b981" opacity="0.7"/>
+          <text x="68" y="35" text-anchor="middle" fill="#6ee7b7" font-size="7" font-weight="600" opacity="0.8">edge</text>
+        </svg>
+      </div>
+    </div>
+    </div>
+    """)
+    return
+
+
+@app.cell(hide_code=True)
 def _():
     import marimo as mo
 
     mo.md(r"""
     # Introduction
     """)
-
     return (mo,)
 
 
