@@ -780,7 +780,7 @@ def _(mo):
 
     The [RAPIDS.AI](https://rapids.ai) project has a package called [cuGraph](https://github.com/rapidsai/cugraph),
     which provides GPU-accelerated graph algorithms.
-    As over release 0.16.0, all cuGraph algorithms will be able to accept NetworkX graph objects!
+    As of release 0.16.0, all cuGraph algorithms will be able to accept NetworkX graph objects!
     This came about through online conversations on GitHub and Twitter,
     which for us, personally, speaks volumes to the power of open source projects!
 

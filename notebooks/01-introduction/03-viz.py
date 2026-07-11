@@ -38,7 +38,7 @@ def _():
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    In this chapter, We want to introduce you to the wonderful world of graph visualization.
+    In this chapter, we want to introduce you to the wonderful world of graph visualization.
 
     You probably have seen graphs that are visualized as hairballs.
     Apart from communicating how complex the graph is,
@@ -59,7 +59,7 @@ def _(mo):
     ## Hairballs
 
     The node-link diagram is the canonical diagram we will see in publications.
-    Nodes are commonly drawn as circles, while edges are drawn s lines.
+    Nodes are commonly drawn as circles, while edges are drawn as lines.
 
     Node-link diagrams are common,
     and there's a good reason for this: it's convenient to draw!

@@ -107,7 +107,7 @@ def _(mo):
     mo.md(r"""
     We have created a MultiDiGraph object `passenger_graph` which contains all the information from the dataframe `pass_air_data`. `ORIGIN` and `DEST` represent the column names in the dataframe `pass_air_data` used to construct the edge. As this is a `MultiDiGraph` we can also give a name/key to the multiple edges between two nodes and `edge_key` is used to represent that name and in this graph `YEAR` is used to distinguish between multiple edges between two nodes. `PASSENGERS` and `UNIQUE_CARRIER_NAME` are added as edge attributes which can be accessed using the nodes and the key form the MultiDiGraph object.
 
-    Let's check if can access the same information (the 2006 route between JFK and AUS) using our `passenger_graph`.
+    Let's check if we can access the same information (the 2006 route between JFK and AUS) using our `passenger_graph`.
 
     To check an edge between two nodes in a Graph we can use the syntax `GraphObject[source][target]` and further specify the edge attribute using `GraphObject[source][target][attribute]`.
 
@@ -532,9 +532,9 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    ## Importants Hubs in the Airport Network
+    ## Important Hubs in the Airport Network
 
-    So let's have a look at the important nodes in this network, i.e. important airports in this network. We'll use centrality measures like pagerank, betweenness centrality and degree centrality which we gone through in this book.
+    So let's have a look at the important nodes in this network, i.e. important airports in this network. We'll use centrality measures like pagerank, betweenness centrality and degree centrality which we have gone through in this book.
     """)
     return
 
@@ -681,7 +681,7 @@ def _(mo):
     mo.md(r"""
     When we adjust for number of passengers we see that we have a reshuffle in the "importance" rankings, and they do make a bit more sense now. According to weighted PageRank, Atlanta, Chicago, Seattle the top 3 airports while Anchorage is at 4th rank now.
 
-    To get an even better picture of this we should do the analyse with more metadata about the routes not just the number of passengers.
+    To get an even better picture of this we should do the analysis with more metadata about the routes not just the number of passengers.
     """)
     return
 
@@ -839,7 +839,7 @@ def _(G_1, nx, plt):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    It's evident from the example above that we *can't* traverse the network graph. If we start from node 4 we are stuck at the node, we don't have any way of leaving node 4. This is assuming we strictly follow the direction of edges. In this case the network isn't strongly connected but if we look at the structure and assume the directions of edges don't matter than we can go to any other node in the network even if we start from node 4.
+    It's evident from the example above that we *can't* traverse the network graph. If we start from node 4 we are stuck at the node, we don't have any way of leaving node 4. This is assuming we strictly follow the direction of edges. In this case the network isn't strongly connected but if we look at the structure and assume the directions of edges don't matter then we can go to any other node in the network even if we start from node 4.
 
     In the case an undirected copy of directed network is connected we call the directed network as weakly connected.
     """)
@@ -960,7 +960,7 @@ def _(nx, pass_2015_strong):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    The 3.17 number above represents the average length between 2 airports in the network which means that it's possible to go from one airport to another in this network under 3 layovers, which sounds nice. A more reachable network is better, not necessearily in terms of revenue for the airline but for social health of the air transport network.
+    The 3.17 number above represents the average length between 2 airports in the network which means that it's possible to go from one airport to another in this network under 3 layovers, which sounds nice. A more reachable network is better, not necessarily in terms of revenue for the airline but for social health of the air transport network.
     """)
     return
 
@@ -983,14 +983,14 @@ def _(mo):
 
 @app.cell
 def _():
-    from nams.solutions.airport import add_opinated_edges
+    from nams.solutions.airport import add_opinionated_edges
 
-    return (add_opinated_edges,)
+    return (add_opinionated_edges,)
 
 
 @app.cell
-def _(add_opinated_edges, pass_2015_strong):
-    new_routes_network = add_opinated_edges(pass_2015_strong)
+def _(add_opinionated_edges, pass_2015_strong):
+    new_routes_network = add_opinionated_edges(pass_2015_strong)
     return (new_routes_network,)
 
 

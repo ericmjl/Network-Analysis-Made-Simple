@@ -193,7 +193,7 @@ def _(mo):
     Firstly, **use `pytest` to get set up with testing.**
     You essentially write a `test_something.py` file
     in which you write your test suite,
-    and your test functions are all nothinng more than simple functions.
+    and your test functions are all nothing more than simple functions.
 
     ```python
     # test_data.py

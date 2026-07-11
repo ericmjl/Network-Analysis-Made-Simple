@@ -32,22 +32,22 @@ def adding_students(G):
     return G
 
 
-def unrequitted_friendships_v1(G):
-    """Answer to unrequitted friendships problem."""
-    unrequitted_friendships = []
+def unrequited_friendships_v1(G):
+    """Answer to unrequited friendships problem."""
+    unrequited_friendships = []
     for n1, n2 in G.edges():
         if not G.has_edge(n2, n1):
-            unrequitted_friendships.append((n1, n2))
-    return unrequitted_friendships
+            unrequited_friendships.append((n1, n2))
+    return unrequited_friendships
 
 
-def unrequitted_friendships_v2(G):
-    """Alternative answer to unrequitted friendships problem. By @schwanne."""
+def unrequited_friendships_v2(G):
+    """Alternative answer to unrequited friendships problem. By @schwanne."""
     return len([(n1, n2) for n1, n2 in G.edges() if not G.has_edge(n2, n1)])
 
 
-def unrequitted_friendships_v3(G):
-    """Alternative answer to unrequitted friendships problem. By @end0."""
+def unrequited_friendships_v3(G):
+    """Alternative answer to unrequited friendships problem. By @end0."""
     links = ((n1, n2) for n1, n2, d in G.edges(data=True))
     reverse_links = ((n2, n1) for n1, n2, d in G.edges(data=True))
 
