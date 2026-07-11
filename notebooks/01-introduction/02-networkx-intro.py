@@ -647,17 +647,17 @@ def _(mo):
 
 @app.cell
 def _(G_1):
-    from nams.solutions.intro import unrequitted_friendships_v1
+    from nams.solutions.intro import unrequited_friendships_v1
 
-    unrequitted_friendships = unrequitted_friendships_v1(G_1)
+    unrequited_friendships = unrequited_friendships_v1(G_1)
 
-    def unrequitted_friendships_answer(G):
+    def unrequited_friendships_answer(G):
         # Your answer here
         return
 
-    # Execute `unrequitted_friendships_answer` and assign it to the variable `unrequitted_friendships`.
+    # Execute `unrequited_friendships_answer` and assign it to the variable `unrequited_friendships`.
 
-    assert len(unrequitted_friendships) == 124
+    assert len(unrequited_friendships) == 124
     return
 
 
@@ -680,10 +680,10 @@ def _(mo):
 
 @app.cell
 def _():
-    from nams.solutions.intro import unrequitted_friendships_v2
+    from nams.solutions.intro import unrequited_friendships_v2
     from inspect import getsource
 
-    # print(getsource(unrequitted_friendships_v2))
+    # print(getsource(unrequited_friendships_v2))
     return
 
 
@@ -697,9 +697,9 @@ def _(mo):
 
 @app.cell
 def _():
-    from nams.solutions.intro import unrequitted_friendships_v3
+    from nams.solutions.intro import unrequited_friendships_v3
 
-    # print(getsource(unrequitted_friendships_v3))
+    # print(getsource(unrequited_friendships_v3))
     return
 
 

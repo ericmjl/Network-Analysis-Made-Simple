@@ -15,7 +15,7 @@ def plot_time_series(pass_air_data, origin, dest):
     )
 
 
-def add_opinated_edges(G):
+def add_opinionated_edges(G):
     G = nx.DiGraph(G)
     sort_degree = sorted(
         nx.degree_centrality(G).items(), key=lambda x: x[1], reverse=True

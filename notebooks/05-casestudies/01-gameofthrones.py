@@ -31,11 +31,11 @@ def _(mo):
 
     In this chapter, we will use Game of Thrones as a case study to practice our newly learnt skills of network analysis.
 
-    It is surprising right? What is the relationship between a fatansy TV show/novel and network science or Python(not dragons).
+    It is surprising right? What is the relationship between a fantasy TV show/novel and network science or Python(not dragons).
 
     If you haven't heard of Game of Thrones, then you must be really good at hiding. Game of Thrones is a hugely popular television series by HBO based on the (also) hugely popular book series A Song of Ice and Fire by George R.R. Martin. In this notebook, we will analyze the co-occurrence network of the characters in the Game of Thrones books. Here, two characters are considered to co-occur if their names appear in the vicinity of 15 words from one another in the books.
 
-    The figure below is a precusor of what we will analyse in this chapter.
+    The figure below is a precursor of what we will analyse in this chapter.
 
     {mo.image("images/got.png")}
 
@@ -156,7 +156,7 @@ def _(mo):
 
     Using this measure, let's extract the top ten important characters from the first book (`graphs[0]`) and the fifth book (`graphs[4]`).
 
-    NOTE: We are using zero-indexing and that's why the graph of the first book is acceseed by `graphs[0]`.
+    NOTE: We are using zero-indexing and that's why the graph of the first book is accessed by `graphs[0]`.
     """)
     return
 
@@ -275,7 +275,7 @@ def _(mo):
     mo.md(r"""
     ## Betweenness centrality
 
-    Let's do this for Betweenness centrality and check if this makes any difference. As different centrality method use different measures underneath, they find nodes which are important in the network. A centrality method like Betweenness centrality finds nodes which are structurally important to the network, which binds the network together and densely.
+    Let's do this for Betweenness centrality and check if this makes any difference. As different centrality methods use different measures underneath, they find nodes which are important in the network. A centrality method like Betweenness centrality finds nodes which are structurally important to the network, which binds the network together and densely.
     """)
     return
 
@@ -453,7 +453,7 @@ def _(nx, plt):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    As we know the a higher betweenness centrality means that the node is crucial for the structure of the network, and in the case of Stannis Baratheon in the fifth book it seems like Stannis Baratheon has characteristics similar to that of node 5 in the above example as it seems to be the holding the network together.
+    As we know a higher betweenness centrality means that the node is crucial for the structure of the network, and in the case of Stannis Baratheon in the fifth book it seems like Stannis Baratheon has characteristics similar to that of node 5 in the above example as it seems to be the holding the network together.
 
     As evident from the betweenness centrality scores of the above example of barbell graph, node 5 is the most important node in this network.
     """)
@@ -472,7 +472,7 @@ def _(mo):
     ## Community detection in Networks
     A network is said to have community structure if the nodes of the network can be easily grouped into (potentially overlapping) sets of nodes such that each set of nodes is densely connected internally. There are multiple algorithms and definitions to calculate these communities in a network.
 
-    We will use louvain community detection algorithm to find the modules in our graph.
+    We will use the Louvain community detection algorithm to find the modules in our graph.
     """)
     return
 

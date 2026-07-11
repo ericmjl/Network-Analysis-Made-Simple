@@ -183,7 +183,7 @@ def _(mo):
     mo.md(r"""
     ### Erdos-Renyi (a.k.a. "binomial") graph
 
-    On easy one to study is the Erdos-Renyi graph, also known as the "binomial" graph.
+    An easy one to study is the Erdos-Renyi graph, also known as the "binomial" graph.
 
     The data generation story here is that we instantiate an undirected graph with $n$ nodes,
     giving $\frac{n^2 - n}{2}$ possible edges.
