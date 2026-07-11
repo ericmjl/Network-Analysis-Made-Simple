@@ -1,14 +1,13 @@
 import marimo
 
 __generated_with = "0.23.9"
-app = marimo.App()
+app = marimo.App(width="medium", auto_download=["html"])
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import marimo as mo
 
-    mo
     return (mo,)
 
 
