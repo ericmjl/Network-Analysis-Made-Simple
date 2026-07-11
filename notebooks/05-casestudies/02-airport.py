@@ -11,7 +11,7 @@ def _():
     return (mo,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import networkx as nx
     import matplotlib.pyplot as plt
@@ -33,7 +33,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     from nams import load_data as cf
 
@@ -1094,7 +1094,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     from nams.solutions import airport
     import inspect

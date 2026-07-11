@@ -12,7 +12,7 @@ def _():
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import marimo as mo
 
@@ -91,7 +91,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     from nams import load_data as cf
 
@@ -158,7 +158,7 @@ def _():
     return (path_exists,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     # UNCOMMENT THE FOLLOWING TWO LINES TO SEE THE ANSWER
     from nams.solutions.paths import path_exists as path_exists_solution
@@ -235,7 +235,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(G, path):
     import nxviz as nv
 
@@ -459,7 +459,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     from nams.solutions import paths
     import inspect

@@ -27,7 +27,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     from IPython.display import YouTubeVideo
 
@@ -465,7 +465,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(G_filtered):
     import nxviz as nv
 
@@ -585,7 +585,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     from nams.solutions import io
     import inspect

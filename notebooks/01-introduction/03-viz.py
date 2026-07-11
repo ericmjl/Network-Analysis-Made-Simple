@@ -27,7 +27,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     from IPython.display import YouTubeVideo
 
@@ -68,7 +68,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     from nams import load_data as cf
     import networkx as nx
@@ -131,7 +131,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(G):
     import nxviz as nv
 

@@ -12,7 +12,7 @@ def _():
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import marimo as mo
 
@@ -89,7 +89,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     from nams import load_data as cf
 
@@ -257,7 +257,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     from nams.solutions.hubs import rank_ordered_neighbors_original
     from inspect import getsource
@@ -274,7 +274,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     from nams.solutions.hubs import rank_ordered_neighbors_generator
 
@@ -537,7 +537,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(G):
     import nxviz as nv
 
@@ -642,7 +642,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     from nams.solutions import hubs
     import inspect

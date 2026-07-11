@@ -11,7 +11,7 @@ def _():
     return (mo,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import warnings
 
@@ -27,7 +27,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     from IPython.display import YouTubeVideo
 
@@ -98,7 +98,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     from nams import load_data as cf
 
@@ -129,7 +129,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(G):
     import nxviz as nv
 
@@ -162,7 +162,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import networkx as nx
     from inspect import getsource
@@ -542,7 +542,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(getsource):
     from nams.solutions import bipartite as bipartite_nams
 
