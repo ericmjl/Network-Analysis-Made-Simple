@@ -5,6 +5,127 @@ app = marimo.App(width="medium", auto_download=["html"])
 
 
 @app.cell(hide_code=True)
+def _(mo):
+    mo.Html(f"""
+    <div class="nams-hero">
+    <style>
+      .nams-hero{{color:#e2e8f0;margin:0;font-family:inherit}}
+      .nams-hero__grid{{display:grid;gap:22px;grid-template-columns:minmax(0,1.25fr) minmax(200px,0.85fr);padding:32px 28px;border-radius:14px;background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%)}}
+      @media(max-width:760px){{.nams-hero__grid{{grid-template-columns:1fr;padding:22px 16px}}}}
+      .nams-badge{{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border:1px solid rgba(56,189,248,0.3);background:rgba(56,189,248,0.1);border-radius:999px;color:#38bdf8;font-size:0.72rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase}}
+      .nams-hero h1{{margin:14px 0 8px;font-size:2.2rem;line-height:1.05;font-weight:880;letter-spacing:-0.02em;color:#f1f5f9}}
+      .nams-hero h1 .nams-em{{color:#38bdf8}}
+      .nams-hero p.lead{{margin:0;max-width:520px;color:#94a3b8;font-size:1.02rem;line-height:1.5}}
+      .nams-byline{{margin-top:16px;color:#64748b;font-size:0.88rem;line-height:1.5}}
+      .nams-byline b{{color:#cbd5e1}}
+      .nams-art{{display:flex;align-items:center;justify-content:center}}
+    </style>
+    <div class="nams-hero__grid">
+      <div>
+        <span class="nams-badge">Chapter 01 &middot; Introduction</span>
+        <h1>Graph<br><span class="nams-em">Visualization</span></h1>
+        <p class="lead">Hairballs are the default &mdash; but they don't have to be. Matrix, arc, and circos plots transform the chaos into structured, rational visualizations that actually communicate insight.</p>
+        <div class="nams-byline">Network Analysis Made Simple &middot; <b>Eric Ma</b></div>
+      </div>
+      <div class="nams-art">
+        <svg viewBox="0 0 160 90" style="width:100%;max-width:200px;height:auto">
+          <!-- Matrix: adjacency grid 6x6, grouped (2 groups of 3) -->
+          <rect x="8" y="8" width="38" height="38" rx="2" fill="none" stroke="#38bdf8" stroke-width="0.8" opacity="0.3"/>
+          <!-- cells: each 5.5px, offset from x=10,y=10 -->
+          <!-- row 0 -->
+          <rect x="10" y="10" width="5" height="5" fill="#38bdf8" opacity="0.08"/>
+          <rect x="16" y="10" width="5" height="5" fill="#38bdf8" opacity="0.7"/>
+          <rect x="22" y="10" width="5" height="5" fill="#38bdf8" opacity="0.7"/>
+          <rect x="28" y="10" width="5" height="5" fill="#38bdf8" opacity="0.08"/>
+          <rect x="34" y="10" width="5" height="5" fill="#38bdf8" opacity="0.08"/>
+          <rect x="40" y="10" width="5" height="5" fill="#38bdf8" opacity="0.08"/>
+          <!-- row 1 -->
+          <rect x="10" y="16" width="5" height="5" fill="#38bdf8" opacity="0.7"/>
+          <rect x="16" y="16" width="5" height="5" fill="#38bdf8" opacity="0.08"/>
+          <rect x="22" y="16" width="5" height="5" fill="#38bdf8" opacity="0.7"/>
+          <rect x="28" y="16" width="5" height="5" fill="#38bdf8" opacity="0.08"/>
+          <rect x="34" y="16" width="5" height="5" fill="#38bdf8" opacity="0.4"/>
+          <rect x="40" y="16" width="5" height="5" fill="#38bdf8" opacity="0.08"/>
+          <!-- row 2 -->
+          <rect x="10" y="22" width="5" height="5" fill="#38bdf8" opacity="0.7"/>
+          <rect x="16" y="22" width="5" height="5" fill="#38bdf8" opacity="0.7"/>
+          <rect x="22" y="22" width="5" height="5" fill="#38bdf8" opacity="0.08"/>
+          <rect x="28" y="22" width="5" height="5" fill="#38bdf8" opacity="0.08"/>
+          <rect x="34" y="22" width="5" height="5" fill="#38bdf8" opacity="0.08"/>
+          <rect x="40" y="22" width="5" height="5" fill="#38bdf8" opacity="0.4"/>
+          <!-- row 3 -->
+          <rect x="10" y="28" width="5" height="5" fill="#38bdf8" opacity="0.08"/>
+          <rect x="16" y="28" width="5" height="5" fill="#38bdf8" opacity="0.08"/>
+          <rect x="22" y="28" width="5" height="5" fill="#38bdf8" opacity="0.08"/>
+          <rect x="28" y="28" width="5" height="5" fill="#38bdf8" opacity="0.08"/>
+          <rect x="34" y="28" width="5" height="5" fill="#38bdf8" opacity="0.7"/>
+          <rect x="40" y="28" width="5" height="5" fill="#38bdf8" opacity="0.7"/>
+          <!-- row 4 -->
+          <rect x="10" y="34" width="5" height="5" fill="#38bdf8" opacity="0.08"/>
+          <rect x="16" y="34" width="5" height="5" fill="#38bdf8" opacity="0.4"/>
+          <rect x="22" y="34" width="5" height="5" fill="#38bdf8" opacity="0.08"/>
+          <rect x="28" y="34" width="5" height="5" fill="#38bdf8" opacity="0.7"/>
+          <rect x="34" y="34" width="5" height="5" fill="#38bdf8" opacity="0.08"/>
+          <rect x="40" y="34" width="5" height="5" fill="#38bdf8" opacity="0.7"/>
+          <!-- row 5 -->
+          <rect x="10" y="40" width="5" height="5" fill="#38bdf8" opacity="0.08"/>
+          <rect x="16" y="40" width="5" height="5" fill="#38bdf8" opacity="0.08"/>
+          <rect x="22" y="40" width="5" height="5" fill="#38bdf8" opacity="0.4"/>
+          <rect x="28" y="40" width="5" height="5" fill="#38bdf8" opacity="0.7"/>
+          <rect x="34" y="40" width="5" height="5" fill="#38bdf8" opacity="0.7"/>
+          <rect x="40" y="40" width="5" height="5" fill="#38bdf8" opacity="0.08"/>
+          <text x="28" y="56" text-anchor="middle" fill="#7dd3fc" font-size="6" font-weight="600" opacity="0.6">matrix</text>
+
+          <!-- Arc: nodes on a horizontal line, arcs above connecting pairs -->
+          <line x1="58" y1="44" x2="108" y2="44" stroke="#38bdf8" stroke-width="0.8" opacity="0.2"/>
+          <!-- arcs: quadratic bezier Q controlX controlY, bowing upward. Height ~ proportional to distance -->
+          <path d="M 60 44 Q 67 32 74 44" stroke="#38bdf8" stroke-width="1" fill="none" opacity="0.5"/>
+          <path d="M 60 44 Q 77 24 94 44" stroke="#38bdf8" stroke-width="1" fill="none" opacity="0.45"/>
+          <path d="M 74 44 Q 84 34 94 44" stroke="#38bdf8" stroke-width="1" fill="none" opacity="0.5"/>
+          <path d="M 67 44 Q 80 28 93 44" stroke="#38bdf8" stroke-width="1" fill="none" opacity="0.35"/>
+          <path d="M 80 44 Q 87 36 94 44" stroke="#38bdf8" stroke-width="1" fill="none" opacity="0.4"/>
+          <path d="M 87 44 Q 97 30 107 44" stroke="#38bdf8" stroke-width="1" fill="none" opacity="0.45"/>
+          <!-- nodes on the line -->
+          <circle cx="60" cy="44" r="2.5" fill="#38bdf8" opacity="0.8"/>
+          <circle cx="67" cy="44" r="2.5" fill="#38bdf8" opacity="0.7"/>
+          <circle cx="74" cy="44" r="2.5" fill="#38bdf8" opacity="0.8"/>
+          <circle cx="80" cy="44" r="2.5" fill="#38bdf8" opacity="0.7"/>
+          <circle cx="87" cy="44" r="2.5" fill="#38bdf8" opacity="0.8"/>
+          <circle cx="94" cy="44" r="2.5" fill="#38bdf8" opacity="0.7"/>
+          <circle cx="100" cy="44" r="2.5" fill="#38bdf8" opacity="0.6"/>
+          <circle cx="107" cy="44" r="2.5" fill="#38bdf8" opacity="0.6"/>
+          <text x="83" y="56" text-anchor="middle" fill="#7dd3fc" font-size="6" font-weight="600" opacity="0.6">arc</text>
+
+          <!-- Circos: nodes on a circle, edges as inward-bowing bezier curves -->
+          <!-- circle center: (135, 27), radius: 16 -->
+          <!-- 8 nodes at 45° intervals -->
+          <circle cx="135" cy="27" r="16" fill="none" stroke="#38bdf8" stroke-width="0.6" opacity="0.15"/>
+          <!-- edges: bezier with control point at center (135,27) -->
+          <path d="M 151 27 Q 135 27 135 11" stroke="#38bdf8" stroke-width="0.9" fill="none" opacity="0.4"/>
+          <path d="M 151 27 Q 135 27 119 27" stroke="#38bdf8" stroke-width="0.9" fill="none" opacity="0.3"/>
+          <path d="M 135 11 Q 135 27 119 27" stroke="#38bdf8" stroke-width="0.9" fill="none" opacity="0.35"/>
+          <path d="M 146 38 Q 135 27 124 16" stroke="#38bdf8" stroke-width="0.9" fill="none" opacity="0.4"/>
+          <path d="M 146 38 Q 135 27 135 43" stroke="#38bdf8" stroke-width="0.9" fill="none" opacity="0.3"/>
+          <path d="M 124 16 Q 135 27 124 38" stroke="#38bdf8" stroke-width="0.9" fill="none" opacity="0.35"/>
+          <!-- nodes -->
+          <circle cx="151" cy="27" r="2" fill="#38bdf8" opacity="0.8"/>
+          <circle cx="146" cy="38" r="2" fill="#38bdf8" opacity="0.7"/>
+          <circle cx="135" cy="43" r="2" fill="#38bdf8" opacity="0.7"/>
+          <circle cx="124" cy="38" r="2" fill="#38bdf8" opacity="0.7"/>
+          <circle cx="119" cy="27" r="2" fill="#38bdf8" opacity="0.8"/>
+          <circle cx="124" cy="16" r="2" fill="#38bdf8" opacity="0.7"/>
+          <circle cx="135" cy="11" r="2" fill="#38bdf8" opacity="0.7"/>
+          <circle cx="146" cy="16" r="2" fill="#38bdf8" opacity="0.7"/>
+          <text x="135" y="56" text-anchor="middle" fill="#7dd3fc" font-size="6" font-weight="600" opacity="0.6">circos</text>
+        </svg>
+      </div>
+    </div>
+    </div>
+    """)
+    return
+
+
+@app.cell(hide_code=True)
 def _():
     import marimo as mo
 
