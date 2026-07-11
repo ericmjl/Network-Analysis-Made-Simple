@@ -459,7 +459,7 @@ def _(mo):
 def _(G, ecdf, interact, nx, pd, plt):
     from ipywidgets import FloatSlider
 
-    p = FloatSlider(value=0.6, min=0, max=0.1, step=0.001)
+    p = FloatSlider(value=0.06, min=0, max=0.1, step=0.001)
 
     @interact(p=p)
     def compare_erdos_renyi_graph(p):
