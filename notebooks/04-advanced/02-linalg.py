@@ -94,7 +94,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(G1):
     import nxviz as nv
 
@@ -520,7 +520,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     from nams import load_data as cf
 
@@ -624,7 +624,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(G_amzn, customer_nodes, nx):
     import pandas as pd
     import janitor

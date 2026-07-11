@@ -108,7 +108,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import networkx as nx
     import warnings
@@ -678,7 +678,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     from nams.solutions.intro import unrequited_friendships_v2
     from inspect import getsource
@@ -695,7 +695,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     from nams.solutions.intro import unrequited_friendships_v3
 
@@ -713,7 +713,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import nams.solutions.intro as solutions
     import inspect

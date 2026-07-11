@@ -12,7 +12,7 @@ def _():
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import marimo as mo
 
@@ -28,7 +28,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     from IPython.display import YouTubeVideo
 
@@ -76,7 +76,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     from nams import load_data as cf
 
@@ -129,7 +129,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     def in_triangle(G, node):
         # Your answer here
@@ -201,7 +201,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     from inspect import getsource
 
@@ -515,7 +515,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(G):
     import nxviz as nv
 
@@ -602,7 +602,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(G):
     def label_connected_component_subgraphs(G):
         # Your answer here
@@ -688,7 +688,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(getsource):
     from nams.solutions import structures
 
