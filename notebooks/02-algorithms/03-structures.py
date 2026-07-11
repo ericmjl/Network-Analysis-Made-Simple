@@ -5,6 +5,65 @@ app = marimo.App(width="medium", auto_download=["html"])
 
 
 @app.cell(hide_code=True)
+def _(mo):
+    mo.Html(f"""
+    <div class="nams-hero">
+    <style>
+      .nams-hero{{color:#e2e8f0;margin:0;font-family:inherit}}
+      .nams-hero__grid{{display:grid;gap:22px;grid-template-columns:minmax(0,1.25fr) minmax(200px,0.85fr);padding:32px 28px;border-radius:14px;background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%)}}
+      @media(max-width:760px){{.nams-hero__grid{{grid-template-columns:1fr;padding:22px 16px}}}}
+      .nams-badge{{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border:1px solid rgba(129,140,248,0.3);background:rgba(129,140,248,0.1);border-radius:999px;color:#818cf8;font-size:0.72rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase}}
+      .nams-hero h1{{margin:14px 0 8px;font-size:2.2rem;line-height:1.05;font-weight:880;letter-spacing:-0.02em;color:#f1f5f9}}
+      .nams-hero h1 .nams-em{{color:#818cf8}}
+      .nams-hero p.lead{{margin:0;max-width:520px;color:#94a3b8;font-size:1.02rem;line-height:1.5}}
+      .nams-byline{{margin-top:16px;color:#64748b;font-size:0.88rem;line-height:1.5}}
+      .nams-byline b{{color:#cbd5e1}}
+      .nams-art{{display:flex;align-items:center;justify-content:center}}
+    </style>
+    <div class="nams-hero__grid">
+      <div>
+        <span class="nams-badge">Chapter 02 &middot; Algorithms</span>
+        <h1>Graph<br><span class="nams-em">Structures</span></h1>
+        <p class="lead">Triangles, cliques, and connected components &mdash; the building blocks of network topology. Find them, count them, and discover the hidden architecture of your graph.</p>
+        <div class="nams-byline">Network Analysis Made Simple &middot; <b>Eric Ma</b></div>
+      </div>
+      <div class="nams-art">
+        <svg viewBox="0 0 140 130" style="width:100%;max-width:170px;height:auto">
+          <!-- K4 clique: 4 fully-connected nodes forming 4 triangles -->
+          <!-- all 6 edges of K4 -->
+          <line x1="45" y1="30" x2="90" y2="30" stroke="#818cf8" stroke-width="1.2" opacity="0.3" stroke-linecap="round"/>
+          <line x1="45" y1="30" x2="45" y2="80" stroke="#818cf8" stroke-width="1.2" opacity="0.3" stroke-linecap="round"/>
+          <line x1="45" y1="30" x2="90" y2="80" stroke="#818cf8" stroke-width="1.2" opacity="0.3" stroke-linecap="round"/>
+          <line x1="90" y1="30" x2="45" y2="80" stroke="#818cf8" stroke-width="1.2" opacity="0.3" stroke-linecap="round"/>
+          <line x1="90" y1="30" x2="90" y2="80" stroke="#818cf8" stroke-width="1.2" opacity="0.3" stroke-linecap="round"/>
+          <line x1="45" y1="80" x2="90" y2="80" stroke="#818cf8" stroke-width="1.2" opacity="0.3" stroke-linecap="round"/>
+          <!-- highlighted triangle (3 edges bolder) -->
+          <line x1="45" y1="30" x2="90" y2="30" stroke="#a5b4fc" stroke-width="2.5" opacity="0.8" stroke-linecap="round"/>
+          <line x1="45" y1="30" x2="45" y2="80" stroke="#a5b4fc" stroke-width="2.5" opacity="0.8" stroke-linecap="round"/>
+          <line x1="45" y1="80" x2="90" y2="30" stroke="#a5b4fc" stroke-width="2.5" opacity="0.8" stroke-linecap="round"/>
+          <!-- triangle fill -->
+          <polygon points="45,30 90,30 45,80" fill="#818cf8" opacity="0.08"/>
+          <!-- K4 nodes -->
+          <circle cx="45" cy="30" r="5" fill="#818cf8" opacity="0.85"/>
+          <circle cx="90" cy="30" r="5" fill="#818cf8" opacity="0.85"/>
+          <circle cx="45" cy="80" r="5" fill="#818cf8" opacity="0.85"/>
+          <circle cx="90" cy="80" r="5" fill="#818cf8" opacity="0.7"/>
+          <!-- separate connected component: 2 nodes + edge, isolated -->
+          <line x1="108" y1="100" x2="125" y2="115" stroke="#818cf8" stroke-width="1" opacity="0.25" stroke-linecap="round"/>
+          <circle cx="108" cy="100" r="3.5" fill="#6366f1" opacity="0.4"/>
+          <circle cx="125" cy="115" r="3.5" fill="#6366f1" opacity="0.4"/>
+          <!-- labels -->
+          <text x="67" y="18" text-anchor="middle" fill="#c7d2fe" font-size="6.5" font-weight="600" opacity="0.6">triangle</text>
+          <text x="117" y="95" text-anchor="middle" fill="#c7d2fe" font-size="5.5" font-weight="500" opacity="0.4">component</text>
+        </svg>
+      </div>
+    </div>
+    </div>
+    """)
+    return
+
+
+@app.cell(hide_code=True)
 def _():
     import warnings
 
