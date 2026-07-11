@@ -11,13 +11,6 @@ def _():
     return (mo,)
 
 
-@app.cell(hide_code=True)
-def plt_import():
-    import matplotlib.pyplot as plt
-
-    return
-
-
 @app.cell
 def _():
     import warnings

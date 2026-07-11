@@ -153,13 +153,6 @@ def _(mo):
     return
 
 
-@app.cell
-def _():
-    from pyprojroot import here
-
-    return
-
-
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""

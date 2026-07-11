@@ -14,9 +14,7 @@ def _():
 @app.cell
 def _():
     import networkx as nx
-    import pandas as pd
     import matplotlib.pyplot as plt
-    import numpy as np
     import warnings
 
     warnings.filterwarnings("ignore")
