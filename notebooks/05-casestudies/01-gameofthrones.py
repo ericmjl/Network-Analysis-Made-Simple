@@ -482,7 +482,7 @@ def _(mo):
 def _(community, graphs):
     import nxviz as nv
 
-    partition = community.best_partition(graphs[0], randomize=False)
+    partition = community.best_partition(graphs[0], random_state=42)
 
     for n in graphs[0].nodes():
         graphs[0].nodes[n]["partition"] = partition[n]
