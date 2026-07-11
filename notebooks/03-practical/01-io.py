@@ -585,7 +585,7 @@ def _(mo):
     return
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _():
     from nams.solutions import io
     import inspect

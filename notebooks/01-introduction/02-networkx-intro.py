@@ -678,7 +678,7 @@ def _(mo):
     return
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _():
     from nams.solutions.intro import unrequited_friendships_v2
     from inspect import getsource
@@ -695,7 +695,7 @@ def _(mo):
     return
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _():
     from nams.solutions.intro import unrequited_friendships_v3
 
@@ -713,7 +713,7 @@ def _(mo):
     return
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _():
     import nams.solutions.intro as solutions
     import inspect

@@ -257,7 +257,7 @@ def _(mo):
     return
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _():
     from nams.solutions.hubs import rank_ordered_neighbors_original
     from inspect import getsource
@@ -274,7 +274,7 @@ def _(mo):
     return
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _():
     from nams.solutions.hubs import rank_ordered_neighbors_generator
 
@@ -642,7 +642,7 @@ def _(mo):
     return
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _():
     from nams.solutions import hubs
     import inspect
