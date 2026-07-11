@@ -170,7 +170,7 @@ def _(mo):
 
 
 @app.cell
-def _(_______, ____________, _____________):
+def _():
     import networkx as nx
     from inspect import getsource
 
@@ -340,7 +340,7 @@ def _(mo):
 
 
 @app.cell
-def _(______________, ___________________, crime_graph, nx):
+def _(crime_graph, nx):
     import pandas as pd
 
     def find_most_similar_crimes(cG: nx.Graph):
@@ -367,7 +367,7 @@ def _(mo):
 
 
 @app.cell
-def _(______________, ___________________, nx, person_graph):
+def _(nx, person_graph):
     def find_most_similar_people(pG: nx.Graph):
         """
         Find the persons that are most similar to other persons.

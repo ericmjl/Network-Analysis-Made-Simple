@@ -427,7 +427,7 @@ def _(mo):
 
 
 @app.cell
-def _(G, G_________, ___, ____, ___________, d):
+def _(G):
     def filter_graph(G, minimum_num_trips):
         """
         Filter the graph such that
