@@ -5,26 +5,67 @@ app = marimo.App(width="medium", auto_download=["html"])
 
 
 @app.cell(hide_code=True)
+def _(mo):
+    mo.Html(f"""
+    <div class="nams-hero">
+    <style>
+      .nams-hero{{color:#e2e8f0;margin:0;font-family:inherit}}
+      .nams-hero__grid{{display:grid;gap:22px;grid-template-columns:minmax(0,1.25fr) minmax(200px,0.85fr);padding:32px 28px;border-radius:14px;background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%)}}
+      @media(max-width:760px){{.nams-hero__grid{{grid-template-columns:1fr;padding:22px 16px}}}}
+      .nams-badge{{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border:1px solid rgba(167,139,250,0.3);background:rgba(167,139,250,0.1);border-radius:999px;color:#a78bfa;font-size:0.72rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase}}
+      .nams-hero h1{{margin:14px 0 8px;font-size:2.2rem;line-height:1.05;font-weight:880;letter-spacing:-0.02em;color:#f1f5f9}}
+      .nams-hero h1 .nams-em{{color:#a78bfa}}
+      .nams-hero p.lead{{margin:0;max-width:520px;color:#94a3b8;font-size:1.02rem;line-height:1.5}}
+      .nams-byline{{margin-top:16px;color:#64748b;font-size:0.88rem;line-height:1.5}}
+      .nams-byline b{{color:#cbd5e1}}
+      .nams-art{{display:flex;align-items:center;justify-content:center}}
+    </style>
+    <div class="nams-hero__grid">
+      <div>
+        <span class="nams-badge">Chapter 00 &middot; Preface</span>
+        <h1>Learning<br><span class="nams-em">Goals</span></h1>
+        <p class="lead">Two kinds of takeaways await: <b>technical</b> skills with NetworkX, nxviz, and graph algorithms, and <b>intellectual</b> habits &mdash; relational thinking and algorithmic reasoning that outlast any library.</p>
+        <div class="nams-byline">Network Analysis Made Simple &middot; <b>Eric Ma</b></div>
+      </div>
+      <div class="nams-art">
+        <svg viewBox="0 0 140 140" style="width:100%;max-width:160px;height:auto">
+          <circle cx="70" cy="70" r="45" fill="none" stroke="#a78bfa" stroke-width="1.5" opacity="0.2"/>
+          <circle cx="70" cy="70" r="32" fill="none" stroke="#a78bfa" stroke-width="1.5" opacity="0.35"/>
+          <circle cx="70" cy="70" r="19" fill="none" stroke="#a78bfa" stroke-width="1.5" opacity="0.55"/>
+          <circle cx="70" cy="70" r="7" fill="#a78bfa" opacity="0.9"/>
+          <line x1="70" y1="70" x2="112" y2="30" stroke="#c4b5fd" stroke-width="2.5" stroke-linecap="round"/>
+          <polygon points="112,30 104,32 108,38" fill="#c4b5fd"/>
+          <line x1="70" y1="70" x2="42" y2="108" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+          <polygon points="42,108 46,100 50,106" fill="#8b5cf6" opacity="0.5"/>
+          <line x1="70" y1="70" x2="105" y2="95" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+          <polygon points="105,95 97,93 99,100" fill="#8b5cf6" opacity="0.4"/>
+        </svg>
+      </div>
+    </div>
+    </div>
+    """)
+    return
+
+
+@app.cell(hide_code=True)
 def _():
     import marimo as mo
+
     return (mo,)
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     Our learning goals for you with this book
     can be split into the technical and the intellectual.
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## Technical Takeaways
 
     Firstly, we would like to equip you to be familiar
@@ -52,15 +93,13 @@ def _(mo):
     Fourthly, you will also be equipped with the connection between graph theory
     and other areas of math and computing,
     such as statistical inference and linear algebra.
-    """
-    )
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(
-        r"""
+    mo.md(r"""
     ## Intellectual Goals
 
     Beyond the technical takeaways,
@@ -81,8 +120,7 @@ def _(mo):
     with **algorithmic thinking**.
     which is where you look at a problem
     in terms of the **algorithm** that solves it.
-    """
-    )
+    """)
     return
 
 
