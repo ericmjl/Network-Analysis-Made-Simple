@@ -212,6 +212,25 @@ def _(deg_cen_book5):
 
 @app.cell(hide_code=True)
 def _(mo):
+    book_selector = mo.ui.dropdown(
+        options={"Book 1": 0, "Book 2": 1, "Book 3": 2, "Book 4": 3, "Book 5": 4},
+        value=0,
+        label="Select a book to explore degree centrality",
+    )
+    book_selector
+    return (book_selector,)
+
+
+@app.cell(hide_code=True)
+def _(book_selector, graphs, nx):
+    selected_book_idx = book_selector.value
+    selected_deg_cen = nx.degree_centrality(graphs[selected_book_idx])
+    sorted(selected_deg_cen.items(), key=lambda x: x[1], reverse=True)[0:10]
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
     mo.md(r"""
     To visualize the distribution of degree centrality let's plot a histogram of degree centrality.
     """)

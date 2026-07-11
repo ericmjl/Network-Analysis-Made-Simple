@@ -267,6 +267,19 @@ def _(A2, np):
 
 @app.cell(hide_code=True)
 def _(mo):
+    power_slider = mo.ui.slider(start=1, stop=6, value=2, step=1, label="Matrix power k (steps)")
+    power_slider
+    return (power_slider,)
+
+
+@app.cell
+def _(A2, np, power_slider):
+    np.linalg.matrix_power(A2, power_slider.value)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
     mo.md(r"""
     ## Message Passing
 
