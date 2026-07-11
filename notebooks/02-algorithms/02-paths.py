@@ -158,7 +158,7 @@ def _():
     return (path_exists,)
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _():
     # UNCOMMENT THE FOLLOWING TWO LINES TO SEE THE ANSWER
     from nams.solutions.paths import path_exists as path_exists_solution
@@ -459,7 +459,7 @@ def _(mo):
     return
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _():
     from nams.solutions import paths
     import inspect

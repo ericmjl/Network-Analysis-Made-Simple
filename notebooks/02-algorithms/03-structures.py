@@ -129,7 +129,7 @@ def _(mo):
     return
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _():
     def in_triangle(G, node):
         # Your answer here
@@ -201,7 +201,7 @@ def _(mo):
     return
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _():
     from inspect import getsource
 
@@ -602,7 +602,7 @@ def _(mo):
     return
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _(G):
     def label_connected_component_subgraphs(G):
         # Your answer here
@@ -688,7 +688,7 @@ def _(mo):
     return
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _(getsource):
     from nams.solutions import structures
 

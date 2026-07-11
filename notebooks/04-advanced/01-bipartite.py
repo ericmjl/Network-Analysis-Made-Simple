@@ -162,7 +162,7 @@ def _(mo):
     return
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _():
     import networkx as nx
     from inspect import getsource
@@ -542,7 +542,7 @@ def _(mo):
     return
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _(getsource):
     from nams.solutions import bipartite as bipartite_nams
 
