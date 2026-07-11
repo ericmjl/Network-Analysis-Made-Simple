@@ -256,6 +256,36 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
+    ## Compare Visualization Types Interactively
+
+    Now that you have seen all four rational visualizations,
+    use the dropdown below to switch between them and compare side by side.
+    Think about which visualization best communicates the structure of the graph.
+    """)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    viz_selector = mo.ui.dropdown(
+        options=["matrix", "arc", "circos", "hive"],
+        value="circos",
+        label="Visualization Type",
+    )
+    viz_selector
+    return (viz_selector,)
+
+
+@app.cell
+def _(G, nv, viz_selector):
+    viz_fn = getattr(nv, viz_selector.value)
+    viz_fn(G, group_by="gender", node_color_by="gender", backend="plotly")
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
     ## Principles of Rational Graph Viz
 
     While I was implementing these visualizations in [`nxviz`](https://github.com/ericmjl/nxviz),
