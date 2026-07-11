@@ -5,6 +5,63 @@ app = marimo.App(width="medium", auto_download=["html"])
 
 
 @app.cell(hide_code=True)
+def _(mo):
+    mo.Html(f"""
+    <div class="nams-hero">
+    <style>
+      .nams-hero{{color:#e2e8f0;margin:0;font-family:inherit}}
+      .nams-hero__grid{{display:grid;gap:22px;grid-template-columns:minmax(0,1.25fr) minmax(200px,0.85fr);padding:32px 28px;border-radius:14px;background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%)}}
+      @media(max-width:760px){{.nams-hero__grid{{grid-template-columns:1fr;padding:22px 16px}}}}
+      .nams-badge{{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border:1px solid rgba(251,146,60,0.3);background:rgba(251,146,60,0.1);border-radius:999px;color:#fb923c;font-size:0.72rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase}}
+      .nams-hero h1{{margin:14px 0 8px;font-size:2.2rem;line-height:1.05;font-weight:880;letter-spacing:-0.02em;color:#f1f5f9}}
+      .nams-hero h1 .nams-em{{color:#fb923c}}
+      .nams-hero p.lead{{margin:0;max-width:520px;color:#94a3b8;font-size:1.02rem;line-height:1.5}}
+      .nams-byline{{margin-top:16px;color:#64748b;font-size:0.88rem;line-height:1.5}}
+      .nams-byline b{{color:#cbd5e1}}
+      .nams-art{{display:flex;align-items:center;justify-content:center}}
+    </style>
+    <div class="nams-hero__grid">
+      <div>
+        <span class="nams-badge">Chapter 02 &middot; Algorithms</span>
+        <h1>Paths &amp;<br><span class="nams-em">Traversal</span></h1>
+        <p class="lead">How do you get from node A to node B? Breadth-first search explores outward layer by layer, finding shortest paths and revealing the bottleneck nodes that hold a network together.</p>
+        <div class="nams-byline">Network Analysis Made Simple &middot; <b>Eric Ma</b></div>
+      </div>
+      <div class="nams-art">
+        <svg viewBox="0 0 150 120" style="width:100%;max-width:180px;height:auto">
+          <!-- dimmed background edges -->
+          <line x1="25" y1="25" x2="60" y2="50" stroke="#fb923c" stroke-width="1" opacity="0.15" stroke-linecap="round"/>
+          <line x1="60" y1="50" x2="95" y2="30" stroke="#fb923c" stroke-width="1" opacity="0.15" stroke-linecap="round"/>
+          <line x1="95" y1="30" x2="125" y2="55" stroke="#fb923c" stroke-width="1" opacity="0.15" stroke-linecap="round"/>
+          <line x1="60" y1="50" x2="80" y2="85" stroke="#fb923c" stroke-width="1" opacity="0.15" stroke-linecap="round"/>
+          <line x1="80" y1="85" x2="125" y2="95" stroke="#fb923c" stroke-width="1" opacity="0.15" stroke-linecap="round"/>
+          <line x1="25" y1="25" x2="50" y2="90" stroke="#fb923c" stroke-width="1" opacity="0.12" stroke-linecap="round"/>
+          <line x1="50" y1="90" x2="80" y2="85" stroke="#fb923c" stroke-width="1" opacity="0.12" stroke-linecap="round"/>
+          <!-- highlighted path edges: start -> mid -> mid -> end -->
+          <line x1="25" y1="25" x2="60" y2="50" stroke="#fb923c" stroke-width="2.5" opacity="0.8" stroke-linecap="round"/>
+          <line x1="60" y1="50" x2="80" y2="85" stroke="#fb923c" stroke-width="2.5" opacity="0.8" stroke-linecap="round"/>
+          <line x1="80" y1="85" x2="125" y2="95" stroke="#fb923c" stroke-width="2.5" opacity="0.8" stroke-linecap="round"/>
+          <!-- dimmed off-path nodes -->
+          <circle cx="95" cy="30" r="4" fill="#c2410c" opacity="0.35"/>
+          <circle cx="125" cy="55" r="4" fill="#c2410c" opacity="0.35"/>
+          <circle cx="50" cy="90" r="3.5" fill="#c2410c" opacity="0.3"/>
+          <!-- highlighted path nodes -->
+          <circle cx="25" cy="25" r="6" fill="#fb923c" opacity="0.9"/>
+          <circle cx="60" cy="50" r="5" fill="#fb923c" opacity="0.85"/>
+          <circle cx="80" cy="85" r="5" fill="#fb923c" opacity="0.85"/>
+          <circle cx="125" cy="95" r="6" fill="#fb923c" opacity="0.9"/>
+          <!-- start/end labels -->
+          <text x="25" y="14" text-anchor="middle" fill="#fdba74" font-size="7" font-weight="700">start</text>
+          <text x="125" y="110" text-anchor="middle" fill="#fdba74" font-size="7" font-weight="700">end</text>
+        </svg>
+      </div>
+    </div>
+    </div>
+    """)
+    return
+
+
+@app.cell(hide_code=True)
 def _():
     import warnings
 
@@ -119,7 +176,7 @@ def _(mo):
 
 
 @app.cell
-def _():
+def _(____, _____, _________, ___________, _____________, _________________):
     # FILL IN THE BLANKS BELOW
 
 
