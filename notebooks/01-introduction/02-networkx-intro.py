@@ -111,9 +111,6 @@ def _(mo):
 @app.cell
 def _():
     import networkx as nx
-    from datetime import datetime
-    import matplotlib.pyplot as plt
-    import numpy as np
     import warnings
     from nams import load_data as cf
 

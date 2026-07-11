@@ -396,7 +396,6 @@ def _(mo):
 @app.cell
 def _():
     import matplotlib.pyplot as plt
-    import seaborn as sns
 
     # YOUR ANSWER HERE:
     return (plt,)
