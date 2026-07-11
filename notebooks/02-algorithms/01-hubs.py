@@ -5,6 +5,63 @@ app = marimo.App(width="medium", auto_download=["html"])
 
 
 @app.cell(hide_code=True)
+def _(mo):
+    mo.Html(f"""
+    <div class="nams-hero">
+    <style>
+      .nams-hero{{color:#e2e8f0;margin:0;font-family:inherit}}
+      .nams-hero__grid{{display:grid;gap:22px;grid-template-columns:minmax(0,1.25fr) minmax(200px,0.85fr);padding:32px 28px;border-radius:14px;background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%)}}
+      @media(max-width:760px){{.nams-hero__grid{{grid-template-columns:1fr;padding:22px 16px}}}}
+      .nams-badge{{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border:1px solid rgba(248,113,113,0.3);background:rgba(248,113,113,0.1);border-radius:999px;color:#f87171;font-size:0.72rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase}}
+      .nams-hero h1{{margin:14px 0 8px;font-size:2.2rem;line-height:1.05;font-weight:880;letter-spacing:-0.02em;color:#f1f5f9}}
+      .nams-hero h1 .nams-em{{color:#f87171}}
+      .nams-hero p.lead{{margin:0;max-width:520px;color:#94a3b8;font-size:1.02rem;line-height:1.5}}
+      .nams-byline{{margin-top:16px;color:#64748b;font-size:0.88rem;line-height:1.5}}
+      .nams-byline b{{color:#cbd5e1}}
+      .nams-art{{display:flex;align-items:center;justify-content:center}}
+    </style>
+    <div class="nams-hero__grid">
+      <div>
+        <span class="nams-badge">Chapter 02 &middot; Algorithms</span>
+        <h1>Hubs &amp;<br><span class="nams-em">Degree Centrality</span></h1>
+        <p class="lead">Which nodes matter most? Count the neighbors, normalize by the population, and you have degree centrality &mdash; the simplest measure of importance in a network.</p>
+        <div class="nams-byline">Network Analysis Made Simple &middot; <b>Eric Ma</b></div>
+      </div>
+      <div class="nams-art">
+        <svg viewBox="0 0 140 140" style="width:100%;max-width:160px;height:auto">
+          <!-- hub-and-spoke: one large central hub node with many edges radiating to smaller nodes -->
+          <line x1="70" y1="70" x2="70" y2="20" stroke="#f87171" stroke-width="1.5" opacity="0.4" stroke-linecap="round"/>
+          <line x1="70" y1="70" x2="105" y2="35" stroke="#f87171" stroke-width="1.5" opacity="0.4" stroke-linecap="round"/>
+          <line x1="70" y1="70" x2="120" y2="70" stroke="#f87171" stroke-width="1.5" opacity="0.4" stroke-linecap="round"/>
+          <line x1="70" y1="70" x2="105" y2="105" stroke="#f87171" stroke-width="1.5" opacity="0.4" stroke-linecap="round"/>
+          <line x1="70" y1="70" x2="70" y2="120" stroke="#f87171" stroke-width="1.5" opacity="0.4" stroke-linecap="round"/>
+          <line x1="70" y1="70" x2="35" y2="105" stroke="#f87171" stroke-width="1.5" opacity="0.4" stroke-linecap="round"/>
+          <line x1="70" y1="70" x2="20" y2="70" stroke="#f87171" stroke-width="1.5" opacity="0.4" stroke-linecap="round"/>
+          <line x1="70" y1="70" x2="35" y2="35" stroke="#f87171" stroke-width="1.5" opacity="0.4" stroke-linecap="round"/>
+          <!-- a few edges between peripheral nodes -->
+          <line x1="70" y1="20" x2="105" y2="35" stroke="#f87171" stroke-width="0.8" opacity="0.2" stroke-linecap="round"/>
+          <line x1="20" y1="70" x2="35" y2="35" stroke="#f87171" stroke-width="0.8" opacity="0.2" stroke-linecap="round"/>
+          <line x1="105" y1="105" x2="70" y2="120" stroke="#f87171" stroke-width="0.8" opacity="0.2" stroke-linecap="round"/>
+          <!-- hub node: large -->
+          <circle cx="70" cy="70" r="11" fill="#f87171" opacity="0.9"/>
+          <!-- peripheral nodes: small, varying -->
+          <circle cx="70" cy="20" r="4.5" fill="#ef4444" opacity="0.7"/>
+          <circle cx="105" cy="35" r="4" fill="#ef4444" opacity="0.7"/>
+          <circle cx="120" cy="70" r="5" fill="#ef4444" opacity="0.7"/>
+          <circle cx="105" cy="105" r="4" fill="#ef4444" opacity="0.7"/>
+          <circle cx="70" cy="120" r="3.5" fill="#dc2626" opacity="0.6"/>
+          <circle cx="35" cy="105" r="4.5" fill="#ef4444" opacity="0.7"/>
+          <circle cx="20" cy="70" r="4" fill="#ef4444" opacity="0.7"/>
+          <circle cx="35" cy="35" r="3.5" fill="#dc2626" opacity="0.6"/>
+        </svg>
+      </div>
+    </div>
+    </div>
+    """)
+    return
+
+
+@app.cell(hide_code=True)
 def _():
     import warnings
 
