@@ -329,13 +329,13 @@ def _(mo):
 
 
 @app.cell
-def _(g, plots, plt):
+def _(g, plt):
     from nxviz import nodes as _nodes, plots as _plots
 
     plt.figure(figsize=(20, 9))
     _pos = _nodes.geo(g, encodings_kwargs={"size_scale": 1})
     _plots.aspect_equal()
-    plots.despine()
+    _plots.despine()
     plt.show()
     return
 
@@ -349,7 +349,7 @@ def _(mo):
 
 
 @app.cell
-def _(annotate, g, plots, plt, pos):
+def _(g, plt):
     from nxviz import (
         nodes as _nodes,
         plots as _plots,
@@ -359,10 +359,10 @@ def _(annotate, g, plots, plt, pos):
 
     plt.figure(figsize=(20, 9))
     _pos = _nodes.geo(g, color_by="degree", encodings_kwargs={"size_scale": 1})
-    _edges.line(g, pos, encodings_kwargs={"alpha_scale": 0.1})
-    annotate.node_colormapping(g, color_by="degree")
-    plots.aspect_equal()
-    plots.despine()
+    _edges.line(g, _pos, encodings_kwargs={"alpha_scale": 0.1})
+    _annotate.node_colormapping(g, color_by="degree")
+    _plots.aspect_equal()
+    _plots.despine()
     plt.show()
     return
 
