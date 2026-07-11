@@ -5,13 +5,60 @@ app = marimo.App(width="medium", auto_download=["html"])
 
 
 @app.cell(hide_code=True)
+def _(mo):
+    mo.Html(f"""
+    <div class="nams-hero">
+    <style>
+      .nams-hero{{color:#e2e8f0;margin:0;font-family:inherit}}
+      .nams-hero__grid{{display:grid;gap:22px;grid-template-columns:minmax(0,1.25fr) minmax(200px,0.85fr);padding:32px 28px;border-radius:14px;background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%)}}
+      @media(max-width:760px){{.nams-hero__grid{{grid-template-columns:1fr;padding:22px 16px}}}}
+      .nams-badge{{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border:1px solid rgba(251,113,133,0.3);background:rgba(251,113,133,0.1);border-radius:999px;color:#fb7185;font-size:0.72rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase}}
+      .nams-hero h1{{margin:14px 0 8px;font-size:2.2rem;line-height:1.05;font-weight:880;letter-spacing:-0.02em;color:#f1f5f9}}
+      .nams-hero h1 .nams-em{{color:#fb7185}}
+      .nams-hero p.lead{{margin:0;max-width:520px;color:#94a3b8;font-size:1.02rem;line-height:1.5}}
+      .nams-byline{{margin-top:16px;color:#64748b;font-size:0.88rem;line-height:1.5}}
+      .nams-byline b{{color:#cbd5e1}}
+      .nams-art{{display:flex;align-items:center;justify-content:center}}
+    </style>
+    <div class="nams-hero__grid">
+      <div>
+        <span class="nams-badge">Chapter 01 &middot; Introduction</span>
+        <h1>The <span class="nams-em">NetworkX</span><br>API</h1>
+        <p class="lead">Load real graph data, query nodes and edges, inspect metadata, and manipulate the graph &mdash; the hands-on toolkit for working with networks in Python.</p>
+        <div class="nams-byline">Network Analysis Made Simple &middot; <b>Eric Ma</b></div>
+      </div>
+      <div class="nams-art">
+        <svg viewBox="0 0 140 140" style="width:100%;max-width:160px;height:auto">
+          <line x1="40" y1="35" x2="90" y2="30" stroke="#fb7185" stroke-width="1.5" opacity="0.3" stroke-linecap="round"/>
+          <line x1="40" y1="35" x2="55" y2="70" stroke="#fb7185" stroke-width="1.5" opacity="0.3" stroke-linecap="round"/>
+          <line x1="90" y1="30" x2="100" y2="65" stroke="#fb7185" stroke-width="1.5" opacity="0.2" stroke-linecap="round"/>
+          <line x1="55" y1="70" x2="100" y2="65" stroke="#fb7185" stroke-width="1.5" opacity="0.2" stroke-linecap="round"/>
+          <line x1="55" y1="70" x2="75" y2="105" stroke="#fb7185" stroke-width="1.5" opacity="0.25" stroke-linecap="round"/>
+          <line x1="100" y1="65" x2="75" y2="105" stroke="#fb7185" stroke-width="1" opacity="0.15" stroke-linecap="round"/>
+          <rect x="22" y="20" width="36" height="14" rx="4" fill="none" stroke="#fb7185" stroke-width="1" opacity="0.4" stroke-dasharray="2 2"/>
+          <text x="40" y="30" text-anchor="middle" fill="#fda4af" font-size="6" font-weight="600" opacity="0.7">gender:F</text>
+          <circle cx="40" cy="42" r="7" fill="#fb7185" opacity="0.9"/>
+          <rect x="74" y="15" width="34" height="14" rx="4" fill="none" stroke="#fb7185" stroke-width="1" opacity="0.4" stroke-dasharray="2 2"/>
+          <text x="91" y="25" text-anchor="middle" fill="#fda4af" font-size="6" font-weight="600" opacity="0.7">gender:M</text>
+          <circle cx="90" cy="37" r="7" fill="#fb7185" opacity="0.8"/>
+          <circle cx="55" cy="77" r="6" fill="#e11d48" opacity="0.6"/>
+          <circle cx="100" cy="72" r="6" fill="#e11d48" opacity="0.6"/>
+          <circle cx="75" cy="112" r="5.5" fill="#e11d48" opacity="0.5"/>
+        </svg>
+      </div>
+    </div>
+    </div>
+    """)
+    return
+
+
+@app.cell(hide_code=True)
 def _():
     import marimo as mo
 
     mo.md(r"""
     # Introduction
     """)
-
     return (mo,)
 
 
