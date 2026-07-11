@@ -427,24 +427,23 @@ def _(mo):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    ba_m_slider = mo.ui.slider(start=1, stop=10, value=2, step=1, label="m (edges per new node)")
+    ba_m_slider
+    return (ba_m_slider,)
+
+
 @app.cell
-def _(G, ecdf, nx, pd, plt):
-    from ipywidgets import interact, IntSlider
-
-    m = IntSlider(value=2, min=1, max=10)
-
-    @interact(m=m)
-    def compare_barabasi_albert_graph(m):
-        fig, ax = plt.subplots()
-        G_ba = nx.barabasi_albert_graph(n=len(G.nodes()), m=m)
-        _x, _y = ecdf(pd.Series(dict(nx.degree(G_ba))))
-        ax.scatter(_x, _y, label="Barabasi-Albert Graph")
-        _x, _y = ecdf(pd.Series(dict(nx.degree(G))))
-        ax.scatter(_x, _y, label="Protein Interaction Network")
-        ax.legend()
-        plt.show()
-
-    return (interact,)
+def _(G, ba_m_slider, ecdf, nx, pd, plt):
+    ba_fig, ba_ax = plt.subplots()
+    G_ba = nx.barabasi_albert_graph(n=len(G.nodes()), m=ba_m_slider.value)
+    _x, _y = ecdf(pd.Series(dict(nx.degree(G_ba))))
+    ba_ax.scatter(_x, _y, label="Barabasi-Albert Graph")
+    _x, _y = ecdf(pd.Series(dict(nx.degree(G))))
+    ba_ax.scatter(_x, _y, label="Protein Interaction Network")
+    ba_ax.legend()
+    plt.show()
 
 
 @app.cell(hide_code=True)
@@ -455,25 +454,24 @@ def _(mo):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    er_p_slider = mo.ui.slider(start=0, stop=0.1, value=0.06, step=0.001, label="p (edge probability)")
+    er_p_slider
+    return (er_p_slider,)
+
+
 @app.cell
-def _(G, ecdf, interact, nx, pd, plt):
-    from ipywidgets import FloatSlider
-
-    p = FloatSlider(value=0.06, min=0, max=0.1, step=0.001)
-
-    @interact(p=p)
-    def compare_erdos_renyi_graph(p):
-        fig, ax = plt.subplots()
-        G_er = nx.erdos_renyi_graph(n=len(G.nodes()), p=p)
-        _x, _y = ecdf(pd.Series(dict(nx.degree(G_er))))
-        ax.scatter(_x, _y, label="Erdos-Renyi Graph")
-        _x, _y = ecdf(pd.Series(dict(nx.degree(G))))
-        ax.scatter(_x, _y, label="Protein Interaction Network")
-        ax.legend()
-        ax.set_title(f"p={p}")
-        plt.show()
-
-    return
+def _(G, ecdf, er_p_slider, nx, pd, plt):
+    er_fig, er_ax = plt.subplots()
+    G_er = nx.erdos_renyi_graph(n=len(G.nodes()), p=er_p_slider.value)
+    _x, _y = ecdf(pd.Series(dict(nx.degree(G_er))))
+    er_ax.scatter(_x, _y, label="Erdos-Renyi Graph")
+    _x, _y = ecdf(pd.Series(dict(nx.degree(G))))
+    er_ax.scatter(_x, _y, label="Protein Interaction Network")
+    er_ax.legend()
+    er_ax.set_title(f"p={er_p_slider.value}")
+    plt.show()
 
 
 @app.cell(hide_code=True)
