@@ -755,5 +755,25 @@ def _(getsource):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    import wigglystuff
+
+    tour = wigglystuff.CellTour(
+        steps=[
+        {'cell': 0, 'title': 'Graph Structures', 'description': 'Triangles, cliques, and connected components.'},
+        {'cell': 4, 'title': 'Finding triangles', 'description': 'The simplest graph structure beyond an edge.'},
+        {'cell': 8, 'title': 'Triadic closure', 'description': 'Open triangles predict future connections.'},
+        {'cell': 16, 'title': 'Cliques', 'description': 'Fully-connected subgraphs and maximal cliques.'},
+        {'cell': 20, 'title': 'k-Cliques', 'description': 'Finding cliques of a specific size.'},
+        {'cell': 26, 'title': 'Connected components', 'description': 'Disjoint subgraphs in the network.'},
+    ],
+        auto_start=False,
+        show_progress=True,
+    )
+    mo.ui.anywidget(tour)
+    return
+
+
 if __name__ == "__main__":
     app.run()

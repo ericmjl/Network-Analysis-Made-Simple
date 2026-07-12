@@ -212,5 +212,23 @@ def _(mo):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    import wigglystuff
+
+    tour = wigglystuff.CellTour(
+        steps=[
+        {'cell': 0, 'title': 'What is a Graph?', 'description': 'The formal definition: nodes and edges.'},
+        {'cell': 3, 'title': 'Examples', 'description': 'Protein interactions, air transport, social networks.'},
+        {'cell': 4, 'title': 'Types of Graphs', 'description': 'Directed vs undirected: Twitter vs LinkedIn.'},
+        {'cell': 5, 'title': 'Edges matter', 'description': 'The heart of a graph lies in its edges, not its nodes.'},
+    ],
+        auto_start=False,
+        show_progress=True,
+    )
+    mo.ui.anywidget(tour)
+    return
+
+
 if __name__ == "__main__":
     app.run()

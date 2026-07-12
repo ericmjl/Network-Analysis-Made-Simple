@@ -769,5 +769,26 @@ def _():
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    import wigglystuff
+
+    tour = wigglystuff.CellTour(
+        steps=[
+        {'cell': 0, 'title': 'The NetworkX API', 'description': 'Load real graph data and query nodes, edges, and metadata.'},
+        {'cell': 4, 'title': 'Data Model', 'description': 'Graphs store data in a dictionary-like fashion.'},
+        {'cell': 6, 'title': 'Load Data', 'description': 'The 7th-grader social network dataset.'},
+        {'cell': 10, 'title': 'Node metadata', 'description': 'Query and count node attributes like gender.'},
+        {'cell': 18, 'title': 'Edge metadata', 'description': 'Inspect edge attributes and verify max counts.'},
+        {'cell': 24, 'title': 'Manipulating graphs', 'description': 'Add nodes and edges to the graph.'},
+        {'cell': 30, 'title': 'Coding patterns', 'description': 'List comprehensions for iterating over nodes and edges.'},
+    ],
+        auto_start=False,
+        show_progress=True,
+    )
+    mo.ui.anywidget(tour)
+    return
+
+
 if __name__ == "__main__":
     app.run()

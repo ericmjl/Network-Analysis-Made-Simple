@@ -431,5 +431,26 @@ def _(mo):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    import wigglystuff
+
+    tour = wigglystuff.CellTour(
+        steps=[
+        {'cell': 0, 'title': 'Graph Visualization', 'description': 'From hairballs to rational visualizations.'},
+        {'cell': 6, 'title': 'The hairball problem', 'description': 'Node-link diagrams become unreadable for large graphs.'},
+        {'cell': 8, 'title': 'Matrix Plot', 'description': 'Adjacency matrix view with nxviz.'},
+        {'cell': 12, 'title': 'Arc Plot', 'description': 'Nodes on a line with arcs for edges.'},
+        {'cell': 16, 'title': 'Circos Plot', 'description': 'Arc plot wrapped into a circle.'},
+        {'cell': 19, 'title': 'Hive Plot', 'description': 'Radial axes for grouped nodes.'},
+        {'cell': 22, 'title': 'Interactive comparison', 'description': 'Switch between all four viz types with a dropdown.'},
+    ],
+        auto_start=False,
+        show_progress=True,
+    )
+    mo.ui.anywidget(tour)
+    return
+
+
 if __name__ == "__main__":
     app.run()

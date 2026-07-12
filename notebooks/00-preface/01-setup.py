@@ -114,5 +114,22 @@ def _(mo):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    import wigglystuff
+
+    tour = wigglystuff.CellTour(
+        steps=[
+        {'cell': 0, 'title': 'Setup', 'description': 'Getting started with pixi and marimo for reproducible notebooks.'},
+        {'cell': 2, 'title': 'Quick Setup', 'description': 'Three steps: clone, install pixi, run marimo.'},
+        {'cell': 3, 'title': 'What this does', 'description': 'pixi handles deps, marimo handles interactivity.'},
+    ],
+        auto_start=False,
+        show_progress=True,
+    )
+    mo.ui.anywidget(tour)
+    return
+
+
 if __name__ == "__main__":
     app.run()
