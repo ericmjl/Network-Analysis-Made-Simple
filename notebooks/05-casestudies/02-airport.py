@@ -67,62 +67,19 @@ def _(mo):
 
     tour = wigglystuff.CellTour(
         steps=[
-            {
-                "cell": 0,
-                "title": "US Airport Network",
-                "description": "25 years of flight data as a directed graph.",
-            },
-            {
-                "cell": 5,
-                "title": "Dataset",
-                "description": "Passenger counts between US airports, 1990-2015.",
-            },
-            {
-                "cell": 11,
-                "title": "Building the graph",
-                "description": "MultiDiGraph with year-keyed edges from pandas.",
-            },
-            {
-                "cell": 17,
-                "title": "Passenger trends",
-                "description": "How air traffic grew over 25 years.",
-            },
-            {
-                "cell": 27,
-                "title": "Yearly subnetworks",
-                "description": "Extract a single year for analysis.",
-            },
-            {
-                "cell": 34,
-                "title": "Geographic visualization",
-                "description": "Plot airports on a US map with nxviz.",
-            },
-            {
-                "cell": 58,
-                "title": "PageRank",
-                "description": "Which airports are the most important hubs?",
-            },
-            {
-                "cell": 60,
-                "title": "Centrality comparison",
-                "description": "PageRank vs betweenness vs degree on the 2015 network.",
-            },
-            {
-                "cell": 74,
-                "title": "Connected components",
-                "description": "Strongly vs weakly connected components.",
-            },
-            {
-                "cell": 103,
-                "title": "Shortest paths",
-                "description": "Average path length and network reachability.",
-            },
-            {
-                "cell": 105,
-                "title": "Adding routes",
-                "description": "Opinionated heuristic to improve connectivity.",
-            },
-        ],
+        {'cell': 0, 'title': 'US Airport Network', 'description': '25 years of flight data (1990-2015) modeled as a directed graph of US airports.'},
+        {'cell': 4, 'title': 'The Dataset', 'description': 'Passenger counts between US airports from the Bureau of Transportation Statistics.'},
+        {'cell': 11, 'title': 'Building the Graph', 'description': 'A MultiDiGraph with year-keyed edges carrying passenger and airline metadata.'},
+        {'cell': 15, 'title': 'Passenger Trends', 'description': 'Plot passenger loads over 25 years — visible drops in 2001 and 2008.'},
+        {'cell': 27, 'title': 'Yearly Subnetworks', 'description': 'Extract a single year as a DiGraph for focused centrality analysis.'},
+        {'cell': 34, 'title': 'Geographic Visualization', 'description': 'Plot airports on a US map using nxviz geo encodings, colored by degree.'},
+        {'cell': 38, 'title': 'PageRank Primer', 'description': 'A toy directed graph illustrates how importance flows through incoming links.'},
+        {'cell': 58, 'title': 'Hub Analysis', 'description': 'PageRank, betweenness, and degree centrality on the 2015 network reveal surprising rankings.'},
+        {'cell': 67, 'title': 'The Anchorage Surprise', 'description': 'Unweighted centrality ranks ANC highest — weighting by passengers reshuffles the rankings.'},
+        {'cell': 74, 'title': 'Connected Components', 'description': 'Weakly and strongly connected components reveal unreachable airports and data anomalies.'},
+        {'cell': 103, 'title': 'Shortest Paths & Reachability', 'description': 'The average shortest path length shows any airport is reachable in under 3 layovers.'},
+        {'cell': 105, 'title': 'Exercise: Adding Routes', 'description': 'Add fewer than 2% more edges to decrease the average shortest path length of the network.'},
+    ],
         auto_start=False,
         show_progress=True,
     )

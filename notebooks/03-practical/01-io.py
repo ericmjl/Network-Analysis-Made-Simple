@@ -82,52 +82,17 @@ def _():
 
     tour = wigglystuff.CellTour(
         steps=[
-            {
-                "cell": 0,
-                "title": "Welcome!",
-                "description": "Graph Input & Output — load CSV data into NetworkX graphs and persist them.",
-            },
-            {
-                "cell": 6,
-                "title": "The problem",
-                "description": "We start with raw tabular data and want to turn it into a graph.",
-            },
-            {
-                "cell": 7,
-                "title": "Dataset: Divvy Bike Share",
-                "description": "Real-world trip data from Chicago's bike-sharing system.",
-            },
-            {
-                "cell": 17,
-                "title": "Graph Model",
-                "description": "How do we map rows of a DataFrame to nodes and edges?",
-            },
-            {
-                "cell": 18,
-                "title": "Building the graph",
-                "description": "nx.from_pandas_edgelist converts a DataFrame into a NetworkX graph.",
-            },
-            {
-                "cell": 25,
-                "title": "Annotating node metadata",
-                "description": "Graph nodes hold rich metadata — latitude, longitude, capacity.",
-            },
-            {
-                "cell": 31,
-                "title": "Filtering edges",
-                "description": "Exercise: filter the graph to keep only high-traffic edges.",
-            },
-            {
-                "cell": 35,
-                "title": "GeoPlot visualization",
-                "description": "See the bike stations on a geographic map with nxviz.",
-            },
-            {
-                "cell": 37,
-                "title": "Pickling graphs",
-                "description": "Persist and reload graph objects with pickle.",
-            },
-        ],
+        {'cell': 0, 'title': 'Graph Input & Output', 'description': 'Load CSV data into NetworkX graphs, annotate metadata, and persist them to disk.'},
+        {'cell': 6, 'title': 'Graph Data as Tables', 'description': 'Node and edge sets can be represented as CSV tables with metadata columns.'},
+        {'cell': 7, 'title': 'Dataset: Divvy Bike Share', 'description': 'Real-world trip data from Chicago\'s bike-sharing system, split into stations and trips.'},
+        {'cell': 17, 'title': 'Graph Model', 'description': 'Stations become nodes and aggregated trips become weighted directed edges.'},
+        {'cell': 18, 'title': 'Building the Graph', 'description': 'nx.from_pandas_edgelist converts a DataFrame into a NetworkX DiGraph in one call.'},
+        {'cell': 25, 'title': 'Annotating Node Metadata', 'description': 'Loop through a DataFrame to attach latitude, longitude, and capacity to each node.'},
+        {'cell': 31, 'title': 'Exercise: Filtering Edges', 'description': 'Copy the graph and remove low-weight edges to focus on high-traffic routes.'},
+        {'cell': 35, 'title': 'GeoPlot Visualization', 'description': 'See the filtered bike stations on a geographic map with nxviz.'},
+        {'cell': 37, 'title': 'Pickling Graphs', 'description': 'Persist and reload graph objects with Python\'s pickle module.'},
+        {'cell': 41, 'title': 'Exercise: Graph Integrity', 'description': 'Write a test that checks a loaded graph has the expected number of nodes and edges.'},
+    ],
         auto_start=False,
         show_progress=True,
     )

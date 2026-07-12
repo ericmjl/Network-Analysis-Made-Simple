@@ -1,9 +1,7 @@
 import marimo
 
-__generated_with = "0.23.9"
+__generated_with = "0.23.14"
 app = marimo.App(width="medium", auto_download=["html"])
-
-
 
 
 @app.cell(hide_code=True)
@@ -63,28 +61,63 @@ def _(mo):
     return
 
 
-
-
 @app.cell(hide_code=True)
 def _(mo):
     import wigglystuff
 
     tour = wigglystuff.CellTour(
         steps=[
-        {'cell': 0, 'title': 'Hubs & Degree Centrality', 'description': 'Which nodes matter most? Count the neighbors.'},
-        {'cell': 12, 'title': 'Number of neighbors', 'description': 'The simplest measure of node importance.'},
-        {'cell': 17, 'title': 'Exercise: rank-ordering', 'description': 'Sort nodes by their neighbor count.'},
-        {'cell': 25, 'title': 'Degree centrality', 'description': 'Normalizing neighbor count for cross-graph comparison.'},
-        {'cell': 36, 'title': 'ECDF vs histograms', 'description': 'Why ECDFs are more honest than histograms.'},
-        {'cell': 37, 'title': 'Interactive: bin slider', 'description': 'See how bin count changes the histogram story.'},
-    ],
+            {
+                "cell": 0,
+                "title": "Hubs & Degree Centrality",
+                "description": "Which nodes matter most? Start with the simplest idea: count the neighbors.",
+            },
+            {
+                "cell": 6,
+                "title": "Dataset: Sociopatterns",
+                "description": "A real contact-tracing network from infectious disease research.",
+            },
+            {
+                "cell": 12,
+                "title": "Number of neighbors",
+                "description": "The simplest importance metric: how many people did each node interact with?",
+            },
+            {
+                "cell": 17,
+                "title": "Exercise: rank-ordering",
+                "description": "Sort nodes by neighbor count to find the biggest hubs.",
+            },
+            {
+                "cell": 25,
+                "title": "Degree centrality",
+                "description": "Raw neighbor count does not compare across graphs. Degree centrality normalizes it.",
+            },
+            {
+                "cell": 31,
+                "title": "Degree distribution",
+                "description": "A single number per node is not enough. Plot the ECDF to see the full picture.",
+            },
+            {
+                "cell": 36,
+                "title": "ECDFs vs histograms",
+                "description": "Histograms can deceive with binning. ECDFs have no knobs. Try the slider.",
+            },
+            {
+                "cell": 47,
+                "title": "Centrality vs node order",
+                "description": "Do high-centrality nodes also span long-range connections?",
+            },
+            {
+                "cell": 50,
+                "title": "Reflections",
+                "description": "Recap: degree centrality is the simplest importance measure. ECDFs keep you honest.",
+            },
+        ],
         auto_start=False,
         show_progress=True,
     )
     mo.ui.anywidget(tour)
     return
-
-
 
 
 @app.cell(hide_code=True)
@@ -95,15 +128,11 @@ def _():
     return
 
 
-
-
 @app.cell(hide_code=True)
 def _():
     import marimo as mo
 
     return (mo,)
-
-
 
 
 @app.cell(hide_code=True)
@@ -114,16 +143,12 @@ def _(mo):
     return
 
 
-
-
 @app.cell(hide_code=True)
 def _():
     from IPython.display import YouTubeVideo
 
     YouTubeVideo(id="-oimHbVDdDA", width=560, height=315)
     return
-
-
 
 
 @app.cell(hide_code=True)
@@ -180,16 +205,12 @@ def _(mo):
     return
 
 
-
-
 @app.cell(hide_code=True)
 def _():
     from nams import load_data as cf
 
     G = cf.load_sociopatterns_network()
     return (G,)
-
-
 
 
 @app.cell(hide_code=True)
@@ -200,14 +221,10 @@ def _(mo):
     return
 
 
-
-
 @app.cell
 def _(G):
     type(G)
     return
-
-
 
 
 @app.cell(hide_code=True)
@@ -219,14 +236,10 @@ def _(mo):
     return
 
 
-
-
 @app.cell
 def _(G):
     len(G.nodes()), len(G.edges())
     return
-
-
 
 
 @app.cell(hide_code=True)
@@ -250,14 +263,10 @@ def _(mo):
     return
 
 
-
-
 @app.cell
 def _(G):
     G.neighbors(7)
     return
-
-
 
 
 @app.cell(hide_code=True)
@@ -291,14 +300,10 @@ def _(mo):
     return
 
 
-
-
 @app.cell
 def _(G):
     list(G.neighbors(7))
     return
-
-
 
 
 @app.cell(hide_code=True)
@@ -309,8 +314,6 @@ def _(mo):
     as it lazily yields the neighbors.
     """)
     return
-
-
 
 
 @app.cell(hide_code=True)
@@ -331,8 +334,6 @@ def _(mo):
     return
 
 
-
-
 @app.cell
 def _(G):
     from nams.solutions.hubs import rank_ordered_neighbors
@@ -349,8 +350,6 @@ def _(G):
     return (rank_ordered_neighbors,)
 
 
-
-
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -360,14 +359,10 @@ def _(mo):
     return
 
 
-
-
 @app.cell
 def _(G, rank_ordered_neighbors):
     rank_ordered_neighbors(G)
     return
-
-
 
 
 @app.cell(hide_code=True)
@@ -376,8 +371,6 @@ def _(mo):
     The original implementation looked like the following
     """)
     return
-
-
 
 
 @app.cell
@@ -389,8 +382,6 @@ def _():
     return
 
 
-
-
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -399,16 +390,12 @@ def _(mo):
     return
 
 
-
-
 @app.cell
 def _():
     from nams.solutions.hubs import rank_ordered_neighbors_generator
 
     # print(getsource(rank_ordered_neighbors_generator))
     return
-
-
 
 
 @app.cell(hide_code=True)
@@ -441,8 +428,6 @@ def _(mo):
     return
 
 
-
-
 @app.cell
 def _(G):
     import networkx as nx
@@ -451,8 +436,6 @@ def _(G):
     dcs = pd.Series(nx.degree_centrality(G))
     dcs
     return dcs, nx
-
-
 
 
 @app.cell(hide_code=True)
@@ -470,14 +453,10 @@ def _(mo):
     return
 
 
-
-
 @app.cell
 def _(dcs):
     dcs.sort_values(ascending=False)
     return
-
-
 
 
 @app.cell(hide_code=True)
@@ -489,8 +468,6 @@ def _(mo):
     and the denominator is a constant.
     """)
     return
-
-
 
 
 @app.cell(hide_code=True)
@@ -521,8 +498,6 @@ def _(mo):
     return
 
 
-
-
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -549,8 +524,6 @@ def _(mo):
     return
 
 
-
-
 @app.cell
 def _(G):
     from nams.functions import ecdf
@@ -573,16 +546,12 @@ def _(G):
     return ecdf, plt
 
 
-
-
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
     Now let's compare it to what we get for **degree**:
     """)
     return
-
-
 
 
 @app.cell
@@ -595,8 +564,6 @@ def _(G, plt):
     return
 
 
-
-
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -604,8 +571,6 @@ def _(mo):
     should not surprise you!
     """)
     return
-
-
 
 
 @app.cell(hide_code=True)
@@ -618,15 +583,11 @@ def _(mo):
     return
 
 
-
-
 @app.cell(hide_code=True)
 def _(mo):
     bins = mo.ui.slider(label="Number of Bins", value=20, start=2, step=1, stop=20)
     bins
     return (bins,)
-
-
 
 
 @app.cell(hide_code=True)
@@ -644,8 +605,6 @@ def _(G, bins, ecdf, nx, plt):
     return
 
 
-
-
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -658,8 +617,6 @@ def _(mo):
     return
 
 
-
-
 @app.cell
 def _():
     from nams.solutions.hubs import num_possible_neighbors
@@ -667,8 +624,6 @@ def _():
     #### UNCOMMENT TO SEE MY ANSWER
     # print(num_possible_neighbors())
     return
-
-
 
 
 @app.cell(hide_code=True)
@@ -683,15 +638,11 @@ def _(mo):
     return
 
 
-
-
 @app.cell
 def _(G, nv):
     #### REPLACE THE NEXT LINE WITH YOUR ANSWER
     nv.circos(G, sort_by="order", node_color_by="order")
     return
-
-
 
 
 @app.cell(hide_code=True)
@@ -702,16 +653,12 @@ def _(mo):
     return
 
 
-
-
 @app.cell(hide_code=True)
 def _(G):
     import nxviz as nv
 
     nv.arc(G, sort_by="order", node_color_by="order")
     return (nv,)
-
-
 
 
 @app.cell(hide_code=True)
@@ -726,8 +673,6 @@ def _(mo):
     return
 
 
-
-
 @app.cell
 def _():
     from nams.solutions.hubs import visual_insights
@@ -735,8 +680,6 @@ def _():
     #### UNCOMMENT THE NEXT LINE TO SEE MY ANSWER
     # print(visual_insights())
     return
-
-
 
 
 @app.cell(hide_code=True)
@@ -755,8 +698,6 @@ def _(mo):
     return
 
 
-
-
 @app.cell
 def _(G, plt):
     from nams.solutions.hubs import dc_node_order
@@ -772,8 +713,6 @@ def _(G, plt):
     return
 
 
-
-
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -787,8 +726,6 @@ def _(mo):
     before we might make further statements.
     """)
     return
-
-
 
 
 @app.cell(hide_code=True)
@@ -811,8 +748,6 @@ def _(mo):
     return
 
 
-
-
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -821,8 +756,6 @@ def _(mo):
     Here are the solutions to the exercises above.
     """)
     return
-
-
 
 
 @app.cell

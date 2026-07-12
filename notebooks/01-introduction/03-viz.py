@@ -135,13 +135,15 @@ def _(mo):
 
     tour = wigglystuff.CellTour(
         steps=[
-        {'cell': 0, 'title': 'Graph Visualization', 'description': 'From hairballs to rational visualizations.'},
-        {'cell': 13, 'title': 'The hairball problem', 'description': 'Node-link diagrams become unreadable for large graphs.'},
-        {'cell': 14, 'title': 'Matrix Plot', 'description': 'Adjacency matrix view with nxviz.'},
-        {'cell': 16, 'title': 'Arc Plot', 'description': 'Nodes on a line with arcs for edges.'},
-        {'cell': 19, 'title': 'Circos Plot', 'description': 'Arc plot wrapped into a circle.'},
-        {'cell': 22, 'title': 'Hive Plot', 'description': 'Radial axes for grouped nodes.'},
-        {'cell': 25, 'title': 'Interactive comparison', 'description': 'Switch between all four viz types with a dropdown.'},
+        {'cell': 0, 'title': 'Graph Visualization', 'description': 'From hairballs to rational visualizations that actually communicate insight.'},
+        {'cell': 7, 'title': 'The Hairball Problem', 'description': 'Node-link diagrams become unreadable as graphs grow beyond a few dozen nodes.'},
+        {'cell': 9, 'title': 'Drawing with NetworkX', 'description': 'The default nx.draw produces a tangle of nodes and edges for all but the smallest graphs.'},
+        {'cell': 13, 'title': 'Matrix Plot', 'description': 'An adjacency matrix view reveals structure through filled and empty cells.'},
+        {'cell': 17, 'title': 'Arc Plot', 'description': 'Nodes on a horizontal axis with arcs connecting edge pairs, optionally grouped by metadata.'},
+        {'cell': 20, 'title': 'Circos Plot', 'description': 'An arc plot wrapped into a circle for a compact, aesthetic display.'},
+        {'cell': 23, 'title': 'Hive Plot', 'description': 'Nodes grouped along radial axes to separate within-group and between-group edges.'},
+        {'cell': 25, 'title': 'Interactive Comparison', 'description': 'Switch between all four visualization types with a dropdown widget.'},
+        {'cell': 28, 'title': 'Principles of Rational Viz', 'description': 'Prioritize node placement by grouping, ordering, and reduction to communicate structure.'},
     ],
         auto_start=False,
         show_progress=True,

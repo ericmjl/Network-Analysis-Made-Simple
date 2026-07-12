@@ -64,42 +64,19 @@ def _(mo):
 
     tour = wigglystuff.CellTour(
         steps=[
-            {
-                "cell": 0,
-                "title": "Game of Thrones Network",
-                "description": "Character co-occurrence across 5 books.",
-            },
-            {
-                "cell": 4,
-                "title": "Dataset",
-                "description": "Characters co-occur if mentioned within 15 words.",
-            },
-            {
-                "cell": 17,
-                "title": "Degree centrality",
-                "description": "Top characters by number of connections.",
-            },
-            {
-                "cell": 25,
-                "title": "Interactive: book explorer",
-                "description": "Select any book to explore degree centrality.",
-            },
-            {
-                "cell": 41,
-                "title": "Centrality correlation",
-                "description": "Do different centrality measures agree?",
-            },
-            {
-                "cell": 43,
-                "title": "Evolution over books",
-                "description": "Betweenness centrality changes across the story.",
-            },
-            {
-                "cell": 55,
-                "title": "Community detection",
-                "description": "Louvain algorithm reveals character factions.",
-            },
-        ],
+        {'cell': 0, 'title': 'Game of Thrones Network', 'description': 'Character co-occurrence across five books — who is the most important character in Westeros?'},
+        {'cell': 4, 'title': 'The Dataset', 'description': 'Characters co-occur if mentioned within 15 words of each other; edge weights count interactions per book.'},
+        {'cell': 13, 'title': 'Building Per-Book Graphs', 'description': 'Create one NetworkX graph for each of the five books from the pandas edge list.'},
+        {'cell': 17, 'title': 'Degree Centrality', 'description': 'The most connected characters — Eddard Stark dominates Book 1 but fades by Book 5.'},
+        {'cell': 22, 'title': 'Top Characters', 'description': 'Compare the top-5 characters in Book 1 vs Book 5 to see the power shift.'},
+        {'cell': 25, 'title': 'Interactive: Book Explorer', 'description': 'Select any book from the dropdown to see its top-10 characters by degree centrality.'},
+        {'cell': 31, 'title': 'Exercise: Weighted Degree', 'description': 'Sum edge weights to find the characters with the most total interactions.'},
+        {'cell': 34, 'title': 'Betweenness Centrality', 'description': 'Weighted vs unweighted betweenness reveals structurally crucial characters.'},
+        {'cell': 38, 'title': 'PageRank', 'description': 'The billion-dollar algorithm applied to character importance in Westeros.'},
+        {'cell': 41, 'title': 'Exercise: Centrality Correlation', 'description': 'Do degree, betweenness, PageRank, and weighted degree agree on who matters?'},
+        {'cell': 43, 'title': 'Evolution Over Books', 'description': 'Track how character importance rises and falls across the five-book story arc.'},
+        {'cell': 55, 'title': 'Community Detection', 'description': 'The Louvain algorithm reveals character factions and their dense internal connections.'},
+    ],
         auto_start=False,
         show_progress=True,
     )

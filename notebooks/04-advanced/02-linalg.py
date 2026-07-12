@@ -87,47 +87,18 @@ def _(mo):
 
     tour = wigglystuff.CellTour(
         steps=[
-            {
-                "cell": 0,
-                "title": "Graphs & Linear Algebra",
-                "description": "The bridge between graph theory and matrix computation.",
-            },
-            {
-                "cell": 10,
-                "title": "Adjacency matrix",
-                "description": "Convert a graph into a matrix — the foundation of graph linear algebra.",
-            },
-            {
-                "cell": 16,
-                "title": "Matrix power = path counting",
-                "description": "A^k entries count the number of k-step walks between nodes.",
-            },
-            {
-                "cell": 28,
-                "title": "Interactive: matrix power slider",
-                "description": "Explore how path counts change with the number of steps.",
-            },
-            {
-                "cell": 30,
-                "title": "Message passing",
-                "description": "Multiply a message vector by the adjacency matrix to propagate information.",
-            },
-            {
-                "cell": 39,
-                "title": "Bipartite projections",
-                "description": "M @ M.T reveals shared-neighbor structure in bipartite graphs.",
-            },
-            {
-                "cell": 48,
-                "title": "Amazon review network",
-                "description": "Apply matrix operations to a real customer-product graph.",
-            },
-            {
-                "cell": 65,
-                "title": "Sparse matrices",
-                "description": "Scale to millions of nodes with scipy.sparse.",
-            },
-        ],
+        {'cell': 0, 'title': 'Graphs & Linear Algebra', 'description': 'The deep connection between graph theory and matrix computation.'},
+        {'cell': 6, 'title': 'The Adjacency Matrix', 'description': 'Convert a graph into a NumPy array — the foundation of all graph linear algebra.'},
+        {'cell': 13, 'title': 'Obtaining the Matrix', 'description': 'nx.to_numpy_array gives you the adjacency matrix with a sorted nodelist.'},
+        {'cell': 15, 'title': 'Matrix Powers & Path Counting', 'description': 'Raising the adjacency matrix to the k-th power counts k-step walks between every pair of nodes.'},
+        {'cell': 17, 'title': 'Exercise: What Does A Squared Mean?', 'description': 'Interpret the entries of the squared adjacency matrix in terms of graph paths.'},
+        {'cell': 28, 'title': 'Interactive: Power Slider', 'description': 'Slide the number of steps k and watch how path counts change in real time.'},
+        {'cell': 30, 'title': 'Message Passing', 'description': 'Multiply a message vector by the adjacency matrix to propagate information across the graph.'},
+        {'cell': 39, 'title': 'Bipartite Matrix Operations', 'description': 'The biadjacency matrix and its transpose reveal shared-neighbor structure via M @ M.T.'},
+        {'cell': 48, 'title': 'Amazon Review Network', 'description': 'Apply sparse matrix operations to a real customer-product graph with thousands of nodes.'},
+        {'cell': 67, 'title': 'Performance: Objects vs Matrices', 'description': 'Matrix computation is 10-50x faster than the equivalent object-oriented NetworkX approach.'},
+        {'cell': 74, 'title': 'GPU & CPU Acceleration', 'description': 'rustworkx and cuGraph scale graph computation to millions of nodes.'},
+    ],
         auto_start=False,
         show_progress=True,
     )

@@ -57,9 +57,10 @@ def _(mo):
 
     tour = wigglystuff.CellTour(
         steps=[
-        {'cell': 0, 'title': 'Learning Goals', 'description': 'Technical and intellectual takeaways from this tutorial.'},
-        {'cell': 4, 'title': 'Technical Takeaways', 'description': 'NetworkX, nxviz, graph algorithms, linear algebra connections.'},
-        {'cell': 5, 'title': 'Intellectual Goals', 'description': 'Relational thinking and algorithmic thinking.'},
+        {'cell': 0, 'title': 'Learning Goals', 'description': 'Two kinds of takeaways await: technical skills and intellectual habits.'},
+        {'cell': 3, 'title': 'Overview', 'description': 'Learning goals split into the technical and the intellectual.'},
+        {'cell': 4, 'title': 'Technical Takeaways', 'description': 'NetworkX API, rational graph visualization with nxviz, graph algorithms, and connections to linear algebra and statistics.'},
+        {'cell': 5, 'title': 'Intellectual Goals', 'description': 'Relational thinking and algorithmic thinking that outlast any specific library.'},
     ],
         auto_start=False,
         show_progress=True,

@@ -70,47 +70,18 @@ def _(mo):
 
     tour = wigglystuff.CellTour(
         steps=[
-            {
-                "cell": 0,
-                "title": "Statistical Inference on Graphs",
-                "description": "Compare real networks against generative models.",
-            },
-            {
-                "cell": 7,
-                "title": "Probability refresher",
-                "description": "Hypothesis testing framework for graph comparison.",
-            },
-            {
-                "cell": 17,
-                "title": "Erdos-Renyi model",
-                "description": "The simplest random graph: every edge exists with probability p.",
-            },
-            {
-                "cell": 25,
-                "title": "Barabasi-Albert model",
-                "description": "Preferential attachment generates scale-free networks.",
-            },
-            {
-                "cell": 31,
-                "title": "Real network: PPI",
-                "description": "A protein-protein interaction network for comparison.",
-            },
-            {
-                "cell": 44,
-                "title": "Interactive: BA comparison",
-                "description": "Slide the m parameter and watch the degree distribution update.",
-            },
-            {
-                "cell": 47,
-                "title": "Interactive: ER comparison",
-                "description": "Slide the p parameter and compare with the real network.",
-            },
-            {
-                "cell": 50,
-                "title": "Wasserstein distance",
-                "description": "Quantify the difference between degree distributions.",
-            },
-        ],
+        {'cell': 0, 'title': 'Statistical Inference on Graphs', 'description': 'Compare real networks against generative models to find the best quantitative fit.'},
+        {'cell': 7, 'title': 'Statistics Refresher', 'description': 'Probability distributions and hypothesis testing as the foundation for graph comparison.'},
+        {'cell': 13, 'title': 'Hypothesis Testing on Graphs', 'description': 'Compute a summary statistic, simulate a null model, then compare.'},
+        {'cell': 17, 'title': 'Erdos-Renyi Model', 'description': 'The simplest random graph: every edge exists independently with probability p.'},
+        {'cell': 25, 'title': 'Barabasi-Albert Model', 'description': 'Preferential attachment generates scale-free networks with heavy-tailed degree distributions.'},
+        {'cell': 31, 'title': 'Real Network: Protein Interactions', 'description': 'A yeast protein-protein interaction network for model comparison.'},
+        {'cell': 44, 'title': 'Interactive: BA Comparison', 'description': 'Slide the m parameter and watch the degree distribution update against the real network.'},
+        {'cell': 47, 'title': 'Interactive: ER Comparison', 'description': 'Slide the p parameter and compare Erdos-Renyi with the PPI network.'},
+        {'cell': 50, 'title': 'Wasserstein Distance', 'description': 'Quantify the difference between degree distributions to objectively pick the best generative model.'},
+        {'cell': 55, 'title': 'Results', 'description': 'A swarm plot over 100 simulations shows Barabasi-Albert is the closer fit.'},
+        {'cell': 57, 'title': 'Biological Interpretation', 'description': 'The preferential attachment fit suggests a rich-gets-richer mechanism in protein evolution.'},
+    ],
         auto_start=False,
         show_progress=True,
     )

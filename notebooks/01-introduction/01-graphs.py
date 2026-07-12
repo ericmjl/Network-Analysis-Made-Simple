@@ -54,10 +54,12 @@ def _(mo):
 
     tour = wigglystuff.CellTour(
         steps=[
-        {'cell': 0, 'title': 'What is a Graph?', 'description': 'The formal definition: nodes and edges.'},
-        {'cell': 6, 'title': 'Examples', 'description': 'Protein interactions, air transport, social networks.'},
-        {'cell': 7, 'title': 'Types of Graphs', 'description': 'Directed vs undirected: Twitter vs LinkedIn.'},
-        {'cell': 8, 'title': 'Edges matter', 'description': 'The heart of a graph lies in its edges, not its nodes.'},
+        {'cell': 0, 'title': 'What is a Graph?', 'description': 'Nodes and edges — the two atomic ingredients of every network.'},
+        {'cell': 2, 'title': 'Introduction', 'description': 'Networks as a data modelling tool for complex relational problems.'},
+        {'cell': 5, 'title': 'Formal Definition', 'description': 'A graph is formally defined as a node set and an edge set of pairs.'},
+        {'cell': 6, 'title': 'Examples of Networks', 'description': 'Protein interactions, air transport, and social networks share the same building blocks.'},
+        {'cell': 7, 'title': 'Types of Graphs', 'description': 'Directed graphs like Twitter vs undirected graphs like LinkedIn.'},
+        {'cell': 8, 'title': 'Edges Matter Most', 'description': 'The heart of a graph lies in its edges, not its nodes — relational insight comes from connections.'},
     ],
         auto_start=False,
         show_progress=True,

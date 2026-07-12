@@ -73,12 +73,16 @@ def _(mo):
 
     tour = wigglystuff.CellTour(
         steps=[
-        {'cell': 0, 'title': 'Graph Structures', 'description': 'Triangles, cliques, and connected components.'},
-        {'cell': 8, 'title': 'Finding triangles', 'description': 'The simplest graph structure beyond an edge.'},
-        {'cell': 18, 'title': 'Triadic closure', 'description': 'Open triangles predict future connections.'},
-        {'cell': 24, 'title': 'Cliques', 'description': 'Fully-connected subgraphs and maximal cliques.'},
-        {'cell': 28, 'title': 'k-Cliques', 'description': 'Finding cliques of a specific size.'},
-        {'cell': 35, 'title': 'Connected components', 'description': 'Disjoint subgraphs in the network.'},
+        {'cell': 0, 'title': 'Graph Structures', 'description': 'Triangles, cliques, and connected components — the building blocks of network topology.'},
+        {'cell': 6, 'title': 'Triangles & the Physician Network', 'description': 'A 1966 physician trust network as the playground for finding graph structures.'},
+        {'cell': 10, 'title': 'Exercise: Triangle Detection', 'description': 'Write a function to check whether a node participates in any triangle relationship.'},
+        {'cell': 15, 'title': 'Plotting Triangle Relations', 'description': 'Extract and visualize the subgraph of a node and its triangle neighbors.'},
+        {'cell': 18, 'title': 'Triadic Closure', 'description': 'Open triangles predict future connections — the basis of recommendation systems.'},
+        {'cell': 24, 'title': 'Cliques', 'description': 'Fully-connected subgraphs; triangles are the simplest complex clique.'},
+        {'cell': 26, 'title': 'Maximal Cliques', 'description': 'NetworkX can enumerate all maximal cliques — subgraphs where no more nodes can be added.'},
+        {'cell': 28, 'title': 'Exercise: k-Sized Cliques', 'description': 'Write a generator that filters maximal cliques to those of a specific size k.'},
+        {'cell': 35, 'title': 'Connected Components', 'description': 'Disjoint subgraphs that cannot reach each other through any path.'},
+        {'cell': 43, 'title': 'Visualizing Components', 'description': 'Label nodes by component and use circos and arc plots to reveal the four disjoint physician groups.'},
     ],
         auto_start=False,
         show_progress=True,
