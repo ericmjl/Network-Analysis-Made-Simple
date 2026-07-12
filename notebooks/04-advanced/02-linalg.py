@@ -1,7 +1,80 @@
 import marimo
 
-__generated_with = "0.23.9"
+__generated_with = "0.23.14"
 app = marimo.App(width="medium", auto_download=["html"])
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.Html(f"""
+    <div class="nams-hero">
+    <style>
+      .nams-hero{{color:#e2e8f0;margin:0;font-family:inherit}}
+      .nams-hero__grid{{display:grid;gap:22px;grid-template-columns:minmax(0,1.25fr) minmax(200px,0.85fr);padding:32px 28px;border-radius:14px;background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%)}}
+      @media(max-width:760px){{.nams-hero__grid{{grid-template-columns:1fr;padding:22px 16px}}}}
+      .nams-badge{{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border:1px solid rgba(168,85,247,0.3);background:rgba(168,85,247,0.1);border-radius:999px;color:#a855f7;font-size:0.72rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase}}
+      .nams-hero h1{{margin:14px 0 8px;font-size:2.2rem;line-height:1.05;font-weight:880;letter-spacing:-0.02em;color:#f1f5f9}}
+      .nams-hero h1 .nams-em{{color:#a855f7}}
+      .nams-hero p.lead{{margin:0;max-width:520px;color:#94a3b8;font-size:1.02rem;line-height:1.5}}
+      .nams-byline{{margin-top:16px;color:#64748b;font-size:0.88rem;line-height:1.5}}
+      .nams-byline b{{color:#cbd5e1}}
+      .nams-art{{display:flex;align-items:center;justify-content:center}}
+    </style>
+    <div class="nams-hero__grid">
+      <div>
+        <span class="nams-badge">Chapter 04 &middot; Advanced</span>
+        <h1>Graphs &amp;<br><span class="nams-em">Linear Algebra</span></h1>
+        <p class="lead">Adjacency matrices, matrix powers for path counting, message passing, and bipartite projections &mdash; the algebra that makes graph computation fast and scalable.</p>
+        <div class="nams-byline">Network Analysis Made Simple &middot; <b>Eric Ma</b></div>
+      </div>
+      <div class="nams-art">
+        <svg viewBox="0 0 140 120" style="width:100%;max-width:170px;height:auto">
+          <!-- 4x4 adjacency matrix grid -->
+          <rect x="10" y="10" width="50" height="50" rx="2" fill="none" stroke="#a855f7" stroke-width="0.8" opacity="0.3"/>
+          <line x1="22.5" y1="10" x2="22.5" y2="60" stroke="#a855f7" stroke-width="0.4" opacity="0.15"/>
+          <line x1="35" y1="10" x2="35" y2="60" stroke="#a855f7" stroke-width="0.4" opacity="0.15"/>
+          <line x1="47.5" y1="10" x2="47.5" y2="60" stroke="#a855f7" stroke-width="0.4" opacity="0.15"/>
+          <line x1="10" y1="22.5" x2="60" y2="22.5" stroke="#a855f7" stroke-width="0.4" opacity="0.15"/>
+          <line x1="10" y1="35" x2="60" y2="35" stroke="#a855f7" stroke-width="0.4" opacity="0.15"/>
+          <line x1="10" y1="47.5" x2="60" y2="47.5" stroke="#a855f7" stroke-width="0.4" opacity="0.15"/>
+          <!-- filled cells representing edges -->
+          <rect x="10" y="10" width="12.5" height="12.5" fill="#a855f7" opacity="0.08"/>
+          <rect x="22.5" y="10" width="12.5" height="12.5" fill="#a855f7" opacity="0.7"/>
+          <rect x="35" y="10" width="12.5" height="12.5" fill="#a855f7" opacity="0.08"/>
+          <rect x="47.5" y="10" width="12.5" height="12.5" fill="#a855f7" opacity="0.7"/>
+          <rect x="10" y="22.5" width="12.5" height="12.5" fill="#a855f7" opacity="0.7"/>
+          <rect x="22.5" y="22.5" width="12.5" height="12.5" fill="#a855f7" opacity="0.08"/>
+          <rect x="35" y="22.5" width="12.5" height="12.5" fill="#a855f7" opacity="0.7"/>
+          <rect x="47.5" y="22.5" width="12.5" height="12.5" fill="#a855f7" opacity="0.08"/>
+          <rect x="10" y="35" width="12.5" height="12.5" fill="#a855f7" opacity="0.08"/>
+          <rect x="22.5" y="35" width="12.5" height="12.5" fill="#a855f7" opacity="0.7"/>
+          <rect x="35" y="35" width="12.5" height="12.5" fill="#a855f7" opacity="0.08"/>
+          <rect x="47.5" y="35" width="12.5" height="12.5" fill="#a855f7" opacity="0.7"/>
+          <rect x="10" y="47.5" width="12.5" height="12.5" fill="#a855f7" opacity="0.7"/>
+          <rect x="22.5" y="47.5" width="12.5" height="12.5" fill="#a855f7" opacity="0.08"/>
+          <rect x="35" y="47.5" width="12.5" height="12.5" fill="#a855f7" opacity="0.7"/>
+          <rect x="47.5" y="47.5" width="12.5" height="12.5" fill="#a855f7" opacity="0.08"/>
+          <!-- arrow -->
+          <path d="M 68 35 L 82 35" stroke="#a855f7" stroke-width="1.5" opacity="0.4" stroke-linecap="round"/>
+          <polygon points="82,35 77,32 77,38" fill="#a855f7" opacity="0.4"/>
+          <!-- small graph on right -->
+          <line x1="90" y1="15" x2="125" y2="20" stroke="#a855f7" stroke-width="1.2" opacity="0.35" stroke-linecap="round"/>
+          <line x1="90" y1="15" x2="105" y2="50" stroke="#a855f7" stroke-width="1.2" opacity="0.35" stroke-linecap="round"/>
+          <line x1="125" y1="20" x2="105" y2="50" stroke="#a855f7" stroke-width="1.2" opacity="0.35" stroke-linecap="round"/>
+          <line x1="105" y1="50" x2="130" y2="55" stroke="#a855f7" stroke-width="1" opacity="0.25" stroke-linecap="round"/>
+          <line x1="125" y1="20" x2="130" y2="55" stroke="#a855f7" stroke-width="1" opacity="0.2" stroke-linecap="round"/>
+          <circle cx="90" cy="15" r="4.5" fill="#a855f7" opacity="0.8"/>
+          <circle cx="125" cy="20" r="4.5" fill="#a855f7" opacity="0.8"/>
+          <circle cx="105" cy="50" r="4.5" fill="#9333ea" opacity="0.7"/>
+          <circle cx="130" cy="55" r="4" fill="#9333ea" opacity="0.7"/>
+          <text x="35" y="75" text-anchor="middle" fill="#c084fc" font-size="5.5" font-weight="600" opacity="0.5">matrix</text>
+          <text x="110" y="75" text-anchor="middle" fill="#c084fc" font-size="5.5" font-weight="600" opacity="0.5">graph</text>
+        </svg>
+      </div>
+    </div>
+    </div>
+    """)
+    return
 
 
 @app.cell(hide_code=True)
@@ -813,6 +886,60 @@ def _():
     import matplotlib.pyplot as plt
 
     return (plt,)
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    import wigglystuff
+
+    tour = wigglystuff.CellTour(
+        steps=[
+            {
+                "cell": 0,
+                "title": "Graphs & Linear Algebra",
+                "description": "The bridge between graph theory and matrix computation.",
+            },
+            {
+                "cell": 5,
+                "title": "Adjacency matrix",
+                "description": "Convert a graph into a matrix — the foundation of graph linear algebra.",
+            },
+            {
+                "cell": 11,
+                "title": "Matrix power = path counting",
+                "description": "A^k entries count the number of k-step walks between nodes.",
+            },
+            {
+                "cell": 26,
+                "title": "Interactive: matrix power slider",
+                "description": "Explore how path counts change with the number of steps.",
+            },
+            {
+                "cell": 29,
+                "title": "Message passing",
+                "description": "Multiply a message vector by the adjacency matrix to propagate information.",
+            },
+            {
+                "cell": 39,
+                "title": "Bipartite projections",
+                "description": "M @ M.T reveals shared-neighbor structure in bipartite graphs.",
+            },
+            {
+                "cell": 48,
+                "title": "Amazon review network",
+                "description": "Apply matrix operations to a real customer-product graph.",
+            },
+            {
+                "cell": 63,
+                "title": "Sparse matrices",
+                "description": "Scale to millions of nodes with scipy.sparse.",
+            },
+        ],
+        auto_start=False,
+        show_progress=True,
+    )
+    mo.ui.anywidget(tour)
+    return
 
 
 if __name__ == "__main__":
