@@ -1,7 +1,57 @@
 import marimo
 
-__generated_with = "0.23.9"
+__generated_with = "0.23.14"
 app = marimo.App(width="medium", auto_download=["html"])
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.Html("""
+    <div class="nams-hero">
+    <style>
+      .nams-hero{color:#e2e8f0;margin:0;font-family:inherit}
+      .nams-hero__grid{display:grid;gap:22px;grid-template-columns:minmax(0,1.25fr) minmax(200px,0.85fr);padding:32px 28px;border-radius:14px;background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%)}
+      @media(max-width:760px){.nams-hero__grid{grid-template-columns:1fr;padding:22px 16px}}
+      .nams-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border:1px solid rgba(239,68,68,0.3);background:rgba(239,68,68,0.1);border-radius:999px;color:#ef4444;font-size:0.72rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase}
+      .nams-hero h1{margin:14px 0 8px;font-size:2.2rem;line-height:1.05;font-weight:880;letter-spacing:-0.02em;color:#f1f5f9}
+      .nams-hero h1 .nams-em{color:#ef4444}
+      .nams-hero p.lead{margin:0;max-width:520px;color:#94a3b8;font-size:1.02rem;line-height:1.5}
+      .nams-byline{margin-top:16px;color:#64748b;font-size:0.88rem;line-height:1.5}
+      .nams-byline b{color:#cbd5e1}
+      .nams-art{display:flex;align-items:center;justify-content:center}
+    </style>
+    <div class="nams-hero__grid">
+      <div>
+        <span class="nams-badge">Chapter 05 &middot; Case Study</span>
+        <h1>Game of<br><span class="nams-em">Thrones</span></h1>
+        <p class="lead">Who is the most important character in Westeros? Degree centrality, betweenness, PageRank, and Louvain communities reveal the hidden power structure across five books.</p>
+        <div class="nams-byline">Network Analysis Made Simple &middot; <b>Eric Ma</b></div>
+      </div>
+      <div class="nams-art">
+        <svg viewBox="0 0 140 130" style="width:100%;max-width:160px;height:auto">
+          <rect x="20" y="100" width="14" height="25" rx="1" fill="#991b1b" opacity="0.6"/>
+          <rect x="36" y="100" width="14" height="25" rx="1" fill="#b91c1c" opacity="0.6"/>
+          <rect x="52" y="100" width="14" height="25" rx="1" fill="#dc2626" opacity="0.6"/>
+          <rect x="68" y="100" width="14" height="25" rx="1" fill="#ef4444" opacity="0.6"/>
+          <rect x="84" y="100" width="14" height="25" rx="1" fill="#f87171" opacity="0.6"/>
+          <line x1="50" y1="30" x2="80" y2="20" stroke="#ef4444" stroke-width="1.5" opacity="0.3" stroke-linecap="round"/>
+          <line x1="50" y1="30" x2="70" y2="55" stroke="#ef4444" stroke-width="1.5" opacity="0.3" stroke-linecap="round"/>
+          <line x1="80" y1="20" x2="100" y2="40" stroke="#ef4444" stroke-width="1.5" opacity="0.25" stroke-linecap="round"/>
+          <line x1="80" y1="20" x2="70" y2="55" stroke="#ef4444" stroke-width="1.5" opacity="0.3" stroke-linecap="round"/>
+          <line x1="70" y1="55" x2="100" y2="40" stroke="#ef4444" stroke-width="1.2" opacity="0.2" stroke-linecap="round"/>
+          <line x1="70" y1="55" x2="50" y2="75" stroke="#ef4444" stroke-width="1.2" opacity="0.2" stroke-linecap="round"/>
+          <circle cx="50" cy="30" r="6" fill="#dc2626" opacity="0.85"/>
+          <circle cx="80" cy="20" r="7" fill="#ef4444" opacity="0.9"/>
+          <circle cx="70" cy="55" r="5.5" fill="#dc2626" opacity="0.8"/>
+          <circle cx="100" cy="40" r="5" fill="#b91c1c" opacity="0.7"/>
+          <circle cx="50" cy="75" r="4.5" fill="#b91c1c" opacity="0.7"/>
+          <circle cx="90" cy="75" r="4" fill="#991b1b" opacity="0.6"/>
+        </svg>
+      </div>
+    </div>
+    </div>
+    """)
+    return
 
 
 @app.cell(hide_code=True)
@@ -625,6 +675,55 @@ def _():
     import inspect
 
     print(inspect.getsource(got))
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    import wigglystuff
+
+    tour = wigglystuff.CellTour(
+        steps=[
+            {
+                "cell": 0,
+                "title": "Game of Thrones Network",
+                "description": "Character co-occurrence across 5 books.",
+            },
+            {
+                "cell": 4,
+                "title": "Dataset",
+                "description": "Characters co-occur if mentioned within 15 words.",
+            },
+            {
+                "cell": 16,
+                "title": "Degree centrality",
+                "description": "Top characters by number of connections.",
+            },
+            {
+                "cell": 23,
+                "title": "Interactive: book explorer",
+                "description": "Select any book to explore degree centrality.",
+            },
+            {
+                "cell": 40,
+                "title": "Centrality correlation",
+                "description": "Do different centrality measures agree?",
+            },
+            {
+                "cell": 45,
+                "title": "Evolution over books",
+                "description": "Betweenness centrality changes across the story.",
+            },
+            {
+                "cell": 55,
+                "title": "Community detection",
+                "description": "Louvain algorithm reveals character factions.",
+            },
+        ],
+        auto_start=False,
+        show_progress=True,
+    )
+    mo.ui.anywidget(tour)
     return
 
 
