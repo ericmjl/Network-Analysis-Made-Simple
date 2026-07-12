@@ -136,7 +136,7 @@ def _(mo):
     tour = wigglystuff.CellTour(
         steps=[
         {'cell': 0, 'title': 'Graph Visualization', 'description': 'From hairballs to rational visualizations.'},
-        {'cell': 10, 'title': 'The hairball problem', 'description': 'Node-link diagrams become unreadable for large graphs.'},
+        {'cell': 13, 'title': 'The hairball problem', 'description': 'Node-link diagrams become unreadable for large graphs.'},
         {'cell': 14, 'title': 'Matrix Plot', 'description': 'Adjacency matrix view with nxviz.'},
         {'cell': 16, 'title': 'Arc Plot', 'description': 'Nodes on a line with arcs for edges.'},
         {'cell': 19, 'title': 'Circos Plot', 'description': 'Arc plot wrapped into a circle.'},

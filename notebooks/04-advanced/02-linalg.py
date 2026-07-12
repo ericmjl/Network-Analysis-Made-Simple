@@ -93,22 +93,22 @@ def _(mo):
                 "description": "The bridge between graph theory and matrix computation.",
             },
             {
-                "cell": 5,
+                "cell": 10,
                 "title": "Adjacency matrix",
                 "description": "Convert a graph into a matrix — the foundation of graph linear algebra.",
             },
             {
-                "cell": 11,
+                "cell": 16,
                 "title": "Matrix power = path counting",
                 "description": "A^k entries count the number of k-step walks between nodes.",
             },
             {
-                "cell": 26,
+                "cell": 28,
                 "title": "Interactive: matrix power slider",
                 "description": "Explore how path counts change with the number of steps.",
             },
             {
-                "cell": 29,
+                "cell": 30,
                 "title": "Message passing",
                 "description": "Multiply a message vector by the adjacency matrix to propagate information.",
             },
@@ -123,7 +123,7 @@ def _(mo):
                 "description": "Apply matrix operations to a real customer-product graph.",
             },
             {
-                "cell": 63,
+                "cell": 65,
                 "title": "Sparse matrices",
                 "description": "Scale to millions of nodes with scipy.sparse.",
             },

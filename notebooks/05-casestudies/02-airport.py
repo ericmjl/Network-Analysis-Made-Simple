@@ -78,7 +78,7 @@ def _(mo):
                 "description": "Passenger counts between US airports, 1990-2015.",
             },
             {
-                "cell": 9,
+                "cell": 11,
                 "title": "Building the graph",
                 "description": "MultiDiGraph with year-keyed edges from pandas.",
             },
@@ -88,37 +88,37 @@ def _(mo):
                 "description": "How air traffic grew over 25 years.",
             },
             {
-                "cell": 25,
+                "cell": 27,
                 "title": "Yearly subnetworks",
                 "description": "Extract a single year for analysis.",
             },
             {
-                "cell": 32,
+                "cell": 34,
                 "title": "Geographic visualization",
                 "description": "Plot airports on a US map with nxviz.",
             },
             {
-                "cell": 44,
+                "cell": 58,
                 "title": "PageRank",
                 "description": "Which airports are the most important hubs?",
             },
             {
-                "cell": 56,
+                "cell": 60,
                 "title": "Centrality comparison",
                 "description": "PageRank vs betweenness vs degree on the 2015 network.",
             },
             {
-                "cell": 72,
+                "cell": 74,
                 "title": "Connected components",
                 "description": "Strongly vs weakly connected components.",
             },
             {
-                "cell": 101,
+                "cell": 103,
                 "title": "Shortest paths",
                 "description": "Average path length and network reachability.",
             },
             {
-                "cell": 104,
+                "cell": 105,
                 "title": "Adding routes",
                 "description": "Opinionated heuristic to improve connectivity.",
             },

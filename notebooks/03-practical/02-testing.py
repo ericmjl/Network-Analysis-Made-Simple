@@ -20,27 +20,27 @@ def _(mo):
                 "description": "Why data testing matters before graph analysis.",
             },
             {
-                "cell": 2,
+                "cell": 6,
                 "title": "The DPI concept",
                 "description": "The Data Programming Interface — treat your data like code that needs tests.",
             },
             {
-                "cell": 4,
+                "cell": 7,
                 "title": "What to test",
                 "description": "Invariants, nullity, and boundary conditions for graph data.",
             },
             {
-                "cell": 6,
+                "cell": 9,
                 "title": "Nullity checks",
                 "description": "Are required node/edge attributes present and non-null?",
             },
             {
-                "cell": 8,
+                "cell": 10,
                 "title": "Range checks",
                 "description": "Do numeric values fall within expected bounds?",
             },
             {
-                "cell": 10,
+                "cell": 12,
                 "title": "Continuous testing",
                 "description": "Integrate data tests into your CI pipeline with pytest.",
             },

@@ -75,27 +75,27 @@ def _(mo):
                 "description": "Two disjoint node sets with edges only between them.",
             },
             {
-                "cell": 4,
+                "cell": 6,
                 "title": "Dataset: Crime Network",
                 "description": "Persons and crimes connected by involvement edges.",
             },
             {
-                "cell": 7,
+                "cell": 17,
                 "title": "Bipartite structure",
                 "description": "Verify the graph is truly bipartite — no within-set edges.",
             },
             {
-                "cell": 11,
+                "cell": 13,
                 "title": "Projections",
                 "description": "Project a bipartite graph onto one node set to reveal shared connections.",
             },
             {
-                "cell": 16,
+                "cell": 30,
                 "title": "Weighted projections",
                 "description": "Weight edges by the number of shared neighbors.",
             },
             {
-                "cell": 23,
+                "cell": 35,
                 "title": "Degree centrality",
                 "description": "Measure importance in a bipartite graph with the correct denominator.",
             },
