@@ -5,6 +5,73 @@ app = marimo.App(width="medium", auto_download=["html"])
 
 
 @app.cell(hide_code=True)
+def _(mo):
+    mo.Html(f"""
+    <div class="nams-hero">
+    <style>
+      .nams-hero{{color:#e2e8f0;margin:0;font-family:inherit}}
+      .nams-hero__grid{{display:grid;gap:22px;grid-template-columns:minmax(0,1.25fr) minmax(200px,0.85fr);padding:32px 28px;border-radius:14px;background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%)}}
+      @media(max-width:760px){{.nams-hero__grid{{grid-template-columns:1fr;padding:22px 16px}}}}
+      .nams-badge{{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border:1px solid rgba(232,121,249,0.3);background:rgba(232,121,249,0.1);border-radius:999px;color:#e879f9;font-size:0.72rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase}}
+      .nams-hero h1{{margin:14px 0 8px;font-size:2.2rem;line-height:1.05;font-weight:880;letter-spacing:-0.02em;color:#f1f5f9}}
+      .nams-hero h1 .nams-em{{color:#e879f9}}
+      .nams-hero p.lead{{margin:0;max-width:520px;color:#94a3b8;font-size:1.02rem;line-height:1.5}}
+      .nams-byline{{margin-top:16px;color:#64748b;font-size:0.88rem;line-height:1.5}}
+      .nams-byline b{{color:#cbd5e1}}
+      .nams-art{{display:flex;align-items:center;justify-content:center}}
+    </style>
+    <div class="nams-hero__grid">
+      <div>
+        <span class="nams-badge">Chapter 03 &middot; Practical</span>
+        <h1>Graph Input<br><span class="nams-em">&amp; Output</span></h1>
+        <p class="lead">From CSV to graph and back again. Load bike-share trips with pandas, build edges with NetworkX, annotate node metadata, filter by weight, and persist with pickle.</p>
+        <div class="nams-byline">Network Analysis Made Simple &middot; <b>Eric Ma</b></div>
+      </div>
+      <div class="nams-art">
+        <svg viewBox="0 0 160 100" style="width:100%;max-width:200px;height:auto">
+          <!-- CSV table on left -->
+          <rect x="5" y="15" width="50" height="60" rx="3" fill="none" stroke="#e879f9" stroke-width="1" opacity="0.3"/>
+          <line x1="5" y1="27" x2="55" y2="27" stroke="#e879f9" stroke-width="0.8" opacity="0.25"/>
+          <line x1="5" y1="39" x2="55" y2="39" stroke="#e879f9" stroke-width="0.5" opacity="0.15"/>
+          <line x1="5" y1="51" x2="55" y2="51" stroke="#e879f9" stroke-width="0.5" opacity="0.15"/>
+          <line x1="5" y1="63" x2="55" y2="63" stroke="#e879f9" stroke-width="0.5" opacity="0.15"/>
+          <line x1="22" y1="15" x2="22" y2="75" stroke="#e879f9" stroke-width="0.5" opacity="0.15"/>
+          <line x1="39" y1="15" x2="39" y2="75" stroke="#e879f9" stroke-width="0.5" opacity="0.15"/>
+          <!-- table header cells -->
+          <rect x="6" y="16" width="15" height="10" fill="#e879f9" opacity="0.2"/>
+          <rect x="23" y="16" width="15" height="10" fill="#e879f9" opacity="0.2"/>
+          <rect x="40" y="16" width="14" height="10" fill="#e879f9" opacity="0.2"/>
+          <text x="14" y="24" text-anchor="middle" fill="#f5d0fe" font-size="4.5" font-weight="700" opacity="0.5">src</text>
+          <text x="30" y="24" text-anchor="middle" fill="#f5d0fe" font-size="4.5" font-weight="700" opacity="0.5">dst</text>
+          <text x="47" y="24" text-anchor="middle" fill="#f5d0fe" font-size="4.5" font-weight="700" opacity="0.5">wgt</text>
+          <text x="30" y="9" text-anchor="middle" fill="#f5d0fe" font-size="5" font-weight="600" opacity="0.4">CSV</text>
+
+          <!-- arrow -->
+          <path d="M 60 45 L 78 45" stroke="#e879f9" stroke-width="1.5" opacity="0.5" stroke-linecap="round"/>
+          <polygon points="78,45 73,42 73,48" fill="#e879f9" opacity="0.5"/>
+
+          <!-- graph on right: 5 nodes, geo-like scatter with edges -->
+          <line x1="90" y1="30" x2="115" y2="25" stroke="#e879f9" stroke-width="1" opacity="0.3" stroke-linecap="round"/>
+          <line x1="115" y1="25" x2="135" y2="40" stroke="#e879f9" stroke-width="1" opacity="0.3" stroke-linecap="round"/>
+          <line x1="90" y1="30" x2="100" y2="55" stroke="#e879f9" stroke-width="1" opacity="0.3" stroke-linecap="round"/>
+          <line x1="100" y1="55" x2="130" y2="65" stroke="#e879f9" stroke-width="1" opacity="0.25" stroke-linecap="round"/>
+          <line x1="135" y1="40" x2="130" y2="65" stroke="#e879f9" stroke-width="1" opacity="0.25" stroke-linecap="round"/>
+          <line x1="115" y1="25" x2="100" y2="55" stroke="#e879f9" stroke-width="0.8" opacity="0.15" stroke-linecap="round"/>
+          <circle cx="90" cy="30" r="4.5" fill="#e879f9" opacity="0.8"/>
+          <circle cx="115" cy="25" r="4" fill="#e879f9" opacity="0.75"/>
+          <circle cx="135" cy="40" r="4.5" fill="#e879f9" opacity="0.8"/>
+          <circle cx="100" cy="55" r="4" fill="#d946ef" opacity="0.7"/>
+          <circle cx="130" cy="65" r="4" fill="#d946ef" opacity="0.7"/>
+          <text x="112" y="85" text-anchor="middle" fill="#f5d0fe" font-size="5" font-weight="600" opacity="0.4">graph</text>
+        </svg>
+      </div>
+    </div>
+    </div>
+    """)
+    return
+
+
+@app.cell(hide_code=True)
 def _():
     import marimo as mo
 
@@ -419,7 +486,7 @@ def _(mo):
 
 
 @app.cell
-def _(G):
+def _(G, G_________, ___, ____, ___________, d):
     def filter_graph(G, minimum_num_trips):
         """
         Filter the graph such that
