@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.23.9"
+__generated_with = "0.23.14"
 app = marimo.App(width="medium", auto_download=["html"])
 
 
@@ -239,6 +239,50 @@ def _(mo):
     - In my essays collection, I wrote about [testing data](https://ericmjl.github.io/essays-on-data-science/software-skills/testing/#tests-for-data).
     - Itamar Turner-Trauring has written about [keeping tests quick and speedy](https://pythonspeed.com/articles/slow-tests-fast-feedback/), which is extremely crucial to keeping yourself motivated to write tests.
     """)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    import wigglystuff
+
+    tour = wigglystuff.CellTour(
+        steps=[
+            {
+                "cell": 0,
+                "title": "Testing Your Data",
+                "description": "Why data testing matters before graph analysis.",
+            },
+            {
+                "cell": 2,
+                "title": "The DPI concept",
+                "description": "The Data Programming Interface — treat your data like code that needs tests.",
+            },
+            {
+                "cell": 4,
+                "title": "What to test",
+                "description": "Invariants, nullity, and boundary conditions for graph data.",
+            },
+            {
+                "cell": 6,
+                "title": "Nullity checks",
+                "description": "Are required node/edge attributes present and non-null?",
+            },
+            {
+                "cell": 8,
+                "title": "Range checks",
+                "description": "Do numeric values fall within expected bounds?",
+            },
+            {
+                "cell": 10,
+                "title": "Continuous testing",
+                "description": "Integrate data tests into your CI pipeline with pytest.",
+            },
+        ],
+        auto_start=False,
+        show_progress=True,
+    )
+    mo.ui.anywidget(tour)
     return
 
 
