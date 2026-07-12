@@ -75,22 +75,22 @@ def _(mo):
                 "description": "Characters co-occur if mentioned within 15 words.",
             },
             {
-                "cell": 16,
+                "cell": 17,
                 "title": "Degree centrality",
                 "description": "Top characters by number of connections.",
             },
             {
-                "cell": 23,
+                "cell": 25,
                 "title": "Interactive: book explorer",
                 "description": "Select any book to explore degree centrality.",
             },
             {
-                "cell": 40,
+                "cell": 41,
                 "title": "Centrality correlation",
                 "description": "Do different centrality measures agree?",
             },
             {
-                "cell": 45,
+                "cell": 43,
                 "title": "Evolution over books",
                 "description": "Betweenness centrality changes across the story.",
             },

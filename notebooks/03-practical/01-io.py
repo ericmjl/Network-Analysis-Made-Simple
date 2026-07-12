@@ -88,27 +88,27 @@ def _():
                 "description": "Graph Input & Output — load CSV data into NetworkX graphs and persist them.",
             },
             {
-                "cell": 5,
+                "cell": 6,
                 "title": "The problem",
                 "description": "We start with raw tabular data and want to turn it into a graph.",
             },
             {
-                "cell": 6,
+                "cell": 7,
                 "title": "Dataset: Divvy Bike Share",
                 "description": "Real-world trip data from Chicago's bike-sharing system.",
             },
             {
-                "cell": 16,
+                "cell": 17,
                 "title": "Graph Model",
                 "description": "How do we map rows of a DataFrame to nodes and edges?",
             },
             {
-                "cell": 17,
+                "cell": 18,
                 "title": "Building the graph",
                 "description": "nx.from_pandas_edgelist converts a DataFrame into a NetworkX graph.",
             },
             {
-                "cell": 24,
+                "cell": 25,
                 "title": "Annotating node metadata",
                 "description": "Graph nodes hold rich metadata — latitude, longitude, capacity.",
             },
@@ -118,12 +118,12 @@ def _():
                 "description": "Exercise: filter the graph to keep only high-traffic edges.",
             },
             {
-                "cell": 34,
+                "cell": 35,
                 "title": "GeoPlot visualization",
                 "description": "See the bike stations on a geographic map with nxviz.",
             },
             {
-                "cell": 36,
+                "cell": 37,
                 "title": "Pickling graphs",
                 "description": "Persist and reload graph objects with pickle.",
             },
