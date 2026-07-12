@@ -1,7 +1,60 @@
 import marimo
 
-__generated_with = "0.23.9"
+__generated_with = "0.23.14"
 app = marimo.App(width="medium", auto_download=["html"])
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.Html("""
+    <div class="nams-hero">
+    <style>
+      .nams-hero{color:#e2e8f0;margin:0;font-family:inherit}
+      .nams-hero__grid{display:grid;gap:22px;grid-template-columns:minmax(0,1.25fr) minmax(200px,0.85fr);padding:32px 28px;border-radius:14px;background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%)}
+      @media(max-width:760px){.nams-hero__grid{grid-template-columns:1fr;padding:22px 16px}}
+      .nams-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border:1px solid rgba(96,165,250,0.3);background:rgba(96,165,250,0.1);border-radius:999px;color:#60a5fa;font-size:0.72rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase}
+      .nams-hero h1{margin:14px 0 8px;font-size:2.2rem;line-height:1.05;font-weight:880;letter-spacing:-0.02em;color:#f1f5f9}
+      .nams-hero h1 .nams-em{color:#60a5fa}
+      .nams-hero p.lead{margin:0;max-width:520px;color:#94a3b8;font-size:1.02rem;line-height:1.5}
+      .nams-byline{margin-top:16px;color:#64748b;font-size:0.88rem;line-height:1.5}
+      .nams-byline b{color:#cbd5e1}
+      .nams-art{display:flex;align-items:center;justify-content:center}
+    </style>
+    <div class="nams-hero__grid">
+      <div>
+        <span class="nams-badge">Chapter 05 &middot; Case Study</span>
+        <h1>US Airport<br><span class="nams-em">Network</span></h1>
+        <p class="lead">25 years of flight data (1990&ndash;2015) as a directed graph. PageRank, betweenness, connected components, and shortest paths reveal the architecture of American air travel.</p>
+        <div class="nams-byline">Network Analysis Made Simple &middot; <b>Eric Ma</b></div>
+      </div>
+      <div class="nams-art">
+        <svg viewBox="0 0 140 120" style="width:100%;max-width:170px;height:auto">
+          <!-- flight paths as arcs between airport dots on a map-like layout -->
+          <line x1="20" y1="80" x2="60" y2="35" stroke="#60a5fa" stroke-width="1" opacity="0.2" stroke-linecap="round"/>
+          <line x1="35" y1="90" x2="60" y2="35" stroke="#60a5fa" stroke-width="1" opacity="0.15" stroke-linecap="round"/>
+          <line x1="60" y1="35" x2="100" y2="50" stroke="#60a5fa" stroke-width="1.2" opacity="0.25" stroke-linecap="round"/>
+          <line x1="20" y1="80" x2="100" y2="50" stroke="#60a5fa" stroke-width="0.8" opacity="0.12" stroke-linecap="round"/>
+          <line x1="35" y1="90" x2="100" y2="50" stroke="#60a5fa" stroke-width="1" opacity="0.18" stroke-linecap="round"/>
+          <line x1="100" y1="50" x2="120" y2="85" stroke="#60a5fa" stroke-width="1" opacity="0.2" stroke-linecap="round"/>
+          <line x1="60" y1="35" x2="120" y2="85" stroke="#60a5fa" stroke-width="0.8" opacity="0.1" stroke-linecap="round"/>
+          <line x1="35" y1="90" x2="75" y2="100" stroke="#60a5fa" stroke-width="0.8" opacity="0.12" stroke-linecap="round"/>
+          <line x1="75" y1="100" x2="120" y2="85" stroke="#60a5fa" stroke-width="1" opacity="0.15" stroke-linecap="round"/>
+          <!-- airport nodes: hubs larger -->
+          <circle cx="20" cy="80" r="4.5" fill="#60a5fa" opacity="0.8"/>
+          <circle cx="35" cy="90" r="3.5" fill="#3b82f6" opacity="0.6"/>
+          <circle cx="60" cy="35" r="6" fill="#60a5fa" opacity="0.9"/>
+          <circle cx="100" cy="50" r="5.5" fill="#60a5fa" opacity="0.85"/>
+          <circle cx="120" cy="85" r="4" fill="#3b82f6" opacity="0.7"/>
+          <circle cx="75" cy="100" r="3" fill="#2563eb" opacity="0.5"/>
+          <!-- hub labels -->
+          <text x="60" y="25" text-anchor="middle" fill="#93c5fd" font-size="5" font-weight="600" opacity="0.5">ORD</text>
+          <text x="100" y="40" text-anchor="middle" fill="#93c5fd" font-size="5" font-weight="600" opacity="0.5">ATL</text>
+        </svg>
+      </div>
+    </div>
+    </div>
+    """)
+    return
 
 
 @app.cell(hide_code=True)
@@ -1100,6 +1153,75 @@ def _():
     import inspect
 
     print(inspect.getsource(airport))
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    import wigglystuff
+
+    tour = wigglystuff.CellTour(
+        steps=[
+            {
+                "cell": 0,
+                "title": "US Airport Network",
+                "description": "25 years of flight data as a directed graph.",
+            },
+            {
+                "cell": 5,
+                "title": "Dataset",
+                "description": "Passenger counts between US airports, 1990-2015.",
+            },
+            {
+                "cell": 9,
+                "title": "Building the graph",
+                "description": "MultiDiGraph with year-keyed edges from pandas.",
+            },
+            {
+                "cell": 17,
+                "title": "Passenger trends",
+                "description": "How air traffic grew over 25 years.",
+            },
+            {
+                "cell": 25,
+                "title": "Yearly subnetworks",
+                "description": "Extract a single year for analysis.",
+            },
+            {
+                "cell": 32,
+                "title": "Geographic visualization",
+                "description": "Plot airports on a US map with nxviz.",
+            },
+            {
+                "cell": 44,
+                "title": "PageRank",
+                "description": "Which airports are the most important hubs?",
+            },
+            {
+                "cell": 56,
+                "title": "Centrality comparison",
+                "description": "PageRank vs betweenness vs degree on the 2015 network.",
+            },
+            {
+                "cell": 72,
+                "title": "Connected components",
+                "description": "Strongly vs weakly connected components.",
+            },
+            {
+                "cell": 101,
+                "title": "Shortest paths",
+                "description": "Average path length and network reachability.",
+            },
+            {
+                "cell": 104,
+                "title": "Adding routes",
+                "description": "Opinionated heuristic to improve connectivity.",
+            },
+        ],
+        auto_start=False,
+        show_progress=True,
+    )
+    mo.ui.anywidget(tour)
     return
 
 
