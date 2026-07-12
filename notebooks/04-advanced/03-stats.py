@@ -1,7 +1,63 @@
 import marimo
 
-__generated_with = "0.23.9"
+__generated_with = "0.23.14"
 app = marimo.App(width="medium", auto_download=["html"])
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.Html(f"""
+    <div class="nams-hero">
+    <style>
+      .nams-hero{{color:#e2e8f0;margin:0;font-family:inherit}}
+      .nams-hero__grid{{display:grid;gap:22px;grid-template-columns:minmax(0,1.25fr) minmax(200px,0.85fr);padding:32px 28px;border-radius:14px;background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%)}}
+      @media(max-width:760px){{.nams-hero__grid{{grid-template-columns:1fr;padding:22px 16px}}}}
+      .nams-badge{{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border:1px solid rgba(244,114,182,0.3);background:rgba(244,114,182,0.1);border-radius:999px;color:#f472b6;font-size:0.72rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase}}
+      .nams-hero h1{{margin:14px 0 8px;font-size:2.2rem;line-height:1.05;font-weight:880;letter-spacing:-0.02em;color:#f1f5f9}}
+      .nams-hero h1 .nams-em{{color:#f472b6}}
+      .nams-hero p.lead{{margin:0;max-width:520px;color:#94a3b8;font-size:1.02rem;line-height:1.5}}
+      .nams-byline{{margin-top:16px;color:#64748b;font-size:0.88rem;line-height:1.5}}
+      .nams-byline b{{color:#cbd5e1}}
+      .nams-art{{display:flex;align-items:center;justify-content:center}}
+    </style>
+    <div class="nams-hero__grid">
+      <div>
+        <span class="nams-badge">Chapter 04 &middot; Advanced</span>
+        <h1>Statistical<br><span class="nams-em">Inference</span></h1>
+        <p class="lead">Is your graph structured or random? Erdos-Renyi, Barabasi-Albert, and the Wasserstein distance give you the tools to compare real networks against generative models &mdash; quantitatively.</p>
+        <div class="nams-byline">Network Analysis Made Simple &middot; <b>Eric Ma</b></div>
+      </div>
+      <div class="nams-art">
+        <svg viewBox="0 0 140 120" style="width:100%;max-width:170px;height:auto">
+          <!-- left: scatter points forming a distribution (real data) -->
+          <circle cx="25" cy="90" r="1.8" fill="#f472b6" opacity="0.7"/>
+          <circle cx="30" cy="88" r="1.8" fill="#f472b6" opacity="0.7"/>
+          <circle cx="35" cy="82" r="1.8" fill="#f472b6" opacity="0.7"/>
+          <circle cx="38" cy="75" r="1.8" fill="#f472b6" opacity="0.7"/>
+          <circle cx="42" cy="65" r="1.8" fill="#f472b6" opacity="0.7"/>
+          <circle cx="45" cy="55" r="1.8" fill="#f472b6" opacity="0.7"/>
+          <circle cx="48" cy="45" r="1.8" fill="#f472b6" opacity="0.7"/>
+          <circle cx="52" cy="38" r="1.8" fill="#f472b6" opacity="0.7"/>
+          <circle cx="55" cy="35" r="1.8" fill="#f472b6" opacity="0.8"/>
+          <circle cx="58" cy="33" r="1.8" fill="#f472b6" opacity="0.8"/>
+          <!-- distribution curve approximation -->
+          <path d="M 20 92 Q 35 90 45 55 Q 52 30 58 33 Q 65 38 75 90" stroke="#f472b6" stroke-width="1" fill="none" opacity="0.3"/>
+          <text x="40" y="108" text-anchor="middle" fill="#f9a8d4" font-size="5.5" font-weight="600" opacity="0.5">empirical</text>
+          <!-- vs arrow -->
+          <path d="M 62 60 L 78 60" stroke="#f472b6" stroke-width="1.2" opacity="0.3" stroke-linecap="round"/>
+          <polygon points="78,60 74,57 74,63" fill="#f472b6" opacity="0.3"/>
+          <!-- right: model curve (smooth theoretical) -->
+          <path d="M 82 92 Q 95 92 105 55 Q 112 30 118 33 Q 125 38 135 92" stroke="#ec4899" stroke-width="1.5" fill="none" opacity="0.5"/>
+          <text x="108" y="108" text-anchor="middle" fill="#f9a8d4" font-size="5.5" font-weight="600" opacity="0.5">model</text>
+          <!-- axes -->
+          <line x1="18" y1="95" x2="60" y2="95" stroke="#f472b6" stroke-width="0.5" opacity="0.15"/>
+          <line x1="80" y1="95" x2="137" y2="95" stroke="#f472b6" stroke-width="0.5" opacity="0.15"/>
+        </svg>
+      </div>
+    </div>
+    </div>
+    """)
+    return
 
 
 @app.cell(hide_code=True)
@@ -444,6 +500,7 @@ def _(G, ba_m_slider, ecdf, nx, pd, plt):
     ba_ax.scatter(_x, _y, label="Protein Interaction Network")
     ba_ax.legend()
     plt.show()
+    return (G_ba,)
 
 
 @app.cell(hide_code=True)
@@ -472,6 +529,7 @@ def _(G, ecdf, er_p_slider, nx, pd, plt):
     er_ax.legend()
     er_ax.set_title(f"p={er_p_slider.value}")
     plt.show()
+    return (G_er,)
 
 
 @app.cell(hide_code=True)
@@ -631,6 +689,60 @@ def _(mo):
 
     No code exercises in this chapter.
     """)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    import wigglystuff
+
+    tour = wigglystuff.CellTour(
+        steps=[
+            {
+                "cell": 0,
+                "title": "Statistical Inference on Graphs",
+                "description": "Compare real networks against generative models.",
+            },
+            {
+                "cell": 5,
+                "title": "Probability refresher",
+                "description": "Hypothesis testing framework for graph comparison.",
+            },
+            {
+                "cell": 12,
+                "title": "Erdos-Renyi model",
+                "description": "The simplest random graph: every edge exists with probability p.",
+            },
+            {
+                "cell": 20,
+                "title": "Barabasi-Albert model",
+                "description": "Preferential attachment generates scale-free networks.",
+            },
+            {
+                "cell": 30,
+                "title": "Real network: PPI",
+                "description": "A protein-protein interaction network for comparison.",
+            },
+            {
+                "cell": 42,
+                "title": "Interactive: BA comparison",
+                "description": "Slide the m parameter and watch the degree distribution update.",
+            },
+            {
+                "cell": 45,
+                "title": "Interactive: ER comparison",
+                "description": "Slide the p parameter and compare with the real network.",
+            },
+            {
+                "cell": 49,
+                "title": "Wasserstein distance",
+                "description": "Quantify the difference between degree distributions.",
+            },
+        ],
+        auto_start=False,
+        show_progress=True,
+    )
+    mo.ui.anywidget(tour)
     return
 
 
