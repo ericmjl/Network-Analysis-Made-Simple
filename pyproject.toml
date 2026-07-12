@@ -85,6 +85,7 @@ dependencies = [
     "scipy>=1.14",
     "seaborn>=0.13",
     "ipython>=8.0",
+    "wigglystuff>=0.1",
 ]
 
 [tool.coverage.run]
