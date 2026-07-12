@@ -4,6 +4,8 @@ __generated_with = "0.23.9"
 app = marimo.App(width="medium", auto_download=["html"])
 
 
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.Html(f"""
@@ -61,6 +63,30 @@ def _(mo):
     return
 
 
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    import wigglystuff
+
+    tour = wigglystuff.CellTour(
+        steps=[
+        {'cell': 0, 'title': 'Paths & Traversal', 'description': 'Finding routes through a graph with BFS.'},
+        {'cell': 4, 'title': 'Graph traversal', 'description': 'Walking along edges to explore the graph.'},
+        {'cell': 6, 'title': 'Breadth-First Search', 'description': 'The algorithm for finding shortest paths.'},
+        {'cell': 8, 'title': 'Exercise: implement BFS', 'description': 'Fill in the blanks to check if a path exists.'},
+        {'cell': 12, 'title': 'Visualizing paths', 'description': 'Extract and plot the shortest path subgraph.'},
+        {'cell': 18, 'title': 'Betweenness centrality', 'description': 'Which nodes are bottlenecks?'},
+    ],
+        auto_start=False,
+        show_progress=True,
+    )
+    mo.ui.anywidget(tour)
+    return
+
+
+
+
 @app.cell(hide_code=True)
 def _():
     import warnings
@@ -69,11 +95,15 @@ def _():
     return
 
 
+
+
 @app.cell(hide_code=True)
 def _():
     import marimo as mo
 
     return (mo,)
+
+
 
 
 @app.cell(hide_code=True)
@@ -84,12 +114,16 @@ def _(mo):
     return
 
 
+
+
 @app.cell(hide_code=True)
 def _():
     from IPython.display import YouTubeVideo
 
     YouTubeVideo(id="JjpbztqP9_0", width="100%")
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -101,6 +135,8 @@ def _(mo):
     What other ways can we measure node importance?
     """)
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -119,6 +155,8 @@ def _(mo):
     Then, we are going to explore measures of node importance that are related to traversals on a graph!
     """)
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -148,12 +186,16 @@ def _(mo):
     return
 
 
+
+
 @app.cell(hide_code=True)
 def _():
     from nams import load_data as cf
 
     G = cf.load_sociopatterns_network()
     return (G,)
+
+
 
 
 @app.cell
@@ -165,6 +207,8 @@ def _():
     return
 
 
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -173,6 +217,8 @@ def _(mo):
     > Now that you've seen how the algorithm works, try implementing it!
     """)
     return
+
+
 
 
 @app.cell
@@ -215,6 +261,8 @@ def _(____, _____, _________, ___________, _____________, _________________):
     return (path_exists,)
 
 
+
+
 @app.cell
 def _():
     # UNCOMMENT THE FOLLOWING TWO LINES TO SEE THE ANSWER
@@ -223,6 +271,8 @@ def _():
 
     print(getsource(path_exists_solution))
     return
+
+
 
 
 @app.cell
@@ -246,6 +296,8 @@ def _(G, path_exists):
     return (nx,)
 
 
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -262,11 +314,15 @@ def _(mo):
     return
 
 
+
+
 @app.cell
 def _(G, nx):
     path = nx.shortest_path(G, 7, 400)
     path
     return (path,)
+
+
 
 
 @app.cell(hide_code=True)
@@ -292,6 +348,8 @@ def _(mo):
     return
 
 
+
+
 @app.cell(hide_code=True)
 def _(G, path):
     import nxviz as nv
@@ -299,6 +357,8 @@ def _(G, path):
     g = G.subgraph(path)
     nv.matrix(g, sort_by="order", backend="plotly")
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -340,6 +400,8 @@ def _(mo):
     return
 
 
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -359,6 +421,8 @@ def _(mo):
     return
 
 
+
+
 @app.cell
 def _(plt):
     from nams.solutions.paths import plot_path_with_neighbors
@@ -373,11 +437,15 @@ def _(plt):
     return (plot_path_with_neighbors,)
 
 
+
+
 @app.cell
 def _(G, plot_path_with_neighbors, plt):
     plot_path_with_neighbors(G, 7, 400)
     plt.show()
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -387,6 +455,8 @@ def _(mo):
     Because the path follows the order, the edges being highlighted automatically look like hops through the graph.
     """)
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -418,6 +488,8 @@ def _(mo):
     return
 
 
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -430,12 +502,16 @@ def _(mo):
     return
 
 
+
+
 @app.cell
 def _(G, nx):
     import pandas as pd
 
     pd.Series(nx.betweenness_centrality(G))
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -450,12 +526,16 @@ def _(mo):
     return
 
 
+
+
 @app.cell
 def _():
     import matplotlib.pyplot as plt
 
     # YOUR ANSWER HERE:
     return (plt,)
+
+
 
 
 @app.cell
@@ -465,6 +545,8 @@ def _(G, plt):
     plot_degree_betweenness(G)
     plt.show()
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -484,11 +566,15 @@ def _(mo):
     return
 
 
+
+
 @app.cell
 def _(nx, plt):
     nx.draw(nx.barbell_graph(10, 1))
     plt.show()
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -506,6 +592,8 @@ def _(mo):
     return
 
 
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -516,32 +604,14 @@ def _(mo):
     return
 
 
+
+
 @app.cell
 def _():
     from nams.solutions import paths
     import inspect
 
     print(inspect.getsource(paths))
-    return
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    import wigglystuff
-
-    tour = wigglystuff.CellTour(
-        steps=[
-        {'cell': 0, 'title': 'Paths & Traversal', 'description': 'Finding routes through a graph with BFS.'},
-        {'cell': 4, 'title': 'Graph traversal', 'description': 'Walking along edges to explore the graph.'},
-        {'cell': 6, 'title': 'Breadth-First Search', 'description': 'The algorithm for finding shortest paths.'},
-        {'cell': 8, 'title': 'Exercise: implement BFS', 'description': 'Fill in the blanks to check if a path exists.'},
-        {'cell': 12, 'title': 'Visualizing paths', 'description': 'Extract and plot the shortest path subgraph.'},
-        {'cell': 18, 'title': 'Betweenness centrality', 'description': 'Which nodes are bottlenecks?'},
-    ],
-        auto_start=False,
-        show_progress=True,
-    )
-    mo.ui.anywidget(tour)
     return
 
 

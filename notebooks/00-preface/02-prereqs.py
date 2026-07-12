@@ -4,6 +4,8 @@ __generated_with = "0.23.9"
 app = marimo.App(width="medium", auto_download=["html"])
 
 
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.Html(f"""
@@ -56,11 +58,35 @@ def _(mo):
     return
 
 
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    import wigglystuff
+
+    tour = wigglystuff.CellTour(
+        steps=[
+        {'cell': 0, 'title': 'Prerequisites', 'description': 'Make sure your Python foundations are ready.'},
+        {'cell': 2, 'title': 'Exercises', 'description': 'Warm-up exercises on dicts and list comprehensions.'},
+        {'cell': 4, 'title': 'Exercise 1', 'description': 'Reason about data structures in a list comprehension.'},
+        {'cell': 6, 'title': 'Exercise 2', 'description': 'Write a function to filter dictionaries by surname.'},
+    ],
+        auto_start=False,
+        show_progress=True,
+    )
+    mo.ui.anywidget(tour)
+    return
+
+
+
+
 @app.cell(hide_code=True)
 def _():
     import marimo as mo
 
     return (mo,)
+
+
 
 
 @app.cell(hide_code=True)
@@ -81,6 +107,8 @@ def _(mo):
     return
 
 
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -89,6 +117,8 @@ def _(mo):
     We have a few exercises below that should help you get warmed up.
     """)
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -107,6 +137,8 @@ def _(mo):
     return
 
 
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -115,6 +147,8 @@ def _(mo):
     Given the following data:
     """)
     return
+
+
 
 
 @app.cell
@@ -126,6 +160,8 @@ def _():
         {"name": "Jennifer", "surname": "Elmer"},
     ]
     return (names,)
+
+
 
 
 @app.cell(hide_code=True)
@@ -150,6 +186,8 @@ def find_persons_with_surname(persons, query_surname):
     return results
 
 
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -159,6 +197,8 @@ def _(mo):
     return
 
 
+
+
 @app.cell
 def _(names):
     results = find_persons_with_surname(names, "Lee")
@@ -166,24 +206,6 @@ def _(names):
 
     results = find_persons_with_surname(names, "Elmer")
     assert len(results) == 2
-    return
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    import wigglystuff
-
-    tour = wigglystuff.CellTour(
-        steps=[
-        {'cell': 0, 'title': 'Prerequisites', 'description': 'Make sure your Python foundations are ready.'},
-        {'cell': 2, 'title': 'Exercises', 'description': 'Warm-up exercises on dicts and list comprehensions.'},
-        {'cell': 4, 'title': 'Exercise 1', 'description': 'Reason about data structures in a list comprehension.'},
-        {'cell': 6, 'title': 'Exercise 2', 'description': 'Write a function to filter dictionaries by surname.'},
-    ],
-        auto_start=False,
-        show_progress=True,
-    )
-    mo.ui.anywidget(tour)
     return
 
 
