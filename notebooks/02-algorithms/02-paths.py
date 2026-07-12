@@ -71,12 +71,16 @@ def _(mo):
 
     tour = wigglystuff.CellTour(
         steps=[
-        {'cell': 0, 'title': 'Paths & Traversal', 'description': 'Finding routes through a graph with BFS.'},
-        {'cell': 7, 'title': 'Graph traversal', 'description': 'Walking along edges to explore the graph.'},
-        {'cell': 8, 'title': 'Breadth-First Search', 'description': 'The algorithm for finding shortest paths.'},
-        {'cell': 11, 'title': 'Exercise: implement BFS', 'description': 'Fill in the blanks to check if a path exists.'},
-        {'cell': 15, 'title': 'Visualizing paths', 'description': 'Extract and plot the shortest path subgraph.'},
-        {'cell': 24, 'title': 'Betweenness centrality', 'description': 'Which nodes are bottlenecks?'},
+        {'cell': 0, 'title': 'Paths & Traversal', 'description': 'How do you get from node A to node B? Breadth-first search explores outward layer by layer.'},
+        {'cell': 7, 'title': 'Graph Traversal', 'description': 'Walking along edges node by node to explore local structure and find paths.'},
+        {'cell': 8, 'title': 'Breadth-First Search', 'description': 'The BFS algorithm teaches you to think on a graph — exploring one neighbor at a time.'},
+        {'cell': 12, 'title': 'Exercise: Implement BFS', 'description': 'Fill in the blanks to check whether a path exists between two nodes using a queue.'},
+        {'cell': 15, 'title': 'Visualizing Paths', 'description': 'Use nx.shortest_path and subgraph extraction to draw the route through the graph.'},
+        {'cell': 20, 'title': 'Path with Neighbors', 'description': 'An optional exercise to plot a shortest path alongside its neighboring nodes in an arc plot.'},
+        {'cell': 24, 'title': 'Bottleneck Nodes', 'description': 'Betweenness centrality identifies nodes through which most shortest paths flow.'},
+        {'cell': 27, 'title': 'Exercise: Degree vs Betweenness', 'description': 'Scatter-plot the two centrality measures to see whether they correlate.'},
+        {'cell': 31, 'title': 'Why They Differ', 'description': 'A barbell graph illustrates how a low-degree node can have extremely high betweenness.'},
+        {'cell': 32, 'title': 'Recap', 'description': 'Summary of BFS, subgraph extraction, and betweenness centrality.'},
     ],
         auto_start=False,
         show_progress=True,

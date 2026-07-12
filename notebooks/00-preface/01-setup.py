@@ -65,8 +65,9 @@ def _(mo):
     tour = wigglystuff.CellTour(
         steps=[
         {'cell': 0, 'title': 'Setup', 'description': 'Getting started with pixi and marimo for reproducible notebooks.'},
-        {'cell': 4, 'title': 'Quick Setup', 'description': 'Three steps: clone, install pixi, run marimo.'},
-        {'cell': 5, 'title': 'What this does', 'description': 'pixi handles deps, marimo handles interactivity.'},
+        {'cell': 3, 'title': 'Introduction', 'description': 'Why hands-on execution — modify, break, and fix the code — is the best way to learn.'},
+        {'cell': 4, 'title': 'Quick Setup', 'description': 'Three steps: clone the repo, install pixi, and launch marimo.'},
+        {'cell': 5, 'title': 'What This Does', 'description': 'Pixi manages isolated dependencies while marimo provides the interactive notebook environment.'},
     ],
         auto_start=False,
         show_progress=True,

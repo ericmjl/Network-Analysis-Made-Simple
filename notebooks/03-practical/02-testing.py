@@ -14,37 +14,15 @@ def _(mo):
 
     tour = wigglystuff.CellTour(
         steps=[
-            {
-                "cell": 0,
-                "title": "Testing Your Data",
-                "description": "Why data testing matters before graph analysis.",
-            },
-            {
-                "cell": 6,
-                "title": "The DPI concept",
-                "description": "The Data Programming Interface — treat your data like code that needs tests.",
-            },
-            {
-                "cell": 7,
-                "title": "What to test",
-                "description": "Invariants, nullity, and boundary conditions for graph data.",
-            },
-            {
-                "cell": 9,
-                "title": "Nullity checks",
-                "description": "Are required node/edge attributes present and non-null?",
-            },
-            {
-                "cell": 10,
-                "title": "Range checks",
-                "description": "Do numeric values fall within expected bounds?",
-            },
-            {
-                "cell": 12,
-                "title": "Continuous testing",
-                "description": "Integrate data tests into your CI pipeline with pytest.",
-            },
-        ],
+        {'cell': 2, 'title': 'Testing Your Data', 'description': 'Why data testing matters before you begin graph analysis.'},
+        {'cell': 5, 'title': 'Why Test?', 'description': 'If you rely on data, you should test it — just like you test code.'},
+        {'cell': 6, 'title': 'The DPI Concept', 'description': 'Data fields form a Data Programming Interface, analogous to a function API.'},
+        {'cell': 7, 'title': 'What to Test', 'description': 'Three categories of data tests: invariants, nullity, and boundary conditions.'},
+        {'cell': 8, 'title': 'Test Invariants', 'description': 'Check that required attributes like station_name are present on every node.'},
+        {'cell': 9, 'title': 'Test Nullity', 'description': 'Ensure required values are non-null and non-empty strings.'},
+        {'cell': 10, 'title': 'Test Boundaries', 'description': 'Verify that numeric values like latitude and longitude fall within expected geographic ranges.'},
+        {'cell': 12, 'title': 'Continuous Testing', 'description': 'Integrate data tests into a CI pipeline with pytest for ongoing automated validation.'},
+    ],
         auto_start=False,
         show_progress=True,
     )

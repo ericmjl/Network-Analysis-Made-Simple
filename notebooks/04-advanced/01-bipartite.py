@@ -69,37 +69,17 @@ def _(mo):
 
     tour = wigglystuff.CellTour(
         steps=[
-            {
-                "cell": 0,
-                "title": "Bipartite Graphs",
-                "description": "Two disjoint node sets with edges only between them.",
-            },
-            {
-                "cell": 6,
-                "title": "Dataset: Crime Network",
-                "description": "Persons and crimes connected by involvement edges.",
-            },
-            {
-                "cell": 17,
-                "title": "Bipartite structure",
-                "description": "Verify the graph is truly bipartite — no within-set edges.",
-            },
-            {
-                "cell": 13,
-                "title": "Projections",
-                "description": "Project a bipartite graph onto one node set to reveal shared connections.",
-            },
-            {
-                "cell": 30,
-                "title": "Weighted projections",
-                "description": "Weight edges by the number of shared neighbors.",
-            },
-            {
-                "cell": 35,
-                "title": "Degree centrality",
-                "description": "Measure importance in a bipartite graph with the correct denominator.",
-            },
-        ],
+        {'cell': 0, 'title': 'Bipartite Graphs', 'description': 'Two disjoint node sets with edges only between them, never within the same set.'},
+        {'cell': 6, 'title': 'What Are Bipartite Graphs?', 'description': 'Rules, e-commerce and crime-analysis applications, and the Konect crime-person dataset.'},
+        {'cell': 10, 'title': 'Visualizing the Crime Network', 'description': 'A circos plot of persons and crimes colored by bipartite partition.'},
+        {'cell': 11, 'title': 'Exercise: Extract Node Sets', 'description': 'Separate person nodes from crime nodes using the bipartite metadata key.'},
+        {'cell': 13, 'title': 'Graph Projections', 'description': 'Project a bipartite graph onto one node set to reveal shared connections.'},
+        {'cell': 21, 'title': 'Computing Projections', 'description': 'Use NetworkX bipartite.projected_graph to create person-person and crime-crime graphs.'},
+        {'cell': 26, 'title': 'Exercise: Most Similar Crimes', 'description': 'Find crimes linked by the most shared persons using degree centrality on the projection.'},
+        {'cell': 30, 'title': 'Weighted Projections', 'description': 'Preserve the strength of shared connections with weighted_projected_graph.'},
+        {'cell': 35, 'title': 'Bipartite Degree Centrality', 'description': 'The denominator changes for bipartite graphs — only the opposite partition counts.'},
+        {'cell': 37, 'title': 'Exercise: Most Connected Persons', 'description': 'Use nx.bipartite.degree_centrality to find persons implicated in the most crimes.'},
+    ],
         auto_start=False,
         show_progress=True,
     )
