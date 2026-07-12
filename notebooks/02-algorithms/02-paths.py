@@ -72,11 +72,11 @@ def _(mo):
     tour = wigglystuff.CellTour(
         steps=[
         {'cell': 0, 'title': 'Paths & Traversal', 'description': 'Finding routes through a graph with BFS.'},
-        {'cell': 4, 'title': 'Graph traversal', 'description': 'Walking along edges to explore the graph.'},
-        {'cell': 6, 'title': 'Breadth-First Search', 'description': 'The algorithm for finding shortest paths.'},
-        {'cell': 8, 'title': 'Exercise: implement BFS', 'description': 'Fill in the blanks to check if a path exists.'},
-        {'cell': 12, 'title': 'Visualizing paths', 'description': 'Extract and plot the shortest path subgraph.'},
-        {'cell': 18, 'title': 'Betweenness centrality', 'description': 'Which nodes are bottlenecks?'},
+        {'cell': 7, 'title': 'Graph traversal', 'description': 'Walking along edges to explore the graph.'},
+        {'cell': 8, 'title': 'Breadth-First Search', 'description': 'The algorithm for finding shortest paths.'},
+        {'cell': 11, 'title': 'Exercise: implement BFS', 'description': 'Fill in the blanks to check if a path exists.'},
+        {'cell': 15, 'title': 'Visualizing paths', 'description': 'Extract and plot the shortest path subgraph.'},
+        {'cell': 24, 'title': 'Betweenness centrality', 'description': 'Which nodes are bottlenecks?'},
     ],
         auto_start=False,
         show_progress=True,
