@@ -4,6 +4,8 @@ __generated_with = "0.23.14"
 app = marimo.App(width="medium", auto_download=["html"])
 
 
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.Html(f"""
@@ -71,11 +73,77 @@ def _(mo):
     return
 
 
+
+
+@app.cell(hide_code=True)
+def _():
+    import marimo as mo
+    import wigglystuff
+
+    tour = wigglystuff.CellTour(
+        steps=[
+            {
+                "cell": 0,
+                "title": "Welcome!",
+                "description": "Graph Input & Output — load CSV data into NetworkX graphs and persist them.",
+            },
+            {
+                "cell": 5,
+                "title": "The problem",
+                "description": "We start with raw tabular data and want to turn it into a graph.",
+            },
+            {
+                "cell": 6,
+                "title": "Dataset: Divvy Bike Share",
+                "description": "Real-world trip data from Chicago's bike-sharing system.",
+            },
+            {
+                "cell": 16,
+                "title": "Graph Model",
+                "description": "How do we map rows of a DataFrame to nodes and edges?",
+            },
+            {
+                "cell": 17,
+                "title": "Building the graph",
+                "description": "nx.from_pandas_edgelist converts a DataFrame into a NetworkX graph.",
+            },
+            {
+                "cell": 24,
+                "title": "Annotating node metadata",
+                "description": "Graph nodes hold rich metadata — latitude, longitude, capacity.",
+            },
+            {
+                "cell": 31,
+                "title": "Filtering edges",
+                "description": "Exercise: filter the graph to keep only high-traffic edges.",
+            },
+            {
+                "cell": 34,
+                "title": "GeoPlot visualization",
+                "description": "See the bike stations on a geographic map with nxviz.",
+            },
+            {
+                "cell": 36,
+                "title": "Pickling graphs",
+                "description": "Persist and reload graph objects with pickle.",
+            },
+        ],
+        auto_start=False,
+        show_progress=True,
+    )
+    mo.ui.anywidget(tour)
+    return (mo,)
+
+
+
+
 @app.cell(hide_code=True)
 def _():
     import marimo as mo
 
     return (mo,)
+
+
 
 
 @app.cell(hide_code=True)
@@ -86,6 +154,8 @@ def _():
     return
 
 
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -94,12 +164,16 @@ def _(mo):
     return
 
 
+
+
 @app.cell(hide_code=True)
 def _():
     from IPython.display import YouTubeVideo
 
     YouTubeVideo(id="3sJnTpeFXZ4", width="100%")
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -202,6 +276,8 @@ def _(mo):
     return
 
 
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -220,12 +296,16 @@ def _(mo):
     return
 
 
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
     Firstly, we need to unzip the dataset:
     """)
     return
+
+
 
 
 @app.cell
@@ -241,6 +321,8 @@ def _():
     return (datasets,)
 
 
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -249,6 +331,8 @@ def _(mo):
     First is the `stations` table:
     """)
     return
+
+
 
 
 @app.cell
@@ -264,10 +348,14 @@ def _(datasets):
     return pd, stations
 
 
+
+
 @app.cell
 def _(stations):
     stations.describe()
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -278,6 +366,8 @@ def _(mo):
     return
 
 
+
+
 @app.cell
 def _(datasets, pd):
     trips = pd.read_csv(
@@ -286,6 +376,8 @@ def _(datasets, pd):
     )
     trips.head()
     return (trips,)
+
+
 
 
 @app.cell
@@ -302,10 +394,14 @@ def _(trips):
     return (trips_summary,)
 
 
+
+
 @app.cell
 def _(trips_summary):
     trips_summary.head()
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -333,6 +429,8 @@ def _(mo):
     return
 
 
+
+
 @app.cell
 def _(trips_summary):
     import networkx as nx
@@ -347,6 +445,8 @@ def _(trips_summary):
     return (G,)
 
 
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -358,10 +458,14 @@ def _(mo):
     return
 
 
+
+
 @app.cell
 def _(G):
     print(G)
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -372,10 +476,14 @@ def _(mo):
     return
 
 
+
+
 @app.cell
 def _(G):
     list(G.edges(data=True))[0:5]
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -386,10 +494,14 @@ def _(mo):
     return
 
 
+
+
 @app.cell
 def _(G):
     list(G.nodes(data=True))[0:5]
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -409,10 +521,14 @@ def _(mo):
     return
 
 
+
+
 @app.cell
 def _(stations):
     stations.head()
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -430,12 +546,16 @@ def _(mo):
     return
 
 
+
+
 @app.cell
 def _(G, stations):
     for node, metadata in stations.set_index("id").iterrows():
         for key, val in metadata.items():
             G.nodes[node][key] = val
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -446,10 +566,14 @@ def _(mo):
     return
 
 
+
+
 @app.cell
 def _(G):
     list(G.nodes(data=True))[0:5]
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -485,6 +609,8 @@ def _(mo):
     return
 
 
+
+
 @app.cell
 def _(G, G_________, ___, ____, ___________, d):
     def filter_graph(G, minimum_num_trips):
@@ -505,6 +631,8 @@ def _(G, G_________, ___, ____, ___________, d):
     return (G_filtered,)
 
 
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -514,6 +642,8 @@ def _(mo):
     that lets you quickly visualize geospatial graph data.
     """)
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -532,12 +662,16 @@ def _(mo):
     return
 
 
+
+
 @app.cell(hide_code=True)
 def _(G_filtered):
     import nxviz as nv
 
     nv.geo(G_filtered, node_color_by="dpcapacity", backend="plotly")
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -550,6 +684,8 @@ def _(mo):
     near the city center.
     """)
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -565,6 +701,8 @@ def _(mo):
     return
 
 
+
+
 @app.cell
 def _(G):
     import pickle
@@ -572,6 +710,8 @@ def _(G):
     with open("/tmp/divvy.pkl", "wb") as _f:
         pickle.dump(G, _f, pickle.HIGHEST_PROTOCOL)
     return (pickle,)
+
+
 
 
 @app.cell(hide_code=True)
@@ -582,11 +722,15 @@ def _(mo):
     return
 
 
+
+
 @app.cell
 def _(pickle):
     with open("/tmp/divvy.pkl", "rb") as _f:
         G_loaded = pickle.load(_f)
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -604,6 +748,8 @@ def _(mo):
     return
 
 
+
+
 @app.cell
 def _(G):
     def test_graph_integrity(G):
@@ -615,6 +761,8 @@ def _(G):
 
     test_graph_integrity(G)
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -642,6 +790,8 @@ def _(mo):
     return
 
 
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -652,6 +802,8 @@ def _(mo):
     return
 
 
+
+
 @app.cell
 def _():
     from nams.solutions import io
@@ -659,66 +811,6 @@ def _():
 
     print(inspect.getsource(io))
     return
-
-
-@app.cell(hide_code=True)
-def _():
-    import marimo as mo
-    import wigglystuff
-
-    tour = wigglystuff.CellTour(
-        steps=[
-            {
-                "cell": 0,
-                "title": "Welcome!",
-                "description": "Graph Input & Output — load CSV data into NetworkX graphs and persist them.",
-            },
-            {
-                "cell": 5,
-                "title": "The problem",
-                "description": "We start with raw tabular data and want to turn it into a graph.",
-            },
-            {
-                "cell": 6,
-                "title": "Dataset: Divvy Bike Share",
-                "description": "Real-world trip data from Chicago's bike-sharing system.",
-            },
-            {
-                "cell": 16,
-                "title": "Graph Model",
-                "description": "How do we map rows of a DataFrame to nodes and edges?",
-            },
-            {
-                "cell": 17,
-                "title": "Building the graph",
-                "description": "nx.from_pandas_edgelist converts a DataFrame into a NetworkX graph.",
-            },
-            {
-                "cell": 24,
-                "title": "Annotating node metadata",
-                "description": "Graph nodes hold rich metadata — latitude, longitude, capacity.",
-            },
-            {
-                "cell": 31,
-                "title": "Filtering edges",
-                "description": "Exercise: filter the graph to keep only high-traffic edges.",
-            },
-            {
-                "cell": 34,
-                "title": "GeoPlot visualization",
-                "description": "See the bike stations on a geographic map with nxviz.",
-            },
-            {
-                "cell": 36,
-                "title": "Pickling graphs",
-                "description": "Persist and reload graph objects with pickle.",
-            },
-        ],
-        auto_start=False,
-        show_progress=True,
-    )
-    mo.ui.anywidget(tour)
-    return (mo,)
 
 
 if __name__ == "__main__":

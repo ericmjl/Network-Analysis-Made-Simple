@@ -4,6 +4,8 @@ __generated_with = "0.23.9"
 app = marimo.App(width="medium", auto_download=["html"])
 
 
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.Html(f"""
@@ -54,11 +56,34 @@ def _(mo):
     return
 
 
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    import wigglystuff
+
+    tour = wigglystuff.CellTour(
+        steps=[
+        {'cell': 0, 'title': 'Setup', 'description': 'Getting started with pixi and marimo for reproducible notebooks.'},
+        {'cell': 2, 'title': 'Quick Setup', 'description': 'Three steps: clone, install pixi, run marimo.'},
+        {'cell': 3, 'title': 'What this does', 'description': 'pixi handles deps, marimo handles interactivity.'},
+    ],
+        auto_start=False,
+        show_progress=True,
+    )
+    mo.ui.anywidget(tour)
+    return
+
+
+
+
 @app.cell(hide_code=True)
 def _():
     import marimo as mo
 
     return (mo,)
+
+
 
 
 @app.cell(hide_code=True)
@@ -73,6 +98,8 @@ def _(mo):
     Here's the recommended way to get set up.
     """)
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -99,6 +126,8 @@ def _(mo):
     return
 
 
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -111,23 +140,6 @@ def _(mo):
 
     This approach ensures reproducible execution of the tutorial content.
     """)
-    return
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    import wigglystuff
-
-    tour = wigglystuff.CellTour(
-        steps=[
-        {'cell': 0, 'title': 'Setup', 'description': 'Getting started with pixi and marimo for reproducible notebooks.'},
-        {'cell': 2, 'title': 'Quick Setup', 'description': 'Three steps: clone, install pixi, run marimo.'},
-        {'cell': 3, 'title': 'What this does', 'description': 'pixi handles deps, marimo handles interactivity.'},
-    ],
-        auto_start=False,
-        show_progress=True,
-    )
-    mo.ui.anywidget(tour)
     return
 
 

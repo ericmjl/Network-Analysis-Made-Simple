@@ -4,6 +4,8 @@ __generated_with = "0.23.9"
 app = marimo.App(width="medium", auto_download=["html"])
 
 
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.Html(f"""
@@ -52,6 +54,31 @@ def _(mo):
     return
 
 
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    import wigglystuff
+
+    tour = wigglystuff.CellTour(
+        steps=[
+        {'cell': 0, 'title': 'The NetworkX API', 'description': 'Load real graph data and query nodes, edges, and metadata.'},
+        {'cell': 4, 'title': 'Data Model', 'description': 'Graphs store data in a dictionary-like fashion.'},
+        {'cell': 6, 'title': 'Load Data', 'description': 'The 7th-grader social network dataset.'},
+        {'cell': 10, 'title': 'Node metadata', 'description': 'Query and count node attributes like gender.'},
+        {'cell': 18, 'title': 'Edge metadata', 'description': 'Inspect edge attributes and verify max counts.'},
+        {'cell': 24, 'title': 'Manipulating graphs', 'description': 'Add nodes and edges to the graph.'},
+        {'cell': 30, 'title': 'Coding patterns', 'description': 'List comprehensions for iterating over nodes and edges.'},
+    ],
+        auto_start=False,
+        show_progress=True,
+    )
+    mo.ui.anywidget(tour)
+    return
+
+
+
+
 @app.cell(hide_code=True)
 def _():
     import marimo as mo
@@ -62,12 +89,16 @@ def _():
     return (mo,)
 
 
+
+
 @app.cell(hide_code=True)
 def _():
     from IPython.display import YouTubeVideo
 
     YouTubeVideo(id="sdF0uJo2KdU", width="100%")
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -91,6 +122,8 @@ def _(mo):
     [Konect]: http://konect.cc/networks/moreno_seventh
     """)
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -132,6 +165,8 @@ def _(mo):
     return
 
 
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -155,6 +190,8 @@ def _(mo):
     return
 
 
+
+
 @app.cell(hide_code=True)
 def _():
     import networkx as nx
@@ -165,10 +202,14 @@ def _():
     return cf, nx
 
 
+
+
 @app.cell
 def _(cf):
     G = cf.load_seventh_grader_network()
     return (G,)
+
+
 
 
 @app.cell(hide_code=True)
@@ -192,10 +233,14 @@ def _(mo):
     return
 
 
+
+
 @app.cell
 def _(G):
     type(G)
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -209,11 +254,15 @@ def _(mo):
     return
 
 
+
+
 @app.cell
 def _(nx):
     H = nx.Graph()
     type(H)
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -226,10 +275,14 @@ def _(mo):
     return
 
 
+
+
 @app.cell
 def _(G):
     print(list(G.nodes())[0:5])
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -246,10 +299,14 @@ def _(mo):
     return
 
 
+
+
 @app.cell
 def _(G):
     len(G.nodes())
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -262,10 +319,14 @@ def _(mo):
     return
 
 
+
+
 @app.cell
 def _(G):
     print(list(G.nodes(data=True))[0:5])
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -279,10 +340,14 @@ def _(mo):
     return
 
 
+
+
 @app.cell
 def _(G):
     G.nodes[1]
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -312,6 +377,8 @@ def _(mo):
     return
 
 
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -320,6 +387,8 @@ def _(mo):
     > Can you count how many males and females are represented in the graph?
     """)
     return
+
+
 
 
 @app.cell
@@ -331,12 +400,16 @@ def _(G):
     return (mf_counts,)
 
 
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
     Test your implementation by checking it against the `test_answer` function below.
     """)
     return
+
+
 
 
 @app.cell
@@ -351,6 +424,8 @@ def _(mf_counts):
     return
 
 
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -358,6 +433,8 @@ def _(mo):
     we can query back the metadata that's associated with any node.
     """)
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -371,10 +448,14 @@ def _(mo):
     return
 
 
+
+
 @app.cell
 def _(G):
     print(list(G.edges())[0:5])
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -389,10 +470,14 @@ def _(mo):
     return
 
 
+
+
 @app.cell
 def _(G):
     len(G.edges())
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -403,10 +488,14 @@ def _(mo):
     return
 
 
+
+
 @app.cell
 def _(G):
     print(list(G.edges(data=True))[0:5])
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -415,6 +504,8 @@ def _(mo):
     Additionally, it is possible for us to select out individual edges, as long as they exist in the graph:
     """)
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -427,6 +518,8 @@ def _(mo):
     return
 
 
+
+
 @app.cell
 def _(G):
     try:
@@ -434,6 +527,8 @@ def _(G):
     except KeyError as e:
         print(f"KeyError: {e}")
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -456,6 +551,8 @@ def _(mo):
     return
 
 
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -466,6 +563,8 @@ def _(mo):
     > is 3 times?
     """)
     return
+
+
 
 
 @app.cell
@@ -483,12 +582,16 @@ def _(G):
     return (maxcount,)
 
 
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
     If you implemented it correctly, the next cell will auto-execute and no errors will show up.
     """)
     return
+
+
 
 
 @app.cell
@@ -498,6 +601,8 @@ def _(maxcount):
 
     test_maxcount(maxcount)
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -550,6 +655,8 @@ def _(mo):
     return
 
 
+
+
 @app.cell
 def _(G):
     from nams.solutions.intro import adding_students
@@ -565,12 +672,16 @@ def _(G):
     return (G_1,)
 
 
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
     As with above, if your function is implemented correctly, the following cell will automatically execute with no errors.
     """)
     return
+
+
 
 
 @app.cell
@@ -595,6 +706,8 @@ def _(G_1):
     return
 
 
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -604,6 +717,8 @@ def _(mo):
     which stem from my personal experience with the package.
     """)
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -623,6 +738,8 @@ def _(mo):
     ```
     """)
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -659,6 +776,8 @@ def _(mo):
     return
 
 
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -670,6 +789,8 @@ def _(mo):
     [nxdocs]: https://networkx.readthedocs.io
     """)
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -692,6 +813,8 @@ def _(mo):
     return
 
 
+
+
 @app.cell
 def _(G_1):
     from nams.solutions.intro import unrequited_friendships_v1
@@ -708,6 +831,8 @@ def _(G_1):
     return
 
 
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -717,12 +842,16 @@ def _(mo):
     return
 
 
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
     This first one by [@schwanne](https://github.com/schwanne) is the list comprehension version of the above solution:
     """)
     return
+
+
 
 
 @app.cell
@@ -734,6 +863,8 @@ def _():
     return
 
 
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -742,12 +873,16 @@ def _(mo):
     return
 
 
+
+
 @app.cell
 def _():
     from nams.solutions.intro import unrequited_friendships_v3
 
     # print(getsource(unrequited_friendships_v3))
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -760,33 +895,14 @@ def _(mo):
     return
 
 
+
+
 @app.cell
 def _():
     import nams.solutions.intro as solutions
     import inspect
 
     print(inspect.getsource(solutions))
-    return
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    import wigglystuff
-
-    tour = wigglystuff.CellTour(
-        steps=[
-        {'cell': 0, 'title': 'The NetworkX API', 'description': 'Load real graph data and query nodes, edges, and metadata.'},
-        {'cell': 4, 'title': 'Data Model', 'description': 'Graphs store data in a dictionary-like fashion.'},
-        {'cell': 6, 'title': 'Load Data', 'description': 'The 7th-grader social network dataset.'},
-        {'cell': 10, 'title': 'Node metadata', 'description': 'Query and count node attributes like gender.'},
-        {'cell': 18, 'title': 'Edge metadata', 'description': 'Inspect edge attributes and verify max counts.'},
-        {'cell': 24, 'title': 'Manipulating graphs', 'description': 'Add nodes and edges to the graph.'},
-        {'cell': 30, 'title': 'Coding patterns', 'description': 'List comprehensions for iterating over nodes and edges.'},
-    ],
-        auto_start=False,
-        show_progress=True,
-    )
-    mo.ui.anywidget(tour)
     return
 
 

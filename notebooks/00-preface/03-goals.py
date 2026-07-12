@@ -4,6 +4,8 @@ __generated_with = "0.23.9"
 app = marimo.App(width="medium", auto_download=["html"])
 
 
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.Html(f"""
@@ -47,11 +49,34 @@ def _(mo):
     return
 
 
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    import wigglystuff
+
+    tour = wigglystuff.CellTour(
+        steps=[
+        {'cell': 0, 'title': 'Learning Goals', 'description': 'Technical and intellectual takeaways from this tutorial.'},
+        {'cell': 2, 'title': 'Technical Takeaways', 'description': 'NetworkX, nxviz, graph algorithms, linear algebra connections.'},
+        {'cell': 3, 'title': 'Intellectual Goals', 'description': 'Relational thinking and algorithmic thinking.'},
+    ],
+        auto_start=False,
+        show_progress=True,
+    )
+    mo.ui.anywidget(tour)
+    return
+
+
+
+
 @app.cell(hide_code=True)
 def _():
     import marimo as mo
 
     return (mo,)
+
+
 
 
 @app.cell(hide_code=True)
@@ -61,6 +86,8 @@ def _(mo):
     can be split into the technical and the intellectual.
     """)
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -97,6 +124,8 @@ def _(mo):
     return
 
 
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -121,23 +150,6 @@ def _(mo):
     which is where you look at a problem
     in terms of the **algorithm** that solves it.
     """)
-    return
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    import wigglystuff
-
-    tour = wigglystuff.CellTour(
-        steps=[
-        {'cell': 0, 'title': 'Learning Goals', 'description': 'Technical and intellectual takeaways from this tutorial.'},
-        {'cell': 2, 'title': 'Technical Takeaways', 'description': 'NetworkX, nxviz, graph algorithms, linear algebra connections.'},
-        {'cell': 3, 'title': 'Intellectual Goals', 'description': 'Relational thinking and algorithmic thinking.'},
-    ],
-        auto_start=False,
-        show_progress=True,
-    )
-    mo.ui.anywidget(tour)
     return
 
 

@@ -4,6 +4,8 @@ __generated_with = "0.23.9"
 app = marimo.App(width="medium", auto_download=["html"])
 
 
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.Html(f"""
@@ -125,11 +127,38 @@ def _(mo):
     return
 
 
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    import wigglystuff
+
+    tour = wigglystuff.CellTour(
+        steps=[
+        {'cell': 0, 'title': 'Graph Visualization', 'description': 'From hairballs to rational visualizations.'},
+        {'cell': 6, 'title': 'The hairball problem', 'description': 'Node-link diagrams become unreadable for large graphs.'},
+        {'cell': 8, 'title': 'Matrix Plot', 'description': 'Adjacency matrix view with nxviz.'},
+        {'cell': 12, 'title': 'Arc Plot', 'description': 'Nodes on a line with arcs for edges.'},
+        {'cell': 16, 'title': 'Circos Plot', 'description': 'Arc plot wrapped into a circle.'},
+        {'cell': 19, 'title': 'Hive Plot', 'description': 'Radial axes for grouped nodes.'},
+        {'cell': 22, 'title': 'Interactive comparison', 'description': 'Switch between all four viz types with a dropdown.'},
+    ],
+        auto_start=False,
+        show_progress=True,
+    )
+    mo.ui.anywidget(tour)
+    return
+
+
+
+
 @app.cell(hide_code=True)
 def _():
     import marimo as mo
 
     return (mo,)
+
+
 
 
 @app.cell(hide_code=True)
@@ -140,6 +169,8 @@ def _():
     return
 
 
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -148,12 +179,16 @@ def _(mo):
     return
 
 
+
+
 @app.cell(hide_code=True)
 def _():
     from IPython.display import YouTubeVideo
 
     YouTubeVideo(id="v9HrR_AF5Zc", width="100%")
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -174,6 +209,8 @@ def _(mo):
     return
 
 
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -189,6 +226,8 @@ def _(mo):
     return
 
 
+
+
 @app.cell(hide_code=True)
 def _():
     from nams import load_data as cf
@@ -199,11 +238,15 @@ def _():
     return G, nx, plt
 
 
+
+
 @app.cell
 def _(G, nx, plt):
     nx.draw(G)
     plt.show()
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -220,10 +263,14 @@ def _(mo):
     return
 
 
+
+
 @app.cell
 def _(G):
     G.is_directed()
     return
+
+
 
 
 @app.cell
@@ -231,6 +278,8 @@ def _(G, nx, plt):
     nx.draw(G, with_labels=True)
     plt.show()
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -252,12 +301,16 @@ def _(mo):
     return
 
 
+
+
 @app.cell(hide_code=True)
 def _(G):
     import nxviz as nv
 
     nv.matrix(G, group_by="gender", node_color_by="gender", backend="plotly")
     return (nv,)
+
+
 
 
 @app.cell(hide_code=True)
@@ -280,6 +333,8 @@ def _(mo):
     return
 
 
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -295,10 +350,14 @@ def _(mo):
     return
 
 
+
+
 @app.cell
 def _(G, nv):
     nv.arc(G, node_color_by="gender", group_by="gender", backend="plotly")
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -308,6 +367,8 @@ def _(mo):
     the highly popular Circos plot.
     """)
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -322,10 +383,14 @@ def _(mo):
     return
 
 
+
+
 @app.cell
 def _(G, nv):
     nv.circos(G, group_by="gender", node_color_by="gender", backend="plotly")
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -335,6 +400,8 @@ def _(mo):
     a more compact and aesthetically pleasing version of Arc Plots.
     """)
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -347,10 +414,14 @@ def _(mo):
     return
 
 
+
+
 @app.cell
 def _(G, nv):
     nv.hive(G, group_by="gender", node_color_by="gender", backend="plotly")
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -374,6 +445,8 @@ def _(mo):
     return
 
 
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -384,6 +457,8 @@ def _(mo):
     Think about which visualization best communicates the structure of the graph.
     """)
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -397,11 +472,15 @@ def _(mo):
     return (viz_selector,)
 
 
+
+
 @app.cell
 def _(G, nv, viz_selector):
     viz_fn = getattr(nv, viz_selector.value)
     viz_fn(G, group_by="gender", node_color_by="gender", backend="plotly")
     return
+
+
 
 
 @app.cell(hide_code=True)
@@ -428,27 +507,6 @@ def _(mo):
     I hope you're able to critique it for what it doesn't communicate,
     and possibly use the same principle to design a better visualization!
     """)
-    return
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    import wigglystuff
-
-    tour = wigglystuff.CellTour(
-        steps=[
-        {'cell': 0, 'title': 'Graph Visualization', 'description': 'From hairballs to rational visualizations.'},
-        {'cell': 6, 'title': 'The hairball problem', 'description': 'Node-link diagrams become unreadable for large graphs.'},
-        {'cell': 8, 'title': 'Matrix Plot', 'description': 'Adjacency matrix view with nxviz.'},
-        {'cell': 12, 'title': 'Arc Plot', 'description': 'Nodes on a line with arcs for edges.'},
-        {'cell': 16, 'title': 'Circos Plot', 'description': 'Arc plot wrapped into a circle.'},
-        {'cell': 19, 'title': 'Hive Plot', 'description': 'Radial axes for grouped nodes.'},
-        {'cell': 22, 'title': 'Interactive comparison', 'description': 'Switch between all four viz types with a dropdown.'},
-    ],
-        auto_start=False,
-        show_progress=True,
-    )
-    mo.ui.anywidget(tour)
     return
 
 
