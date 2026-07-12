@@ -1,7 +1,62 @@
 import marimo
 
-__generated_with = "0.23.9"
+__generated_with = "0.23.14"
 app = marimo.App(width="medium", auto_download=["html"])
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.Html(f"""
+    <div class="nams-hero">
+    <style>
+      .nams-hero{{color:#e2e8f0;margin:0;font-family:inherit}}
+      .nams-hero__grid{{display:grid;gap:22px;grid-template-columns:minmax(0,1.25fr) minmax(200px,0.85fr);padding:32px 28px;border-radius:14px;background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%)}}
+      @media(max-width:760px){{.nams-hero__grid{{grid-template-columns:1fr;padding:22px 16px}}}}
+      .nams-badge{{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border:1px solid rgba(45,212,191,0.3);background:rgba(45,212,191,0.1);border-radius:999px;color:#2dd4bf;font-size:0.72rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase}}
+      .nams-hero h1{{margin:14px 0 8px;font-size:2.2rem;line-height:1.05;font-weight:880;letter-spacing:-0.02em;color:#f1f5f9}}
+      .nams-hero h1 .nams-em{{color:#2dd4bf}}
+      .nams-hero p.lead{{margin:0;max-width:520px;color:#94a3b8;font-size:1.02rem;line-height:1.5}}
+      .nams-byline{{margin-top:16px;color:#64748b;font-size:0.88rem;line-height:1.5}}
+      .nams-byline b{{color:#cbd5e1}}
+      .nams-art{{display:flex;align-items:center;justify-content:center}}
+    </style>
+    <div class="nams-hero__grid">
+      <div>
+        <span class="nams-badge">Chapter 04 &middot; Advanced</span>
+        <h1>Bipartite<br><span class="nams-em">Graphs</span></h1>
+        <p class="lead">Two node sets, edges only between them &mdash; never within. From crime-person networks to product-user interactions, bipartite graphs model the 'who-is-connected-to-what' relationships all around us.</p>
+        <div class="nams-byline">Network Analysis Made Simple &middot; <b>Eric Ma</b></div>
+      </div>
+      <div class="nams-art">
+        <svg viewBox="0 0 140 120" style="width:100%;max-width:170px;height:auto">
+          <!-- left column label -->
+          <text x="28" y="12" text-anchor="middle" fill="#5eead4" font-size="6" font-weight="600" opacity="0.5">persons</text>
+          <!-- right column label -->
+          <text x="112" y="12" text-anchor="middle" fill="#5eead4" font-size="6" font-weight="600" opacity="0.5">crimes</text>
+          <!-- left nodes -->
+          <circle cx="28" cy="28" r="5" fill="#2dd4bf" opacity="0.8"/>
+          <circle cx="28" cy="52" r="5" fill="#2dd4bf" opacity="0.8"/>
+          <circle cx="28" cy="76" r="5" fill="#2dd4bf" opacity="0.8"/>
+          <circle cx="28" cy="100" r="5" fill="#2dd4bf" opacity="0.7"/>
+          <!-- right nodes -->
+          <circle cx="112" cy="28" r="5" fill="#14b8a6" opacity="0.8"/>
+          <circle cx="112" cy="52" r="5" fill="#14b8a6" opacity="0.8"/>
+          <circle cx="112" cy="76" r="5" fill="#14b8a6" opacity="0.8"/>
+          <circle cx="112" cy="100" r="5" fill="#14b8a6" opacity="0.7"/>
+          <!-- edges (only cross-partition, never within) -->
+          <line x1="33" y1="28" x2="107" y2="28" stroke="#2dd4bf" stroke-width="1.2" opacity="0.35" stroke-linecap="round"/>
+          <line x1="33" y1="28" x2="107" y2="52" stroke="#2dd4bf" stroke-width="1.2" opacity="0.3" stroke-linecap="round"/>
+          <line x1="33" y1="52" x2="107" y2="28" stroke="#2dd4bf" stroke-width="1.2" opacity="0.3" stroke-linecap="round"/>
+          <line x1="33" y1="52" x2="107" y2="76" stroke="#2dd4bf" stroke-width="1.2" opacity="0.25" stroke-linecap="round"/>
+          <line x1="33" y1="76" x2="107" y2="52" stroke="#2dd4bf" stroke-width="1.2" opacity="0.25" stroke-linecap="round"/>
+          <line x1="33" y1="76" x2="107" y2="100" stroke="#2dd4bf" stroke-width="1.2" opacity="0.3" stroke-linecap="round"/>
+          <line x1="33" y1="100" x2="107" y2="76" stroke="#2dd4bf" stroke-width="1" opacity="0.2" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+    </div>
+    """)
+    return
 
 
 @app.cell(hide_code=True)
@@ -163,7 +218,7 @@ def _(mo):
 
 
 @app.cell
-def _():
+def _(_______, ____________, _____________):
     import networkx as nx
     from inspect import getsource
 
@@ -333,7 +388,7 @@ def _(mo):
 
 
 @app.cell
-def _(crime_graph, nx):
+def _(______________, ___________________, crime_graph, nx):
     import pandas as pd
 
     def find_most_similar_crimes(cG: nx.Graph):
@@ -360,7 +415,7 @@ def _(mo):
 
 
 @app.cell
-def _(nx, person_graph):
+def _(______________, ___________________, nx, person_graph):
     def find_most_similar_people(pG: nx.Graph):
         """
         Find the persons that are most similar to other persons.
@@ -547,6 +602,50 @@ def _(getsource):
     from nams.solutions import bipartite as bipartite_nams
 
     print(getsource(bipartite_nams))
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    import wigglystuff
+
+    tour = wigglystuff.CellTour(
+        steps=[
+            {
+                "cell": 0,
+                "title": "Bipartite Graphs",
+                "description": "Two disjoint node sets with edges only between them.",
+            },
+            {
+                "cell": 4,
+                "title": "Dataset: Crime Network",
+                "description": "Persons and crimes connected by involvement edges.",
+            },
+            {
+                "cell": 7,
+                "title": "Bipartite structure",
+                "description": "Verify the graph is truly bipartite — no within-set edges.",
+            },
+            {
+                "cell": 11,
+                "title": "Projections",
+                "description": "Project a bipartite graph onto one node set to reveal shared connections.",
+            },
+            {
+                "cell": 16,
+                "title": "Weighted projections",
+                "description": "Weight edges by the number of shared neighbors.",
+            },
+            {
+                "cell": 23,
+                "title": "Degree centrality",
+                "description": "Measure importance in a bipartite graph with the correct denominator.",
+            },
+        ],
+        auto_start=False,
+        show_progress=True,
+    )
+    mo.ui.anywidget(tour)
     return
 
 
