@@ -708,5 +708,25 @@ def _():
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    import wigglystuff
+
+    tour = wigglystuff.CellTour(
+        steps=[
+        {'cell': 0, 'title': 'Hubs & Degree Centrality', 'description': 'Which nodes matter most? Count the neighbors.'},
+        {'cell': 4, 'title': 'Number of neighbors', 'description': 'The simplest measure of node importance.'},
+        {'cell': 8, 'title': 'Exercise: rank-ordering', 'description': 'Sort nodes by their neighbor count.'},
+        {'cell': 15, 'title': 'Degree centrality', 'description': 'Normalizing neighbor count for cross-graph comparison.'},
+        {'cell': 19, 'title': 'ECDF vs histograms', 'description': 'Why ECDFs are more honest than histograms.'},
+        {'cell': 26, 'title': 'Interactive: bin slider', 'description': 'See how bin count changes the histogram story.'},
+    ],
+        auto_start=False,
+        show_progress=True,
+    )
+    mo.ui.anywidget(tour)
+    return
+
+
 if __name__ == "__main__":
     app.run()
