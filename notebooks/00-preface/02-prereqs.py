@@ -67,9 +67,9 @@ def _(mo):
     tour = wigglystuff.CellTour(
         steps=[
         {'cell': 0, 'title': 'Prerequisites', 'description': 'Make sure your Python foundations are ready.'},
-        {'cell': 2, 'title': 'Exercises', 'description': 'Warm-up exercises on dicts and list comprehensions.'},
-        {'cell': 4, 'title': 'Exercise 1', 'description': 'Reason about data structures in a list comprehension.'},
-        {'cell': 6, 'title': 'Exercise 2', 'description': 'Write a function to filter dictionaries by surname.'},
+        {'cell': 4, 'title': 'Exercises', 'description': 'Warm-up exercises on dicts and list comprehensions.'},
+        {'cell': 5, 'title': 'Exercise 1', 'description': 'Reason about data structures in a list comprehension.'},
+        {'cell': 7, 'title': 'Exercise 2', 'description': 'Write a function to filter dictionaries by surname.'},
     ],
         auto_start=False,
         show_progress=True,

@@ -136,12 +136,12 @@ def _(mo):
     tour = wigglystuff.CellTour(
         steps=[
         {'cell': 0, 'title': 'Graph Visualization', 'description': 'From hairballs to rational visualizations.'},
-        {'cell': 6, 'title': 'The hairball problem', 'description': 'Node-link diagrams become unreadable for large graphs.'},
-        {'cell': 8, 'title': 'Matrix Plot', 'description': 'Adjacency matrix view with nxviz.'},
-        {'cell': 12, 'title': 'Arc Plot', 'description': 'Nodes on a line with arcs for edges.'},
-        {'cell': 16, 'title': 'Circos Plot', 'description': 'Arc plot wrapped into a circle.'},
-        {'cell': 19, 'title': 'Hive Plot', 'description': 'Radial axes for grouped nodes.'},
-        {'cell': 22, 'title': 'Interactive comparison', 'description': 'Switch between all four viz types with a dropdown.'},
+        {'cell': 10, 'title': 'The hairball problem', 'description': 'Node-link diagrams become unreadable for large graphs.'},
+        {'cell': 14, 'title': 'Matrix Plot', 'description': 'Adjacency matrix view with nxviz.'},
+        {'cell': 16, 'title': 'Arc Plot', 'description': 'Nodes on a line with arcs for edges.'},
+        {'cell': 19, 'title': 'Circos Plot', 'description': 'Arc plot wrapped into a circle.'},
+        {'cell': 22, 'title': 'Hive Plot', 'description': 'Radial axes for grouped nodes.'},
+        {'cell': 25, 'title': 'Interactive comparison', 'description': 'Switch between all four viz types with a dropdown.'},
     ],
         auto_start=False,
         show_progress=True,
