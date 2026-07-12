@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.23.9"
+__generated_with = "0.23.14"
 app = marimo.App(width="medium", auto_download=["html"])
 
 
@@ -659,6 +659,66 @@ def _():
 
     print(inspect.getsource(io))
     return
+
+
+@app.cell(hide_code=True)
+def _():
+    import marimo as mo
+    import wigglystuff
+
+    tour = wigglystuff.CellTour(
+        steps=[
+            {
+                "cell": 0,
+                "title": "Welcome!",
+                "description": "Graph Input & Output — load CSV data into NetworkX graphs and persist them.",
+            },
+            {
+                "cell": 5,
+                "title": "The problem",
+                "description": "We start with raw tabular data and want to turn it into a graph.",
+            },
+            {
+                "cell": 6,
+                "title": "Dataset: Divvy Bike Share",
+                "description": "Real-world trip data from Chicago's bike-sharing system.",
+            },
+            {
+                "cell": 16,
+                "title": "Graph Model",
+                "description": "How do we map rows of a DataFrame to nodes and edges?",
+            },
+            {
+                "cell": 17,
+                "title": "Building the graph",
+                "description": "nx.from_pandas_edgelist converts a DataFrame into a NetworkX graph.",
+            },
+            {
+                "cell": 24,
+                "title": "Annotating node metadata",
+                "description": "Graph nodes hold rich metadata — latitude, longitude, capacity.",
+            },
+            {
+                "cell": 31,
+                "title": "Filtering edges",
+                "description": "Exercise: filter the graph to keep only high-traffic edges.",
+            },
+            {
+                "cell": 34,
+                "title": "GeoPlot visualization",
+                "description": "See the bike stations on a geographic map with nxviz.",
+            },
+            {
+                "cell": 36,
+                "title": "Pickling graphs",
+                "description": "Persist and reload graph objects with pickle.",
+            },
+        ],
+        auto_start=False,
+        show_progress=True,
+    )
+    mo.ui.anywidget(tour)
+    return (mo,)
 
 
 if __name__ == "__main__":

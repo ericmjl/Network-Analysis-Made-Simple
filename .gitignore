@@ -139,3 +139,4 @@ message_log.db
 
 # env
 .env
+__marimo__/
