@@ -5,7 +5,7 @@ app = marimo.App(width="medium", auto_download=["html"])
 
 
 @app.cell(hide_code=True)
-def _(mo):
+def hero(mo):
     mo.Html(f"""
     <div class="nams-hero">
     <style>
@@ -49,7 +49,7 @@ def _(mo):
 
 
 @app.cell(hide_code=True)
-def _(mo):
+def cell_tour(mo):
     import wigglystuff
 
     tour = wigglystuff.CellTour(
@@ -69,7 +69,7 @@ def _(mo):
 
 
 @app.cell(hide_code=True)
-def _():
+def intro():
     import marimo as mo
 
     mo.md(r"""
@@ -79,7 +79,7 @@ def _():
 
 
 @app.cell(hide_code=True)
-def _():
+def video():
     from IPython.display import YouTubeVideo
 
     YouTubeVideo(id="k4KHoLC7TFE", width="100%")
@@ -87,7 +87,7 @@ def _():
 
 
 @app.cell(hide_code=True)
-def _(mo):
+def networks_motivation(mo):
     mo.md(r"""
     In our world, networks are an immensely useful _data modelling tool_
     to model complex _relational_ problems.
@@ -98,7 +98,7 @@ def _(mo):
 
 
 @app.cell(hide_code=True)
-def _(mo):
+def formal_definition(mo):
     mo.md(r"""
     ## A _formal_ definition of networks
 
@@ -136,43 +136,124 @@ def _(mo):
 
 
 @app.cell(hide_code=True)
-def _(mo):
-    mo.md(r"""
+def examples(mo):
+    mo.vstack(
+        [
+            mo.md("""
     ## Examples of Networks
 
     Now that we have a proper definition of a graph,
     let's move on to explore examples of graphs.
 
     One example I (Eric Ma) am fond of, based on my background as a biologist,
-    is a protein-protein interaction network.
-    Here, the graph can be defined in the following way:
+    is a **protein-protein interaction network**.
+    A more colloquial example is an **air transportation network**.
+    And another even more relatable example would be our ever-prevalent
+    **social networks** like Twitter.
 
-    - nodes/entities are the proteins,
-    - edges/relationships are defined as "one protein is known to bind with another".
+    Hover each card below to see how each system maps onto nodes and edges.
+    """),
+            mo.Html("""
+    <style>
+    .nams-cards{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin:8px 0}
+    .nams-card{width:180px;height:200px;perspective:800px;cursor:pointer}
+    .nams-card-inner{position:relative;width:100%;height:100%;transition:transform 0.6s;transform-style:preserve-3d}
+    .nams-card:hover .nams-card-inner{transform:rotateY(180deg)}
+    .nams-card-face{position:absolute;inset:0;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;backface-visibility:hidden;padding:14px;box-sizing:border-box}
+    .nams-card-front{background:linear-gradient(135deg,#0f172a,#1e293b);border:1px solid rgba(148,163,184,0.15)}
+    .nams-card-back{background:linear-gradient(135deg,#0f172a,#1e293b);border:1px solid rgba(148,163,184,0.15);transform:rotateY(180deg)}
+    .nams-card-back h4{color:#e2e8f0;margin:0 0 8px;font-size:0.95rem}
+    .nams-card-back p{color:#94a3b8;margin:0;font-size:0.82rem;line-height:1.4;text-align:center}
+    .nams-card-back .accent{color:#22d3ee;font-weight:700}
+    .nams-card-front svg{margin-bottom:8px}
+    .nams-card-front .label{color:#cbd5e1;font-size:0.82rem;font-weight:600;text-align:center}
+    </style>
+    <div class="nams-cards">
 
-    A more colloquial example of networks is an air transportation network.
-    Here, the graph can be defined in the following way:
+    <div class="nams-card">
+      <div class="nams-card-inner">
+        <div class="nams-card-face nams-card-front">
+          <svg viewBox="0 0 80 70" width="90" height="80">
+            <line x1="20" y1="18" x2="55" y2="12" stroke="#34d399" stroke-width="1.2" opacity="0.4"/>
+            <line x1="20" y1="18" x2="40" y2="50" stroke="#34d399" stroke-width="1.2" opacity="0.4"/>
+            <line x1="55" y1="12" x2="65" y2="40" stroke="#34d399" stroke-width="1.2" opacity="0.3"/>
+            <line x1="40" y1="50" x2="65" y2="40" stroke="#34d399" stroke-width="1" opacity="0.25"/>
+            <circle cx="20" cy="18" r="6" fill="#34d399" opacity="0.85"/>
+            <circle cx="55" cy="12" r="5" fill="#34d399" opacity="0.8"/>
+            <circle cx="40" cy="50" r="5.5" fill="#10b981" opacity="0.75"/>
+            <circle cx="65" cy="40" r="4.5" fill="#10b981" opacity="0.7"/>
+          </svg>
+          <div class="label">Protein Interactions</div>
+        </div>
+        <div class="nams-card-face nams-card-back">
+          <h4>Protein-Protein Interaction</h4>
+          <p><span class="accent">Nodes</span> = proteins<br><span class="accent">Edges</span> = one protein binds with another</p>
+        </div>
+      </div>
+    </div>
 
-    - nodes/entities are airports
-    - edges/relationships are defined as "at least one flight carrier flies between the airports".
+    <div class="nams-card">
+      <div class="nams-card-inner">
+        <div class="nams-card-face nams-card-front">
+          <svg viewBox="0 0 90 70" width="100" height="80">
+            <line x1="15" y1="50" x2="45" y2="20" stroke="#fbbf24" stroke-width="1" opacity="0.25" stroke-linecap="round"/>
+            <line x1="45" y1="20" x2="75" y2="30" stroke="#fbbf24" stroke-width="1.2" opacity="0.3" stroke-linecap="round"/>
+            <line x1="15" y1="50" x2="75" y2="30" stroke="#fbbf24" stroke-width="0.8" opacity="0.15" stroke-linecap="round"/>
+            <line x1="45" y1="20" x2="60" y2="55" stroke="#fbbf24" stroke-width="1" opacity="0.2" stroke-linecap="round"/>
+            <circle cx="15" cy="50" r="4" fill="#fbbf24" opacity="0.7"/>
+            <circle cx="45" cy="20" r="5" fill="#fbbf24" opacity="0.85"/>
+            <circle cx="75" cy="30" r="4.5" fill="#fbbf24" opacity="0.8"/>
+            <circle cx="60" cy="55" r="3.5" fill="#f59e0b" opacity="0.6"/>
+          </svg>
+          <div class="label">Air Transportation</div>
+        </div>
+        <div class="nams-card-face nams-card-back">
+          <h4>Air Transport Network</h4>
+          <p><span class="accent">Nodes</span> = airports<br><span class="accent">Edges</span> = a carrier flies between them</p>
+        </div>
+      </div>
+    </div>
 
-    And another even more relatable example would be our ever-prevalent social networks!
-    With Twitter, the graph can be defined in the following way:
+    <div class="nams-card">
+      <div class="nams-card-inner">
+        <div class="nams-card-face nams-card-front">
+          <svg viewBox="0 0 90 70" width="100" height="80">
+            <line x1="20" y1="35" x2="50" y2="20" stroke="#f472b6" stroke-width="1.2" opacity="0.35" stroke-linecap="round"/>
+            <line x1="20" y1="35" x2="50" y2="50" stroke="#f472b6" stroke-width="1.2" opacity="0.35" stroke-linecap="round"/>
+            <line x1="50" y1="20" x2="70" y2="40" stroke="#f472b6" stroke-width="1" opacity="0.25" stroke-linecap="round"/>
+            <line x1="50" y1="50" x2="70" y2="40" stroke="#f472b6" stroke-width="1" opacity="0.25" stroke-linecap="round"/>
+            <polygon points="48,22 52,19 51,24" fill="#f472b6" opacity="0.5"/>
+            <polygon points="48,48 52,51 51,46" fill="#f472b6" opacity="0.5"/>
+            <circle cx="20" cy="35" r="6" fill="#f472b6" opacity="0.85"/>
+            <circle cx="50" cy="20" r="5" fill="#ec4899" opacity="0.75"/>
+            <circle cx="50" cy="50" r="5" fill="#ec4899" opacity="0.75"/>
+            <circle cx="70" cy="40" r="5" fill="#ec4899" opacity="0.75"/>
+          </svg>
+          <div class="label">Social Network</div>
+        </div>
+        <div class="nams-card-face nams-card-back">
+          <h4>Social Network (Twitter)</h4>
+          <p><span class="accent">Nodes</span> = users<br><span class="accent">Edges</span> = one user follows another</p>
+        </div>
+      </div>
+    </div>
 
-    - nodes/entities are individual users
-    - edges/relationships are defined as "one user has decided to follow another".
-
+    </div>
+    """),
+            mo.md("""
     Now that you've seen the framework for defining a graph,
     we'd like to invite you to answer the following question:
     **What examples of networks have _you_ seen before in your profession?**
 
     Go ahead and list it out.
-    """)
+    """),
+        ]
+    )
     return
 
 
 @app.cell(hide_code=True)
-def _(mo):
+def types_of_graphs(mo):
     mo.md(r"""
     ## Types of Graphs
 
@@ -209,7 +290,7 @@ def _(mo):
 
 
 @app.cell(hide_code=True)
-def _(mo):
+def edges_matter(mo):
     mo.md(r"""
     ## Edges define the interesting part of a graph
 
