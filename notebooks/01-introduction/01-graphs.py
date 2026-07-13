@@ -254,38 +254,93 @@ def examples(mo):
 
 @app.cell(hide_code=True)
 def types_of_graphs(mo):
-    mo.md(r"""
+    directed_toggle = mo.ui.switch(
+        value=True, label="Directed graph (Twitter)"
+    )
+    mo.vstack(
+        [
+            mo.md("""
     ## Types of Graphs
-
-    As you probably can see, graphs are a really flexible data model
-    for modelling the world,
-    as long as the nodes and edges are strictly defined.
-    (If the nodes and edges are _sloppily_ defined,
-    well, we run into a lot of interpretability problems later on.)
 
     If you are a member of both LinkedIn and Twitter,
     you might intuitively think that there's a _slight_ difference
     in the structure of the two "social graphs".
-    You'd be absolutely correct on that count!
+    You'd be absolutely correct!
 
-    Twitter is an example of what we would intuitively call a **directed** graph.
-    Why is this so?
-    The key here lies in how interactions are modelled.
-    One user can follow another, but the other need not necessarily follow back.
-    As such, there is a _directionality_ to the relationship.
+    **Twitter** is a **directed** graph &mdash; one user can follow another
+    without the other following back. There is a _directionality_ to the relationship.
 
-    LinkedIn is an example of what we would intuitively call an **undirected** graph.
-    Why is this so?
-    The key here is that when two users are LinkedIn connections,
-    we _automatically_ assign a bi-directional edge between them.
-    As such, for convenience, we can collapse the bi-directional edge
-    into an _undirected_ edge,
-    thus yielding an undirected graph.
+    **LinkedIn** is an **undirected** graph &mdash; connections are automatically
+    bidirectional, so we collapse the two directions into a single edge.
 
-    If we wanted to turn LinkedIn into a directed graph,
-    we might want to keep information on who initiated the invitation.
-    In that way, the relationship is automatically bi-directional.
+    Toggle the switch below and watch how the same network changes
+    when you go from directed (Twitter) to undirected (LinkedIn).
+    """),
+            directed_toggle,
+        ]
+    )
+    return (directed_toggle,)
+
+
+@app.cell(hide_code=True)
+def types_of_graphs_viz(directed_toggle, mo):
+    is_directed = directed_toggle.value
+
+    if is_directed:
+        out = mo.Html("""
+    <div style="display:flex;justify-content:center;padding:12px 0">
+      <svg viewBox="0 0 200 160" style="max-width:340px;width:100%;height:auto">
+        <defs>
+          <marker id="arrow-pink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#f472b6"/>
+          </marker>
+        </defs>
+        <line x1="100" y1="80" x2="40"  y2="30"  stroke="#f472b6" stroke-width="2"   opacity="0.6" marker-end="url(#arrow-pink)"/>
+        <line x1="40"  y1="30" x2="100" y2="80"  stroke="#f472b6" stroke-width="0.8" opacity="0.15" stroke-dasharray="3 3"/>
+        <line x1="100" y1="80" x2="160" y2="30"  stroke="#f472b6" stroke-width="2"   opacity="0.6" marker-end="url(#arrow-pink)"/>
+        <line x1="160" y1="30" x2="100" y2="80"  stroke="#f472b6" stroke-width="0.8" opacity="0.15" stroke-dasharray="3 3"/>
+        <line x1="100" y1="80" x2="50"  y2="135" stroke="#f472b6" stroke-width="2"   opacity="0.5" marker-end="url(#arrow-pink)"/>
+        <line x1="100" y1="80" x2="150" y2="135" stroke="#f472b6" stroke-width="2"   opacity="0.6" marker-end="url(#arrow-pink)"/>
+        <line x1="150" y1="135" x2="100" y2="80" stroke="#f472b6" stroke-width="2"   opacity="0.6" marker-end="url(#arrow-pink)"/>
+        <line x1="40"  y1="30" x2="160" y2="30"  stroke="#f472b6" stroke-width="1.5" opacity="0.35" marker-end="url(#arrow-pink)"/>
+        <circle cx="100" cy="80"  r="10" fill="#f472b6" opacity="0.9"/>
+        <text x="100" y="84" text-anchor="middle" fill="#1e293b" font-size="8" font-weight="700">A</text>
+        <circle cx="40"  cy="30"  r="8"  fill="#ec4899" opacity="0.8"/>
+        <text x="40" y="34" text-anchor="middle" fill="#fce7f3" font-size="7" font-weight="700">B</text>
+        <circle cx="160" cy="30"  r="8"  fill="#ec4899" opacity="0.8"/>
+        <text x="160" y="34" text-anchor="middle" fill="#fce7f3" font-size="7" font-weight="700">C</text>
+        <circle cx="50"  cy="135" r="7"  fill="#db2777" opacity="0.7"/>
+        <text x="50" y="139" text-anchor="middle" fill="#fce7f3" font-size="6" font-weight="700">D</text>
+        <circle cx="150" cy="135" r="8"  fill="#ec4899" opacity="0.8"/>
+        <text x="150" y="139" text-anchor="middle" fill="#fce7f3" font-size="7" font-weight="700">E</text>
+        <text x="100" y="155" text-anchor="middle" fill="#94a3b8" font-size="8" font-weight="600">Twitter: directed &#8212; some follows are unrequited (dashed)</text>
+      </svg>
+    </div>
     """)
+    else:
+        out = mo.Html("""
+    <div style="display:flex;justify-content:center;padding:12px 0">
+      <svg viewBox="0 0 200 160" style="max-width:340px;width:100%;height:auto">
+        <line x1="100" y1="80" x2="40"  y2="30"  stroke="#34d399" stroke-width="2.5" opacity="0.6" stroke-linecap="round"/>
+        <line x1="100" y1="80" x2="160" y2="30"  stroke="#34d399" stroke-width="2.5" opacity="0.6" stroke-linecap="round"/>
+        <line x1="100" y1="80" x2="50"  y2="135" stroke="#34d399" stroke-width="2.5" opacity="0.5" stroke-linecap="round"/>
+        <line x1="100" y1="80" x2="150" y2="135" stroke="#34d399" stroke-width="2.5" opacity="0.6" stroke-linecap="round"/>
+        <line x1="40"  y1="30" x2="160" y2="30"  stroke="#34d399" stroke-width="2"   opacity="0.4" stroke-linecap="round"/>
+        <circle cx="100" cy="80"  r="10" fill="#34d399" opacity="0.9"/>
+        <text x="100" y="84" text-anchor="middle" fill="#1e293b" font-size="8" font-weight="700">A</text>
+        <circle cx="40"  cy="30"  r="8"  fill="#10b981" opacity="0.8"/>
+        <text x="40" y="34" text-anchor="middle" fill="#d1fae5" font-size="7" font-weight="700">B</text>
+        <circle cx="160" cy="30"  r="8"  fill="#10b981" opacity="0.8"/>
+        <text x="160" y="34" text-anchor="middle" fill="#d1fae5" font-size="7" font-weight="700">C</text>
+        <circle cx="50"  cy="135" r="7"  fill="#059669" opacity="0.7"/>
+        <text x="50" y="139" text-anchor="middle" fill="#d1fae5" font-size="6" font-weight="700">D</text>
+        <circle cx="150" cy="135" r="8"  fill="#10b981" opacity="0.8"/>
+        <text x="150" y="139" text-anchor="middle" fill="#d1fae5" font-size="7" font-weight="700">E</text>
+        <text x="100" y="155" text-anchor="middle" fill="#94a3b8" font-size="8" font-weight="600">LinkedIn: undirected &#8212; all connections are mutual</text>
+      </svg>
+    </div>
+    """)
+    out
     return
 
 
