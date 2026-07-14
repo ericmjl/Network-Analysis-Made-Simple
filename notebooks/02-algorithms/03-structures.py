@@ -1,9 +1,7 @@
 import marimo
 
-__generated_with = "0.23.9"
+__generated_with = "0.23.14"
 app = marimo.App(width="medium", auto_download=["html"])
-
-
 
 
 @app.cell(hide_code=True)
@@ -65,8 +63,6 @@ def _(mo):
     return
 
 
-
-
 @app.cell(hide_code=True)
 def _(mo):
     import wigglystuff
@@ -91,16 +87,12 @@ def _(mo):
     return
 
 
-
-
 @app.cell(hide_code=True)
 def _():
     import warnings
 
     warnings.filterwarnings("ignore")
     return
-
-
 
 
 @app.cell(hide_code=True)
@@ -111,8 +103,6 @@ def _():
     return (mo,)
 
 
-
-
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -121,16 +111,12 @@ def _(mo):
     return
 
 
-
-
 @app.cell(hide_code=True)
-def _():
-    from IPython.display import YouTubeVideo
-
-    YouTubeVideo(id="3DWSRCbPPJs", width="100%")
+def _(mo):
+    mo.md("""
+    Watch the [video on YouTube](https://www.youtube.com/watch?v=3DWSRCbPPJs).
+    """)
     return
-
-
 
 
 @app.cell(hide_code=True)
@@ -173,16 +159,12 @@ def _(mo):
     return
 
 
-
-
 @app.cell(hide_code=True)
 def _():
     from nams import load_data as cf
 
     G = cf.load_physicians_network()
     return (G,)
-
-
 
 
 @app.cell(hide_code=True)
@@ -199,16 +181,12 @@ def _(mo):
     return
 
 
-
-
 @app.cell
 def _():
     from nams.solutions.structures import triangle_finding_strategies
 
     # triangle_finding_strategies()
     return
-
-
 
 
 @app.cell(hide_code=True)
@@ -234,8 +212,6 @@ def _(mo):
     return
 
 
-
-
 @app.cell
 def _():
     def in_triangle(G, node):
@@ -251,8 +227,6 @@ def _():
     return (in_triangle,)
 
 
-
-
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -260,8 +234,6 @@ def _(mo):
     The code cell will not error out if your answer is correct.
     """)
     return
-
-
 
 
 @app.cell
@@ -280,8 +252,6 @@ def _(G, in_triangle):
     return (nx,)
 
 
-
-
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -294,8 +264,6 @@ def _(mo):
     while any non-zero number is equivalent to boolean `True`.
     """)
     return
-
-
 
 
 @app.cell(hide_code=True)
@@ -316,8 +284,6 @@ def _(mo):
     return
 
 
-
-
 @app.cell
 def _():
     from inspect import getsource
@@ -335,8 +301,6 @@ def _():
     return (getsource,)
 
 
-
-
 @app.cell
 def _(G):
     import matplotlib.pyplot as plt
@@ -352,8 +316,6 @@ def _(G):
     plot_triangle_relations(G, 3)
     plt.show()
     return (plt,)
-
-
 
 
 @app.cell(hide_code=True)
@@ -382,8 +344,6 @@ def _(mo):
     return
 
 
-
-
 @app.cell
 def _():
     from nams.solutions.structures import triadic_closure_algorithm
@@ -391,8 +351,6 @@ def _():
     # UNCOMMENT FOR MY ANSWER
     # triadic_closure_algorithm()
     return
-
-
 
 
 @app.cell(hide_code=True)
@@ -407,8 +365,6 @@ def _(mo):
     > with `n` being the center node.
     """)
     return
-
-
 
 
 @app.cell
@@ -426,8 +382,6 @@ def _():
     return
 
 
-
-
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -438,8 +392,6 @@ def _(mo):
     > that it could help close triangles with.
     """)
     return
-
-
 
 
 @app.cell
@@ -455,8 +407,6 @@ def _(G, plt):
     plot_open_triangle_relations(G, 3)
     plt.show()
     return
-
-
 
 
 @app.cell(hide_code=True)
@@ -481,8 +431,6 @@ def _(mo):
     return
 
 
-
-
 @app.cell
 def _():
     from nams.solutions.structures import simplest_clique
@@ -490,8 +438,6 @@ def _():
     # UNCOMMENT THE NEXT LINE TO SEE MY ANSWER
     # simplest_clique()
     return
-
-
 
 
 @app.cell(hide_code=True)
@@ -525,15 +471,11 @@ def _(mo):
     return
 
 
-
-
 @app.cell
 def _(G, nx):
     # I have truncated the output to the first 5 maximal cliques.
     list(nx.find_cliques(G))[0:5]
     return
-
-
 
 
 @app.cell(hide_code=True)
@@ -550,8 +492,6 @@ def _(mo):
     return
 
 
-
-
 @app.cell
 def _():
     def size_k_maximal_cliques(G, k):
@@ -565,16 +505,12 @@ def _():
     return (size_k_maximal_cliques,)
 
 
-
-
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
     Now, test your implementation against the test function below.
     """)
     return
-
-
 
 
 @app.cell
@@ -587,8 +523,6 @@ def _(G, size_k_maximal_cliques):
 
     test_size_k_maximal_cliques(G, 5)
     return
-
-
 
 
 @app.cell(hide_code=True)
@@ -611,8 +545,6 @@ def _(mo):
     return
 
 
-
-
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -631,8 +563,6 @@ def _(mo):
     > house cliques of size $n < k$, where $n >= 2$.
     """)
     return
-
-
 
 
 @app.cell
@@ -655,8 +585,6 @@ def _(G):
     return
 
 
-
-
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -670,16 +598,12 @@ def _(mo):
     return
 
 
-
-
 @app.cell(hide_code=True)
 def _(G):
     import nxviz as nv
 
-    nv.arc(G, backend="plotly")
+    nv.arc(G)
     return (nv,)
-
-
 
 
 @app.cell(hide_code=True)
@@ -693,8 +617,6 @@ def _(mo):
     return
 
 
-
-
 @app.cell
 def _():
     from nams.solutions.structures import visual_insights
@@ -702,8 +624,6 @@ def _():
     # UNCOMMENT TO SEE MY ANSWER
     # visual_insights()
     return
-
-
 
 
 @app.cell(hide_code=True)
@@ -720,14 +640,10 @@ def _(mo):
     return
 
 
-
-
 @app.cell
 def _(G, nx):
     ccsubgraph_nodes = list(nx.connected_components(G))
     return (ccsubgraph_nodes,)
-
-
 
 
 @app.cell(hide_code=True)
@@ -738,14 +654,10 @@ def _(mo):
     return
 
 
-
-
 @app.cell
 def _(ccsubgraph_nodes):
     len(ccsubgraph_nodes)
     return
-
-
 
 
 @app.cell(hide_code=True)
@@ -773,8 +685,6 @@ def _(mo):
     return
 
 
-
-
 @app.cell
 def _(G):
     def label_connected_component_subgraphs(G):
@@ -792,8 +702,6 @@ def _(G):
     return (G_labelled,)
 
 
-
-
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -801,8 +709,6 @@ def _(mo):
     > dictated by the `subgraph` key.
     """)
     return
-
-
 
 
 @app.cell
@@ -822,8 +728,6 @@ def _(G_labelled, nv):
     return
 
 
-
-
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -833,16 +737,12 @@ def _(mo):
     return
 
 
-
-
 @app.cell
 def _(G_labelled, nv):
     nv.arc(
-        G_labelled, group_by="subgraph", node_color_by="subgraph", backend="plotly"
+        G_labelled, group_by="subgraph", node_color_by="subgraph"
     )
     return
-
-
 
 
 @app.cell(hide_code=True)
@@ -851,8 +751,6 @@ def _(mo):
     _Voila!_ It looks quite clear that there are indeed four disjoint group of physicians.
     """)
     return
-
-
 
 
 @app.cell(hide_code=True)
@@ -865,16 +763,12 @@ def _(mo):
     return
 
 
-
-
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
     ## Solutions
     """)
     return
-
-
 
 
 @app.cell

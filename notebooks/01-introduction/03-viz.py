@@ -1,13 +1,23 @@
 import marimo
 
-__generated_with = "0.23.9"
+__generated_with = "0.23.14"
 app = marimo.App(width="medium", auto_download=["html"])
 
+with app.setup(hide_code=True):
+    import marimo as mo
+    import warnings
 
+    import matplotlib.pyplot as plt
+    import networkx as nx
+    import nxviz as nv
+    import wigglystuff
+    from nams import load_data as cf
+
+    warnings.filterwarnings("ignore")
 
 
 @app.cell(hide_code=True)
-def _(mo):
+def hero():
     mo.Html(f"""
     <div class="nams-hero">
     <style>
@@ -127,24 +137,56 @@ def _(mo):
     return
 
 
-
-
 @app.cell(hide_code=True)
-def _(mo):
-    import wigglystuff
-
+def cell_tour():
     tour = wigglystuff.CellTour(
         steps=[
-        {'cell': 0, 'title': 'Graph Visualization', 'description': 'From hairballs to rational visualizations that actually communicate insight.'},
-        {'cell': 7, 'title': 'The Hairball Problem', 'description': 'Node-link diagrams become unreadable as graphs grow beyond a few dozen nodes.'},
-        {'cell': 9, 'title': 'Drawing with NetworkX', 'description': 'The default nx.draw produces a tangle of nodes and edges for all but the smallest graphs.'},
-        {'cell': 13, 'title': 'Matrix Plot', 'description': 'An adjacency matrix view reveals structure through filled and empty cells.'},
-        {'cell': 17, 'title': 'Arc Plot', 'description': 'Nodes on a horizontal axis with arcs connecting edge pairs, optionally grouped by metadata.'},
-        {'cell': 20, 'title': 'Circos Plot', 'description': 'An arc plot wrapped into a circle for a compact, aesthetic display.'},
-        {'cell': 23, 'title': 'Hive Plot', 'description': 'Nodes grouped along radial axes to separate within-group and between-group edges.'},
-        {'cell': 25, 'title': 'Interactive Comparison', 'description': 'Switch between all four visualization types with a dropdown widget.'},
-        {'cell': 28, 'title': 'Principles of Rational Viz', 'description': 'Prioritize node placement by grouping, ordering, and reduction to communicate structure.'},
-    ],
+            {
+                "cell": 0,
+                "title": "Graph Visualization",
+                "description": "From hairballs to rational visualizations that actually communicate insight.",
+            },
+            {
+                "cell": 7,
+                "title": "The Hairball Problem",
+                "description": "Node-link diagrams become unreadable as graphs grow beyond a few dozen nodes.",
+            },
+            {
+                "cell": 9,
+                "title": "Drawing with NetworkX",
+                "description": "The default nx.draw produces a tangle of nodes and edges for all but the smallest graphs.",
+            },
+            {
+                "cell": 13,
+                "title": "Matrix Plot",
+                "description": "An adjacency matrix view reveals structure through filled and empty cells.",
+            },
+            {
+                "cell": 17,
+                "title": "Arc Plot",
+                "description": "Nodes on a horizontal axis with arcs connecting edge pairs, optionally grouped by metadata.",
+            },
+            {
+                "cell": 20,
+                "title": "Circos Plot",
+                "description": "An arc plot wrapped into a circle for a compact, aesthetic display.",
+            },
+            {
+                "cell": 23,
+                "title": "Hive Plot",
+                "description": "Nodes grouped along radial axes to separate within-group and between-group edges.",
+            },
+            {
+                "cell": 25,
+                "title": "Interactive Comparison",
+                "description": "Switch between all four visualization types with a dropdown widget.",
+            },
+            {
+                "cell": 28,
+                "title": "Principles of Rational Viz",
+                "description": "Prioritize node placement by grouping, ordering, and reduction to communicate structure.",
+            },
+        ],
         auto_start=False,
         show_progress=True,
     )
@@ -152,49 +194,24 @@ def _(mo):
     return
 
 
-
-
 @app.cell(hide_code=True)
-def _():
-    import marimo as mo
-
-    return (mo,)
-
-
-
-
-@app.cell(hide_code=True)
-def _():
-    import warnings
-
-    warnings.filterwarnings("ignore")
-    return
-
-
-
-
-@app.cell(hide_code=True)
-def _(mo):
+def intro_heading():
     mo.md(r"""
     ## Introduction
     """)
     return
 
 
-
-
 @app.cell(hide_code=True)
-def _():
-    from IPython.display import YouTubeVideo
-
-    YouTubeVideo(id="v9HrR_AF5Zc", width="100%")
+def video_link():
+    mo.md("""
+    Watch the [video on YouTube](https://www.youtube.com/watch?v=v9HrR_AF5Zc).
+    """)
     return
 
 
-
-
 @app.cell(hide_code=True)
-def _(mo):
+def intro_body():
     mo.md(r"""
     In this chapter, we want to introduce you to the wonderful world of graph visualization.
 
@@ -211,10 +228,8 @@ def _(mo):
     return
 
 
-
-
 @app.cell(hide_code=True)
-def _(mo):
+def hairballs_header():
     mo.md(r"""
     ## Hairballs
 
@@ -228,31 +243,21 @@ def _(mo):
     return
 
 
-
-
 @app.cell(hide_code=True)
-def _():
-    from nams import load_data as cf
-    import networkx as nx
-    import matplotlib.pyplot as plt
-
+def load_data():
     G = cf.load_seventh_grader_network()
-    return G, nx, plt
-
-
+    return (G,)
 
 
 @app.cell
-def _(G, nx, plt):
+def draw_basic(G):
     nx.draw(G)
     plt.show()
     return
 
 
-
-
 @app.cell(hide_code=True)
-def _(mo):
+def draw_basic_notes():
     mo.md(r"""
     Nodes more tightly connected with one another are clustered together.
     Initial node placement is done typically at random,
@@ -265,27 +270,21 @@ def _(mo):
     return
 
 
-
-
 @app.cell
-def _(G):
+def is_directed_check(G):
     G.is_directed()
     return
 
 
-
-
 @app.cell
-def _(G, nx, plt):
+def draw_with_labels(G):
     nx.draw(G, with_labels=True)
     plt.show()
     return
 
 
-
-
 @app.cell(hide_code=True)
-def _(mo):
+def matrix_intro():
     mo.md(r"""
     The downside to drawing graphs this way is that
     large graphs end up looking like hairballs.
@@ -303,20 +302,14 @@ def _(mo):
     return
 
 
-
-
 @app.cell(hide_code=True)
-def _(G):
-    import nxviz as nv
-
+def matrix_plot(G):
     nv.matrix(G, group_by="gender", node_color_by="gender", backend="plotly")
-    return (nv,)
-
-
+    return
 
 
 @app.cell(hide_code=True)
-def _(mo):
+def matrix_observations():
     mo.md(r"""
     What can you tell from the graph visualization?
     A few things are immediately obvious:
@@ -335,10 +328,8 @@ def _(mo):
     return
 
 
-
-
 @app.cell(hide_code=True)
-def _(mo):
+def arc_header():
     mo.md(r"""
     ## Arc Plot
 
@@ -352,18 +343,14 @@ def _(mo):
     return
 
 
-
-
 @app.cell
-def _(G, nv):
+def arc_plot(G):
     nv.arc(G, node_color_by="gender", group_by="gender", backend="plotly")
     return
 
 
-
-
 @app.cell(hide_code=True)
-def _(mo):
+def arc_to_circos():
     mo.md(r"""
     The Arc Plot forms the basis of the next visualization,
     the highly popular Circos plot.
@@ -371,10 +358,8 @@ def _(mo):
     return
 
 
-
-
 @app.cell(hide_code=True)
-def _(mo):
+def circos_header():
     mo.md(r"""
     ## Circos Plot
 
@@ -385,18 +370,14 @@ def _(mo):
     return
 
 
-
-
 @app.cell
-def _(G, nv):
+def circos_plot(G):
     nv.circos(G, group_by="gender", node_color_by="gender", backend="plotly")
     return
 
 
-
-
 @app.cell(hide_code=True)
-def _(mo):
+def circos_summary():
     mo.md(r"""
     Generally speaking, you can think of a Circos Plot as being
     a more compact and aesthetically pleasing version of Arc Plots.
@@ -404,10 +385,8 @@ def _(mo):
     return
 
 
-
-
 @app.cell(hide_code=True)
-def _(mo):
+def hive_header():
     mo.md(r"""
     ## Hive Plot
 
@@ -416,18 +395,14 @@ def _(mo):
     return
 
 
-
-
 @app.cell
-def _(G, nv):
+def hive_plot(G):
     nv.hive(G, group_by="gender", node_color_by="gender", backend="plotly")
     return
 
 
-
-
 @app.cell(hide_code=True)
-def _(mo):
+def hive_explanation():
     mo.md(r"""
     As you can see, with Hive Plots,
     we first group nodes along two or three radial axes.
@@ -447,10 +422,8 @@ def _(mo):
     return
 
 
-
-
 @app.cell(hide_code=True)
-def _(mo):
+def compare_header():
     mo.md(r"""
     ## Compare Visualization Types Interactively
 
@@ -461,10 +434,8 @@ def _(mo):
     return
 
 
-
-
 @app.cell(hide_code=True)
-def _(mo):
+def viz_selector():
     viz_selector = mo.ui.dropdown(
         options=["matrix", "arc", "circos", "hive"],
         value="circos",
@@ -474,29 +445,32 @@ def _(mo):
     return (viz_selector,)
 
 
-
-
 @app.cell
-def _(G, nv, viz_selector):
+def viz_render(G, viz_selector):
     viz_fn = getattr(nv, viz_selector.value)
     viz_fn(G, group_by="gender", node_color_by="gender", backend="plotly")
     return
 
 
-
-
 @app.cell(hide_code=True)
-def _(mo):
-    mo.md(r"""
+def principles_callout():
+    mo.vstack(
+        [
+            mo.md(r"""
     ## Principles of Rational Graph Viz
 
     While I was implementing these visualizations in [`nxviz`](https://github.com/ericmjl/nxviz),
     I learned an important lesson in implementing graph visualizations in general:
-
-    > To be most informative and communicative,
-    > a graph visualization should first prioritize node placement
-    > in a fashion that makes sense.
-
+    """),
+            mo.callout(
+                mo.md(r"""
+    To be most informative and communicative,
+    a graph visualization should first prioritize node placement
+    in a fashion that makes sense.
+    """),
+                kind="success",
+            ),
+            mo.md(r"""
     In some ways, this makes a ton of sense.
     The nodes are the "entities" in a graph,
     corresponding to people, proteins, and ports.
@@ -508,7 +482,9 @@ def _(mo):
     So the next time you see a hairball,
     I hope you're able to critique it for what it doesn't communicate,
     and possibly use the same principle to design a better visualization!
-    """)
+    """),
+        ]
+    )
     return
 
 

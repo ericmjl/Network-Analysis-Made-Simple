@@ -4,8 +4,6 @@ __generated_with = "0.23.14"
 app = marimo.App(width="medium", auto_download=["html"])
 
 
-
-
 @app.cell(hide_code=True)
 def _(mo):
     mo.Html(f"""
@@ -61,8 +59,6 @@ def _(mo):
     return
 
 
-
-
 @app.cell(hide_code=True)
 def _(mo):
     import wigglystuff
@@ -87,15 +83,11 @@ def _(mo):
     return
 
 
-
-
 @app.cell(hide_code=True)
 def _():
     import marimo as mo
 
     return (mo,)
-
-
 
 
 @app.cell(hide_code=True)
@@ -106,8 +98,6 @@ def _():
     return
 
 
-
-
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -116,16 +106,12 @@ def _(mo):
     return
 
 
-
-
 @app.cell(hide_code=True)
-def _():
-    from IPython.display import YouTubeVideo
-
-    YouTubeVideo(id="BYOK12I9vgI", width="100%")
+def _(mo):
+    mo.md("""
+    Watch the [video on YouTube](https://www.youtube.com/watch?v=BYOK12I9vgI).
+    """)
     return
-
-
 
 
 @app.cell(hide_code=True)
@@ -191,8 +177,6 @@ def _(mo):
     return
 
 
-
-
 @app.cell(hide_code=True)
 def _():
     from nams import load_data as cf
@@ -201,8 +185,6 @@ def _():
     for n, d in G.nodes(data=True):
         G.nodes[n]["degree"] = G.degree(n)
     return (G,)
-
-
 
 
 @app.cell(hide_code=True)
@@ -216,8 +198,6 @@ def _(mo):
     return
 
 
-
-
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -226,8 +206,6 @@ def _(mo):
     To help us get our bearings right, let's visualize the crime network.
     """)
     return
-
-
 
 
 @app.cell(hide_code=True)
@@ -242,8 +220,6 @@ def _(G):
         node_enc_kwargs={"size_scale": 3},
     )
     return
-
-
 
 
 @app.cell(hide_code=True)
@@ -265,8 +241,6 @@ def _(mo):
     return
 
 
-
-
 @app.cell
 def _(_______, ____________, _____________):
     import networkx as nx
@@ -285,8 +259,6 @@ def _(_______, ____________, _____________):
     return extract_partition_nodes, getsource, nx
 
 
-
-
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -299,8 +271,6 @@ def _(mo):
     It is best visualized using this figure:
     """)
     return
-
-
 
 
 @app.cell
@@ -318,8 +288,6 @@ def _(nx):
     return
 
 
-
-
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -332,8 +300,6 @@ def _(mo):
     is basically the red path traced on the left.
     """)
     return
-
-
 
 
 @app.cell(hide_code=True)
@@ -353,16 +319,12 @@ def _(mo):
     return
 
 
-
-
 @app.cell
 def _(G):
     from networkx.algorithms import bipartite
 
     bipartite.is_bipartite(G)
     return (bipartite,)
-
-
 
 
 @app.cell(hide_code=True)
@@ -377,15 +339,11 @@ def _(mo):
     return
 
 
-
-
 @app.cell
 def _(G, extract_partition_nodes):
     person_nodes = extract_partition_nodes(G, "person")
     crime_nodes = extract_partition_nodes(G, "crime")
     return crime_nodes, person_nodes
-
-
 
 
 @app.cell(hide_code=True)
@@ -396,15 +354,11 @@ def _(mo):
     return
 
 
-
-
 @app.cell
 def _(G, bipartite, crime_nodes, person_nodes):
     person_graph = bipartite.projected_graph(G, person_nodes)
     crime_graph = bipartite.projected_graph(G, crime_nodes)
     return crime_graph, person_graph
-
-
 
 
 @app.cell(hide_code=True)
@@ -417,22 +371,16 @@ def _(mo):
     return
 
 
-
-
 @app.cell
 def _(person_graph):
     list(person_graph.edges(data=True))[0:5]
     return
 
 
-
-
 @app.cell
 def _(crime_graph):
     list(crime_graph.edges(data=True))[0:5]
     return
-
-
 
 
 @app.cell(hide_code=True)
@@ -450,8 +398,6 @@ def _(mo):
     return
 
 
-
-
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -463,8 +409,6 @@ def _(mo):
     _Hint: This is a degree centrality problem!_
     """)
     return
-
-
 
 
 @app.cell
@@ -484,8 +428,6 @@ def _(______________, ___________________, crime_graph, nx):
     return (pd,)
 
 
-
-
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -494,8 +436,6 @@ def _(mo):
     > Now do the analogous thing for individuals!
     """)
     return
-
-
 
 
 @app.cell
@@ -513,8 +453,6 @@ def _(______________, ___________________, nx, person_graph):
     return
 
 
-
-
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -528,15 +466,11 @@ def _(mo):
     return
 
 
-
-
 @app.cell
 def _(G, bipartite, person_nodes):
     weighted_person_graph = bipartite.weighted_projected_graph(G, person_nodes)
     list(weighted_person_graph.edges(data=True))[0:5]
     return
-
-
 
 
 @app.cell(hide_code=True)
@@ -560,14 +494,10 @@ def _(mo):
     return
 
 
-
-
 @app.cell
 def _(G):
     list(G.neighbors("p1"))
     return
-
-
 
 
 @app.cell
@@ -612,8 +542,6 @@ def _(
     return
 
 
-
-
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -634,16 +562,12 @@ def _(mo):
     return
 
 
-
-
 @app.cell
 def _():
     from nams.solutions.bipartite import bipartite_degree_centrality_denominator
 
     print(bipartite_degree_centrality_denominator())
     return
-
-
 
 
 @app.cell(hide_code=True)
@@ -670,8 +594,6 @@ def _(mo):
     return
 
 
-
-
 @app.cell
 def _(
     G,
@@ -689,8 +611,6 @@ def _(
     return
 
 
-
-
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -699,8 +619,6 @@ def _(mo):
     Here are the solutions to the exercises above.
     """)
     return
-
-
 
 
 @app.cell
