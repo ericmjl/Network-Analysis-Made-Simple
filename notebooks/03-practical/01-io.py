@@ -76,8 +76,7 @@ def _(mo):
 
 
 @app.cell(hide_code=True)
-def _():
-    import marimo as mo
+def _(mo):
     import wigglystuff
 
     tour = wigglystuff.CellTour(
@@ -97,7 +96,7 @@ def _():
         show_progress=True,
     )
     mo.ui.anywidget(tour)
-    return (mo,)
+    return
 
 
 
@@ -132,10 +131,10 @@ def _(mo):
 
 
 @app.cell(hide_code=True)
-def _():
-    from IPython.display import YouTubeVideo
-
-    YouTubeVideo(id="3sJnTpeFXZ4", width="100%")
+def _(mo):
+    mo.md(
+        "Watch the [video on YouTube](https://www.youtube.com/watch?v=3sJnTpeFXZ4)."
+    )
     return
 
 
