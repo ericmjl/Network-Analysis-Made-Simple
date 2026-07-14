@@ -121,10 +121,10 @@ def _(mo):
 
 
 @app.cell(hide_code=True)
-def _():
-    from IPython.display import YouTubeVideo
-
-    YouTubeVideo(id="P-0CJpO3spg", width="100%")
+def _(mo):
+    mo.md(
+        "Watch the [video on YouTube](https://www.youtube.com/watch?v=P-0CJpO3spg)."
+    )
     return
 
 
