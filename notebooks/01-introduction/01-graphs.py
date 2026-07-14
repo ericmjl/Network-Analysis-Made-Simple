@@ -79,10 +79,10 @@ def intro():
 
 
 @app.cell(hide_code=True)
-def video():
-    from IPython.display import YouTubeVideo
-
-    YouTubeVideo(id="k4KHoLC7TFE", width="100%")
+def video(mo):
+    mo.md("""
+    Watch the [video introduction on YouTube](https://www.youtube.com/watch?v=k4KHoLC7TFE).
+    """)
     return
 
 
