@@ -1,5 +1,7 @@
 # Custom
 
+# .ipynb files are generated from marimo .py sources via `marimo export ipynb`
+*.ipynb
 docs/introduction/.ipynb_checkpoints/*
 docs/*/.ipynb_checkpoints/*
 *.edgelist

@@ -28,7 +28,8 @@ jobs:
       - name: Build website
         run: |
           pixi run python -m ipykernel install --user --name nams
-          pixi run build-docs
+          pixi run export-ipynb
+          pixi run -e docs build-docs
 
       - name: Deploy Website
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
