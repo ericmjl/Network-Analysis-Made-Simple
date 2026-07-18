@@ -221,9 +221,9 @@ def bfs_animation_intro(mo):
 
 
 @app.cell(hide_code=True)
-def bfs_animation(anywidget, deque, json, traitlets):
+def bfs_animation(anywidget, cf, deque, json, nx, traitlets):
 
-    def _compute_bfs_animation_steps(adj, start, target=None, mode="path_exists"):
+    def compute_bfs_animation_steps(adj, start, target=None, mode="path_exists"):
         """Precompute discrete BFS steps for playback.
 
         Two modes mirror what students actually write:
@@ -364,7 +364,7 @@ def bfs_animation(anywidget, deque, json, traitlets):
 
     # 15-node teaching graph: 4 neighbors at distance 1 from S,
     # a dense middle layer, and terminal leaves. T4 is our target.
-    _anim_nodes = [
+    anim_nodes = [
         {"id": "S", "x": 50, "y": 170, "label": "S"},
         {"id": "A", "x": 205, "y": 45, "label": "A"},
         {"id": "B", "x": 205, "y": 125, "label": "B"},
@@ -381,7 +381,7 @@ def bfs_animation(anywidget, deque, json, traitlets):
         {"id": "T6", "x": 690, "y": 75, "label": "T6"},
         {"id": "T7", "x": 690, "y": 245, "label": "T7"},
     ]
-    _anim_edges = [
+    anim_edges = [
         ["S", "A"], ["S", "B"], ["S", "C"], ["S", "D"],
         ["A", "E"], ["A", "F"],
         ["B", "E"], ["B", "F"],
@@ -392,12 +392,58 @@ def bfs_animation(anywidget, deque, json, traitlets):
         ["G", "T4"], ["G", "T5"],
         ["T6", "T7"],
     ]
-    _anim_adj = {n["id"]: [] for n in _anim_nodes}
-    for _a, _b in _anim_edges:
-        _anim_adj[_a].append(_b)
-        _anim_adj[_b].append(_a)
-    _anim_steps_exists = _compute_bfs_animation_steps(_anim_adj, "S", target="T4", mode="path_exists")
-    _anim_steps_path = _compute_bfs_animation_steps(_anim_adj, "S", target="T4", mode="shortest_path")
+    anim_adj = {n["id"]: [] for n in anim_nodes}
+    for _a, _b in anim_edges:
+        anim_adj[_a].append(_b)
+        anim_adj[_b].append(_a)
+    anim_steps_exists = compute_bfs_animation_steps(anim_adj, "S", target="T4", mode="path_exists")
+    anim_steps_path = compute_bfs_animation_steps(anim_adj, "S", target="T4", mode="shortest_path")
+
+
+    def nx_to_animation(G_sub, start, target, seed=42):
+        """Convert a networkx (sub)graph into the BFSAnimation node/edge/step format.
+
+        Positions are computed with a spring layout and scaled to the widget's
+        SVG viewBox (740 x 340), so any small graph renders legibly. Node ids are
+        preserved; labels are their string form.
+        """
+        pos = nx.spring_layout(G_sub, seed=seed, iterations=200)
+        xs = [p[0] for p in pos.values()]
+        ys = [p[1] for p in pos.values()]
+        xmin, xmax = min(xs), max(xs)
+        ymin, ymax = min(ys), max(ys)
+        span_x = (xmax - xmin) or 1.0
+        span_y = (ymax - ymin) or 1.0
+        _M = 40
+        _W, _H = 740, 340
+        nodes = [
+            {
+                "id": str(n),
+                "x": _M + (pos[n][0] - xmin) / span_x * (_W - 2 * _M),
+                "y": _M + (pos[n][1] - ymin) / span_y * (_H - 2 * _M),
+                "label": str(n),
+            }
+            for n in G_sub.nodes()
+        ]
+        edges = [[str(a), str(b)] for a, b in G_sub.edges()]
+        adj = {str(n): [str(m) for m in G_sub.neighbors(n)] for n in G_sub.nodes()}
+        se = compute_bfs_animation_steps(adj, str(start), target=str(target), mode="path_exists")
+        sp = compute_bfs_animation_steps(adj, str(start), target=str(target), mode="shortest_path")
+        return nodes, edges, se, sp, str(target)
+
+
+    def build_real_anim(src, target, radius):
+        """Load the sociopatterns network and extract a small ego subgraph for animation."""
+        _Gfull = cf.load_sociopatterns_network()
+        _Gsub = nx.ego_graph(_Gfull, src, radius=radius)
+        return nx_to_animation(_Gsub, src, target)
+
+
+    def build_toy_anim():
+        """Return the toy teaching graph precomputed animation data."""
+        return anim_nodes, anim_edges, anim_steps_exists, anim_steps_path, "T4"
+
+
 
     class BFSAnimation(anywidget.AnyWidget):
         """Auto-playing breadth-first search walkthrough on a minimal graph."""
@@ -409,6 +455,7 @@ def bfs_animation(anywidget, deque, json, traitlets):
             const stepsExists = JSON.parse(model.get("steps_exists_json"));
             const stepsPath = JSON.parse(model.get("steps_path_json"));
             let delay = model.get("speed_ms") || 900;
+            const targetLabel = model.get("target_label") || "T4";
             const SVGNS = "http://www.w3.org/2000/svg";
             const LAYER = ["#3b82f6", "#06b6d4", "#22c55e", "#eab308", "#a855f7", "#ec4899"];
 
@@ -423,7 +470,7 @@ def bfs_animation(anywidget, deque, json, traitlets):
             el.innerHTML = `
                 <div class="bfsa-header">
                     <span class="bfsa-title">Breadth-First Search</span>
-                    <span class="bfsa-subtitle">target: T4 \u00b7 terminate when spotted in neighbors</span>
+                    <span class="bfsa-subtitle">target: ${targetLabel} \u00b7 terminate when spotted in neighbors</span>
                 </div>
                 <div class="bfsa-modes">
                     <button class="bfsa-btn bfsa-mode is-active" data-mode="exists">path_exists</button>
@@ -633,8 +680,8 @@ def bfs_animation(anywidget, deque, json, traitlets):
                 steps = (m === "path") ? stepsPath : stepsExists;
                 el.querySelectorAll(".bfsa-mode").forEach(x => x.classList.toggle("is-active", x.dataset.mode === m));
                 subtitleEl.textContent = m === "path"
-                    ? "target: T4 \u00b7 terminate on dequeue, show shortest path"
-                    : "target: T4 \u00b7 terminate when spotted in neighbors";
+                    ? `target: ${targetLabel} \u00b7 terminate on dequeue, show shortest path`
+                    : `target: ${targetLabel} \u00b7 terminate when spotted in neighbors`;
                 pause();
                 stepIdx = 0;
                 update();
@@ -733,12 +780,57 @@ def bfs_animation(anywidget, deque, json, traitlets):
         """
 
         speed_ms = traitlets.Int(900).tag(sync=True)
-        nodes_json = traitlets.Unicode(json.dumps(_anim_nodes)).tag(sync=True)
-        edges_json = traitlets.Unicode(json.dumps(_anim_edges)).tag(sync=True)
-        steps_exists_json = traitlets.Unicode(json.dumps(_anim_steps_exists)).tag(sync=True)
-        steps_path_json = traitlets.Unicode(json.dumps(_anim_steps_path)).tag(sync=True)
+        target_label = traitlets.Unicode("T4").tag(sync=True)
+        nodes_json = traitlets.Unicode(json.dumps(anim_nodes)).tag(sync=True)
+        edges_json = traitlets.Unicode(json.dumps(anim_edges)).tag(sync=True)
+        steps_exists_json = traitlets.Unicode(json.dumps(anim_steps_exists)).tag(sync=True)
+        steps_path_json = traitlets.Unicode(json.dumps(anim_steps_path)).tag(sync=True)
 
-    BFSAnimation()
+
+    return BFSAnimation, build_real_anim, build_toy_anim
+
+
+@app.cell(hide_code=True)
+def bfs_graph_picker(mo):
+    # Pick a graph for the BFS animation: the toy teaching graph, or a real
+    # sociopatterns subgraph (a small ego network cut out of the 410-node graph).
+    anim_graph_choice = mo.ui.dropdown(
+        options=[
+            "Toy teaching graph (S -> T4)",
+            "Sociopatterns: 256 -> 257 (14 nodes, 2-hop)",
+            "Sociopatterns: 79 -> 7 (30 nodes, 3-hop)",
+        ],
+        value="Toy teaching graph (S -> T4)",
+        label="Graph",
+    )
+    anim_graph_choice
+
+    return (anim_graph_choice,)
+
+
+@app.cell(hide_code=True)
+def bfs_animation_widget(
+    BFSAnimation,
+    anim_graph_choice,
+    build_real_anim,
+    build_toy_anim,
+    json,
+):
+    anim_sel = anim_graph_choice.value
+    if anim_sel and anim_sel.startswith("Sociopatterns") and "256" in anim_sel:
+        _an, _ae, _ase, _asp, _tl = build_real_anim(256, 257, 2)
+    elif anim_sel and anim_sel.startswith("Sociopatterns") and "79" in anim_sel:
+        _an, _ae, _ase, _asp, _tl = build_real_anim(79, 7, 3)
+    else:
+        _an, _ae, _ase, _asp, _tl = build_toy_anim()
+
+    BFSAnimation(
+        nodes_json=json.dumps(_an),
+        edges_json=json.dumps(_ae),
+        steps_exists_json=json.dumps(_ase),
+        steps_path_json=json.dumps(_asp),
+        target_label=str(_tl),
+    )
 
     return
 
