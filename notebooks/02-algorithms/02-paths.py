@@ -804,7 +804,6 @@ def bfs_graph_picker(mo):
         label="Graph",
     )
     anim_graph_choice
-
     return (anim_graph_choice,)
 
 
@@ -831,7 +830,6 @@ def bfs_animation_widget(
         steps_path_json=json.dumps(_asp),
         target_label=str(_tl),
     )
-
     return
 
 
